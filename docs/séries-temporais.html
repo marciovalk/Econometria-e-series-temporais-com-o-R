@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 3 Séries Temporais | Introdução à Econometria de Série Temporais com R</title>
+  <meta name="description" content="Este livro pode ser usado em um curso de graduação que proponha estudar econometria e séreis temporais em um nível introdutório. No entanto, também é abordado um pouco da teoria e tecnicalidade." />
+  <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 3 Séries Temporais | Introdução à Econometria de Série Temporais com R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Este livro pode ser usado em um curso de graduação que proponha estudar econometria e séreis temporais em um nível introdutório. No entanto, também é abordado um pouco da teoria e tecnicalidade." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 3 Séries Temporais | Introdução à Econometria de Série Temporais com R" />
+  
+  <meta name="twitter:description" content="Este livro pode ser usado em um curso de graduação que proponha estudar econometria e séreis temporais em um nível introdutório. No entanto, também é abordado um pouco da teoria e tecnicalidade." />
+  
+
+<meta name="author" content="Marcio Valk" />
+
+
+<meta name="date" content="2020-07-10" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="séries-temporais-no-contexto-de-regressão.html"/>
+<link rel="next" href="séries-temporais-não-estacionárias.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefácio</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introdução</a><ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#breve-introdução-ao-r"><i class="fa fa-check"></i><b>1.1</b> Breve introdução ao R</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#aleatoriedade-a-essência-da-estatística"><i class="fa fa-check"></i><b>1.2</b> Aleatoriedade, a essência da Estatística</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#variável-aleatória"><i class="fa fa-check"></i><b>1.3</b> Variável Aleatória</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="intro.html"><a href="intro.html#distribuição-de-probabilidade"><i class="fa fa-check"></i><b>1.3.1</b> Distribuição de Probabilidade</a></li>
+<li class="chapter" data-level="1.3.2" data-path="intro.html"><a href="intro.html#distribuições-conjunta-marginal-e-condicional"><i class="fa fa-check"></i><b>1.3.2</b> Distribuições conjunta, marginal e condicional</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#a-distribuição-normal-e-distribuições-relacionadas"><i class="fa fa-check"></i><b>1.4</b> A distribuição Normal e distribuições relacionadas</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="intro.html"><a href="intro.html#a-distribuição-normal"><i class="fa fa-check"></i><b>1.4.1</b> A distribuição Normal</a></li>
+<li class="chapter" data-level="1.4.2" data-path="intro.html"><a href="intro.html#distribuições-relacionadas"><i class="fa fa-check"></i><b>1.4.2</b> Distribuições Relacionadas</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#parâmetros-estimadores-e-valores-estimados"><i class="fa fa-check"></i><b>1.5</b> Parâmetros, Estimadores e Valores Estimados</a></li>
+<li class="chapter" data-level="1.6" data-path="intro.html"><a href="intro.html#propriedades-de-variáveis-aleatórias"><i class="fa fa-check"></i><b>1.6</b> Propriedades de Variáveis Aleatórias</a><ul>
+<li class="chapter" data-level="1.6.1" data-path="intro.html"><a href="intro.html#média-valor-esperado-ou-esperança-matemática"><i class="fa fa-check"></i><b>1.6.1</b> Média, Valor Esperado ou Esperança Matemática</a></li>
+<li class="chapter" data-level="1.6.2" data-path="intro.html"><a href="intro.html#propriedades-da-esperança"><i class="fa fa-check"></i><b>1.6.2</b> Propriedades da Esperança</a></li>
+<li class="chapter" data-level="1.6.3" data-path="intro.html"><a href="intro.html#variância"><i class="fa fa-check"></i><b>1.6.3</b> Variância</a></li>
+<li class="chapter" data-level="1.6.4" data-path="intro.html"><a href="intro.html#covariância"><i class="fa fa-check"></i><b>1.6.4</b> Covariância</a></li>
+<li class="chapter" data-level="1.6.5" data-path="intro.html"><a href="intro.html#correlação"><i class="fa fa-check"></i><b>1.6.5</b> Correlação</a></li>
+<li class="chapter" data-level="1.6.6" data-path="intro.html"><a href="intro.html#propriedades-da-variância-covariância-e-correlação"><i class="fa fa-check"></i><b>1.6.6</b> Propriedades da Variância, Covariância e Correlação</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="intro.html"><a href="intro.html#estimadores"><i class="fa fa-check"></i><b>1.7</b> Estimadores</a><ul>
+<li class="chapter" data-level="1.7.1" data-path="intro.html"><a href="intro.html#propriedades-dos-estimadores"><i class="fa fa-check"></i><b>1.7.1</b> Propriedades dos Estimadores</a></li>
+<li class="chapter" data-level="1.7.2" data-path="intro.html"><a href="intro.html#vícioviés"><i class="fa fa-check"></i><b>1.7.2</b> Vício/Viés</a></li>
+<li class="chapter" data-level="1.7.3" data-path="intro.html"><a href="intro.html#consistência"><i class="fa fa-check"></i><b>1.7.3</b> Consistência</a></li>
+<li class="chapter" data-level="1.7.4" data-path="intro.html"><a href="intro.html#eficiência"><i class="fa fa-check"></i><b>1.7.4</b> Eficiência</a></li>
+<li class="chapter" data-level="1.7.5" data-path="intro.html"><a href="intro.html#erro-quadrático-médio-eqm"><i class="fa fa-check"></i><b>1.7.5</b> Erro Quadrático Médio (EQM)</a></li>
+<li class="chapter" data-level="1.7.6" data-path="intro.html"><a href="intro.html#vício-versus-variância-mínima"><i class="fa fa-check"></i><b>1.7.6</b> Vício versus Variância Mínima</a></li>
+<li class="chapter" data-level="1.7.7" data-path="intro.html"><a href="intro.html#método-de-mínimos-quadrados-mqo"><i class="fa fa-check"></i><b>1.7.7</b> Método de Mínimos Quadrados (MQO)</a></li>
+<li class="chapter" data-level="1.7.8" data-path="intro.html"><a href="intro.html#regressão-liner-múltipla-rml"><i class="fa fa-check"></i><b>1.7.8</b> Regressão Liner Múltipla (RML)</a></li>
+<li class="chapter" data-level="1.7.9" data-path="intro.html"><a href="intro.html#hipóteses-do-modelo-de-regressão"><i class="fa fa-check"></i><b>1.7.9</b> Hipóteses do modelo de regressão</a></li>
+<li class="chapter" data-level="1.7.10" data-path="intro.html"><a href="intro.html#o-coeficiente-de-determinação"><i class="fa fa-check"></i><b>1.7.10</b> O Coeficiente de Determinação</a></li>
+<li class="chapter" data-level="1.7.11" data-path="intro.html"><a href="intro.html#propriedade-de-não-viés-dos-estimadores-mqo"><i class="fa fa-check"></i><b>1.7.11</b> Propriedade de Não-Viés dos Estimadores MQO</a></li>
+<li class="chapter" data-level="1.7.12" data-path="intro.html"><a href="intro.html#testes-de-hipóteses"><i class="fa fa-check"></i><b>1.7.12</b> Testes de Hipóteses</a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="intro.html"><a href="intro.html#formas-funcionais-logarítmicas"><i class="fa fa-check"></i><b>1.8</b> Formas Funcionais Logarítmicas</a></li>
+<li class="chapter" data-level="1.9" data-path="intro.html"><a href="intro.html#exercícios"><i class="fa fa-check"></i><b>1.9</b> Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="séries-temporais-no-contexto-de-regressão.html"><a href="séries-temporais-no-contexto-de-regressão.html"><i class="fa fa-check"></i><b>2</b> Séries Temporais no Contexto de Regressão</a><ul>
+<li class="chapter" data-level="2.1" data-path="séries-temporais-no-contexto-de-regressão.html"><a href="séries-temporais-no-contexto-de-regressão.html#introdução"><i class="fa fa-check"></i><b>2.1</b> Introdução</a></li>
+<li class="chapter" data-level="2.2" data-path="séries-temporais-no-contexto-de-regressão.html"><a href="séries-temporais-no-contexto-de-regressão.html#exemplos-de-séries-temporais"><i class="fa fa-check"></i><b>2.2</b> Exemplos de Séries Temporais</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="séries-temporais.html"><a href="séries-temporais.html"><i class="fa fa-check"></i><b>3</b> Séries Temporais</a><ul>
+<li class="chapter" data-level="3.1" data-path="séries-temporais.html"><a href="séries-temporais.html#objetivos"><i class="fa fa-check"></i><b>3.1</b> Objetivos</a></li>
+<li class="chapter" data-level="3.2" data-path="séries-temporais.html"><a href="séries-temporais.html#séries-temporais-definição-formal"><i class="fa fa-check"></i><b>3.2</b> Séries Temporais: Definição Formal</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="séries-temporais.html"><a href="séries-temporais.html#processos-estocásticos"><i class="fa fa-check"></i><b>3.2.1</b> Processos Estocásticos</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="séries-temporais-não-estacionárias.html"><a href="séries-temporais-não-estacionárias.html"><i class="fa fa-check"></i><b>4</b> Séries temporais não estacionárias</a><ul>
+<li class="chapter" data-level="4.1" data-path="séries-temporais-não-estacionárias.html"><a href="séries-temporais-não-estacionárias.html#como-lidar-com-tendências-determinísticas"><i class="fa fa-check"></i><b>4.1</b> Como lidar com tendências determinísticas</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="variáveis-instrumentais.html"><a href="variáveis-instrumentais.html"><i class="fa fa-check"></i><b>5</b> Variáveis instrumentais</a><ul>
+<li class="chapter" data-level="5.1" data-path="variáveis-instrumentais.html"><a href="variáveis-instrumentais.html#conceito-da-exogeneidade-dos-regressores"><i class="fa fa-check"></i><b>5.1</b> Conceito da exogeneidade dos regressores</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="variáveis-instrumentais.html"><a href="variáveis-instrumentais.html#variável-proxy"><i class="fa fa-check"></i><b>5.1.1</b> Variável proxy</a></li>
+<li class="chapter" data-level="5.1.2" data-path="variáveis-instrumentais.html"><a href="variáveis-instrumentais.html#variável-omitida"><i class="fa fa-check"></i><b>5.1.2</b> Variável Omitida</a></li>
+<li class="chapter" data-level="5.1.3" data-path="variáveis-instrumentais.html"><a href="variáveis-instrumentais.html#erros-de-mensuração"><i class="fa fa-check"></i><b>5.1.3</b> Erros de Mensuração</a></li>
+<li class="chapter" data-level="5.1.4" data-path="variáveis-instrumentais.html"><a href="variáveis-instrumentais.html#variável-com-erro-de-medição"><i class="fa fa-check"></i><b>5.1.4</b> Variável com erro de medição</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>6</b> Final Words</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introdução à Econometria de Série Temporais com R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="séries-temporais" class="section level1">
+<h1><span class="header-section-number">Capítulo 3</span> Séries Temporais</h1>
+<p>O estudo de séries temporais tem por objetivos principais definir o processo gerador de dados, fazer previsões futuras da série, identificar ciclos, tendências e/ou sazonalidades de forma que a decisão que envolve as variáveis em questão seja a mais acurada possível.</p>
+<div id="objetivos" class="section level2">
+<h2><span class="header-section-number">3.1</span> Objetivos</h2>
+<p>Dada uma série temporal <span class="math inline">\(\{Z(t_1 ),\ldots, Z(t_N)\}\)</span>, observada nos instantes <span class="math inline">\(t_1,\ldots,t_N\)</span>,
+podemos estar interessados em:</p>
+<div class="line-block">   i) Investigar o mecanismo gerador da série temporal;</div>
+<div class="line-block">   ii) Fazer previsões de valores futuros da série; podendo ser a curto ou longo prazo;</div>
+<div class="line-block">   iii) Descrever apenas o comportamento da série através de gráficos;</div>
+<div class="line-block">   iv) Procurar periodicidades relevantes nos dados. Em todos estes casos podemos construir modelos probabilísticos ou estocásticos, tanto no domínio do tempo como no domínio da freqüência, por exemplo: um sinal aleatório com frequência medida em Hz. Devemos construir modelos simples e com menor número de parâmetros possíveis.</div>
+</div>
+<div id="séries-temporais-definição-formal" class="section level2">
+<h2><span class="header-section-number">3.2</span> Séries Temporais: Definição Formal</h2>
+<p>Neste capítulo vamos descrever os conceitos básicos utilizados dentro da teoria dos modelos de séries temporais. Inicialmente vamos introduzir os conceitos de processos estocásticos, média e função de covariância, processo estacionário e função de autocorrelação.</p>
+<div id="processos-estocásticos" class="section level3">
+<h3><span class="header-section-number">3.2.1</span> Processos Estocásticos</h3>
+<p>Seja <span class="math inline">\(T\)</span> um conjunto arbitrário de índices. Um <span style="color: blue;"><em>processo estocástico</em></span> é uma família de variáveis aleatórias <span class="math inline">\(\{Z_t\}_{t \in T}\)</span> definidas num mesmo espaço de probabilidades, que denotaremos genericamente por <span class="math inline">\((\Omega, \mathcal A, P)\)</span>. O conjunto de índices <span class="math inline">\(T\)</span> pode ser o conjunto dos números inteiros <span class="math inline">\(\mathbb{Z} = \{0, \pm 1, \pm 2,\cdots\}\)</span>, dos naturais <span class="math inline">\(\mathbb{N}=\{1,2,\cdots\}\)</span> ou o conjunto dos números reais <span class="math inline">\(\mathbb{R}\)</span>. Observe ainda que, para cada <span class="math inline">\(t \in T\)</span>, <span class="math inline">\(Z_t\)</span> é uma variável aleatória definida sobre <span class="math inline">\(\Omega\)</span>, sendo assim de fato uma função de dois argumentos, do índice <span class="math inline">\(t\in T\)</span> e do ponto <span class="math inline">\(\omega \in \Omega\)</span> que determina o valor do processo no tempo <span class="math inline">\(t\)</span> dado por <span class="math inline">\(Z_t(\omega)\)</span>.</p>
+<p>Uma série temporal, do ponto de vista teórico, nada mais é do que um processo estocástico para o qual o índice <span class="math inline">\(T\)</span> é <span class="math inline">\(\mathbb{Z}\)</span> ou um subconjunto deste. Do ponto de vista prático porém, uma série temporal é um conjunto de dados indexados no tempo. Esta dualidade de nomenclatura será utilizado em todo o trabalho. Invariavemente, letras maiúsculas, como <span class="math inline">\(Z_1,Z_2,\cdots\)</span> denotarão a série temporal do ponto de vista teórico, isto é, como variáveis aleatórias em um processo estocástico indexado pelo tempo, enquanto letras minúsculas como <span class="math inline">\(z_1,z_2,\cdots\)</span> denotarão a série temporal do ponto de vista prático, isto é, como uma observação das variáveis aleatórias que compõem o processo estocástico. Assim, se do ponto de vista teórico temos a série temporal <span class="math inline">\(\{Z_t\}_{t\in\mathbb{Z}}\)</span>, um processo estocástico indexado pelo tempo, uma série temporal do ponto de vista prático significa uma realização <span class="math inline">\(z_1,\cdots,z_n\)</span> do processo <span class="math inline">\(\{Z_t\}\)</span>, observados nos tempos <span class="math inline">\(t=1,\cdots,n\)</span>. Neste caso, observamos <span class="math inline">\(z_1=Z_1(\omega),\cdots, z_n=Z_n(\omega)\)</span>, para um determinado <span class="math inline">\(\omega\in\Omega\)</span> fixo. Embora existam maneiras mais formais e precisas de definir uma série temporal, o ponto de vista aqui adotado, embora aparentemente ambíguo na nomenclatura, servirá bem a nossos propósitos sem causar confusões.</p>
+<p>Chamamos atenção ainda que existem condições para que um processo estocástico exista. Estes resultados dependem de uma discussão bastante técnica, bem além das intenções de nossa exposição.</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="séries-temporais-no-contexto-de-regressão.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="séries-temporais-não-estacionárias.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/03-SeriesTemp.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Econometria-e-series-temporais-com-o-R.pdf", "Econometria-e-series-temporais-com-o-R.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

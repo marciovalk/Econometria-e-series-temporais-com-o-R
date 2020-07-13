@@ -1,0 +1,1633 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 4 Séries Temporais | Econometria e Séries Temporais com R</title>
+  <meta name="description" content="Este livro pode ser usado em um curso de graduação que proponha estudar econometria e séreis temporais em um nível introdutório. No entanto, também é abordado um pouco da teoria e tecnicalidade." />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 4 Séries Temporais | Econometria e Séries Temporais com R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Este livro pode ser usado em um curso de graduação que proponha estudar econometria e séreis temporais em um nível introdutório. No entanto, também é abordado um pouco da teoria e tecnicalidade." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 4 Séries Temporais | Econometria e Séries Temporais com R" />
+  
+  <meta name="twitter:description" content="Este livro pode ser usado em um curso de graduação que proponha estudar econometria e séreis temporais em um nível introdutório. No entanto, também é abordado um pouco da teoria e tecnicalidade." />
+  
+
+<meta name="author" content="Marcio Valk e Guilherme Pumi" />
+
+
+<meta name="date" content="2020-07-12" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="streg.html"/>
+<link rel="next" href="stnoest.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefácio</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Breve introdução ao R</a><ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#apresentação-da-linguagem-r"><i class="fa fa-check"></i><b>1.1</b> Apresentação da linguagem R</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#instalando-o-r"><i class="fa fa-check"></i><b>1.2</b> Instalando o R</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#instalando-o-rstudio"><i class="fa fa-check"></i><b>1.3</b> Instalando o RStudio</a></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#diretório-de-trabalho"><i class="fa fa-check"></i><b>1.4</b> Diretório de trabalho</a></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#rstudio-cloud"><i class="fa fa-check"></i><b>1.5</b> RStudio Cloud</a></li>
+<li class="chapter" data-level="1.6" data-path="intro.html"><a href="intro.html#instalação-de-pacotes"><i class="fa fa-check"></i><b>1.6</b> Instalação de pacotes</a></li>
+<li class="chapter" data-level="1.7" data-path="intro.html"><a href="intro.html#funcionalidades-básicas"><i class="fa fa-check"></i><b>1.7</b> Funcionalidades básicas</a><ul>
+<li class="chapter" data-level="1.7.1" data-path="intro.html"><a href="intro.html#operações"><i class="fa fa-check"></i><b>1.7.1</b> Operações</a></li>
+<li class="chapter" data-level="1.7.2" data-path="intro.html"><a href="intro.html#operadores-lógicos"><i class="fa fa-check"></i><b>1.7.2</b> Operadores lógicos</a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="intro.html"><a href="intro.html#variáveis-no-r"><i class="fa fa-check"></i><b>1.8</b> Variáveis no R</a><ul>
+<li class="chapter" data-level="1.8.1" data-path="intro.html"><a href="intro.html#operações-1"><i class="fa fa-check"></i><b>1.8.1</b> Operações</a></li>
+</ul></li>
+<li class="chapter" data-level="1.9" data-path="intro.html"><a href="intro.html#vetores"><i class="fa fa-check"></i><b>1.9</b> Vetores</a><ul>
+<li class="chapter" data-level="1.9.1" data-path="intro.html"><a href="intro.html#operações-com-vetores"><i class="fa fa-check"></i><b>1.9.1</b> Operações com vetores</a></li>
+</ul></li>
+<li class="chapter" data-level="1.10" data-path="intro.html"><a href="intro.html#matrizes"><i class="fa fa-check"></i><b>1.10</b> Matrizes</a><ul>
+<li class="chapter" data-level="1.10.1" data-path="intro.html"><a href="intro.html#operações-com-matrizes"><i class="fa fa-check"></i><b>1.10.1</b> Operações com Matrizes</a></li>
+</ul></li>
+<li class="chapter" data-level="1.11" data-path="intro.html"><a href="intro.html#uso-do-for-loop"><i class="fa fa-check"></i><b>1.11</b> Uso do for (loop)</a></li>
+<li class="chapter" data-level="1.12" data-path="intro.html"><a href="intro.html#funções"><i class="fa fa-check"></i><b>1.12</b> Funções</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="rev.html"><a href="rev.html"><i class="fa fa-check"></i><b>2</b> Revisão</a><ul>
+<li class="chapter" data-level="2.1" data-path="rev.html"><a href="rev.html#aleatoriedade-a-essência-da-estatística"><i class="fa fa-check"></i><b>2.1</b> Aleatoriedade, a essência da estatística</a></li>
+<li class="chapter" data-level="2.2" data-path="rev.html"><a href="rev.html#variável-aleatória"><i class="fa fa-check"></i><b>2.2</b> Variável aleatória</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="rev.html"><a href="rev.html#distribuição-de-probabilidade"><i class="fa fa-check"></i><b>2.2.1</b> Distribuição de probabilidade</a></li>
+<li class="chapter" data-level="2.2.2" data-path="rev.html"><a href="rev.html#distribuições-conjunta-marginal-e-condicional"><i class="fa fa-check"></i><b>2.2.2</b> Distribuições conjunta, marginal e condicional</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="rev.html"><a href="rev.html#a-distribuição-normal-e-distribuições-relacionadas"><i class="fa fa-check"></i><b>2.3</b> A distribuição Normal e distribuições relacionadas</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="rev.html"><a href="rev.html#a-distribuição-normal"><i class="fa fa-check"></i><b>2.3.1</b> A distribuição Normal</a></li>
+<li class="chapter" data-level="2.3.2" data-path="rev.html"><a href="rev.html#distribuições-relacionadas"><i class="fa fa-check"></i><b>2.3.2</b> Distribuições relacionadas</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="rev.html"><a href="rev.html#parâmetros-estimadores-e-valores-estimados"><i class="fa fa-check"></i><b>2.4</b> Parâmetros, estimadores e valores estimados</a></li>
+<li class="chapter" data-level="2.5" data-path="rev.html"><a href="rev.html#propriedades-de-variáveis-aleatórias"><i class="fa fa-check"></i><b>2.5</b> Propriedades de variáveis aleatórias</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="rev.html"><a href="rev.html#média-valor-esperado-ou-esperança-matemática"><i class="fa fa-check"></i><b>2.5.1</b> Média, valor esperado ou esperança matemática</a></li>
+<li class="chapter" data-level="2.5.2" data-path="rev.html"><a href="rev.html#propriedades-da-esperança"><i class="fa fa-check"></i><b>2.5.2</b> Propriedades da Esperança</a></li>
+<li class="chapter" data-level="2.5.3" data-path="rev.html"><a href="rev.html#variância"><i class="fa fa-check"></i><b>2.5.3</b> Variância</a></li>
+<li class="chapter" data-level="2.5.4" data-path="rev.html"><a href="rev.html#covariância"><i class="fa fa-check"></i><b>2.5.4</b> Covariância</a></li>
+<li class="chapter" data-level="2.5.5" data-path="rev.html"><a href="rev.html#correlação"><i class="fa fa-check"></i><b>2.5.5</b> Correlação</a></li>
+<li class="chapter" data-level="2.5.6" data-path="rev.html"><a href="rev.html#propriedades-da-variância-covariância-e-correlação"><i class="fa fa-check"></i><b>2.5.6</b> Propriedades da variância, covariância e correlação</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="rev.html"><a href="rev.html#estimadores"><i class="fa fa-check"></i><b>2.6</b> Estimadores</a><ul>
+<li class="chapter" data-level="2.6.1" data-path="rev.html"><a href="rev.html#propriedades-dos-estimadores"><i class="fa fa-check"></i><b>2.6.1</b> Propriedades dos estimadores</a></li>
+<li class="chapter" data-level="2.6.2" data-path="rev.html"><a href="rev.html#vícioviés"><i class="fa fa-check"></i><b>2.6.2</b> Vício/Viés</a></li>
+<li class="chapter" data-level="2.6.3" data-path="rev.html"><a href="rev.html#consistência"><i class="fa fa-check"></i><b>2.6.3</b> Consistência</a></li>
+<li class="chapter" data-level="2.6.4" data-path="rev.html"><a href="rev.html#eficiência"><i class="fa fa-check"></i><b>2.6.4</b> Eficiência</a></li>
+<li class="chapter" data-level="2.6.5" data-path="rev.html"><a href="rev.html#erro-quadrático-médio-eqm"><i class="fa fa-check"></i><b>2.6.5</b> Erro quadrático médio (EQM)</a></li>
+<li class="chapter" data-level="2.6.6" data-path="rev.html"><a href="rev.html#vício-versus-vvariância-mínima"><i class="fa fa-check"></i><b>2.6.6</b> Vício versus Vvariância mínima</a></li>
+<li class="chapter" data-level="2.6.7" data-path="rev.html"><a href="rev.html#método-de-mínimos-quadrados-mqo"><i class="fa fa-check"></i><b>2.6.7</b> Método de mínimos quadrados (MQO)</a></li>
+<li class="chapter" data-level="2.6.8" data-path="rev.html"><a href="rev.html#regressão-liner-múltipla-rml"><i class="fa fa-check"></i><b>2.6.8</b> Regressão liner múltipla (RML)</a></li>
+<li class="chapter" data-level="2.6.9" data-path="rev.html"><a href="rev.html#hipóteses-do-modelo-de-regressão"><i class="fa fa-check"></i><b>2.6.9</b> Hipóteses do modelo de regressão</a></li>
+<li class="chapter" data-level="2.6.10" data-path="rev.html"><a href="rev.html#o-coeficiente-de-dterminação"><i class="fa fa-check"></i><b>2.6.10</b> O coeficiente de dterminação</a></li>
+<li class="chapter" data-level="2.6.11" data-path="rev.html"><a href="rev.html#propriedade-de-não-viés-dos-estimadores-mqo"><i class="fa fa-check"></i><b>2.6.11</b> Propriedade de não-viés dos estimadores MQO</a></li>
+<li class="chapter" data-level="2.6.12" data-path="rev.html"><a href="rev.html#testes-de-hipóteses"><i class="fa fa-check"></i><b>2.6.12</b> Testes de hipóteses</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="rev.html"><a href="rev.html#formas-funcionais-logarítmicas"><i class="fa fa-check"></i><b>2.7</b> Formas funcionais logarítmicas</a></li>
+<li class="chapter" data-level="2.8" data-path="rev.html"><a href="rev.html#exercícios"><i class="fa fa-check"></i><b>2.8</b> Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="streg.html"><a href="streg.html"><i class="fa fa-check"></i><b>3</b> Séries temporais no contexto de regressão</a><ul>
+<li class="chapter" data-level="3.1" data-path="streg.html"><a href="streg.html#introdução"><i class="fa fa-check"></i><b>3.1</b> Introdução</a></li>
+<li class="chapter" data-level="3.2" data-path="streg.html"><a href="streg.html#exemplos-de-séries-temporais"><i class="fa fa-check"></i><b>3.2</b> Exemplos de séries temporais</a></li>
+<li class="chapter" data-level="3.3" data-path="streg.html"><a href="streg.html#regressão-com-dados-de-séries-temporais"><i class="fa fa-check"></i><b>3.3</b> Regressão com dados de séries temporais</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="streg.html"><a href="streg.html#diferença-entre-dados-de-séries-temporais-e-dados-de-corte-transversal"><i class="fa fa-check"></i><b>3.3.1</b> Diferença entre dados de séries temporais e dados de corte transversal</a></li>
+<li class="chapter" data-level="3.3.2" data-path="streg.html"><a href="streg.html#modelos-de-regressão-de-séries-temporais"><i class="fa fa-check"></i><b>3.3.2</b> Modelos de regressão de séries temporais</a></li>
+<li class="chapter" data-level="3.3.3" data-path="streg.html"><a href="streg.html#modelos-de-defasagem-distribuída-finita"><i class="fa fa-check"></i><b>3.3.3</b> Modelos de defasagem distribuída finita</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="streg.html"><a href="streg.html#suposições-para-modelos-com-séries-temporais"><i class="fa fa-check"></i><b>3.4</b> Suposições para modelos com séries temporais</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="streg.html"><a href="streg.html#inexistência-de-viés-do-mqo"><i class="fa fa-check"></i><b>3.4.1</b> Inexistência de viés do MQO</a></li>
+<li class="chapter" data-level="3.4.2" data-path="rev.html"><a href="rev.html#variância-dos-estimadores-mqo"><i class="fa fa-check"></i><b>3.4.2</b> Variância dos estimadores MQO</a></li>
+<li class="chapter" data-level="3.4.3" data-path="streg.html"><a href="streg.html#inferência-sob-as-hipóteses-do-modelo-linear-clássico"><i class="fa fa-check"></i><b>3.4.3</b> Inferência sob as hipóteses do modelo linear clássico</a></li>
+<li class="chapter" data-level="3.4.4" data-path="streg.html"><a href="streg.html#tendência"><i class="fa fa-check"></i><b>3.4.4</b> Tendência</a></li>
+<li class="chapter" data-level="3.4.5" data-path="streg.html"><a href="streg.html#usando-variáveis-de-tendência-na-análise-de-regressão"><i class="fa fa-check"></i><b>3.4.5</b> Usando variáveis de tendência na análise de regressão</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="streg.html"><a href="streg.html#sazonalidade"><i class="fa fa-check"></i><b>3.5</b> Sazonalidade</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="streg.html"><a href="streg.html#processos-de-covariância-estacionária"><i class="fa fa-check"></i><b>3.5.1</b> Processos de covariância estacionária</a></li>
+<li class="chapter" data-level="3.5.2" data-path="streg.html"><a href="streg.html#processos-fracamente-dependente"><i class="fa fa-check"></i><b>3.5.2</b> Processos fracamente dependente</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="rev.html"><a href="rev.html#exercícios"><i class="fa fa-check"></i><b>3.6</b> Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="st.html"><a href="st.html"><i class="fa fa-check"></i><b>4</b> Séries Temporais</a><ul>
+<li class="chapter" data-level="4.1" data-path="st.html"><a href="st.html#objetivos"><i class="fa fa-check"></i><b>4.1</b> Objetivos</a></li>
+<li class="chapter" data-level="4.2" data-path="st.html"><a href="st.html#séries-temporais-definição-formal"><i class="fa fa-check"></i><b>4.2</b> Séries temporais: definição formal</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="st.html"><a href="st.html#processos-estocásticos"><i class="fa fa-check"></i><b>4.2.1</b> Processos estocásticos</a></li>
+<li class="chapter" data-level="4.2.2" data-path="st.html"><a href="st.html#especificação-de-um-processo-estocástico"><i class="fa fa-check"></i><b>4.2.2</b> Especificação de um processo estocástico</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="st.html"><a href="st.html#médias-e-covariâncias"><i class="fa fa-check"></i><b>4.3</b> Médias e covariâncias</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="st.html"><a href="st.html#propriedades-importantes"><i class="fa fa-check"></i><b>4.3.1</b> Propriedades importantes</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="st.html"><a href="st.html#estacionariedade"><i class="fa fa-check"></i><b>4.4</b> Estacionariedade</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="st.html"><a href="st.html#estacionariedade-forte-ou-estrita"><i class="fa fa-check"></i><b>4.4.1</b> Estacionariedade forte ou estrita</a></li>
+<li class="chapter" data-level="4.4.2" data-path="st.html"><a href="st.html#estacionariedade-fraca-ou-de-segunda-ordem"><i class="fa fa-check"></i><b>4.4.2</b> Estacionariedade fraca ou de segunda ordem</a></li>
+<li class="chapter" data-level="4.4.3" data-path="st.html"><a href="st.html#teste-para-significância-das-autocorrelações"><i class="fa fa-check"></i><b>4.4.3</b> Teste para significância das autocorrelações</a></li>
+<li class="chapter" data-level="4.4.4" data-path="st.html"><a href="st.html#função-de-autocorrelação-parcial-facp"><i class="fa fa-check"></i><b>4.4.4</b> Função de autocorrelação parcial ( <em>FACP</em> )</a></li>
+<li class="chapter" data-level="4.4.5" data-path="st.html"><a href="st.html#operador-de-defasagem-ou-operador-lag"><i class="fa fa-check"></i><b>4.4.5</b> Operador de defasagem ou operador <em>lag</em></a></li>
+<li class="chapter" data-level="4.4.6" data-path="st.html"><a href="st.html#ruído-branco"><i class="fa fa-check"></i><b>4.4.6</b> Ruído branco</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="st.html"><a href="st.html#metodologia-de-box-jenkins-ou-modelagem-arima"><i class="fa fa-check"></i><b>4.5</b> Metodologia de Box-Jenkins ou modelagem ARIMA</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="st.html"><a href="st.html#modelo-autorregressivo-de-ordem-1-ar1"><i class="fa fa-check"></i><b>4.5.1</b> Modelo autorregressivo de ordem 1 AR(1)</a></li>
+<li class="chapter" data-level="4.5.2" data-path="st.html"><a href="st.html#passeio-aleatório-random-walk"><i class="fa fa-check"></i><b>4.5.2</b> Passeio aleatório (<em>Random Walk</em>)</a></li>
+<li class="chapter" data-level="4.5.3" data-path="st.html"><a href="st.html#modelos-autorregressivos-de-ordem-p-arp"><i class="fa fa-check"></i><b>4.5.3</b> Modelos autorregressivos de ordem <span class="math inline">\(p\)</span>, AR(<span class="math inline">\(p\)</span>)</a></li>
+<li class="chapter" data-level="4.5.4" data-path="st.html"><a href="st.html#modelo-de-médias-móveis-maq"><i class="fa fa-check"></i><b>4.5.4</b> Modelo de médias-móveis, MA(<em>q</em>)</a></li>
+<li class="chapter" data-level="4.5.5" data-path="st.html"><a href="st.html#o-modelo-ma1"><i class="fa fa-check"></i><b>4.5.5</b> O modelo MA(1)</a></li>
+<li class="chapter" data-level="4.5.6" data-path="st.html"><a href="st.html#propriedades-do-modelo-maq"><i class="fa fa-check"></i><b>4.5.6</b> Propriedades do modelo MA(<span class="math inline">\(q\)</span>)</a></li>
+<li class="chapter" data-level="4.5.7" data-path="st.html"><a href="st.html#modelo-armapq"><i class="fa fa-check"></i><b>4.5.7</b> Modelo ARMA(<span class="math inline">\(p\)</span>,<span class="math inline">\(q\)</span>)</a></li>
+<li class="chapter" data-level="4.5.8" data-path="st.html"><a href="st.html#causalidade"><i class="fa fa-check"></i><b>4.5.8</b> Causalidade</a></li>
+<li class="chapter" data-level="4.5.9" data-path="st.html"><a href="st.html#invertibilidade"><i class="fa fa-check"></i><b>4.5.9</b> Invertibilidade</a></li>
+<li class="chapter" data-level="4.5.10" data-path="st.html"><a href="st.html#polinômio-característico"><i class="fa fa-check"></i><b>4.5.10</b> Polinômio característico</a></li>
+<li class="chapter" data-level="4.5.11" data-path="st.html"><a href="st.html#estacionariedade-e-causalidade-de-um-processo-arma"><i class="fa fa-check"></i><b>4.5.11</b> Estacionariedade e causalidade de um processo ARMA</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="rev.html"><a href="rev.html#exercícios"><i class="fa fa-check"></i><b>4.6</b> Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="stnoest.html"><a href="stnoest.html"><i class="fa fa-check"></i><b>5</b> Séries temporais não estacionárias</a><ul>
+<li class="chapter" data-level="5.1" data-path="stnoest.html"><a href="stnoest.html#como-lidar-com-tendências-determinísticas"><i class="fa fa-check"></i><b>5.1</b> Como lidar com tendências determinísticas</a></li>
+<li class="chapter" data-level="5.2" data-path="stnoest.html"><a href="stnoest.html#testes-de-raiz-unitária"><i class="fa fa-check"></i><b>5.2</b> Testes de raiz unitária</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="stnoest.html"><a href="stnoest.html#identificando-tendência-estocástica"><i class="fa fa-check"></i><b>5.2.1</b> Identificando tendência estocástica</a></li>
+<li class="chapter" data-level="5.2.2" data-path="stnoest.html"><a href="stnoest.html#teste-de-dickey-fuller-df"><i class="fa fa-check"></i><b>5.2.2</b> Teste de Dickey Fuller (<em>DF</em>)</a></li>
+<li class="chapter" data-level="5.2.3" data-path="stnoest.html"><a href="stnoest.html#teste-adf"><i class="fa fa-check"></i><b>5.2.3</b> Teste ADF</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="stnoest.html"><a href="stnoest.html#eliminando-tendência-estocástica"><i class="fa fa-check"></i><b>5.3</b> Eliminando tendência estocástica</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="stnoest.html"><a href="stnoest.html#diferenças-sucessivas"><i class="fa fa-check"></i><b>5.3.1</b> Diferenças sucessivas</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="stnoest.html"><a href="stnoest.html#modelagem-arima"><i class="fa fa-check"></i><b>5.4</b> Modelagem ARIMA</a></li>
+<li class="chapter" data-level="5.5" data-path="stnoest.html"><a href="stnoest.html#previsão"><i class="fa fa-check"></i><b>5.5</b> Previsão</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="stnoest.html"><a href="stnoest.html#erro-de-previsão"><i class="fa fa-check"></i><b>5.5.1</b> Erro de previsão</a></li>
+<li class="chapter" data-level="5.5.2" data-path="stnoest.html"><a href="stnoest.html#medidas-de-desempenho"><i class="fa fa-check"></i><b>5.5.2</b> Medidas de desempenho</a></li>
+<li class="chapter" data-level="5.5.3" data-path="stnoest.html"><a href="stnoest.html#previsão-dinâmica-e-estática"><i class="fa fa-check"></i><b>5.5.3</b> Previsão dinâmica e estática</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="stnoest.html"><a href="stnoest.html#regressão-espúria-e-cointegração"><i class="fa fa-check"></i><b>5.6</b> Regressão espúria e cointegração</a><ul>
+<li class="chapter" data-level="5.6.1" data-path="stnoest.html"><a href="stnoest.html#quando-é-possível-regredir-duas-séries-id"><i class="fa fa-check"></i><b>5.6.1</b> Quando é possível regredir duas séries I(d)</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="rev.html"><a href="rev.html#exercícios"><i class="fa fa-check"></i><b>5.7</b> Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="vi.html"><a href="vi.html"><i class="fa fa-check"></i><b>6</b> Variáveis instrumentais</a><ul>
+<li class="chapter" data-level="6.1" data-path="vi.html"><a href="vi.html#conceito-da-exogeneidade-dos-regressores"><i class="fa fa-check"></i><b>6.1</b> Conceito da exogeneidade dos regressores</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="vi.html"><a href="vi.html#variável-proxy"><i class="fa fa-check"></i><b>6.1.1</b> Variável proxy</a></li>
+<li class="chapter" data-level="6.1.2" data-path="vi.html"><a href="vi.html#variável-omitida"><i class="fa fa-check"></i><b>6.1.2</b> Variável omitida</a></li>
+<li class="chapter" data-level="6.1.3" data-path="vi.html"><a href="vi.html#erros-de-mensuração"><i class="fa fa-check"></i><b>6.1.3</b> Erros de mensuração</a></li>
+<li class="chapter" data-level="6.1.4" data-path="vi.html"><a href="vi.html#variável-com-erro-de-medição"><i class="fa fa-check"></i><b>6.1.4</b> Variável com erro de medição</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="vi.html"><a href="vi.html#variável-instrumental"><i class="fa fa-check"></i><b>6.2</b> Variável instrumental</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="vi.html"><a href="vi.html#diferença-entre-proxy-e-variável-instrumental"><i class="fa fa-check"></i><b>6.2.1</b> Diferença entre proxy e variável instrumental</a></li>
+<li class="chapter" data-level="6.2.2" data-path="vi.html"><a href="vi.html#o-método-de-estimação-por-variável-instrumental"><i class="fa fa-check"></i><b>6.2.2</b> O método de estimação por variável instrumental</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="vi.html"><a href="vi.html#inferência-com-o-estimador-por-variável-instrumental"><i class="fa fa-check"></i><b>6.3</b> Inferência com o estimador por variável instrumental</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="vi.html"><a href="vi.html#teste-de-hipóteses"><i class="fa fa-check"></i><b>6.3.1</b> Teste de hipóteses</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="vi.html"><a href="vi.html#variáveis-instrumentais-em-modelos-de-regressão-múltipla"><i class="fa fa-check"></i><b>6.4</b> Variáveis instrumentais em modelos de regressão múltipla</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="vi.html"><a href="vi.html#mínimos-quadrados-em-dois-estágios-mq2e"><i class="fa fa-check"></i><b>6.4.1</b> Mínimos quadrados em dois estágios (MQ2E)</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="vi.html"><a href="vi.html#testes-de-endogeneidade"><i class="fa fa-check"></i><b>6.5</b> Testes de endogeneidade</a><ul>
+<li class="chapter" data-level="6.5.1" data-path="vi.html"><a href="vi.html#teste-de-hausmann"><i class="fa fa-check"></i><b>6.5.1</b> Teste de Hausmann</a></li>
+<li class="chapter" data-level="6.5.2" data-path="vi.html"><a href="vi.html#teste-de-regressão"><i class="fa fa-check"></i><b>6.5.2</b> Teste de regressão</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="rev.html"><a href="rev.html#exercícios"><i class="fa fa-check"></i><b>6.6</b> Exercícios</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Econometria e Séries Temporais com R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="st" class="section level1">
+<h1><span class="header-section-number">Capítulo 4</span> Séries Temporais</h1>
+<p>O estudo de séries temporais tem por objetivos principais definir o processo gerador de dados, fazer previsões futuras da série, identificar ciclos, tendências e/ou sazonalidades de forma que a decisão que envolve as variáveis em questão seja a mais acurada possível.</p>
+<div id="objetivos" class="section level2">
+<h2><span class="header-section-number">4.1</span> Objetivos</h2>
+<p>Dada uma série temporal <span class="math inline">\(\{Z(t_1 ),\ldots, Z(t_N)\}\)</span>, observada nos instantes <span class="math inline">\(t_1,\ldots,t_N\)</span>,
+podemos estar interessados em:</p>
+<div class="line-block">   i) Investigar o mecanismo gerador da série temporal;</div>
+<div class="line-block">   ii) Fazer previsões de valores futuros da série; podendo ser a curto ou longo prazo;</div>
+<div class="line-block">   iii) Descrever apenas o comportamento da série através de gráficos;</div>
+<div class="line-block">   iv) Procurar periodicidades relevantes nos dados. Em todos estes casos podemos construir modelos probabilísticos ou estocásticos, tanto no domínio do tempo como no domínio da freqüência, por exemplo: um sinal aleatório com frequência medida em Hz. Devemos construir modelos simples e com menor número de parâmetros possíveis.</div>
+</div>
+<div id="séries-temporais-definição-formal" class="section level2">
+<h2><span class="header-section-number">4.2</span> Séries temporais: definição formal</h2>
+<p>Neste capítulo vamos descrever os conceitos básicos utilizados dentro da teoria dos modelos de séries temporais. Inicialmente vamos introduzir os conceitos de processos estocásticos, média e função de covariância, processo estacionário e função de autocorrelação.</p>
+<div id="processos-estocásticos" class="section level3">
+<h3><span class="header-section-number">4.2.1</span> Processos estocásticos</h3>
+<p>Seja <span class="math inline">\(T\)</span> um conjunto arbitrário de índices. Um <span style="color: blue;"><em>processo estocástico</em></span> é uma família de variáveis aleatórias <span class="math inline">\(\{Z_t\}_{t \in T}\)</span> definidas num mesmo espaço de probabilidades, que denotaremos genericamente por <span class="math inline">\((\Omega, \mathcal A, P)\)</span>. O conjunto de índices <span class="math inline">\(T\)</span> pode ser o conjunto dos números inteiros <span class="math inline">\(\mathbb{Z} = \{0, \pm 1, \pm 2,\cdots\}\)</span>, dos naturais <span class="math inline">\(\mathbb{N}=\{1,2,\cdots\}\)</span> ou o conjunto dos números reais <span class="math inline">\(\mathbb{R}\)</span>. Observe ainda que, para cada <span class="math inline">\(t \in T\)</span>, <span class="math inline">\(Z_t\)</span> é uma variável aleatória definida sobre <span class="math inline">\(\Omega\)</span>, sendo assim de fato uma função de dois argumentos, do índice <span class="math inline">\(t\in T\)</span> e do ponto <span class="math inline">\(\omega \in \Omega\)</span> que determina o valor do processo no tempo <span class="math inline">\(t\)</span> dado por <span class="math inline">\(Z_t(\omega)\)</span>.</p>
+<p>Uma série temporal, do ponto de vista teórico, nada mais é do que um processo estocástico para o qual o índice <span class="math inline">\(T\)</span> é <span class="math inline">\(\mathbb{Z}\)</span> ou um subconjunto deste. Do ponto de vista prático porém, uma série temporal é um conjunto de dados indexados no tempo. Esta dualidade de nomenclatura será utilizado em todo o trabalho. Invariavemente, letras maiúsculas, como <span class="math inline">\(Z_1,Z_2,\cdots\)</span> denotarão a série temporal do ponto de vista teórico, isto é, como variáveis aleatórias em um processo estocástico indexado pelo tempo, enquanto letras minúsculas como <span class="math inline">\(z_1,z_2,\cdots\)</span> denotarão a série temporal do ponto de vista prático, isto é, como uma observação das variáveis aleatórias que compõem o processo estocástico. Assim, se do ponto de vista teórico temos a série temporal <span class="math inline">\(\{Z_t\}_{t\in\mathbb{Z}}\)</span>, um processo estocástico indexado pelo tempo, uma série temporal do ponto de vista prático significa uma realização <span class="math inline">\(z_1,\cdots,z_n\)</span> do processo <span class="math inline">\(\{Z_t\}\)</span>, observados nos tempos <span class="math inline">\(t=1,\cdots,n\)</span>. Neste caso, observamos <span class="math inline">\(z_1=Z_1(\omega),\cdots, z_n=Z_n(\omega)\)</span>, para um determinado <span class="math inline">\(\omega\in\Omega\)</span> fixo. Embora existam maneiras mais formais e precisas de definir uma série temporal, o ponto de vista aqui adotado, embora aparentemente ambíguo na nomenclatura, servirá bem a nossos propósitos sem causar confusões.</p>
+<p>Chamamos atenção ainda que existem condições para que um processo estocástico exista. Estes resultados dependem de uma discussão bastante técnica, bem além das intenções de nossa exposição.</p>
+</div>
+<div id="especificação-de-um-processo-estocástico" class="section level3">
+<h3><span class="header-section-number">4.2.2</span> Especificação de um processo estocástico</h3>
+<p>Sejam <span class="math inline">\(t_1,t_2,\ldots,t_n\)</span> elementos quaisquer de <span class="math inline">\(T\)</span> e consideremos
+<span class="math display" id="eq:distfindim">\[\begin{equation}
+F(Z_1,\ldots,Z_n; t_1,\ldots, t_n ) = P \{Z(t_1 )\leq z_1,\ldots, Z(t_n) \leq z_n \}
+\tag{4.1}
+\end{equation}\]</span>
+então, o processo estocástico <span class="math inline">\(Z = \{Z(t), t \in T \}\)</span> estará especificado se as distribuições
+finito-dimensionais de <a href="st.html#eq:distfindim">(4.1)</a>, são conhecidas para todo <span class="math inline">\(n\geq 1\)</span>.
+Contudo, em termos práticos, não conhecemos todas essas distribuições finito-
+dimensionais. Estudaremos então certas características associadas a <a href="st.html#eq:distfindim">(4.1)</a> e que
+sejam simples de calcular e interpretar. Uma maneira de especificar o processo <span class="math inline">\(Z\)</span> seria determinar todos os produtos dos
+momentos, ou seja,
+<span class="math display" id="eq:prodmom">\[\begin{equation}
+\mu(r_1 ,\ldots, r_n; t_1,\ldots, t_n ) = \mathbb{E \,} Z^{r_1}(t_1 )\ldots Z^{r_n}(t_n)
+\tag{4.2}
+\end{equation}\]</span>
+ou
+<span class="math display">\[\begin{equation}
+\mu(\textbf{r},\textbf{t})=\int_{-\infty}^{\infty}\ldots\int_{-\infty}^{\infty}
+                      Z^{r_1}_1\ldots Z^{r_n}_1 f(z_1,\ldots,z_n; t_1,\ldots,t_n)dz_1\ldots dz_n
+\end{equation}\]</span>
+em que <span class="math inline">\(f(\textbf{Z},\textbf{t})\)</span> é a função de densidade de <span class="math inline">\(F(\textbf{Z}, \textbf{t})\)</span>. Porém o que vai nos interessar são os momentos de baixa ordem, ou seja, os chamados processos estacionários de segunda ordem. Consideramos somente os momentos de primeira e segunda ordem, que serão apresentados a seguir.</p>
+</div>
+</div>
+<div id="médias-e-covariâncias" class="section level2">
+<h2><span class="header-section-number">4.3</span> Médias e covariâncias</h2>
+<p>Naturalmente, quando estamos trabalhando com um processo estocástico, cada variável aleatória que o compõe possui sua própria distribuição, assim como sua própria massa/densidade de probabilidade e sua própria média/variância. Para um processo estocástico <span class="math inline">\(\{Z_t\}_{t\in\mathbb{Z}}\)</span> definimos, para cada <span class="math inline">\(t\in\mathbb{Z}\)</span>, a <span style="color: blue;"><em>função média</em></span>, <span class="math inline">\(\mu_t\)</span> e a <span style="color: blue;"><em>função variância</em></span> <span class="math inline">\(\sigma^2_t\)</span> respectivamente por</p>
+<p><span class="math display" id="eq:funcmed">\[\begin{align}
+\mu_t = \mathbb{E} (Z_t) \quad \mbox{ e }\quad \sigma_t^2=\mbox{Var}(Z_t),
+\tag{4.3}
+\end{align}\]</span>
+desde que as esperanças envolvidas existam. Chamamos a atenção de que embora as esperanças e variâncias de um processo estocástico existam, estas podem ser infinitas. Este fato trás diversos problemas técnicos na análise de séries temporais e requerem técnicas avançadas de análise que estão fora do escopo deste trabalho. Por este motivo, neste trabalho assumiremos tacitamente que todos os processos estocásticos e variáveis aleatórias possuem esperança e variância finitas.</p>
+<p>Outra estrutura importante relacionada a um processo estocástico é o que chamamos de estrutura de dependência do processo. Dependência entre variáveis aleatórias pode ser definida de diversas maneiras diferentes. Neste trabalho estamos especialmente interessados na estrutura de dependência relacionadas com a covariância e a correlação entre as variáveis do processo. Observe que num processo estocástico podemos definir a covariância e a correlação entre quaisquer pares <span class="math inline">\(Z_i\)</span> e <span class="math inline">\(Z_j\)</span> de variáveis, para <span class="math inline">\(i,j\in\mathbb{Z}\)</span>. No caso de processos, estas funções recebem o prefixo <em>auto</em> para enfatizar o fato de que as covariâncias/correlações estão sendo calculadas entre as variáveis do processo. Definimos a
+<span style="color: blue;"><em>função de autocovariância</em></span>, abreviada <span style="color: blue;"><em>FACV</em></span>, como</p>
+<p><span class="math display" id="eq:funcacov">\[\begin{equation}
+\gamma_Z(t,s) = \mbox{Cov}(Z_t , Z_s ) = E [(Z_t-\mu_t ) (Z_s-\mu_s )]=\mathbb{E} (Z_t Z_s ) - \mu_t \mu_s,\quad \mbox{ para }\quad t, s \in\mathbb{Z}.
+\tag{4.4}
+\end{equation}\]</span></p>
+<p>Analogamente. definimos a <span style="color: blue;"><em>função de autocorrelação</em></span>, abreviada <span style="color: blue;"><em>FAC</em></span>, por
+<span class="math display" id="eq:funcfac">\[\begin{equation}
+\rho_Z(t,s) = \mbox{Cor}(Z_t , Z_s ) =\frac{\mbox{Cov}(Z_t , Z_s )}{\sqrt{\mbox{Var}(Z_t)\mbox{Var}(Z_s)}} = \frac{\gamma(t,s)}{\sqrt{\gamma(t,t)\gamma(s,s)}}.
+\tag{4.5}
+\end{equation}\]</span>
+O subscrito “<span class="math inline">\(Z\)</span>” nas definições acima são utilizados para reforçar à qual processo estamos nos referindo. Porém, quando não houver perigo de confusão, podemos eliminar a referência ao processo associado e escrever simplesmente <span class="math inline">\(\gamma(t,s)\)</span> e <span class="math inline">\(\rho(t,s)\)</span>.</p>
+<p>Observe que, em princípio, as funções <span class="math inline">\(\gamma(t,s)\)</span> e <span class="math inline">\(\rho(t,s)\)</span> dependem tanto de <span class="math inline">\(t\)</span> quanto de <span class="math inline">\(s\)</span>. Nos casos em que isto acontece, qualquer tipo de inferência baseada em autocovariâncias/autocorrelações se torna impossível sem tomarmos medidas para tornar esta estrutura de dependência mais simples. Algumas técnicas relevantes para isso serão estudadas adiante. De qualquer forma, a teoria clássica de séries temporais lida com casos em que essas quantidades possuem uma dependência temporal simplificada, permitindo o seu estudo. Processos com estas características são de grande importância e serão estudados em detalhes mais adiante. Isto por que, do ponto de vista matemático, tal estrutura é conveniente e permite um tratamento rigoroso e aprofundado da teoria enquanto que do ponto de vista prático, é de fácil percepção, permite a modelagem, inferência, previsão e outros aspectos aplicados relevantes de maneira simples e rápida. Tudo isso contribuiu para a difusão de métodos baseado em autocovariâncias/autocorrelações.</p>
+<div id="propriedades-importantes" class="section level3">
+<h3><span class="header-section-number">4.3.1</span> Propriedades importantes</h3>
+<p>As seguintes propriedades da função de autocovariância e autocorrelação são análogas às da covariância e correlação ordinárias, mas merecem destaque. Para todo <span class="math inline">\(t,s\in\mathbb{Z}\)</span>, com <span class="math inline">\(t\neq s\)</span>,</p>
+<div class="line-block">   1) <span class="math inline">\(\gamma(t,t) = \mbox{Var}(Z_t)\)</span>, <span class="math inline">\(\rho(t,t) = 1;\)</span></div>
+<div class="line-block">   2) <span class="math inline">\(\gamma(t,s) = \gamma(s,t)\)</span>,<span class="math inline">\(\rho(t,s) = \rho(s,t)\)</span>.</div>
+<div class="line-block">   3) <span class="math inline">\(|\gamma(t,s)|\leq \sqrt{\gamma(t,t)\gamma(s,s)}\)</span>,<span class="math inline">\(-1 \leq \rho(t,s)\leq 1.\)</span></div>
+<p>A propriedade 3 em particular mostra que a covariância entre duas variáveis está bem definida caso estas tenham variância finita.</p>
+<p>Como sabemos a correlação é uma medida da dependência linear entre duas variáveis. Se <span class="math inline">\(\mbox{Cor}(X,Y)=\pm1\)</span>, isto significa que existem constantes <span class="math inline">\(\beta_0\)</span> e <span class="math inline">\(\beta_1\)</span> tais que <span class="math inline">\(Y=\beta_0+\beta_1X\)</span>. Ou seja, uma variável é exatamente uma função linear da outra. Valores próximos de <span class="math inline">\(\pm 1\)</span> indicam forte dependência (linear) e valores próximos de 0 indicam fraca dependência (linear). Se <span class="math inline">\(\rho(t,s) = 0\)</span>, <span class="math inline">\(Z_t\)</span> e <span class="math inline">\(Z_s\)</span> são ditas não-correlacionadas, mas note que isso não quer dizer que elas são necessariamente independentes. Agora, se <span class="math inline">\(Z_t\)</span> e <span class="math inline">\(Z_s\)</span> são independentes, então <span class="math inline">\(\rho(t,s) = 0\)</span>. Por fim, obviamente <span class="math inline">\(\mbox{Cov}(Z_t,Z_s)=0\)</span> se, e somente se, <span class="math inline">\(Z_t\)</span> e <span class="math inline">\(Z_s\)</span> são não-correlacionadas.</p>
+<p>Para analisar as propriedades da covariância de vários modelos de séries temporais, o seguinte resultado será utilizado: se <span class="math inline">\(c_1, c_2,\cdots, c_m\)</span> e <span class="math inline">\(d_1, d_2,\cdots, d_n\)</span> são constantes reais e <span class="math inline">\(t_1, t_2,\cdots, t_m\)</span> e <span class="math inline">\(s_1, s_2,\cdots, s_n\)</span> são índices temporais, então</p>
+<p><span class="math display" id="eq:covsum">\[\begin{equation}
+\mbox{Cov}\bigg( \sum_{i=1}^{m}c_iZ_{t_i},\sum_{j=1}^{n}d_jZ_{s_j}\bigg) = \sum_{i=1}^{m}\sum_{j=1}^{n}c_i d_j \mbox{Cov} (Z_{t_i}, Z_{s_j})
+\tag{4.6}
+\end{equation}\]</span>
+podemos dizer que, a covariância entre duas combinações lineares é a soma de todas as covariâncias entre termos de suas combinações lineares. Esta expressão pode ser verificada utilizando as propriedades de esperança e covariância. Como caso especial, podemos obter o seguinte resultado</p>
+<p><span class="math display" id="eq:covsum2">\[\begin{equation}
+\mbox{Var}\bigg(\sum_{i=1}^{n}c_i Z_{t_i}\bigg)=\sum_{i=1}^{n}c_i^2\mbox{Var}(Z_{t_i})
++ 2\sum_{i=1}^{n-1}\sum_{j={i+1}}^{n}c_ic_j\mbox{Cov}(Z_{t_i}, Z_{t_j}).
+\tag{4.7}
+\end{equation}\]</span></p>
+</div>
+</div>
+<div id="estacionariedade" class="section level2">
+<h2><span class="header-section-number">4.4</span> Estacionariedade</h2>
+<p>Nesta seção definiremos o fundamental conceito da estacionariedade de uma série temporal. Existem diversas maneiras de se definir o conceito de estacionariedade, de acordo com as técnicas que se pretendem utilizar na análise das séries temporais. Em poucas palavras, uma série temporal é estacionária quando, com o passar do tempo, a série se desenvolve aleatoriamente em torno de uma média constante, refletindo alguma forma de equilíbrio estável. A ideia é de que uma série temporal estacionária <span class="math inline">\(Y\)</span> tende a “<em>flutuar</em>” aleatoriamente ao redor de uma média constante. A Figura <a href="st.html#fig:stac">4.1</a> apresenta duas séries estacionárias.</p>
+<div class="figure"><span id="fig:stac"></span>
+<img src="03-SeriesTemp_files/figure-html/stac-1.png" alt=" Séries estacionárias: (a) Ruído branco, (b) ARMA(1,2)." width="48%" /><img src="03-SeriesTemp_files/figure-html/stac-2.png" alt=" Séries estacionárias: (a) Ruído branco, (b) ARMA(1,2)." width="48%" />
+<p class="caption">
+Figura 4.1:  Séries estacionárias: (a) Ruído branco, (b) ARMA(1,2).
+</p>
+</div>
+<p>Entretanto, a maior parte das séries que encontramos na prática apresenta alguma forma de não-estacionariedade. A Figura <a href="#fig:nstac"><strong>??</strong></a> apresenta algumas séries que apresentam algum tipo de não-estacionariedade que podem resultar de diversas fontes. Algumas das fontes mais comuns de não-estacionariedade de uma série temporal são:</p>
+<div class="line-block">   a) a presença de uma tendência determinística (linear, logaritmica, exponencial, etc.) ao redor da qual a série se desenvolve. Geralmente a presença de uma tendência determinística é facilmente reconhecível através do gráfico. Na Figura <a href="#fig:nstac"><strong>??</strong></a>(a) apresentamos o gráfico de uma série apresentando uma tendência linear.</div>
+<div class="line-block">   b) quebra estrutural na série, que pode ser decorrente de uma mudança na média, como representado na Figura <a href="#fig:nstac"><strong>??</strong></a>(b), ou uma mudança mais sutil, difícil de ser detectada, como por exemplo mudanças na distribuição da série, na variância, no modelo da série, etc.</div>
+<div class="line-block">   c) presença do que chamamos de tendência estocástica, como representado na Figura <a href="#fig:nstac"><strong>??</strong></a>(c). Neste caso a série parece “<em>vagar</em>” por um caminho que apresenta mudanças aleatórias de trajetória, sendo que fica difícil determinar o seu comportamento.</div>
+<div class="line-block">   d) presença de sazonalidade. Neste caso a sazonalidade provoca uma mudança de nível local fazendo com que a média da série se altere nos períodos sazonais. Um exemplo de série sazonal é dado na Figura <a href="#fig:nstac"><strong>??</strong></a>(d).</div>
+<p>Mais detalhes serão apresentados adiante. A maior parte das séries que encontramos na prática apresenta alguma forma de não-estacionariedade. As séries econômicas apresentam em geral tendências lineares e muito comumente, tendência estocástica. Podemos ter, também, uma forma de não-estacionariedade explosiva, como o crescimento de uma colônia de bactérias.</p>
+<div class="figure"><span id="fig:nsstac"></span>
+<img src="03-SeriesTemp_files/figure-html/nsstac-1.png" alt=" Séries não-estacionárias apresentando: (a) Tendência linear, (b) quebra estrutural representada pela mudança de nível da série, (c) tendência estocástica e (d) sazonalidade." width="48%" /><img src="03-SeriesTemp_files/figure-html/nsstac-2.png" alt=" Séries não-estacionárias apresentando: (a) Tendência linear, (b) quebra estrutural representada pela mudança de nível da série, (c) tendência estocástica e (d) sazonalidade." width="48%" /><img src="03-SeriesTemp_files/figure-html/nsstac-3.png" alt=" Séries não-estacionárias apresentando: (a) Tendência linear, (b) quebra estrutural representada pela mudança de nível da série, (c) tendência estocástica e (d) sazonalidade." width="48%" /><img src="03-SeriesTemp_files/figure-html/nsstac-4.png" alt=" Séries não-estacionárias apresentando: (a) Tendência linear, (b) quebra estrutural representada pela mudança de nível da série, (c) tendência estocástica e (d) sazonalidade." width="48%" />
+<p class="caption">
+Figura 4.2:  Séries não-estacionárias apresentando: (a) Tendência linear, (b) quebra estrutural representada pela mudança de nível da série, (c) tendência estocástica e (d) sazonalidade.
+</p>
+</div>
+<div id="estacionariedade-forte-ou-estrita" class="section level3">
+<h3><span class="header-section-number">4.4.1</span> Estacionariedade forte ou estrita</h3>
+<p>Um processo estocástico <span class="math inline">\(Z(t)\)</span> é dito ser um processo <span style="color: blue;">processo fortemente (ou estritamente) estacionário</span> se a distribuição conjunta de <span class="math inline">\(Z_{t_1},\cdots, Z_{t_n}\)</span> é a mesma de <span class="math inline">\(Z_{t_1 - k}, Z_{t_2-k},\cdots, Z_{t_n - k}\)</span>, para todas as combinações de tempos <span class="math inline">\(t_1, \cdots, t_n\)</span> e para todo <span class="math inline">\(k\in\mathbb{Z}\)</span>. Observe que este conceito se traduz em dizer que fixados os tempos <span class="math inline">\(t_1, \cdots, t_n\)</span>, ao andarmos <span class="math inline">\(k\)</span> passos à frente homogeneamente no tempo, a distribuição das variáveis não se altera.</p>
+<p>Quando <span class="math inline">\(n = 1\)</span>, a distribuição de <span class="math inline">\(Z_t\)</span> é igual a distribuição de <span class="math inline">\(Z_{t-k}\)</span> para qualquer <span class="math inline">\(k\)</span>, ou seja, os <span class="math inline">\(Z_t\)</span>’s são identicamente distribuídos. Isto implica que num processo fortemente estacionário, as funções média (<span class="math inline">\(\mu_t\)</span>) e variância (<span class="math inline">\(\sigma^2_t\)</span>) são constantes para todo <span class="math inline">\(t\)</span>, isto é,
+<span class="math inline">\(\sigma^2=\mbox{Var}(Z_t) = \mbox{Var}(Z_{t-k})\)</span> e <span class="math inline">\(\mu=\mathbb{E} (Z_t ) = \mathbb{E} (Z_{t-k} )\)</span>, independentemente de <span class="math inline">\(t\)</span> e <span class="math inline">\(k\)</span>. Quando <span class="math inline">\(n = 2\)</span>, a distribuição de <span class="math inline">\((Z_t, Z_s)\)</span> é a mesma de <span class="math inline">\((Z_{t-k}, Z_{s-k} )\)</span>, de onde segue que <span class="math inline">\(\mbox{Cov}(Z_t, Z_s ) = \mbox{Cov}(Z_{t-k}, Z_{s-k} )\)</span>, para todo <span class="math inline">\(t,s\)</span> e <span class="math inline">\(k\)</span>.</p>
+<div class="line-block">   Fazendo <span class="math inline">\(k = s\)</span> temos:</div>
+<p><span class="math display">\[\gamma(t,s)= \mbox{Cov}(Z_t, Z_s) = \mbox{Cov}(Z_{t-k}, Z_{s-k} )=\mbox{Cov}(Z_{t-s}, Z_{s-s} ) = \mbox{Cov}(Z_{t-s}, Z_0 )=\gamma(t-s,0);\]</span>
+e se <span class="math inline">\(k=t\)</span>,
+<span class="math display">\[ \gamma(t,s)= \mbox{Cov}(Z_{t-t}, Z_{s-t} ) = \mbox{Cov} (Z_0 , Z_{s-t} )= \mbox{Cov} (Z_0 , Z_{t-s} )= \gamma(0,s-t),\]</span></p>
+<div class="line-block">   de onde podemos concluir que</div>
+<p><span class="math display">\[\begin{equation*}
+\gamma(t,s) = \gamma(0,|t-s|),\quad \mbox{ lembrando que }\ \
+|t - s| =\begin{cases}
+t - s, &amp; \mbox{ para  } t &gt; s;\\
+s - t, &amp; \mbox{ para } s &gt; t.
+\end{cases}
+\end{equation*}\]</span></p>
+<p>Analogamente para a função de autocorrelação. Ou seja, num processo fortemente estacionário a covariância entre <span class="math inline">\(Z_t\)</span> e <span class="math inline">\(Z_s\)</span> depende somente da diferença temporal <span class="math inline">\(|t - s|\)</span> e não dos tempos <span class="math inline">\(t\)</span> e <span class="math inline">\(s\)</span>. Ou ainda, podemos dizer que a <span class="math inline">\(\mbox{Cov}(Z_t,Z_{t+h})\)</span> depende apenas da distância temporal <span class="math inline">\(h\)</span> entre as variáveis (chamada de <span style="color: blue;"><em>defasagem</em></span> ou <span style="color: blue;"><em>lag</em></span> entre as variáveis), e não do tempo <span class="math inline">\(t\)</span>. Isto permite simplificar a notação:</p>
+<p><span class="math display">\[ \gamma(h)= \mbox{Cov}(Z_t, Z_{t-h} )=\mbox{Cov}(Z_t, Z_{t+h} )\]</span>
+<span class="math display">\[ \rho(h)= \mbox{cor}(Z_t, Z_{t-h} )= \mbox{cor}(Z_t, Z_{t+h} ),\]</span></p>
+<div class="line-block"> para todo <span class="math inline">\(t,h\in\mathbb{Z}\)</span>. As propriedades gerais da <em>FAC</em> e <em>FACV</em> para um processo estacionário são:</div>
+<div class="line-block">   1) <span class="math inline">\(\gamma(0) = \mbox{Var}(Z_t)\)</span>, <span class="math inline">\(\rho(0) = 1\)</span>;</div>
+<div class="line-block">   2) <span class="math inline">\(\gamma(h) = \gamma(-h)\)</span>,<span class="math inline">\(\rho(h) = \rho(-h)\)</span>;</div>
+<div class="line-block">   3) <span class="math inline">\(|\gamma(h)|\leq \gamma(0)\)</span>, <span class="math inline">\(|\rho(h)|\leq 1\)</span>.</div>
+<p>Se um processo é estritamente estacionário e tem variância finita, então a <em>FACV</em> depende somente do <em>lag</em> <span class="math inline">\(h\)</span>.</p>
+</div>
+<div id="estacionariedade-fraca-ou-de-segunda-ordem" class="section level3">
+<h3><span class="header-section-number">4.4.2</span> Estacionariedade fraca ou de segunda ordem</h3>
+<p>A estacionariedade forte é um conceito na maioria das vezes difícil de ser identificado na prática, mas muito conveniente do ponto de vista matemático. Uma outra maneira de se definir a estacionariedade de uma série de forma que a teoria é matematicamente tratável e de fácil detecção em problemas práticos é a seguinte: um processo estocástico <span class="math inline">\(Z_t\)</span> é dito ser <span style="color: blue;"><em>fracamente estacionário ou estacionário de segunda-ordem</em></span> se:</p>
+<hr />
+<blockquote>
+<div class="line-block">   a) a função média é constante para todo tempo <span class="math inline">\(t\)</span>;<br />
+   b) <span class="math inline">\(\gamma(t,t-h) = \gamma(0,h)=\gamma(h)\)</span> para todo tempo <span class="math inline">\(t\)</span> e lag <span class="math inline">\(h\)</span>.</div>
+</blockquote>
+<hr />
+<p>A condição <span class="math inline">\(\gamma(t,t-h) = \gamma(h)\)</span> para todo tempo <span class="math inline">\(t\)</span> e lag <span class="math inline">\(h\)</span> é equivalente a <span class="math inline">\(\rho(t,t-h) = \rho(h)\)</span>. Além disso, <span class="math inline">\(\mbox{Var}(Z_t)=\gamma(0)\)</span> não depende de <span class="math inline">\(t\)</span>. Como veremos adiante, em processos fracamente estacionários as funções de autocovariância e autocorrelação desempenham papel central no seu estudo. Neste trabalho, sempre que nos referirmos a um processo estacionário, estaremos nos referindo à processos fracamente estacionários.</p>
+</div>
+<div id="teste-para-significância-das-autocorrelações" class="section level3">
+<h3><span class="header-section-number">4.4.3</span> Teste para significância das autocorrelações</h3>
+<p>Mais adiante quando estudarmos modelagem ARIMA, precisaremos de ferramentas para decidir se uma dada série é não-correlacionada. Para testar a hipótese conjunta de que <span class="math inline">\(\rho(1)=\cdots=\rho(m)=0\)</span> contra a hipótese de que algum <span class="math inline">\(\rho(k)\neq0\)</span>, pode-se usar a estatística <span class="math inline">\(Q_{BP}\)</span> desenvolvida por <span style="color: blue;">Box e Pierce</span>, ou a estatística <span class="math inline">\(Q_{LB}\)</span> desenvolvida por <span style="color: blue;">Ljung-Box</span>, definidas, respectivamente, por:</p>
+<hr />
+<blockquote>
+<p><span style="color: blue;">Box e Pierce</span>
+<span class="math display">\[
+Q_{BP}(m)={n}\sum_{k=1}^{m}\hat{\rho}_k^2(\hat{\varepsilon})
+\]</span>
+em que <span class="math inline">\(n\)</span> é o tamanho da amostra (série) e <span class="math inline">\(m\)</span> é o maior lag considerado na hipótese. A estatística <span class="math inline">\(Q_{BP}\)</span> em grandes amostras tem distribuição qui-quadrado com <span class="math inline">\(m\)</span> graus de liberdade.</p>
+</blockquote>
+<hr />
+<p><br></p>
+<hr />
+<blockquote>
+<p><span style="color: blue;">Ljung-Box</span>
+<span class="math display">\[
+Q_{LB}(m)={n(n+2)}\sum_{k=1}^{m}\frac{\hat{\rho}_k^2(\hat{\varepsilon})}{n-k}
+\]</span>
+a qual se distribui como uma qui-quadrado com <span class="math inline">\(m\)</span> graus de liberdade em
+grandes amostras. A estatística <span class="math inline">\(Q_{LB}\)</span> possui maior poder para amostras
+pequenas que a estatística <span class="math inline">\(Q_{BP}\)</span>.</p>
+</blockquote>
+<hr />
+<p>Observe que a hipótese nula do teste é que todas as correlações de lag <span class="math inline">\(1,\cdots,m\)</span> são nulas, para algum <span class="math inline">\(m\)</span> predeterminado, desta forma a escolha do valor de <span class="math inline">\(m\)</span> é fundamental. Quanto maior o <span class="math inline">\(m\)</span>, caso não seja possível rejeitar a hipótese nula, menor é a evidencia de que a série testada é correlacionada. Porém, se <span class="math inline">\(m\)</span> for muito grande, dois problemas poderão acontecer: primeiro, se <span class="math inline">\(m\)</span> é muito próximo de <span class="math inline">\(n\)</span> haverão poucos pontos amostrais com distância temporal <span class="math inline">\(m\)</span> o que torna a estimação de <span class="math inline">\(\hat\rho_k(\hat\varepsilon)\)</span> problemática, deteriorando a qualidade do teste; segundo, o poder do teste decresce com o aumento de <span class="math inline">\(m\)</span>. Embora não haja consenso na literatura sobre o valor ideal de <span class="math inline">\(m\)</span>, sugerimos utilizar <span class="math inline">\(m=20\)</span> para séries com <span class="math inline">\(n\geq50\)</span>. Se a série for curta, na literatura encontra-se a sugestão <span class="math inline">\(m=\min(10,n/5)\)</span>.</p>
+</div>
+<div id="função-de-autocorrelação-parcial-facp" class="section level3">
+<h3><span class="header-section-number">4.4.4</span> Função de autocorrelação parcial ( <em>FACP</em> )</h3>
+<p>A função de autocorrelação parcial ( <em>FACP</em> ) entre as variáveis <span class="math inline">\(Y_t\)</span> e <span class="math inline">\(Y_{t+k}\)</span>, denotada por <span class="math inline">\(\alpha(k)\)</span> em processos estacionários, é a correlação entre as variáveis <span class="math inline">\(Y_t\)</span> e <span class="math inline">\(Y_{t+k}\)</span> removida a influência das variáveis intermediárias <span class="math inline">\(Y_{t+1},Y_{t+2},\cdots, Y_{t+k-1}\)</span>. Dada uma série temporal <span class="math inline">\(\{Y_t\}_{t=1}^\infty\)</span> estacionária e uma variável aleatória <span class="math inline">\(X\)</span>, denotemos por <span class="math inline">\(\Pi_{r,s}(X)\)</span> a projeção de <span class="math inline">\(X\)</span> no subespaço gerado pelas variáveis <span class="math inline">\(Y_{r+1},\cdots,Y_{r+s-1}\)</span>. A FACP entre <span class="math inline">\(Y_t\)</span> e <span class="math inline">\(Y_{t+k}\)</span> é dada por
+<span class="math display">\[\alpha(k)=\mbox{Cor}\big(Y_t-\Pi_{t,k}(Y_t),Y_{t+k}-\Pi_{t,k}(Y_{t+k})\big), \mbox{ para }k\geq 2,\]</span>
+e <span class="math inline">\(\alpha(1)=\rho(1)\)</span>.</p>
+<p>A <em>FACP</em> para um processo estacionário com média zero pode ser obtida a partir da regressão
+<span class="math display">\[\begin{equation}
+y_{t+k} = \phi_{k1} y_{t+k-1} + \phi_{k2} y_{t+k-2} +\cdots + \phi_{kk} y_{t}+\varepsilon_{t+k},
+\end{equation}\]</span>
+da qual podem ser obtidas as equações de <em>Yule-Walker</em>.</p>
+<p>Multiplicando ambos os lados por <span class="math inline">\(y_{t+k-j}\)</span> e calculando o valor dividindo pela variância, tem-se</p>
+<p><span class="math display">\[\begin{equation*}
+\rho_j = \phi_{k1}\rho_{j-1} + \phi_{k2}\rho_{j-2} +\cdots + \phi_{kk} \rho_{k-j}.
+\end{equation*}\]</span>
+Então para <span class="math inline">\(j = 1, 2, \ldots, k\)</span>, temos:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+\rho_1 &amp;=&amp; \phi_{k1}\rho_{0} + \phi_{k2}\rho_{1} +\cdots + \phi_{kk} \rho_{k-1};\\
+\rho_2 &amp;=&amp; \phi_{k1}\rho_{1} + \phi_{k2}\rho_{0} +\cdots + \phi_{kk} \rho_{k-2};\\
+&amp;\vdots&amp;\\
+\rho_k &amp;=&amp; \phi_{k1}\rho_{k-1} + \phi_{k2}\rho_{k-2} +\cdots + \phi_{kk} \rho_{0};\\
+\end{eqnarray*}\]</span></p>
+<p>Para <span class="math inline">\(k = 1\)</span> <span class="math inline">\(\rightarrow\)</span> <span class="math inline">\(\hat{\phi}_{11} = \rho_1\)</span>.</p>
+<p>Para <span class="math inline">\(k = 2\)</span> <span class="math inline">\(\rightarrow\)</span> <span class="math inline">\(\rho_1 = \phi_{21} + \phi_{22}\rho_1\)</span> e <span class="math inline">\(\rho_2 = \phi_{21}\rho_1 + \phi_{22}\)</span>.</p>
+<p>Ou podemos escrever a ultima equação em notação matricial:</p>
+<p><span class="math display">\[\begin{equation*}
+ \begin{bmatrix}
+\rho_1 \\
+\rho_2
+\end{bmatrix}
+=
+ \begin{bmatrix}
+1&amp;\rho_1 \\
+\rho_1&amp;1
+\end{bmatrix}
+ \begin{bmatrix}
+\phi_{21}\\
+\phi_{22}
+\end{bmatrix}.
+\end{equation*}\]</span>
+cuja solução para o estimador de <span class="math inline">\(\phi_{22}\)</span> é dada pela regra de <em>Cramer</em>:</p>
+<p><span class="math display">\[\begin{equation*}
+\hat{\phi}_{22}=\frac{\begin{vmatrix}
+1&amp;\rho_1 \\
+\rho_1&amp;\rho_2
+\end{vmatrix}}
+{\begin{vmatrix}
+1&amp;\rho_1 \\
+\rho_1&amp;1
+\end{vmatrix}}
+\end{equation*}\]</span></p>
+<p>Para <span class="math inline">\(k = 3\)</span> temos as equações:
+<span class="math display">\[\begin{eqnarray*}
+\rho_1 &amp;=&amp; \phi_{31}+ \phi_{32}\rho_1 + \phi_{33}\rho_2\\
+\rho_2 &amp;=&amp; \phi_{31} \rho_1 + \phi_{32} + \phi_{33} \rho_1\\
+\rho_3 &amp;=&amp; \phi_{31} + \phi_{32} \rho_1 + \phi_{33}.
+\end{eqnarray*}\]</span></p>
+<p>Em notação matricial temos:</p>
+<p><span class="math display">\[\begin{equation*}
+ \begin{bmatrix}
+\rho_1 \\
+\rho_2\\
+\rho_3
+\end{bmatrix}
+=
+ \begin{bmatrix}
+1&amp;\rho_1 &amp;\rho_2\\
+\rho_1&amp;1 &amp;\rho_1\\
+\rho_2&amp;\rho_1&amp;1
+\end{bmatrix}
+ \begin{bmatrix}
+\phi_{31}\\
+\phi_{32}\\
+\phi_{33}
+\end{bmatrix}.
+\end{equation*}\]</span>
+cuja solução para o estimador de <span class="math inline">\(\phi_{33}\)</span> é dada por:</p>
+<p><span class="math display">\[\begin{equation*}
+\hat{\phi}_{33}=\frac{\begin{vmatrix}
+1&amp;\rho_1 &amp;\rho_1\\
+\rho_1&amp;1 &amp;\rho_2\\
+\rho_2&amp;\rho_1&amp;\rho_3
+\end{vmatrix}}
+{\begin{vmatrix}
+1&amp;\rho_1 &amp;\rho_2\\
+\rho_1&amp;1 &amp;\rho_1\\
+\rho_2&amp;\rho_1&amp;1
+\end{vmatrix}},
+\end{equation*}\]</span>
+e assim sucessivamente.</p>
+</div>
+<div id="operador-de-defasagem-ou-operador-lag" class="section level3">
+<h3><span class="header-section-number">4.4.5</span> Operador de defasagem ou operador <em>lag</em></h3>
+<p>Em séries temporais é usual trabalhar com operadores que defasam a variável. Definimos então o operador de defasagem <span class="math inline">\(L\)</span> como um operador linear tal que:</p>
+<hr />
+<blockquote>
+<p><span style="color: blue;">Operador defasagem</span>
+<span class="math display">\[
+L^j y_t = y_{t-j}
+\]</span></p>
+</blockquote>
+<hr />
+<p>As seguintes propriedades do operador <span class="math inline">\(L\)</span> serão úteis no que segue:</p>
+<div class="line-block">   1) O operador lag aplicado a uma constante resulta na própria constante, isto é, <span class="math inline">\(Lc = c\)</span>;</div>
+<div class="line-block">   2) O operador lag segue a propriedade distributiva em relação à soma</div>
+<p><span class="math display">\[\begin{equation*}
+(L^i + L^j) Y_t = L^i Y_t + L^j Y_t = Y_{t-i} + Y_{t-j};
+\end{equation*}\]</span></p>
+<div class="line-block">   3) É válida a propriedade associativa da multiplicação</div>
+<p><span class="math display">\[L^i L^j Y_t = L^i (L^j Y_t ) = L^i (Y_{t-j} ) = Y_{t-i-j}.\]</span>
+Ou ainda <span class="math inline">\(L^i L^j Y_t = L^{i+j} Y_t = Y_{t-i-j}\)</span>;</p>
+<div class="line-block">   4) Potências negativas de <span class="math inline">\(L\)</span> significam um operador de avanço,</div>
+<p><span class="math inline">\(L^{-i} Y_t =L^j Y_t\)</span>, fazendo <span class="math inline">\(j = -i\)</span>. Então <span class="math inline">\(L^{-i} Y_t = L^j Y_t = Y_{t-j} = Y_{t+i}\)</span>;</p>
+<div class="line-block">   5) Se <span class="math inline">\(|a| &lt; 1\)</span> definimos o operador inverso</div>
+<p><span class="math display">\[(1-aL)^{-1} = 1 + aL + a^2 L^2 + \cdots = \sum_{j=0}^\infty (aL)^j.\]</span>
+A ação do operador <span class="math inline">\((1-aL)^{-1}\)</span> em uma variável <span class="math inline">\(Y_t\)</span> é a seguinte:
+<span class="math display">\[(1-aL)^{-1}(Y_t)=(1 + aL + a^2 L^2 + \cdots)(Y_t)=Y_t+aY_{t-1}+a^2Y_{t-2}+\cdots = \sum_{j=1}^\infty a^jY_{t-j}.\]</span>
+Note ainda que, para uma constante <span class="math inline">\(c\in\mathbb{R}\)</span>
+<span class="math display">\[(1-aL)^{-1}(c)=(1 + aL + a^2 L^2 + \cdots)(c)=(c + aL(c) + a^2 L^2(c) + \cdots)=c\sum_{j=1}^\infty a^j=\frac{c}{1-a}\,.\]</span></p>
+<div class="line-block">   6) Se <span class="math inline">\(|a| &gt; 1\)</span>, definimos o operador</div>
+<p><span class="math display">\[ -aL( 1-aL)^{-1}=(1 + (aL)^{-1} + (aL)^{-2} +\cdots) \]</span>
+A ação do operador <span class="math inline">\(-aL(1-aL)^{-1}\)</span> em uma variável <span class="math inline">\(Y_t\)</span> é a seguinte:
+<span class="math display">\[\begin{align*}
+(-aL(1-aL)^{-1})(Y_t)&amp;=(1 + (aL)^{-1} + (aL)^{-2} +\cdots)(Y_t)= Y_t+\frac{1}{a}Y_{t+1}+\frac{1}{a^2}Y_{t+2}+\cdots\\
+&amp;=\sum_{j=1}^\infty \frac{1}{a^j}Y_{t+j}.
+\end{align*}\]</span>
+Para uma constante <span class="math inline">\(c\in\mathbb{R}\)</span>, a ação do operador <span class="math inline">\(-aL(1-aL)^{-1}\)</span> é dada por
+<span class="math display">\[(-aL(1-aL)^{-1})(c)=(1 + (aL)^{-1} + (aL)^{-2} +\cdots)(c)= c+\frac{c}{a}+\frac{c}{a^2}+\cdots=\frac{ca}{1-a}\,.\]</span></p>
+</div>
+<div id="ruído-branco" class="section level3">
+<h3><span class="header-section-number">4.4.6</span> Ruído branco</h3>
+<p>Um importante exemplo de processo estacionário é o ruído branco, o qual é definido
+como uma sequência de variáveis aleatórias <span class="math inline">\(\{\varepsilon_t \}_{t=-\infty}^{\infty}\)</span> com as
+seguintes propriedades:</p>
+<p><span style="color: blue;">Ruído Branco</span></p>
+<div class="line-block">   1) <span class="math inline">\(\mathbb{E}(\varepsilon_t)=0\)</span>, para todo <span class="math inline">\(t\in\mathbb{R}\)</span>;</div>
+<div class="line-block">   2) <span class="math inline">\(\mathbb{E}(\varepsilon_t^2)=\sigma^2\)</span> para todo <span class="math inline">\(t\in\mathbb{R}\)</span>;</div>
+<div class="line-block">   3) <span class="math inline">\(\mathbb{E}(\varepsilon_t\varepsilon_s)=0\)</span>, para todo <span class="math inline">\(t\neq s\)</span>, com <span class="math inline">\(t,s\in\mathbb{R}\)</span>.</div>
+<p>Em outras palavras, um ruído branco é uma sequência de variáveis não-correlacionadas com média constante. <span style="color: blue;"> Denotaremos um processo ruído branco por RB(<span class="math inline">\(0,\sigma^2\)</span>)</span>. Escreveremos ainda <span class="math inline">\(\varepsilon_t\sim RB(0,\sigma_\varepsilon^2)\)</span> para dizer que <span class="math inline">\(\{\varepsilon_t\}_{t}\)</span> é um processo ruído branco com média 0 e variância <span class="math inline">\(\sigma^2_\varepsilon\)</span></p>
+<p>Para um ruído branco <span class="math inline">\(\varepsilon_t\sim RB(0,\sigma_\varepsilon^2)\)</span>, <span class="math inline">\(\mu_t = \mathbb{E} (\varepsilon_t )=0\)</span> é constante com <em>FACV</em> e <em>FAC</em> dadas por</p>
+<p><span class="math display">\[
+\gamma_\varepsilon(h) =\left\{
+\begin{array}{cc}
+\sigma^2_\varepsilon, &amp; \mbox{ se  } h=0;\\
+0, &amp; \mbox{ se } h\neq0.
+\end{array}\right.\qquad
+\rho_\varepsilon(h) =\left\{\begin{array}{cc}
+1, &amp; \mbox{ se  } h=0;\\
+0, &amp; \mbox{ se } h \neq 0.
+\end{array}\right.
+\]</span></p>
+<p>O termo ruído branco resulta do fato que em uma análise de frequência do modelo, podemos mostrar que todas as frequências são iguais. As características de um processo ruído branco ficam explícitas quando analisamos o seguinte gráfico</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="kw">set.seed</span>(<span class="dv">5647</span>)</a>
+<a class="sourceLine" id="cb4-2" title="2">eps=<span class="kw">rnorm</span>(<span class="dv">200</span>)</a>
+<a class="sourceLine" id="cb4-3" title="3"></a>
+<a class="sourceLine" id="cb4-4" title="4"><span class="kw">plot</span>(eps,<span class="dt">type=</span><span class="st">&quot;l&quot;</span>,<span class="dt">lwd=</span><span class="dv">2</span>,<span class="dt">cex.lab=</span><span class="fl">1.4</span>, <span class="dt">xlab=</span><span class="st">&quot;Ruído Branco&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;&quot;</span>, <span class="dt">cex.main=</span><span class="fl">1.7</span>,<span class="dt">col=</span><span class="st">&quot;cadetblue4&quot;</span>)</a>
+<a class="sourceLine" id="cb4-5" title="5"><span class="kw">acf</span>(eps,<span class="dt">lwd=</span><span class="dv">2</span>,<span class="dt">cex.lab=</span><span class="fl">1.4</span>, <span class="dt">xlab=</span><span class="st">&quot; lag &quot;</span>, <span class="dt">main=</span><span class="st">&quot; &quot;</span>, <span class="dt">cex.main=</span><span class="fl">1.7</span>,<span class="dt">col=</span><span class="st">&quot;cadetblue4&quot;</span>)</a>
+<a class="sourceLine" id="cb4-6" title="6"><span class="kw">pacf</span>(eps,<span class="dt">lwd=</span><span class="dv">2</span>,<span class="dt">cex.lab=</span><span class="fl">1.4</span>, <span class="dt">xlab=</span><span class="st">&quot; lag &quot;</span>, <span class="dt">main=</span><span class="st">&quot; &quot;</span>, <span class="dt">cex.main=</span><span class="fl">1.7</span>,<span class="dt">col=</span><span class="st">&quot;cadetblue4&quot;</span>,<span class="dt">ylim=</span><span class="kw">c</span>(<span class="op">-</span><span class="fl">0.9</span>,<span class="fl">0.9</span>))</a></code></pre></div>
+<div class="figure"><span id="fig:rbsim"></span>
+<img src="03-SeriesTemp_files/figure-html/rbsim-1.png" alt=" Ruído branco gaussiano simulado,FAC amostral e FACP  amostral" width="33%" /><img src="03-SeriesTemp_files/figure-html/rbsim-2.png" alt=" Ruído branco gaussiano simulado,FAC amostral e FACP  amostral" width="33%" /><img src="03-SeriesTemp_files/figure-html/rbsim-3.png" alt=" Ruído branco gaussiano simulado,FAC amostral e FACP  amostral" width="33%" />
+<p class="caption">
+Figura 4.3:  Ruído branco gaussiano simulado,FAC amostral e FACP amostral
+</p>
+</div>
+
+<div class="example">
+<span id="exm:unnamed-chunk-2" class="example"><strong>Exemplo 4.1  (Média-Móvel de ordem 1)  </strong></span>Este é um exemplo simples de um processo estacionário que não é um ruído branco. Suponha que
+</div>
+
+<p><span style="color: blue;"> Processo MA(1)</span></p>
+<p><span class="math display">\[
+ Y_t = \varepsilon_t -0.5\varepsilon_{t-1},
+\]</span>
+onde <span class="math inline">\(\varepsilon_t\)</span> é um RB<span class="math inline">\((0,\sigma_\varepsilon^2)\)</span>.</p>
+<p><span style="color: blue;"> Média do MA(1)</span></p>
+<p><span class="math display">\[\mu_t= \mathbb{E} (Y_t ) = \mathbb{E} (\varepsilon_t ) - 0.5\mathbb{E} (\varepsilon_{t-1}) = 0\]</span></p>
+<p><span style="color: blue;"> Variância do MA(1)</span></p>
+<p><span class="math display">\[\mbox{Var}(Y_t ) = \mbox{Var} (\varepsilon_t - 0.5\varepsilon_{t-1} )= \sigma_\varepsilon^2 + 0.5\sigma_\varepsilon^2 = 1.25\sigma_\varepsilon^2.\]</span></p>
+<p>Quanto à estrutura de covariância/correlação de um MA(1), temos
+<span class="math display" id="eq:gppo">\[\begin{align}
+\mbox{Cov}(Y_t,&amp;Y_{t+h})=\mbox{Cov}(\varepsilon_t - 0.5\varepsilon_{t-1},\varepsilon_{t+h} - 0.5\varepsilon_{t+h-1})\nonumber\\
+&amp;=\mbox{Cov}(\varepsilon_t,\varepsilon_{t+h})-0.5\mbox{Cov}(\varepsilon_t,\varepsilon_{t+h-1})-0.5\mbox{Cov}(\varepsilon_{t-1},\varepsilon_{t+h})+0.25\mbox{Cov}(\varepsilon_{t-1},\varepsilon_{t+h-1})\nonumber\\
+&amp;= \gamma_\varepsilon(h)-0.5\gamma_\varepsilon(h-1)-0.5\gamma_\varepsilon(h+1)+0.25\gamma_\varepsilon(h),
+\tag{4.8}
+\end{align}\]</span>
+onde <span class="math inline">\(\gamma_\varepsilon\)</span> denota a função de autocovariancia de <span class="math inline">\(\varepsilon_t\)</span>. Da equação (eq:gppo), percebemos que <span class="math inline">\(\mbox{Cov}(Y_t,Y_{t+h})\)</span> só é diferente de zero quando algum dos argumentos das funções à direita da igualdade em (eq:gppo) é zero. Isto ocorre somente quando <span class="math inline">\(h=0\)</span> (resultando em <span class="math inline">\(\mbox{Var}(Y_t)=1.25\sigma_\varepsilon^2\)</span>) e quando <span class="math inline">\(|h|=1\)</span> (resultando <span class="math inline">\(-0.5\sigma_\varepsilon^2\)</span>). Em outras palavras, <span class="math inline">\(\mbox{Cov}(Y_t,Y_{t+h} )\)</span> não depende de <span class="math inline">\(t\)</span> e</p>
+<p><span class="math display">\[\gamma(k) =\begin{cases} -0.5\sigma_\varepsilon^2, &amp;\mbox{ se } |k|=1; \\
+                                0,           &amp; \mbox{ se } |k|&gt;1.
+               \end{cases}   \quad \mbox{e} \quad\rho(k) =\begin{cases} -0.4, &amp;\mbox{ se } |k|=1; \\
+                                0,           &amp; \mbox{ se } |k|&gt;1.
+               \end{cases}   \]</span>
+Concluimos que um MA(1) é estacionário.</p>
+</div>
+</div>
+<div id="metodologia-de-box-jenkins-ou-modelagem-arima" class="section level2">
+<h2><span class="header-section-number">4.5</span> Metodologia de Box-Jenkins ou modelagem ARIMA</h2>
+<p>Na análise de séries temporais, a metodologia de Box-Jenkins, nomeada em homenagem ao estatísticos
+George Box e Gwilym Meirion Jenkins, é uma metodologia pensada para a modelagem de séries temporais que é suficientemente simples de forma a atingir um grande público e suficientemente flexível para se aplicar a uma gama grande de problemas. Centrais à metodologia Box-Jenkins são os modelos <strong><em>Autorregressivos Integrados de Média Móvel</em></strong>, abreviados modelos ARIMA, que representam uma classe grande de modelos capazes de modelar uma variedade de tipos de séries temporais. O intuito é modelar os valores da série temporal em função dos seus valores passados (admitindo um termo de erro) de forma que seja possível fazer previsões para esta série.
+O procedimento pode ser resumido em três etapas:</p>
+<ul>
+<li><p>Identificação e seleção do modelo. Nesta etapa verificamos se as variáveis são estacionárias, identificando possíveis tendências e/ou sazonalidades na série, removendo-as quando detectadas. Fazemos o uso das funções de autocorrelação e autocorrelação parcial para decidir qual modelo da classe ARIMA é adequado para uma primeira tentativa de modelagem..</p></li>
+<li><p>Estimação dos parâmetros usando algoritmos computacionais para chegar a coeficientes que melhor se adaptam ao modelo ARIMA selecionado. Os métodos mais comuns são a máxima verossimilhança e os mínimos quadráticos não-lineares.</p></li>
+<li><p>Verificação do ajuste do modelo por meio de testes. Nesta fase, verificamos se o modelo estimado está em conformidade com as especificações do modelo teórico proposto. De suma importância é a análise residual na qual o objetivo é verificar se os resíduos satisfazem a hipótese de serem não-correlacionados. De grande utilidade é o teste Ljung-Box. Se o modelo proposto é inadequado, devemos voltar para a primeira etapa e propor um modelo alternativo.</p></li>
+</ul>
+<p>Um dos modelos mais simples, útil e intuitivo é o modelo autorregressivo. Consideremos o caso mais simples.</p>
+<div id="modelo-autorregressivo-de-ordem-1-ar1" class="section level3">
+<h3><span class="header-section-number">4.5.1</span> Modelo autorregressivo de ordem 1 AR(1)</h3>
+<p><span style="color: blue;"> Processo AR(1)</span>
+<span class="math display">\[
+   Y_t = c + \phi Y_{t-1}+\varepsilon_t,
+\]</span>
+em que <span class="math inline">\(\varepsilon_t\)</span> é um <span class="math inline">\(RB(0,\sigma_\varepsilon^2)\)</span>.
+\end{tcolorbox}
+Para calcularmos a média e a variância do processo, assumiremos primeiramente que os momentos incondicionais sejam iguais, de forma que <span class="math inline">\(\mathbb{E} Y_t=\mathbb{E} Y_{t-1}\)</span>. Com esta simplificação, fica fácil calcular a média de um processo AR(1):</p>
+<hr />
+<blockquote>
+<p><span style="color: blue;"> A média do processo AR(1)</span> é
+<span class="math display">\[
+\mu= \mathbb{E} (Y_t)=\mathbb{E}(c) +\phi\mathbb{E} (Y_{t-1})+\mathbb{E}(\varepsilon_t)\quad\Longleftrightarrow\quad \mu=c+\phi\mu+0\quad\Longleftrightarrow\quad\mu=\frac{c}{1-\phi}\,,\]</span>
+desde que <span class="math inline">\(\phi\neq 1\)</span>. Se <span class="math inline">\(\phi=1\)</span> a equação não possui solução .</p>
+</blockquote>
+<hr />
+<p>Desta forma procedemos assumindo que <span class="math inline">\(\phi\neq 1\)</span>. Observe ainda que <span class="math inline">\(\mu=0\)</span>, quando <span class="math inline">\(c=0\)</span>. Para <span class="math inline">\(\phi\neq 1\)</span>, a variância de um AR(1), por sua vez, é dada por</p>
+<hr />
+<blockquote>
+<p><span style="color: blue;"> A variância do AR(1)</span> é
+<span class="math display">\[
+\mbox{Var}(Y_t)=\mathbb{E}(Y_t^2)-\mu^2=\frac{\sigma^2}{1-\phi^2}.
+\]</span></p>
+</blockquote>
+<hr />
+<p>Observe que se <span class="math inline">\(|\phi|&gt;1\)</span>, a variância será negativa, o que é um absurdo. Neste caso as equações não são compatíveis com nenhum processo.
+Quando <span class="math inline">\(|\phi|=1\)</span>, a variância de <span class="math inline">\(Y_t\)</span> não está definida pois a média não está.</p>
+<p>Deste exemplo, é possível concluir que é necessário estabelecer algumas restrições sobre o modelo para que se possa estimá-lo. Em particular,
+uma condição necessária para estimar os coeficientes do modelo é que <span class="math inline">\(|\phi|&lt;1\)</span>.</p>
+<p>Com um pouco mais de trabalho, podemos encontrar o mesmo resultado sem a suposição de que os momentos incondicionais sejam iguais. Para isso usamos o operador defasagem <span class="math inline">\(L\)</span> e suas propriedades para obtermos</p>
+<p><span class="math display" id="eq:arcomomainfinito">\[\begin{align}
+   Y_t = c + \phi Y_{t-1}+\varepsilon_t \quad &amp;\Longleftrightarrow\quad (1-\phi L)Y_t=c+\varepsilon_t\quad \Longleftrightarrow\quad Y_t=(1-\phi L)^{-1}(c)+{(1-\phi L)}^{-1}(\varepsilon_t)\nonumber\\
+\qquad &amp;\Longleftrightarrow\qquad Y_t=\mu+\sum_{j=0}^{\infty}\phi^j\varepsilon_{t-j},
+\tag{4.9}
+\end{align}\]</span>
+onde escrevemos <span class="math inline">\(\mu=c/(1-\phi)\)</span> por simplicidade. A partir desta representação podemos facilmente obter</p>
+<p><span class="math display">\[\begin{equation*}
+\mathbb{E}  Y_t=\mu+\sum_{j=0}^{\infty}\phi^j\mathbb{E}(\varepsilon_{t-j})=\mu
+\end{equation*}\]</span>
+e
+<span class="math display">\[\begin{align*}
+\mbox{Var}(Y_t)&amp;=\mathbb{E}(Y_t-\mu)^2=\mathbb{E}\bigg(\sum_{j=0}^{\infty}\phi^j\varepsilon_{t-j}\bigg)^2=\mathbb{E}\bigg(\sum_{j=0}^\infty\sum_{k=0}^\infty \phi^k\phi^j\varepsilon_{t-j}\varepsilon_{t-k}\bigg)\\
+&amp;=\sum_{j=0}^\infty\sum_{k=0}^\infty \phi^{k+j}\mathbb{E}(\varepsilon_{t-j}\varepsilon{t-k})=\sum_{j=0}^{\infty}\phi^{2j}\mathbb{E}(\varepsilon_{t-j}^2)=\frac{\sigma^2_\varepsilon}{1-\phi^2},
+\end{align*}\]</span>
+onde a última igualdade segue do fato de que <span class="math inline">\(\mathbb{E}(\varepsilon_{t-j}\varepsilon_{t-k})=\gamma_\varepsilon(j-k)\)</span> que é igual a zero se <span class="math inline">\(j\neq k\)</span>, e <span class="math inline">\(\sigma^2_\varepsilon\)</span>, se <span class="math inline">\(j=k\)</span>. Para <span class="math inline">\(h&gt;0\)</span>, a</p>
+<hr />
+<blockquote>
+<p><span style="color: blue;"> função de autocovariância de <em>lag</em></span> <span class="math inline">\(h\)</span> é dada por
+<span class="math display">\[\begin{eqnarray*}
+\gamma(h)&amp;=&amp;\mathbb{E}[(Y_t-\mu)(Y_{t-h}-\mu)]=\mathbb{E}\bigg[\bigg(\sum_{s=0}^{\infty}\phi^s\varepsilon_{t-s}\bigg)
+\bigg(\sum_{k=0}^{\infty}\phi^k\varepsilon_{t-k-h}\bigg)\bigg]\\
+&amp;=&amp;\sum_{s=0}^{\infty}\sum_{k=0}^{\infty}\phi^{k+s}\mathbb{E}(\varepsilon_{t-s}\varepsilon_{t-k-h})=\sum_{s=0}^{\infty}\sum_{k=0}^{\infty}\phi^{k+s}\gamma_\varepsilon(s-k-h).
+\end{eqnarray*}\]</span></p>
+</blockquote>
+<hr />
+<p>Observe que <span class="math inline">\(\gamma_\varepsilon(s-k-h)\)</span> só é diferente de zero quando <span class="math inline">\(s-k-h=0\)</span>, o que é equivalente a <span class="math inline">\(s=k+h\)</span>, assim
+<span class="math display">\[\begin{eqnarray*}
+\gamma(h)=\sigma^2_\varepsilon\sum_{k=0}^{\infty}\phi^{2k+h}=\sigma^2_\varepsilon(\phi^h+\phi^{h+2}+\phi^{h+4}+\cdots)=\frac{\phi^h}{1-\phi^2}\sigma^2_\varepsilon,
+\end{eqnarray*}\]</span>
+Para <span class="math inline">\(h&lt;0\)</span>, analogamente obtemos
+<span class="math display">\[\gamma(h)=\frac{\phi^{-h}}{1-\phi^2}\sigma^2_\varepsilon,\]</span>
+ou seja, para <span class="math inline">\(h\neq0\)</span>,
+<span class="math display">\[\gamma(h)=\frac{\phi^{|h|}}{1-\phi^2}\sigma^2_\varepsilon.\]</span>
+Como a média e as covariâncias não são funções do tempo o processo é
+fracamente estacionário, independente do valor de <span class="math inline">\(\phi\in(-1,1)\)</span>.</p>
+<hr />
+<blockquote>
+<p><span style="color: blue;">A função de autocorrelação de <em>lag</em></span> <em>h</em> é dada por
+<span class="math display">\[\begin{equation*}
+\rho(h)= \frac{\frac{\phi^|h|}{1-\phi^2}\sigma^2}{\frac{\sigma^2}{1-\phi^2}}=\phi^{|h|}.
+\end{equation*}\]</span></p>
+</blockquote>
+<hr />
+<p>Além disso, como <span class="math inline">\(|\phi|&lt;1\)</span>, a função de autocorrelação é decrescente em <span class="math inline">\(|h|\)</span>.</p>
+</div>
+<div id="passeio-aleatório-random-walk" class="section level3">
+<h3><span class="header-section-number">4.5.2</span> Passeio aleatório (<em>Random Walk</em>)</h3>
+<p>Quando <span class="math inline">\(\phi=1\)</span> no caso anterior, temos o processo chamado passeio aleatório.
+Seja <span class="math inline">\(\{\varepsilon_t\}_{t\in\mathbb{N}}\)</span> um RB<span class="math inline">\((0, \sigma_\varepsilon^2)\)</span>.</p>
+<p><span style="color: blue;"> O Passeio aleatório </span> pode ser representado por
+<span class="math display">\[
+Z_t = Z_{t-1} + \varepsilon_t,
+\]</span>
+que pode ser reescrito de uma maneira bem simples. Defina inicialmente
+<span class="math display">\[Z_1=\varepsilon_1, \qquad Z_2=\varepsilon_1+\varepsilon_2 \leftrightarrow Z_2=Z_1+\varepsilon_2\]</span>
+e sucessivamente
+<span class="math display">\[Z_{k-1}=\varepsilon_1+\cdots+\varepsilon_{k-1}, \qquad Z_k=\varepsilon_1+\cdots+\varepsilon_{k-1}+\varepsilon_k = Z_{k-1}+\varepsilon_k. \]</span>
+Com esta representação, o cálculo da média e da variância de <span class="math inline">\(Z_t\)</span> se tornam simples:</p>
+<p><span style="color: blue;"> A média do passeio aleatório </span> é
+<span class="math display">\[\mu_t= \mathbb{E}(Z_t) =\mathbb{E}(\varepsilon_1 + \varepsilon_2 +\cdots+ \varepsilon_t )= \mathbb{E} (\varepsilon_1 ) + \mathbb{E} (\varepsilon_2 ) +\cdots + \mathbb{E} (\varepsilon_t)= 0 + 0 + \cdots + 0 = 0,\]</span>
+e <span style="color: blue;"> a variância do passeio aleatório </span> é
+<span class="math display">\[\mbox{Var}(Z_t) = \mbox{Var}(\varepsilon_1 + \varepsilon_2 + \cdots + \varepsilon_t ) = \mbox{Var}(\varepsilon_1) + \cdots + \mbox{Var}(\varepsilon_t) = \sigma_\varepsilon^2 + \sigma_\varepsilon^2 + \cdots + \sigma_\varepsilon^2 = t\sigma_\varepsilon^2.\]</span>
+Assim concluímos que a variância de um passeio aleatório cresce linearmente com o tempo, sendo portanto um processo não-estacionário. Observe ainda que se <span class="math inline">\(1\leq t\leq s\)</span>, a função de autocovariância de um passeio aleatório é dada por
+<span class="math display">\[\begin{eqnarray*}
+\gamma(t,s) &amp;=&amp;  \mbox{Cov}(Z_t,Z_s)\\
+            &amp;=&amp;  \mbox{Cov}(\varepsilon_1 + \varepsilon_2 + \cdots + \varepsilon_t, \varepsilon_1 + \varepsilon_2 + \cdots + \varepsilon_s)\\
+            &amp;=&amp; \sum_{i=1}^t\sum_{j=1}^s \mbox{Cov}(\varepsilon_i,\varepsilon_j)\\
+            &amp;=&amp;  \mbox{Cov}(\varepsilon_1,\varepsilon_1) + \mbox{Cov}(\varepsilon_2,\varepsilon_2)+ \cdots+ \mbox{Cov}(\varepsilon_t,\varepsilon_t)\\
+            &amp;=&amp;  \sigma_\varepsilon^2 + \sigma_\varepsilon^2 + \cdots +\sigma_\varepsilon^2 = t\sigma_\varepsilon^2
+\end{eqnarray*}\]</span>
+onde <span class="math inline">\(\mbox{Cov}(\varepsilon_i, \varepsilon_j)=0\)</span> para <span class="math inline">\(i\neq j\)</span>. O mesmo argumento mostra que se <span class="math inline">\(1\leq s \leq t\)</span>, teremos <span class="math inline">\(\gamma(t,s)=s\sigma_\varepsilon^2,\)</span> de forma que podemos escrever compactamente <span class="math inline">\(\gamma(s,t)=\min(s,t)\sigma^2\)</span>.
+A <span style="color: blue;"> função de autocorrelação de um passeio aleatório </span> é facilmente obtida
+<span class="math display">\[\begin{align*}
+\rho(t,s)&amp;= \frac{\gamma(s,t)}{\sqrt{\mbox{Var}(X_t)}\sqrt{\mbox{Var}(X_s)}}=\frac{\min(s,t)\sigma_\varepsilon^2}{\sqrt{t\sigma_\varepsilon^2}\sqrt{s\sigma_\varepsilon^2}}=\frac{\min(s,t)}{\sqrt{t}\sqrt{s}}=\left\{\begin{array}{cc}
+           \frac{s}{\sqrt{t}\sqrt{s}}=\sqrt{\frac{s}{t}}, &amp; \mbox{ se } 1\leq s\leq t; \\
+           \frac{t}{\sqrt{t}\sqrt{s}}=\sqrt{\frac{t}{s}}, &amp; \mbox{ se } 1\leq t\leq s
+         \end{array}
+\right.\\
+&amp;=\sqrt{\frac{\min(s,t)}{\max(s,t)}}.
+\end{align*}\]</span></p>
+<p>Em resumo, a <em>FACV</em> e a <em>FAC</em> de um passeio aleatório são dadas por</p>
+<hr />
+<blockquote>
+<p><span style="color: blue;"> FACV do passeio aleatório</span>
+<span class="math display">\[
+\gamma(t,s) = \min(s,t)\sigma_\varepsilon^2,
+\]</span></p>
+</blockquote>
+<hr />
+<p><br></p>
+<hr />
+<blockquote>
+<p><span style="color: blue;"> FAC do passeio aleatório</span><br />
+<span class="math display">\[
+\rho(t,s)=\sqrt{\frac{\min(s,t)}{\max(s,t)}}
+\]</span></p>
+</blockquote>
+<hr />
+<p>O passeio aleatório é um exemplo simples que serve de aproximação para diversas situações reais, tais como como o movimento comum de preços e títulos e também a posição de pequenas partículas suspensas dentro de um fluído, chamado movimento Browniano.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="kw">set.seed</span>(<span class="dv">1231</span>)</a>
+<a class="sourceLine" id="cb5-2" title="2">eps=<span class="kw">rnorm</span>(<span class="dv">200</span>)</a>
+<a class="sourceLine" id="cb5-3" title="3">rw=<span class="kw">cumsum</span>(eps)</a>
+<a class="sourceLine" id="cb5-4" title="4"><span class="kw">plot</span>(rw,<span class="dt">type=</span><span class="st">&quot;l&quot;</span>,<span class="dt">lwd=</span><span class="dv">2</span>,<span class="dt">cex.lab=</span><span class="fl">1.4</span>, <span class="dt">xlab=</span><span class="st">&quot; tempo&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;&quot;</span>, <span class="dt">main=</span><span class="st">&quot;(a)&quot;</span>, <span class="dt">cex.main=</span><span class="fl">1.7</span>,<span class="dt">col=</span><span class="st">&quot;cadetblue4&quot;</span>)</a>
+<a class="sourceLine" id="cb5-5" title="5"><span class="kw">acf</span>(rw,<span class="dt">type =</span> <span class="st">&quot;correlation&quot;</span>,<span class="dt">lag.max =</span> <span class="dv">50</span>,<span class="dt">cex.main=</span><span class="fl">1.7</span>,<span class="dt">col=</span><span class="st">&quot;cadetblue4&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;FAC&quot;</span>,<span class="dt">lwd=</span><span class="dv">4</span>,<span class="dt">main=</span><span class="st">&quot;(b)&quot;</span>)</a>
+<a class="sourceLine" id="cb5-6" title="6"><span class="kw">acf</span>(rw,<span class="dt">type =</span> <span class="st">&quot;partial&quot;</span> ,<span class="dt">lag.max =</span> <span class="dv">50</span>,<span class="dt">cex.main=</span><span class="fl">1.7</span>,<span class="dt">col=</span><span class="st">&quot;cadetblue4&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;FACP&quot;</span>,<span class="dt">lwd=</span><span class="dv">4</span>,<span class="dt">main=</span><span class="st">&quot;(c)&quot;</span>)</a></code></pre></div>
+<div class="figure"><span id="fig:rw"></span>
+<img src="03-SeriesTemp_files/figure-html/rw-1.png" alt=" Passeio aleatório simulado (a), FACV amostral (b) e FAC amostral (c)." width="30%" /><img src="03-SeriesTemp_files/figure-html/rw-2.png" alt=" Passeio aleatório simulado (a), FACV amostral (b) e FAC amostral (c)." width="30%" /><img src="03-SeriesTemp_files/figure-html/rw-3.png" alt=" Passeio aleatório simulado (a), FACV amostral (b) e FAC amostral (c)." width="30%" />
+<p class="caption">
+Figura 4.4:  Passeio aleatório simulado (a), FACV amostral (b) e FAC amostral (c).
+</p>
+</div>
+</div>
+<div id="modelos-autorregressivos-de-ordem-p-arp" class="section level3">
+<h3><span class="header-section-number">4.5.3</span> Modelos autorregressivos de ordem <span class="math inline">\(p\)</span>, AR(<span class="math inline">\(p\)</span>)</h3>
+<p>O processo autorregressivo de ordem <span class="math inline">\(p\)</span> é definido como</p>
+<hr />
+<blockquote>
+<p><span style="color: blue;"> O processo AR(<em>p</em>)</span><br />
+<span class="math display">\[ Y_t=\phi_1Y_{t-1}+\cdots+\phi_pY_{t-p}+\varepsilon_t=\sum_{j=1}^{p}\phi_jY_{t-j} + \varepsilon_t.\]</span></p>
+</blockquote>
+<hr />
+<p><br></p>
+<p>Escrevendo <span class="math inline">\(Y_t\)</span> em função do operador <em>lag</em>, obtemos</p>
+<hr />
+<blockquote>
+<p><span style="color: blue;"> Definição com o operador <em>lag</em></span><br />
+<span class="math display">\[\begin{align*}
+Y_t=\phi_1L(Y_t)+\phi_2L^2(Y_t)\cdots+\phi_pL^p(Y_t)+\varepsilon_t \quad &amp;\Longleftrightarrow \quad (1-\phi_1L-\phi_2L^2-\cdots-\phi_pL^p)Y_t=\varepsilon_t \\
+\quad &amp;\Longleftrightarrow \quad  \Phi_p(L)Y_t=\varepsilon_t,
+\end{align*}\]</span></p>
+</blockquote>
+<hr />
+<p>onde <span class="math inline">\(\Phi_p(L)=1-\phi_1L-\phi_2L^ 2-\cdots-\phi_pL^p\)</span>. O polinômio <span class="math inline">\(\Phi_p(\cdot)\)</span> será importante no estudo da estacionariedade e causalidade de processos ARMA, que veremos adiante.</p>
+<p><br></p>
+<div id="alguns-processos-arma-simulados" class="section level4">
+<h4><span class="header-section-number">4.5.3.1</span> Alguns processos ARMA simulados</h4>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1"><span class="kw">set.seed</span>(<span class="dv">12322</span>)</a>
+<a class="sourceLine" id="cb6-2" title="2">ar1=<span class="kw">arima.sim</span>(<span class="dt">n=</span><span class="dv">200</span>,<span class="dt">model=</span><span class="kw">list</span>(<span class="dt">ar=</span><span class="fl">0.5</span>))</a>
+<a class="sourceLine" id="cb6-3" title="3"><span class="kw">plot</span>(ar1,<span class="dt">type=</span><span class="st">&quot;l&quot;</span>,<span class="dt">lwd=</span><span class="dv">2</span>,<span class="dt">cex.lab=</span><span class="fl">1.4</span>, <span class="dt">xlab=</span><span class="st">&quot; tempo&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;&quot;</span>, <span class="dt">main=</span><span class="st">&quot;(a)&quot;</span>, <span class="dt">cex.main=</span><span class="fl">1.7</span>,<span class="dt">col=</span><span class="st">&quot;cadetblue4&quot;</span>)</a>
+<a class="sourceLine" id="cb6-4" title="4"><span class="kw">acf</span>(ar1,<span class="dt">type =</span> <span class="st">&quot;correlation&quot;</span>,<span class="dt">lag.max =</span> <span class="dv">50</span>,<span class="dt">cex.main=</span><span class="fl">1.7</span>,<span class="dt">col=</span><span class="st">&quot;cadetblue4&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;FAC&quot;</span>,<span class="dt">lwd=</span><span class="dv">4</span>,<span class="dt">main=</span><span class="st">&quot;(b)&quot;</span>)</a>
+<a class="sourceLine" id="cb6-5" title="5"><span class="kw">acf</span>(ar1,<span class="dt">type =</span> <span class="st">&quot;partial&quot;</span> ,<span class="dt">lag.max =</span> <span class="dv">50</span>,<span class="dt">cex.main=</span><span class="fl">1.7</span>,<span class="dt">col=</span><span class="st">&quot;cadetblue4&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;FACP&quot;</span>,<span class="dt">lwd=</span><span class="dv">4</span>,<span class="dt">main=</span><span class="st">&quot;(c)&quot;</span>)</a></code></pre></div>
+<div class="figure"><span id="fig:ar105"></span>
+<img src="03-SeriesTemp_files/figure-html/ar105-1.png" alt="AR(1) simulado com coeficiente $\phi_1=0.5$ (a), FACV amostral (b) e FAC amostral (c)." width="33%" /><img src="03-SeriesTemp_files/figure-html/ar105-2.png" alt="AR(1) simulado com coeficiente $\phi_1=0.5$ (a), FACV amostral (b) e FAC amostral (c)." width="33%" /><img src="03-SeriesTemp_files/figure-html/ar105-3.png" alt="AR(1) simulado com coeficiente $\phi_1=0.5$ (a), FACV amostral (b) e FAC amostral (c)." width="33%" />
+<p class="caption">
+Figura 4.5: AR(1) simulado com coeficiente <span class="math inline">\(\phi_1=0.5\)</span> (a), FACV amostral (b) e FAC amostral (c).
+</p>
+</div>
+<p><br></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="kw">set.seed</span>(<span class="dv">12322</span>)</a>
+<a class="sourceLine" id="cb7-2" title="2">ar1m=<span class="kw">arima.sim</span>(<span class="dt">n=</span><span class="dv">200</span>,<span class="dt">model=</span><span class="kw">list</span>(<span class="dt">ar=</span><span class="op">-</span><span class="fl">0.5</span>))</a>
+<a class="sourceLine" id="cb7-3" title="3"><span class="kw">plot</span>(ar1m,<span class="dt">type=</span><span class="st">&quot;l&quot;</span>,<span class="dt">lwd=</span><span class="dv">2</span>,<span class="dt">cex.lab=</span><span class="fl">1.4</span>, <span class="dt">xlab=</span><span class="st">&quot; tempo&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;&quot;</span>, <span class="dt">main=</span><span class="st">&quot;(a)&quot;</span>, <span class="dt">cex.main=</span><span class="fl">1.7</span>,<span class="dt">col=</span><span class="st">&quot;cadetblue4&quot;</span>)</a>
+<a class="sourceLine" id="cb7-4" title="4"><span class="kw">acf</span>(ar1m,<span class="dt">type =</span> <span class="st">&quot;correlation&quot;</span>,<span class="dt">lag.max =</span> <span class="dv">50</span>,<span class="dt">cex.main=</span><span class="fl">1.7</span>,<span class="dt">col=</span><span class="st">&quot;cadetblue4&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;FAC&quot;</span>,<span class="dt">lwd=</span><span class="dv">4</span>,<span class="dt">main=</span><span class="st">&quot;(b)&quot;</span>)</a>
+<a class="sourceLine" id="cb7-5" title="5"><span class="kw">acf</span>(ar1m,<span class="dt">type =</span> <span class="st">&quot;partial&quot;</span> ,<span class="dt">lag.max =</span> <span class="dv">50</span>,<span class="dt">cex.main=</span><span class="fl">1.7</span>,<span class="dt">col=</span><span class="st">&quot;cadetblue4&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;FACP&quot;</span>,<span class="dt">lwd=</span><span class="dv">4</span>,<span class="dt">main=</span><span class="st">&quot;(c)&quot;</span>)</a></code></pre></div>
+<div class="figure"><span id="fig:arm105"></span>
+<img src="03-SeriesTemp_files/figure-html/arm105-1.png" alt="AR(1) simulado com coeficiente $\phi_1=-0.5$ (a), FACV amostral (b) e FAC amostral (c)." width="33%" /><img src="03-SeriesTemp_files/figure-html/arm105-2.png" alt="AR(1) simulado com coeficiente $\phi_1=-0.5$ (a), FACV amostral (b) e FAC amostral (c)." width="33%" /><img src="03-SeriesTemp_files/figure-html/arm105-3.png" alt="AR(1) simulado com coeficiente $\phi_1=-0.5$ (a), FACV amostral (b) e FAC amostral (c)." width="33%" />
+<p class="caption">
+Figura 4.6: AR(1) simulado com coeficiente <span class="math inline">\(\phi_1=-0.5\)</span> (a), FACV amostral (b) e FAC amostral (c).
+</p>
+</div>
+<p><br></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="kw">set.seed</span>(<span class="dv">12322</span>)</a>
+<a class="sourceLine" id="cb8-2" title="2">ar108=<span class="kw">arima.sim</span>(<span class="dt">n=</span><span class="dv">200</span>,<span class="dt">model=</span><span class="kw">list</span>(<span class="dt">ar=</span><span class="op">-</span><span class="fl">0.5</span>))</a>
+<a class="sourceLine" id="cb8-3" title="3"><span class="kw">plot</span>(ar108,<span class="dt">type=</span><span class="st">&quot;l&quot;</span>,<span class="dt">lwd=</span><span class="dv">2</span>,<span class="dt">cex.lab=</span><span class="fl">1.4</span>, <span class="dt">xlab=</span><span class="st">&quot; tempo&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;&quot;</span>, <span class="dt">main=</span><span class="st">&quot;(a)&quot;</span>, <span class="dt">cex.main=</span><span class="fl">1.7</span>,<span class="dt">col=</span><span class="st">&quot;cadetblue4&quot;</span>)</a>
+<a class="sourceLine" id="cb8-4" title="4"><span class="kw">acf</span>(ar108,<span class="dt">type =</span> <span class="st">&quot;correlation&quot;</span>,<span class="dt">lag.max =</span> <span class="dv">50</span>,<span class="dt">cex.main=</span><span class="fl">1.7</span>,<span class="dt">col=</span><span class="st">&quot;cadetblue4&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;FAC&quot;</span>,<span class="dt">lwd=</span><span class="dv">4</span>,<span class="dt">main=</span><span class="st">&quot;(b)&quot;</span>)</a>
+<a class="sourceLine" id="cb8-5" title="5"><span class="kw">acf</span>(ar108,<span class="dt">type =</span> <span class="st">&quot;partial&quot;</span> ,<span class="dt">lag.max =</span> <span class="dv">50</span>,<span class="dt">cex.main=</span><span class="fl">1.7</span>,<span class="dt">col=</span><span class="st">&quot;cadetblue4&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;FACP&quot;</span>,<span class="dt">lwd=</span><span class="dv">4</span>,<span class="dt">main=</span><span class="st">&quot;(c)&quot;</span>)</a></code></pre></div>
+<div class="figure"><span id="fig:ar108"></span>
+<img src="03-SeriesTemp_files/figure-html/ar108-1.png" alt="AR(1) simulado com coeficiente $\phi_1=0.8$ (a), FACV amostral (b) e FAC amostral (c)." width="33%" /><img src="03-SeriesTemp_files/figure-html/ar108-2.png" alt="AR(1) simulado com coeficiente $\phi_1=0.8$ (a), FACV amostral (b) e FAC amostral (c)." width="33%" /><img src="03-SeriesTemp_files/figure-html/ar108-3.png" alt="AR(1) simulado com coeficiente $\phi_1=0.8$ (a), FACV amostral (b) e FAC amostral (c)." width="33%" />
+<p class="caption">
+Figura 4.7: AR(1) simulado com coeficiente <span class="math inline">\(\phi_1=0.8\)</span> (a), FACV amostral (b) e FAC amostral (c).
+</p>
+</div>
+<p><br></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="kw">set.seed</span>(<span class="dv">12322</span>)</a>
+<a class="sourceLine" id="cb9-2" title="2">ar2=<span class="kw">arima.sim</span>(<span class="dt">n=</span><span class="dv">200</span>,<span class="dt">model=</span><span class="kw">list</span>(<span class="dt">ar=</span><span class="kw">c</span>(<span class="fl">0.5</span>,<span class="op">-</span><span class="fl">0.7</span>)))</a>
+<a class="sourceLine" id="cb9-3" title="3"><span class="kw">plot</span>(ar2,<span class="dt">type=</span><span class="st">&quot;l&quot;</span>,<span class="dt">lwd=</span><span class="dv">2</span>,<span class="dt">cex.lab=</span><span class="fl">1.4</span>, <span class="dt">xlab=</span><span class="st">&quot; tempo&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;&quot;</span>, <span class="dt">main=</span><span class="st">&quot;(a)&quot;</span>, <span class="dt">cex.main=</span><span class="fl">1.7</span>,<span class="dt">col=</span><span class="st">&quot;cadetblue4&quot;</span>)</a>
+<a class="sourceLine" id="cb9-4" title="4"><span class="kw">acf</span>(ar2,<span class="dt">type =</span> <span class="st">&quot;correlation&quot;</span>,<span class="dt">lag.max =</span> <span class="dv">50</span>,<span class="dt">cex.main=</span><span class="fl">1.7</span>,<span class="dt">col=</span><span class="st">&quot;cadetblue4&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;FAC&quot;</span>,<span class="dt">lwd=</span><span class="dv">4</span>,<span class="dt">main=</span><span class="st">&quot;(b)&quot;</span>)</a>
+<a class="sourceLine" id="cb9-5" title="5"><span class="kw">acf</span>(ar2,<span class="dt">type =</span> <span class="st">&quot;partial&quot;</span> ,<span class="dt">lag.max =</span> <span class="dv">50</span>,<span class="dt">cex.main=</span><span class="fl">1.7</span>,<span class="dt">col=</span><span class="st">&quot;cadetblue4&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;FACP&quot;</span>,<span class="dt">lwd=</span><span class="dv">4</span>,<span class="dt">main=</span><span class="st">&quot;(c)&quot;</span>)</a></code></pre></div>
+<div class="figure"><span id="fig:ar2"></span>
+<img src="03-SeriesTemp_files/figure-html/ar2-1.png" alt="AR(2) simulado com coeficiente $\phi_1=0.5$ e $\phi_1=-0.7$  (a), FACV amostral (b) e FAC amostral (c)." width="33%" /><img src="03-SeriesTemp_files/figure-html/ar2-2.png" alt="AR(2) simulado com coeficiente $\phi_1=0.5$ e $\phi_1=-0.7$  (a), FACV amostral (b) e FAC amostral (c)." width="33%" /><img src="03-SeriesTemp_files/figure-html/ar2-3.png" alt="AR(2) simulado com coeficiente $\phi_1=0.5$ e $\phi_1=-0.7$  (a), FACV amostral (b) e FAC amostral (c)." width="33%" />
+<p class="caption">
+Figura 4.8: AR(2) simulado com coeficiente <span class="math inline">\(\phi_1=0.5\)</span> e <span class="math inline">\(\phi_1=-0.7\)</span> (a), FACV amostral (b) e FAC amostral (c).
+</p>
+</div>
+<p><br></p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1"><span class="kw">set.seed</span>(<span class="dv">12322</span>)</a>
+<a class="sourceLine" id="cb10-2" title="2">ar3=<span class="kw">arima.sim</span>(<span class="dt">n=</span><span class="dv">200</span>,<span class="dt">model=</span><span class="kw">list</span>(<span class="dt">ar=</span><span class="kw">c</span>(<span class="fl">0.5</span>,<span class="op">-</span><span class="fl">0.7</span>,<span class="fl">0.6</span>)))</a>
+<a class="sourceLine" id="cb10-3" title="3"><span class="kw">plot</span>(ar3,<span class="dt">type=</span><span class="st">&quot;l&quot;</span>,<span class="dt">lwd=</span><span class="dv">2</span>,<span class="dt">cex.lab=</span><span class="fl">1.4</span>, <span class="dt">xlab=</span><span class="st">&quot; tempo&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;&quot;</span>, <span class="dt">main=</span><span class="st">&quot;(a)&quot;</span>, <span class="dt">cex.main=</span><span class="fl">1.7</span>,<span class="dt">col=</span><span class="st">&quot;cadetblue4&quot;</span>)</a>
+<a class="sourceLine" id="cb10-4" title="4"><span class="kw">acf</span>(ar3,<span class="dt">type =</span> <span class="st">&quot;correlation&quot;</span>,<span class="dt">lag.max =</span> <span class="dv">50</span>,<span class="dt">cex.main=</span><span class="fl">1.7</span>,<span class="dt">col=</span><span class="st">&quot;cadetblue4&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;FAC&quot;</span>,<span class="dt">lwd=</span><span class="dv">4</span>,<span class="dt">main=</span><span class="st">&quot;(b)&quot;</span>)</a>
+<a class="sourceLine" id="cb10-5" title="5"><span class="kw">acf</span>(ar3,<span class="dt">type =</span> <span class="st">&quot;partial&quot;</span> ,<span class="dt">lag.max =</span> <span class="dv">50</span>,<span class="dt">cex.main=</span><span class="fl">1.7</span>,<span class="dt">col=</span><span class="st">&quot;cadetblue4&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;FACP&quot;</span>,<span class="dt">lwd=</span><span class="dv">4</span>,<span class="dt">main=</span><span class="st">&quot;(c)&quot;</span>)</a></code></pre></div>
+<div class="figure"><span id="fig:ar3"></span>
+<img src="03-SeriesTemp_files/figure-html/ar3-1.png" alt="AR(3) simulado com coeficiente $\phi_1=0.5$, $\phi_2=-0.7$ e $\phi_3=0.6$   (a), FACV amostral (b) e FAC amostral (c)." width="33%" /><img src="03-SeriesTemp_files/figure-html/ar3-2.png" alt="AR(3) simulado com coeficiente $\phi_1=0.5$, $\phi_2=-0.7$ e $\phi_3=0.6$   (a), FACV amostral (b) e FAC amostral (c)." width="33%" /><img src="03-SeriesTemp_files/figure-html/ar3-3.png" alt="AR(3) simulado com coeficiente $\phi_1=0.5$, $\phi_2=-0.7$ e $\phi_3=0.6$   (a), FACV amostral (b) e FAC amostral (c)." width="33%" />
+<p class="caption">
+Figura 4.9: AR(3) simulado com coeficiente <span class="math inline">\(\phi_1=0.5\)</span>, <span class="math inline">\(\phi_2=-0.7\)</span> e <span class="math inline">\(\phi_3=0.6\)</span> (a), FACV amostral (b) e FAC amostral (c).
+</p>
+</div>
+</div>
+</div>
+<div id="modelo-de-médias-móveis-maq" class="section level3">
+<h3><span class="header-section-number">4.5.4</span> Modelo de médias-móveis, MA(<em>q</em>)</h3>
+<p>Chamamos de médias-móveis de ordem <span class="math inline">\(q\)</span> o processo definido por:</p>
+<hr />
+<blockquote>
+<p><span style="color: blue;"> O processo MA(<em>q</em>)</span><br />
+<span class="math display">\[
+Y_t= \varepsilon_t + \theta_1 \varepsilon_{t-1} + \theta_2 \varepsilon_{t-2} +\cdots + \theta_q \varepsilon_{t-q}
+\]</span>
+em que <span class="math inline">\(\varepsilon_t\)</span> é um <span class="math inline">\(RB(0,\sigma_\varepsilon^2)\)</span>.</p>
+</blockquote>
+<hr />
+<p>Esta terminologia vem do fato que <span class="math inline">\(Y_t\)</span> é obtido aplicando-se os pesos <span class="math inline">\(1,-\theta_1, -\theta_2, \cdots, -\theta_q\)</span>, às variáveis <span class="math inline">\(\varepsilon_t - \varepsilon_{t-1} - \varepsilon_{t-2} -\cdots - \varepsilon_{t-q}\)</span> e então movendo os mesmos pesos 1 unidade do tempo a frente e aplicando-lhes a <span class="math inline">\(\varepsilon_{t+1} - \varepsilon_{t} - \varepsilon_{t-1} -\cdots - \varepsilon_{t-q+1}\)</span> para obter <span class="math inline">\(Y_{t+1}\)</span>.</p>
+<p>Usando o operador <span class="math inline">\(L\)</span>, podemos reescrever o modelo MA(<span class="math inline">\(q\)</span>) como</p>
+<p><span class="math display" id="eq:maqL">\[\begin{equation}
+Y_t= \Theta_q(L)\varepsilon_t,
+\tag{4.10}
+\end{equation}\]</span></p>
+<p><span class="math display" id="eq:ThetaL">\[\begin{equation}
+\Theta_q(L)=1+ \theta_1L + \theta_2L^2  +\cdots + \theta_qL^q.
+\tag{4.11}
+\end{equation}\]</span></p>
+</div>
+<div id="o-modelo-ma1" class="section level3">
+<h3><span class="header-section-number">4.5.5</span> O modelo MA(1)</h3>
+<p>Para <span class="math inline">\(q=1\)</span>, obtemos o modelo:
+<span class="math display" id="eq:ma1">\[\begin{equation}
+Y_t = \varepsilon_t + \theta_1 \varepsilon_{t-1},
+\tag{4.12}
+\end{equation}\]</span>
+onde <span class="math inline">\(\varepsilon_t\)</span> é um <span class="math inline">\(RB(0,\sigma_\varepsilon^2)\)</span>. Segue que</p>
+<hr />
+<blockquote>
+<p><span style="color: blue;"> Média do MA(1)</span><br />
+<span class="math display">\[\mathbb{E} (Y_t ) = \mathbb{E}(\varepsilon_t + \theta_1 \varepsilon_{t-1})=\mathbb{E}(\varepsilon_t) + \theta_1 \mathbb{E}(\varepsilon_{t-1})=0.\]</span></p>
+</blockquote>
+<hr />
+<p><br></p>
+<hr />
+<blockquote>
+<p><span style="color: blue;">A variância do MA(1)</span><br />
+<span class="math display">\[\mbox{Var}(Y_t )=\mbox{Var}(\varepsilon_t + \theta_1 \varepsilon_{t-1} )= \sigma_\varepsilon^2+\theta_1^2\sigma_\varepsilon^2=(1+\theta_1^2)\sigma_\varepsilon^2.\]</span></p>
+</blockquote>
+<hr />
+<p><br>
+Temos ainda que a função de autocovariância de <em>lag</em> <em>h</em> é:</p>
+<hr />
+<blockquote>
+<p><span style="color: blue;"> <em>FACV</em> do MA(1)</span>
+<span class="math display">\[\begin{eqnarray*}
+\gamma(h) &amp;=&amp; \mbox{Cov}(Y_t , Y_{t+h} )\\
+&amp;=&amp; \mbox{Cov}(\varepsilon_t + \theta_1 \varepsilon_{t-1}, \varepsilon_{t+h} + \theta_1 \varepsilon_{t+h-1} )\\
+&amp;=&amp; \mbox{Cov}(\varepsilon_t,\varepsilon_{t+h})+\theta_1\mbox{Cov}(\varepsilon_{t}, \varepsilon_{t+h-1})+\theta_1\mbox{Cov}(\varepsilon_{t-1}, \varepsilon_{t+h})+\theta_1^2\mbox{Cov}(\varepsilon_{t-1}, \varepsilon_{t+h-1})\\
+&amp;=&amp;\gamma_\varepsilon(h)+\theta_1\gamma_\varepsilon(h-1)+\theta_1\gamma_\varepsilon(h+1)+\theta_1^2\gamma_\varepsilon(h).
+\end{eqnarray*}\]</span></p>
+</blockquote>
+<hr />
+<p><br></p>
+<p>Neste caso <span class="math inline">\(\gamma(h)\)</span> só é diferente de 0 quando algum dos argumentos de <span class="math inline">\(\gamma_\varepsilon\)</span> for igual a 0, o que acontece somente quando <span class="math inline">\(h=0\)</span> ou <span class="math inline">\(h=1\)</span> ou <span class="math inline">\(h=-1\)</span>. Para <span class="math inline">\(h=0\)</span> obtemos a variância. Para <span class="math inline">\(h=1\)</span> e <span class="math inline">\(h=-1\)</span> obtemos <span class="math inline">\(\gamma(1)=\gamma(-1)=\theta_1\)</span> e para <span class="math inline">\(|h| \geq 2\)</span> teremos <span class="math inline">\(\gamma(h) = 0\)</span>.
+Desta forma,</p>
+<hr />
+<blockquote>
+<p><span style="color: blue;"> <em>FACV</em> <em>FAC</em> e do MA(1)</span>
+<span class="math display">\[
+\gamma(h)=\begin{cases}
+(1+\theta_1^2)\sigma_\varepsilon^2 &amp;\mbox{  se  }\,\,\,\,\,  h=0;\\
+\theta_1&amp;\mbox{  se  }\,\,\,\,\,  |k|=1;\\
+0&amp;\mbox{  se  }\,\,\,\,\,  |k|\geq 2,\\
+\end{cases}\qquad
+\rho(h)=\begin{cases}
+1&amp;\mbox{  se  }\,\,\,\,\,  k=0;\\
+\frac{\theta}{1+\theta^2}&amp;\mbox{  se  }\,\,\,\,\,  |k|=1;\\
+0&amp;\mbox{  se  }\,\,\,\,\,  |k|\geq 2.\\
+\end{cases}
+\]</span></p>
+</blockquote>
+<hr />
+</div>
+<div id="propriedades-do-modelo-maq" class="section level3">
+<h3><span class="header-section-number">4.5.6</span> Propriedades do modelo MA(<span class="math inline">\(q\)</span>)</h3>
+<p>Seja <span class="math inline">\(\varepsilon_t\sim RB(0,\sigma_\varepsilon^2)\)</span> e considere o modelo MA<span class="math inline">\((q)\)</span>
+<span class="math display">\[ Y_t= \varepsilon_t + \theta_1 \varepsilon_{t-1} + \theta_2 \varepsilon_{t-2} +\cdots+ \theta_q \varepsilon_{t-q}.\]</span>
+Definindo <span class="math inline">\(\theta_0=1\)</span>, podemos reescrever o modelo MA<span class="math inline">\((q)\)</span> compactamente como
+<span class="math display">\[ Y_t= \sum_{k=0}^q \theta_k\varepsilon_{t-k}.\]</span></p>
+<p>A partir daí podemos obter facilmente a média e a variância de <span class="math inline">\(Y_t\)</span>, assim como sua estrutura de autocovariancia e autocorrelação. Primeiramente</p>
+<hr />
+<blockquote>
+<p><span style="color: blue;"> Média do MA(<em>q</em>)</span>
+<span class="math display">\[\mathbb{E} (Y_t ) = \mathbb{E}\Big(\sum_{k=0}^q \theta_k\varepsilon_{t-k}\Big)=\sum_{k=0}^q \theta_k\mathbb{E}(\varepsilon_{t-k})= 0\]</span></p>
+</blockquote>
+<hr />
+<p><br></p>
+<hr />
+<blockquote>
+<p><span style="color: blue;">A variância do MA(<em>q</em>)</span><br />
+<span class="math display">\[\begin{eqnarray*}
+\mbox{Var}(Y_t) &amp;=&amp; \mbox{Var}\Big(\sum_{k=0}^q \theta_k\varepsilon_{t-k}\Big) = \sum_{k=0}^q \theta_k^2\mbox{Var}(\varepsilon_{t-k}) = \sigma_\varepsilon^2\sum_{k=0}^q \theta_k^2\\
+&amp;=&amp; (1 + \theta_1^2 +\cdots +\theta_q^2)\sigma_\varepsilon^2.
+\end{eqnarray*}\]</span>
+————————————————————</p>
+</blockquote>
+<p><br></p>
+<hr />
+<blockquote>
+<p><span style="color: blue;"> <em>FACV</em> do MA(<em>q</em>)</span>
+<span class="math display">\[\begin{align*}
+\gamma(h)&amp;=\mbox{Cov}(Y_t,Y_{t-h} )\\
+&amp;= \mbox{Cov}\Big(\sum_{k=0}^q \theta_k\varepsilon_{t-k},\sum_{j=0}^q \theta_j\varepsilon_{t-h-j}\Big)\\
+&amp;=\sum_{k=0}^q \sum_{j=0}^q\theta_k\theta_j\mbox{Cov}(\varepsilon_{t-k},\varepsilon_{t-h-j})\\
+&amp;=\sum_{k=0}^q \sum_{j=0}^q\theta_k\theta_j\gamma_\varepsilon(k-h-j)
+\end{align*}\]</span>
+note que <span class="math inline">\(\gamma_\varepsilon(k-h-j)\neq 0\)</span> somente quando <span class="math inline">\(k-h-j=0\)</span>, ou seja, se <span class="math inline">\(j=k-h\)</span>.</p>
+</blockquote>
+<hr />
+<p><br></p>
+<p>Além disso, se <span class="math inline">\(|h|&gt;q\)</span>, não é possível acontecer <span class="math inline">\(k-h-j=0\)</span>. Desta forma, se <span class="math inline">\(|h|\leq q\)</span>,</p>
+<p><span class="math display">\[  \gamma(h)=\sum_{k=0}^q \theta_k\theta_{k-h}\gamma_\varepsilon(0)=\sigma_\varepsilon^2\sum_{k=0}^q \theta_k\theta_{k-h}.\]</span>
+Concluimos que</p>
+<hr />
+<blockquote>
+<p><span style="color: blue;"> <em>FACV</em> e <em>FAC</em> do MA(<em>q</em>)</span>
+<span class="math display">\[\gamma(h)=\left\{
+\begin{array}{cc}
+\sigma_\varepsilon^2\displaystyle{\sum_{k=0}^q \theta_k\theta_{k-h}},  &amp; \mbox{ se } |h|\leq q;\\
+0, &amp;  \mbox{ se } |h|&gt; q,
+\end{array}
+\right. \quad \mbox{ e } \quad \rho(h)=\left\{
+\begin{array}{cc}
+\displaystyle{\frac{\sum_{k=0}^q \theta_k\theta_{k-h}}{\sum_{j=0}^q \theta_j^2}},  &amp; \mbox{ se } |h|\leq q;\quad\\
+0, &amp;  \mbox{ se } |h|&gt; q.
+\end{array}\right.\]</span></p>
+</blockquote>
+<hr />
+<p><br></p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1"><span class="co"># MA(1) Simulado</span></a>
+<a class="sourceLine" id="cb11-2" title="2"><span class="kw">set.seed</span>(<span class="dv">12322</span>)</a>
+<a class="sourceLine" id="cb11-3" title="3">ma1_<span class="dv">1</span>=<span class="kw">arima.sim</span>(<span class="dt">n=</span><span class="dv">200</span>,<span class="dt">model=</span><span class="kw">list</span>(<span class="dt">ma=</span><span class="kw">c</span>(<span class="dv">1</span>)))</a>
+<a class="sourceLine" id="cb11-4" title="4"><span class="kw">plot</span>(ma1_<span class="dv">1</span>,<span class="dt">type=</span><span class="st">&quot;l&quot;</span>,<span class="dt">lwd=</span><span class="dv">2</span>,<span class="dt">cex.lab=</span><span class="fl">1.4</span>, <span class="dt">xlab=</span><span class="st">&quot; tempo&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;&quot;</span>, <span class="dt">main=</span><span class="st">&quot;(a)&quot;</span>, <span class="dt">cex.main=</span><span class="fl">1.7</span>,<span class="dt">col=</span><span class="st">&quot;cadetblue4&quot;</span>)</a>
+<a class="sourceLine" id="cb11-5" title="5"><span class="kw">acf</span>(ma1_<span class="dv">1</span>,<span class="dt">type =</span> <span class="st">&quot;correlation&quot;</span>,<span class="dt">lag.max =</span> <span class="dv">50</span>,<span class="dt">cex.main=</span><span class="fl">1.7</span>,<span class="dt">col=</span><span class="st">&quot;cadetblue4&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;FAC&quot;</span>,<span class="dt">lwd=</span><span class="dv">4</span>,<span class="dt">main=</span><span class="st">&quot;(b)&quot;</span>)</a>
+<a class="sourceLine" id="cb11-6" title="6"><span class="kw">acf</span>(ma1_<span class="dv">1</span>,<span class="dt">type =</span> <span class="st">&quot;partial&quot;</span> ,<span class="dt">lag.max =</span> <span class="dv">50</span>,<span class="dt">cex.main=</span><span class="fl">1.7</span>,<span class="dt">col=</span><span class="st">&quot;cadetblue4&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;FACP&quot;</span>,<span class="dt">lwd=</span><span class="dv">4</span>,<span class="dt">main=</span><span class="st">&quot;(c)&quot;</span>)</a></code></pre></div>
+<div class="figure"><span id="fig:ma11"></span>
+<img src="03-SeriesTemp_files/figure-html/ma11-1.png" alt="MA(1) simulado com coeficiente $\theta_1=1$, (a) FACV amostral (b) e FAC amostral (c)." width="33%" /><img src="03-SeriesTemp_files/figure-html/ma11-2.png" alt="MA(1) simulado com coeficiente $\theta_1=1$, (a) FACV amostral (b) e FAC amostral (c)." width="33%" /><img src="03-SeriesTemp_files/figure-html/ma11-3.png" alt="MA(1) simulado com coeficiente $\theta_1=1$, (a) FACV amostral (b) e FAC amostral (c)." width="33%" />
+<p class="caption">
+Figura 4.10: MA(1) simulado com coeficiente <span class="math inline">\(\theta_1=1\)</span>, (a) FACV amostral (b) e FAC amostral (c).
+</p>
+</div>
+<p><br></p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1"><span class="co"># MA(1) Simulado</span></a>
+<a class="sourceLine" id="cb12-2" title="2"><span class="kw">set.seed</span>(<span class="dv">12322</span>)</a>
+<a class="sourceLine" id="cb12-3" title="3">ma1_m08=<span class="kw">arima.sim</span>(<span class="dt">n=</span><span class="dv">200</span>,<span class="dt">model=</span><span class="kw">list</span>(<span class="dt">ma=</span><span class="kw">c</span>(<span class="op">-</span><span class="fl">0.8</span>)))</a>
+<a class="sourceLine" id="cb12-4" title="4"><span class="kw">plot</span>(ma1_m08,<span class="dt">type=</span><span class="st">&quot;l&quot;</span>,<span class="dt">lwd=</span><span class="dv">2</span>,<span class="dt">cex.lab=</span><span class="fl">1.4</span>, <span class="dt">xlab=</span><span class="st">&quot; tempo&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;&quot;</span>, <span class="dt">main=</span><span class="st">&quot;(a)&quot;</span>, <span class="dt">cex.main=</span><span class="fl">1.7</span>,<span class="dt">col=</span><span class="st">&quot;cadetblue4&quot;</span>)</a>
+<a class="sourceLine" id="cb12-5" title="5"><span class="kw">acf</span>(ma1_m08,<span class="dt">type =</span> <span class="st">&quot;correlation&quot;</span>,<span class="dt">lag.max =</span> <span class="dv">50</span>,<span class="dt">cex.main=</span><span class="fl">1.7</span>,<span class="dt">col=</span><span class="st">&quot;cadetblue4&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;FAC&quot;</span>,<span class="dt">lwd=</span><span class="dv">4</span>,<span class="dt">main=</span><span class="st">&quot;(b)&quot;</span>)</a>
+<a class="sourceLine" id="cb12-6" title="6"><span class="kw">acf</span>(ma1_m08,<span class="dt">type =</span> <span class="st">&quot;partial&quot;</span> ,<span class="dt">lag.max =</span> <span class="dv">50</span>,<span class="dt">cex.main=</span><span class="fl">1.7</span>,<span class="dt">col=</span><span class="st">&quot;cadetblue4&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;FACP&quot;</span>,<span class="dt">lwd=</span><span class="dv">4</span>,<span class="dt">main=</span><span class="st">&quot;(c)&quot;</span>)</a></code></pre></div>
+<div class="figure"><span id="fig:ma1m08"></span>
+<img src="03-SeriesTemp_files/figure-html/ma1m08-1.png" alt="MA(1) simulado com coeficiente $\theta_1=-0.8$, (a) FACV amostral (b) e FAC amostral (c)." width="33%" /><img src="03-SeriesTemp_files/figure-html/ma1m08-2.png" alt="MA(1) simulado com coeficiente $\theta_1=-0.8$, (a) FACV amostral (b) e FAC amostral (c)." width="33%" /><img src="03-SeriesTemp_files/figure-html/ma1m08-3.png" alt="MA(1) simulado com coeficiente $\theta_1=-0.8$, (a) FACV amostral (b) e FAC amostral (c)." width="33%" />
+<p class="caption">
+Figura 4.11: MA(1) simulado com coeficiente <span class="math inline">\(\theta_1=-0.8\)</span>, (a) FACV amostral (b) e FAC amostral (c).
+</p>
+</div>
+<p><br></p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1"><span class="co"># MA(1) Simulado</span></a>
+<a class="sourceLine" id="cb13-2" title="2"><span class="kw">set.seed</span>(<span class="dv">1234</span>)</a>
+<a class="sourceLine" id="cb13-3" title="3">ma1_m0804=<span class="kw">arima.sim</span>(<span class="dt">n=</span><span class="dv">300</span>,<span class="dt">model=</span><span class="kw">list</span>(<span class="dt">ma=</span><span class="kw">c</span>(<span class="op">-</span><span class="fl">0.8</span>,<span class="fl">0.4</span>)))</a>
+<a class="sourceLine" id="cb13-4" title="4"><span class="kw">plot</span>(ma1_m0804,<span class="dt">type=</span><span class="st">&quot;l&quot;</span>,<span class="dt">lwd=</span><span class="dv">2</span>,<span class="dt">cex.lab=</span><span class="fl">1.4</span>, <span class="dt">xlab=</span><span class="st">&quot; tempo&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;&quot;</span>, <span class="dt">main=</span><span class="st">&quot;(a)&quot;</span>, <span class="dt">cex.main=</span><span class="fl">1.7</span>,<span class="dt">col=</span><span class="st">&quot;cadetblue4&quot;</span>)</a>
+<a class="sourceLine" id="cb13-5" title="5"><span class="kw">acf</span>(ma1_m0804,<span class="dt">type =</span> <span class="st">&quot;correlation&quot;</span>,<span class="dt">lag.max =</span> <span class="dv">50</span>,<span class="dt">cex.main=</span><span class="fl">1.7</span>,<span class="dt">col=</span><span class="st">&quot;cadetblue4&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;FAC&quot;</span>,<span class="dt">lwd=</span><span class="dv">4</span>,<span class="dt">main=</span><span class="st">&quot;(b)&quot;</span>)</a>
+<a class="sourceLine" id="cb13-6" title="6"><span class="kw">acf</span>(ma1_m0804,<span class="dt">type =</span> <span class="st">&quot;partial&quot;</span> ,<span class="dt">lag.max =</span> <span class="dv">50</span>,<span class="dt">cex.main=</span><span class="fl">1.7</span>,<span class="dt">col=</span><span class="st">&quot;cadetblue4&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;FACP&quot;</span>,<span class="dt">lwd=</span><span class="dv">4</span>,<span class="dt">main=</span><span class="st">&quot;(c)&quot;</span>)</a></code></pre></div>
+<div class="figure"><span id="fig:ma1m0804"></span>
+<img src="03-SeriesTemp_files/figure-html/ma1m0804-1.png" alt="MA(2) simulado com coeficiente $\theta_1=-0.8$ e $\theta_1=0.4$, (a) FACV amostral (b) e FAC amostral (c)." width="33%" /><img src="03-SeriesTemp_files/figure-html/ma1m0804-2.png" alt="MA(2) simulado com coeficiente $\theta_1=-0.8$ e $\theta_1=0.4$, (a) FACV amostral (b) e FAC amostral (c)." width="33%" /><img src="03-SeriesTemp_files/figure-html/ma1m0804-3.png" alt="MA(2) simulado com coeficiente $\theta_1=-0.8$ e $\theta_1=0.4$, (a) FACV amostral (b) e FAC amostral (c)." width="33%" />
+<p class="caption">
+Figura 4.12: MA(2) simulado com coeficiente <span class="math inline">\(\theta_1=-0.8\)</span> e <span class="math inline">\(\theta_1=0.4\)</span>, (a) FACV amostral (b) e FAC amostral (c).
+</p>
+</div>
+<p><br></p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1"><span class="co"># MA(1) Simulado</span></a>
+<a class="sourceLine" id="cb14-2" title="2"><span class="kw">set.seed</span>(<span class="dv">12341</span>)</a>
+<a class="sourceLine" id="cb14-3" title="3">ma1_m080414=<span class="kw">arima.sim</span>(<span class="dt">n=</span><span class="dv">300</span>,<span class="dt">model=</span><span class="kw">list</span>(<span class="dt">ma=</span><span class="kw">c</span>(<span class="op">-</span><span class="fl">0.8</span>,<span class="fl">0.4</span>,<span class="fl">1.4</span>)))</a>
+<a class="sourceLine" id="cb14-4" title="4"><span class="kw">plot</span>(ma1_m080414,<span class="dt">type=</span><span class="st">&quot;l&quot;</span>,<span class="dt">lwd=</span><span class="dv">2</span>,<span class="dt">cex.lab=</span><span class="fl">1.4</span>, <span class="dt">xlab=</span><span class="st">&quot; tempo&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;&quot;</span>, <span class="dt">main=</span><span class="st">&quot;(a)&quot;</span>, <span class="dt">cex.main=</span><span class="fl">1.7</span>,<span class="dt">col=</span><span class="st">&quot;cadetblue4&quot;</span>)</a>
+<a class="sourceLine" id="cb14-5" title="5"><span class="kw">acf</span>(ma1_m080414,<span class="dt">type =</span> <span class="st">&quot;correlation&quot;</span>,<span class="dt">lag.max =</span> <span class="dv">50</span>,<span class="dt">cex.main=</span><span class="fl">1.7</span>,<span class="dt">col=</span><span class="st">&quot;cadetblue4&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;FAC&quot;</span>,<span class="dt">lwd=</span><span class="dv">4</span>,<span class="dt">main=</span><span class="st">&quot;(b)&quot;</span>)</a>
+<a class="sourceLine" id="cb14-6" title="6"><span class="kw">acf</span>(ma1_m080414,<span class="dt">type =</span> <span class="st">&quot;partial&quot;</span> ,<span class="dt">lag.max =</span> <span class="dv">50</span>,<span class="dt">cex.main=</span><span class="fl">1.7</span>,<span class="dt">col=</span><span class="st">&quot;cadetblue4&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;FACP&quot;</span>,<span class="dt">lwd=</span><span class="dv">4</span>,<span class="dt">main=</span><span class="st">&quot;(c)&quot;</span>)</a></code></pre></div>
+<div class="figure"><span id="fig:ma1m080414"></span>
+<img src="03-SeriesTemp_files/figure-html/ma1m080414-1.png" alt="MA(2) simulado com coeficiente $\theta_1=-0.8$, $\theta_1=0.4$ e $\theta_1=1.4$, (a) FACV amostral (b) e FAC amostral (c)." width="33%" /><img src="03-SeriesTemp_files/figure-html/ma1m080414-2.png" alt="MA(2) simulado com coeficiente $\theta_1=-0.8$, $\theta_1=0.4$ e $\theta_1=1.4$, (a) FACV amostral (b) e FAC amostral (c)." width="33%" /><img src="03-SeriesTemp_files/figure-html/ma1m080414-3.png" alt="MA(2) simulado com coeficiente $\theta_1=-0.8$, $\theta_1=0.4$ e $\theta_1=1.4$, (a) FACV amostral (b) e FAC amostral (c)." width="33%" />
+<p class="caption">
+Figura 4.13: MA(2) simulado com coeficiente <span class="math inline">\(\theta_1=-0.8\)</span>, <span class="math inline">\(\theta_1=0.4\)</span> e <span class="math inline">\(\theta_1=1.4\)</span>, (a) FACV amostral (b) e FAC amostral (c).
+</p>
+</div>
+</div>
+<div id="modelo-armapq" class="section level3">
+<h3><span class="header-section-number">4.5.7</span> Modelo ARMA(<span class="math inline">\(p\)</span>,<span class="math inline">\(q\)</span>)</h3>
+<p>Um modelo mais geral é dado pela aglutinação dos modelos AR e MA em um único modelos, ao qual chamamos Modelos Autoregressivos de Média Móveis, abreviado ARMA. Um processo <span class="math inline">\(\{Y_t\}_t\)</span> é um ARMA<span class="math inline">\((p,q)\)</span> se pode ser escrito como</p>
+<p>onde <span class="math inline">\(\varepsilon_t\sim RB(0,\sigma_\varepsilon^2)\)</span>, <span class="math inline">\(\phi_1,\cdots,\phi_p\in\mathbb{R}\)</span> são os coeficientes da parte AR e <span class="math inline">\(\theta_1,\cdots\theta_q\in\mathbb{R}\)</span> são os coeficientes da parte MA do processo. Utilizando os polinômios AR e MA vistos anteriormente, podemos escrever um processo ARMA<span class="math inline">\((p,q)\)</span> de uma forma compacta e elegante.</p>
+<hr />
+<blockquote>
+<p><span style="color: blue;"> O modelo ARMA(<em>p</em>,<em>q</em>)</span>
+<span class="math display" id="eq:mARMA2">\[\begin{equation}
+Y_t=\phi_1Y_{t-1}+\cdots+\phi_pY_{t-p}+\theta_1\varepsilon_{t-1}+\cdots+\theta_q\varepsilon_{t-q} + \varepsilon_t
+\tag{4.13}
+\end{equation}\]</span>
+em que <span class="math inline">\(\varepsilon_t\sim RB(0,\sigma_\varepsilon^2)\)</span>, <span class="math inline">\(\phi_1,\cdots,\phi_p\in\mathbb{R}\)</span> são os coeficientes da parte AR e <span class="math inline">\(\theta_1,\cdots\theta_q\in\mathbb{R}\)</span> são os coeficientes da parte MA do processo.</p>
+</blockquote>
+<hr />
+<p><br></p>
+<p>Utilizando os polinômios AR e MA vistos anteriormente, podemos escrever um processo ARMA<span class="math inline">\((p,q)\)</span> de uma forma compacta e elegante.</p>
+<p><span class="math display">\[\Phi_p(L)Y_t=\Theta_q(L)\varepsilon_t,\]</span>
+em que <span class="math inline">\(\varepsilon_t\)</span> é um <span class="math inline">\(RB(0,\sigma_\varepsilon^2)\)</span>, <span class="math inline">\(\Phi_p(L)\)</span> e <span class="math inline">\(\Theta_p(L)\)</span> são polinômios da parte AR e MA (respectivamente) dados por
+<span class="math display">\[\Phi_p(L)=1-\phi_1L-\phi_2L^ 2-\cdots-\phi_pL^p  \quad\mbox{e}\quad  \Theta_q(L)=1+ \theta_1L + \theta_2L^2  +\cdots + \theta_qL^q.\]</span></p>
+<p><br></p>
+
+<div class="example">
+<p><span id="exm:arma23" class="example"><strong>Exemplo 4.2  ( Modelo ARMA(2,3) )  </strong></span>O Modelo ARMA(2,3) é escrito como</p>
+<span class="math display">\[\begin{eqnarray*}
+\Phi_2(L)y_t&amp;=&amp;\Psi_3(L)\varepsilon_t\\
+(1-\phi_1L-\phi_2L^2)y_t&amp;=&amp;(1+\theta_1L+\theta_2L^2+\theta_3L^3)\varepsilon_t\\
+y_t&amp;=&amp;\phi_1y_{t-1}+\phi_2y_{t-2}+\varepsilon_t+\theta_1\varepsilon_{t-1}+\theta_2\varepsilon_{t-2}+\theta_3\varepsilon_{t-3}.
+\end{eqnarray*}\]</span>
+</div>
+
+<div id="exemplos-arma-simulados" class="section level4">
+<h4><span class="header-section-number">4.5.7.1</span> Exemplos ARMA simulados</h4>
+
+<div class="example">
+<p><span id="exm:causar1" class="example"><strong>Exemplo 4.3  (Causalidade do processo AR(1))  </strong></span>O modelo AR(1):</p>
+<p><span class="math display">\[
+y_t = \phi y_{t-1} + e_t,
+\]</span></p>
+<p>pode ser escrito como
+<span class="math display">\[
+ y_t = e_t + \phi e_{t-1} + \phi^2 e_{t-2} + \cdots + \phi^{k-1}e_{t-(k-1)} + \phi^ky_{t-k},
+\]</span>
+em que para <span class="math inline">\(k\)</span> grande tem-se</p>
+<span class="math display">\[\begin{eqnarray*}
+y_t &amp; = &amp; e_t + \phi e_{t-1} + \phi^2 e_{t-2} + \ldots\\
+   &amp; = &amp; \psi_0 e_t + \psi_1 e_{t-1} + \psi_2 e_{t-2} + \ldots,
+\end{eqnarray*}\]</span>
+em que <span class="math inline">\(|\phi| &lt; 1\)</span> e <span class="math inline">\(\psi_j = \phi^j\)</span>. O que acontece com a variância de <span class="math inline">\(y_t\)</span>? Assim, essa representação somente faz sentido se
+<span class="math inline">\(\sum_{j=0}^{\infty}\psi_j&lt;\infty\)</span>, o que ocorre se, e somente se, <span class="math inline">\(|\phi|&lt;1\)</span>.
+</div>
+
+</div>
+</div>
+<div id="causalidade" class="section level3">
+<h3><span class="header-section-number">4.5.8</span> Causalidade</h3>
+<p>O conceito de <span style="color: blue;"> causalidade </span> consiste em escrever um processo AR(<span class="math inline">\(q\)</span>) como um MA(<span class="math inline">\(\infty\)</span>).</p>
+<hr />
+<blockquote>
+<p>Um processo linear <span class="math inline">\(\{Y_t \}\)</span> é <span style="color: blue;"> CAUSAL </span> (estritamente, uma função causal de <span class="math inline">\(\{\varepsilon_t \}\)</span>) se existem reais <span class="math inline">\(\psi_0,\psi_1,\cdots\)</span> satisfazendo <span class="math inline">\(\sum_{j=0}^{\infty}|\psi_j|&lt;\infty\)</span> e tais que
+<span class="math display" id="eq:causaldef">\[\begin{align}
+Y_t = \psi_0\varepsilon_t + \psi_1\varepsilon_{t-1} + \psi_2 \varepsilon_{t-2} + \cdots = \sum_{k=0}^\infty\psi_k\varepsilon_{t-k}= \Psi(L)\varepsilon_t,
+\tag{4.14}
+\end{align}\]</span>
+onde denotamos
+<span class="math display">\[
+\Psi(L) = \psi_0 + \psi_1 L + \psi_2 L^2 + \cdots = \sum_{k=0}^\infty\psi_kL^k.
+\]</span></p>
+</blockquote>
+<hr />
+<p>O modelo AR(1) é dado por:</p>
+<p><span class="math display">\[
+Y_t = \phi Y_{t-1} + \varepsilon_t,
+\]</span>
+para <span class="math inline">\(|\phi|&lt;1\)</span> e <span class="math inline">\(\varepsilon_t\sim RB(0,\sigma^2_\varepsilon)\)</span>. Na Seção <a href="#sec:subar1"><strong>??</strong></a> obtivemos a representação (com <span class="math inline">\(c=0\)</span>)
+<span class="math display">\[Y_t = \sum_{j=0}^\infty \phi^j\varepsilon_{t-j}.\]</span>
+Identificando-se <span class="math inline">\(\psi_j= \phi^j\)</span>, obtemos que <span class="math inline">\(Y_t\)</span> possui a representação <a href="st.html#eq:causaldef">(4.14)</a> e observando que, como <span class="math inline">\(|\phi|&lt;1\)</span>,
+<span class="math display">\[\sum_{j=0}^{\infty}|\psi_j|=\sum_{j=0}^{\infty}|\phi|^j=\frac1{1-|\phi|}&lt;\infty,\]</span>
+segue que um AR(1) com <span class="math inline">\(|\phi|&lt;1\)</span> é causal.</p>
+<p>Obviamente todo modelo MA<span class="math inline">\((q)\)</span> é causal, dado que se
+<span class="math display">\[Y_t=\varepsilon_t+\theta\varepsilon_{t-1}+\cdots+\theta_q\varepsilon_{t-q},\]</span>
+com <span class="math inline">\(\varepsilon_t\sim RB(0, \sigma_\varepsilon^2)\)</span>, tomamos <span class="math inline">\(\psi_0=1\)</span>, <span class="math inline">\(\psi_j=\theta_j\)</span>, para <span class="math inline">\(j=1,\cdots,q\)</span> e <span class="math inline">\(\psi_j=0\)</span> para <span class="math inline">\(j&gt;q\)</span>, temos que a representação <a href="st.html#eq:causaldef">(4.14)</a> é satisfeita e, evidentemente, <span class="math inline">\(\sum_{j=0}^\infty|\psi|_j=1+|\theta_1|+\cdots+|\theta_q|&lt;\infty\)</span>.</p>
+<p><br></p>
+</div>
+<div id="invertibilidade" class="section level3">
+<h3><span class="header-section-number">4.5.9</span> Invertibilidade</h3>
+<p>Mostramos que um processo AR pode ser reescrito como um processo MA de ordem infinita através de pesos <span class="math inline">\(\psi_j\)</span>’s. Podemos nos perguntar quando (e se) é possível escrever um processo MA como
+um autorregressivo.</p>
+<p><br></p>
+<hr />
+<blockquote>
+<p>Um processo linear <span class="math inline">\(\{Y_t \}\)</span> é dito ser <span style="color: blue;"> INVERTÍVEL </span> (estritamennte, uma função invertível de <span class="math inline">\(\{\varepsilon_t \}\)</span>) se existem reais <span class="math inline">\(\mbox{Var}phi_1,\mbox{Var}phi_2,\cdots\)</span> satisfazendo <span class="math inline">\(\sum_{j=0}^{\infty}|\mbox{Var}phi_j|&lt;\infty\)</span> e tais que
+<span class="math display" id="eq:invertdef">\[\begin{align}
+\varepsilon_t = \mbox{Var}phi_0Y_t+\mbox{Var}phi_1Y_{t-1}+\mbox{Var}phi_2Y_{t-2}+\cdots =\sum_{k=0}^\infty\mbox{Var}phi_kY_{t-k}=\Phi(L)Y_t,
+\tag{4.15}
+\end{align}\]</span>
+onde denotamos
+<span class="math display">\[
+\Phi(L) = \mbox{Var}phi_0 + \mbox{Var}phi_1 L + \mbox{Var}phi_2 L^2 + \cdots = \sum_{k=0}^\infty\mbox{Var}phi_kL^k.
+\]</span></p>
+</blockquote>
+<hr />
+<p><br></p>
+
+<div class="example">
+<p><span id="exm:invma1" class="example"><strong>Exemplo 4.4  (Invertibilidade do processo MA(1))  </strong></span>Considere o modelo MA(1)</p>
+<p><span class="math display">\[
+Y_t = \varepsilon_t -\theta \varepsilon_{t-1},
+\]</span>
+em que <span class="math inline">\(\varepsilon_t\)</span> é um <span class="math inline">\(RB(0,\sigma^2)\)</span>. Reescrevendo a equação acima
+como
+<span class="math display">\[
+\varepsilon_t = Y_t + \theta \varepsilon_{t-1}
+\]</span>
+e substituindo <span class="math inline">\(t\)</span> por <span class="math inline">\(t - 1\)</span>
+e <span class="math inline">\(\varepsilon_{t-1}\)</span> na equação modificada, temos:
+<span class="math display">\[\begin{eqnarray*}
+\varepsilon_t &amp;=&amp; Y_t + \theta(Y_{t-1} + \theta \varepsilon_{t-2})\\
+    &amp;=&amp; Y_t + \theta Y_{t-1} + \theta^2Y_{t-2}
+\end{eqnarray*}\]</span>
+Se <span class="math inline">\(|\theta| &lt; 1\)</span>, podemos continuar a substituição e obter:
+<span class="math display">\[\begin{eqnarray*}
+  \varepsilon_t  &amp;=&amp; Y_t + \theta Y_{t-1} + \theta^2Y_{t-2}+\cdots = \sum_{j=0}^\infty\theta^jY_{t-j}.
+\end{eqnarray*}\]</span></p>
+<p>Assim, da mesma forma como foi feito para o AR(1), tomando <span class="math inline">\(\mbox{Var}\phi_j=\theta^j\)</span>, segue que, se <span class="math inline">\(|\theta| &lt; 1\)</span>, a representação  é satisfeita e <span class="math inline">\(\sum_{j=0}^\infty|\mbox{Var}\phi_j|=\frac1{1-|\theta|}&lt;\infty\)</span> de onde concluimos que o modelo MA(1) é invertível. Em outras palavras, um modelo MA(1) pode ser invertido (transformado) para um AR(<span class="math inline">\(\infty\)</span>), sempre que <span class="math inline">\(|\theta|&lt;1\)</span>.</p>
+</div>
+
+</div>
+<div id="polinômio-característico" class="section level3">
+<h3><span class="header-section-number">4.5.10</span> Polinômio característico</h3>
+<p>Nos exemplos mostrados acima tratamos da causalidade e invertibilidade dos casos
+AR(1) e MA(1) em particular. Para os casos mais gerais AR(<span class="math inline">\(p\)</span>) e MA(<span class="math inline">\(q\)</span>) utilizamos os
+chamados <strong><em>polinômios característicos</em></strong> para decidir se os processos são causais e/ou invertíveis.</p>
+<p>Para um modelo geral AR(<span class="math inline">\(p\)</span>), definimos o <strong><em>polinômios característicos AR</em></strong>
+como
+<span class="math display">\[
+\Phi(z) = 1 - \phi_1 z -\phi_2 z^2-\cdots-\phi_p z^p, \ \ z\in\mathbb{C}
+\]</span>
+<br></p>
+
+<div class="theorem">
+<p><span id="thm:soluest" class="theorem"><strong>Teorema 4.1  </strong></span>Uma (única) solução <strong>estacionária</strong> para <span class="math inline">\(\Phi(L)y_t = e_t\)</span> existe se, e somente, as raízes de <span class="math inline">\(\Phi(z)\)</span> <strong>não pertence ao círculo de raio um</strong>, ou seja,</p>
+<p><span class="math display">\[\begin{equation*}
+|z| = 1 \rightarrow \Phi(z) = 1 - \phi_1 z - \cdots - \phi_p z^p \neq 0.
+\end{equation*}\]</span></p>
+<p>O processo AR(<span class="math inline">\(p\)</span>) é <strong>causal</strong> se, e somente se as raízes de <span class="math inline">\(\Phi(z)\)</span> estão <strong>fora do círculo unitário</strong>, ou seja,</p>
+<span class="math display">\[
+|z| \leq 1 \rightarrow \Phi(z) = 1 - \phi_1 z - \cdots - \phi_p z^p \neq 0.
+\]</span>
+</div>
+
+<p><br></p>
+<p>Para um modelo geral MA(<span class="math inline">\(q\)</span>), definimos o <span style="color: blue;"> polinômio característico MA </span> como
+<span class="math display">\[\begin{equation*}
+\Theta(z) = 1 + \theta_1 z +\theta_2 z^2+\cdots+\theta_q z^q.
+\end{equation*}\]</span></p>
+<p><br></p>
+
+<div class="theorem">
+<p><span id="thm:invert" class="theorem"><strong>Teorema 4.2  </strong></span>Um processo MA(<span class="math inline">\(q\)</span>) é invertível se, e somente se, as raízes de <span class="math inline">\(\Theta(z)\)</span> estão fora do círculo
+unitário, isto é,</p>
+<span class="math display">\[\begin{equation*}
+z\in\mathbb{C} : |z|\leq  1 \mathbb{R}ightarrow \Theta(z) = 1 + \theta_1 z +\theta_2 z^2+\cdots+\theta_q z^q\neq 0.
+\end{equation*}\]</span>
+</div>
+
+<p><br></p>
+
+<div class="remark">
+ <span class="remark"><em>Observação. </em></span> Um processo ARMA será invertível e estacionário se a parte AR o for, e será invertível se a parte MA o for.
+</div>
+
+</div>
+<div id="estacionariedade-e-causalidade-de-um-processo-arma" class="section level3">
+<h3><span class="header-section-number">4.5.11</span> Estacionariedade e causalidade de um processo ARMA</h3>
+<p>Para um processo ARMA, as condições para causalidade, invertibilidade e estacionariedade são dadas no seguinte teorema.</p>
+<p><br></p>
+
+<div class="theorem">
+<p><span id="thm:causaarma" class="theorem"><strong>Teorema 4.3  </strong></span>Se <span class="math inline">\(\Phi(\cdot)\)</span> e <span class="math inline">\(\Theta(\cdot)\)</span> não possuem fatores em comum, existe
+uma única solução estacionária <span class="math inline">\(\{Y_t\}\)</span> para <span class="math inline">\(\Phi(L)Y_t = \Theta(L)\varepsilon_t\)</span>
+se, e somente se,</p>
+<p><span class="math display">\[\begin{equation*}
+z\in\mathbb{C} : |z| = 1 \mathbb{R}ightarrow \Phi(z) = 1 - \phi_1 z - \cdots - \phi_p z^p \neq 0.
+\end{equation*}\]</span></p>
+<p>Esse processo ARMA(<span class="math inline">\(p,q\)</span>) é causal se, e somente se,
+<span class="math display">\[\begin{equation*}
+z\in\mathbb{C} : |z| \leq 1 \mathbb{R}ightarrow \Phi(z) = 1 - \phi_1 z - \cdots - \phi_p z^p \neq 0.
+\end{equation*}\]</span></p>
+<p>Será invertível se, e somente se</p>
+<p><span class="math display">\[\begin{equation*}
+z\in\mathcal{C} : |z|\leq  1 \mathbb{R}ightarrow \Theta(z) = 1 + \theta_1 z +\theta_2 z^2+\cdots+\theta_q z^q\neq 0.
+\end{equation*}\]</span></p>
+</div>
+
+</div>
+</div>
+<div id="exercícios" class="section level2">
+<h2><span class="header-section-number">4.6</span> Exercícios</h2>
+
+<div class="exercise">
+<span id="exr:pest" class="exercise"><strong>Exercício 4.1  </strong></span>Defina processo estocástico e ilustre graficamente. Explique o que é a realização de um processo estocástico e por que séries econômicas podem ser entendidas como geradas por um processo estocásticos.
+</div>
+
+<p><br></p>
+
+<div class="exercise">
+<span id="exr:stce" class="exercise"><strong>Exercício 4.2  </strong></span> Seja <span class="math inline">\(\{y_t\}^T_{t=1}\)</span> uma série temporal. Quais características essa série deve apresentar para ser considerada uma série de covariância estacionária?
+</div>
+
+<p><br></p>
+
+<div class="exercise">
+<p><span id="exr:defrb" class="exercise"><strong>Exercício 4.3  </strong></span>Faça os seguintes items:</p>
+<div class="line-block">   a) Defina o que é um processo ruído branco.</div>
+<div class="line-block">   b) Defina o que é um processo independente e identicamente distribuído (i.i.d.).</div>
+<div class="line-block">   c) Defina ruído branco Gaussiano.</div>
+<div class="line-block">   d) Qual a relação entre ruído branco, ruído branco Gaussiano e processo i.i.d.?</div>
+<div class="line-block">   e) Esses processos são estacionários?</div>
+</div>
+
+<p><br></p>
+
+<div class="exercise">
+<p><span id="exr:ma1" class="exercise"><strong>Exercício 4.4  </strong></span>Considere um processo MA(1):
+<span class="math inline">\(y_t=e_t+\alpha_1e_{t-1};\)</span> onde <span class="math inline">\(e_t \sim RB(0,\sigma^2_e)\)</span>.</p>
+<div class="line-block">   a) Calcule a média e variância de <span class="math inline">\(y_t\)</span>.</div>
+<div class="line-block">   b) Calcule as autocovariâncias de <span class="math inline">\(lags\)</span> 1 e 2 para a série <span class="math inline">\(y_t\)</span>.</div>
+<div class="line-block">   c) Esse processo é estacionário? (Justifique sua resposta usando os valores encontrados nos itens anteriores juntamente com o conceito de estacionariedade definido na Questão 1).</div>
+<div class="line-block">   d) Comente a afirmativa: ``Todo processo MA(<span class="math inline">\(q\)</span>), onde <span class="math inline">\(q &lt; \infty,\)</span> é estacionário’’.</div>
+<div class="line-block">   e) Suponha que <span class="math inline">\(\alpha_1=0.5\)</span>. O processo é invertível?<br />
+   f) Calcule a autocorrelação de ordem 1 para o processo do item anterior e faça o gráfico da FAC com 5 <span class="math inline">\(lags\)</span>.</div>
+</div>
+
+<p><br></p>
+
+<div class="exercise">
+<p><span id="exr:ma2" class="exercise"><strong>Exercício 4.5  </strong></span> Considere um processo MA(2): <span class="math inline">\(y_t=e_t+\alpha_1e_{t-1}+\alpha_2e_{t-2};\)</span> onde <span class="math inline">\(e_t \sim RB(0,\sigma^2_e)\)</span>.</p>
+<div class="line-block">   a) Calcule a média e variância de <span class="math inline">\(y_t\)</span>.</div>
+<div class="line-block">   b) Calcule as autocovariâncias de <span class="math inline">\(lags\)</span> 1, 2 e 3 para a série <span class="math inline">\(y_t\)</span>.</div>
+<div class="line-block">   c) Esse processo é estacionário? (Justifique sua resposta usando os valores encontrados nos itens anteriores juntamente com o conceito de estacionariedade definido na Questão 1).</div>
+<div class="line-block">   d) Suponha que <span class="math inline">\(\alpha_1=0.65\)</span> e que <span class="math inline">\(\alpha_2=-0.20\)</span>. O processo é invertível?<br />
+   e) Calcule a autocorrelação de ordem 1 e 2 para o processo do item anterior e faça o gráfico da FAC com 5 <span class="math inline">\(lags\)</span>.</div>
+</div>
+
+<p><br></p>
+
+<div class="exercise">
+<p><span id="exr:p1p2" class="exercise"><strong>Exercício 4.6  </strong></span>Considere os seguintes processos
+<span class="math display">\[y_t=e_t+\theta e_{t-1} \quad\mbox{e} \quad y_t=e_t+\frac{1}{\theta}e_{t-1},\]</span> onde <span class="math inline">\(e_t \sim iid(0,\sigma^2_e)\)</span> e <span class="math inline">\(\theta \neq 0\)</span>.</p>
+<div class="line-block">   a) Os processos acima possuem as mesmas autocorrelações? Verifique.</div>
+<div class="line-block">   b) Os processos acima são invertíveis? Verifique.</div>
+</div>
+
+<p><br></p>
+
+<div class="exercise">
+<p><span id="exr:ar1" class="exercise"><strong>Exercício 4.7  </strong></span>Considere um processo AR(1):
+<span class="math inline">\(y_t=5+0.9y_{t-1}+e_t\)</span>, onde <span class="math inline">\(e_t \sim RB(0,\sigma^2_e)\)</span>.</p>
+<div class="line-block">   a) Esse processo é estacionário? Verifique.</div>
+<div class="line-block">   b) Calcule as autocorrelações de ordem 1, 2 e 3 para esse processo. Faça um esboço do gráfico da FAC para esse processo com 5 <span class="math inline">\(lags\)</span>.</div>
+<div class="line-block">   c) O que significa o coeficiente de <span class="math inline">\(y_{t-1}\)</span> num processo AR(1)?<br />
+   d) Faça um gráfico da FACP desse processo com 5 <span class="math inline">\(lags\)</span>.</div>
+</div>
+
+<p><br></p>
+<p>```{exercise ar123} Para os seguintes itens, responda:</p>
+<div class="line-block">   a) Explique como se comportam os gráficos da FAC e da FACP em processos AR(<span class="math inline">\(p\)</span>) e em processos MA(<span class="math inline">\(q\)</span>).</div>
+<div class="line-block">   b) Esboce os gráficos da FAC e FACP para os seguintes processos: AR(1), AR(3), MA(2) e MA(3).</div>
+<pre><code>
+
+&lt;br&gt;
+
+```{exercise exarmafac} Para os seguintes itens, responda:
+
+|    a\) Supondo que $E(y_t)=\mu$ e que $y_t=c_0+\beta_1y_{t-1}+e_t+\alpha_1e_{t-1}$, calcule o valor de $c_0$ em termos de $\mu$ e $\beta_{1}$.
+
+|    b\) Explique como se comportam os gráficos da FAC e da FACP em processos ARMA($p,q$).
+
+|    c\) Esboce os gráficos da FAC e FACP para um processos ARMA(1,1).
+</code></pre>
+<p><br></p>
+
+<div class="exercise">
+<span id="exr:exarmamet" class="exercise"><strong>Exercício 4.8  </strong></span>Explique os passos que devem ser seguidos para a modelagem de uma série temporal na metodologia ARMA.
+</div>
+
+<p><br></p>
+
+<div class="exercise">
+<span id="exr:a145" class="exercise"><strong>Exercício 4.9  (ANPEC 2014-5)  </strong></span>Suponha que <span class="math inline">\(Y_t\)</span> seja representado pelo seguinte processo autorregressivo de primeira ordem:
+<span class="math display">\[Y_t = 10 + 0,6 Y_{t-1} + e_t ,\]</span>
+em que et é um ruído branco que satisfaz as condições: <span class="math inline">\(\mathbb{E}(e_t)=0,\)</span> <span class="math inline">\(\mathbb{E}(e_t^2)=\sigma^2\)</span>, <span class="math inline">\(\mathbb{E}(e_te_s)=0\)</span> para <span class="math inline">\(t\neq s.\)</span> Suponha também que <span class="math inline">\(Y_0=0\)</span>. Obtenha <span class="math inline">\(\mathbb{E}(Y_t)\)</span> para <span class="math inline">\(t=2\)</span>.
+</div>
+
+<p><br></p>
+
+<div class="exercise">
+<p><span id="exr:a1410" class="exercise"><strong>Exercício 4.10  (ANPEC 2014-10)  </strong></span>Considere o seguinte processo:
+<span class="math display">\[Y_t=\rho Y_{t-1}+e_t,\,\,\,\, t=1,2,\cdots,\]</span>
+em que <span class="math inline">\(Y_0=0\)</span> e <span class="math inline">\(e_t\)</span> é um ruído branco que satisfaz as condições: <span class="math inline">\(\mathbb{E}(e_t)=0\)</span>, <span class="math inline">\(\mathbb{E}(e_t^2)=\sigma^2\)</span>, <span class="math inline">\(\mathbb{E}(e_te_s)=0\)</span>
+para <span class="math inline">\(t\neq s\)</span>.
+São corretas as afirmativas:</p>
+<div class="line-block">   0) Se <span class="math inline">\(\rho=1\)</span>, <span class="math inline">\(\mathbb{E}(Y_t)=0\)</span> para todo <span class="math inline">\(t\)</span>;</div>
+<div class="line-block">   1) Se <span class="math inline">\(\rho=1\)</span>, <span class="math inline">\(\mbox{Var}(Y_t)= t\)</span> para todo <span class="math inline">\(t\)</span>;</div>
+<div class="line-block">   2) Se <span class="math inline">\(\rho=1\)</span>, <span class="math inline">\(\mathbb{E}(Y_{t+h}/Y_t)&gt;Y_t\)</span> para todo <span class="math inline">\(h\geq 1\)</span>;</div>
+<div class="line-block">   3) Se <span class="math inline">\(|\rho|&lt;1\)</span>, <span class="math inline">\(\mbox{Var}(Y_t)= 1\)</span>;</div>
+<div class="line-block">   4) Se <span class="math inline">\(|\rho|&lt;1\)</span>, <span class="math inline">\(\mathbb{E}(Y_{t+h}/Y_t)= \rho^h Y_t\)</span> para todo <span class="math inline">\(h\geq 1\)</span>.</div>
+</div>
+
+<p><br></p>
+
+<div class="exercise">
+<p><span id="exr:a1310" class="exercise"><strong>Exercício 4.11  (ANPEC 2013-10)  </strong></span>Julgue as seguintes afirmativas:</p>
+<div class="line-block">   0) O passeio aleatório com drift, <span class="math inline">\(y_t = c + y_{t-1} + \varepsilon_t\)</span>, <span class="math inline">\(y_0 = 0\)</span>, em que <span class="math inline">\(\varepsilon_t\)</span> é um ruído branco, com média zero e variância <span class="math inline">\(\sigma^2\)</span>, é um processo estacionário de segunda ordem se <span class="math inline">\(c = 0\)</span>.</div>
+<div class="line-block">   1) O processo MA(1), <span class="math inline">\(yt = \varepsilon_t + \theta_1 \varepsilon_{t-1}\)</span> , em que <span class="math inline">\(\varepsilon_t\)</span> é um ruído branco, com média zero e variância <span class="math inline">\(\sigma^2\)</span>, é estacionário de segunda ordem se, e somente se, a raiz do polinômio <span class="math inline">\(1 + \theta_1x\)</span> cair fora do círculo unitário.</div>
+<div class="line-block">   2) O processo MA(1), <span class="math inline">\(y_t = \varepsilon_t -\theta_1 \varepsilon_{t-1}\)</span> , em que <span class="math inline">\(\varepsilon_t\)</span> é um ruído branco, com média zero e variância <span class="math inline">\(\sigma^2\)</span>, é inversível se, e somente se, <span class="math inline">\(|\theta_1| &lt; 1\)</span>.</div>
+<div class="line-block">   3) O processo AR(2), <span class="math inline">\(y_t = \phi_1y_{t-1} + \phi_2y_{t-2} + \varepsilon_t\)</span>, em que <span class="math inline">\(\varepsilon_t\)</span> é um ruído branco, com média zero e variância <span class="math inline">\(\sigma^2\)</span>, é estacionário de segunda ordem se</div>
+<p><span class="math display">\[|\phi_2| &lt; 1,\,\,\,\, \phi_2 - \phi_1 &lt; 1\,\,\,\,\mbox{ e }\,\,\,\,\, \phi_2 + \phi_1 &lt; 1.\]</span></p>
+<div class="line-block">   4) No passeio aleatório, <span class="math inline">\(y_t = y_{t-1} + \varepsilon_t\)</span>, <span class="math inline">\(y_0 = 0\)</span>, em que <span class="math inline">\(\varepsilon_t\)</span> é um ruído branco, com média zero e variância <span class="math inline">\(\sigma^2\)</span>, a variância de <span class="math inline">\(y_t\)</span> varia com <span class="math inline">\(t\)</span>.</div>
+</div>
+
+<p><br></p>
+
+<div class="exercise">
+<p><span id="exr:a1313" class="exercise"><strong>Exercício 4.12  (ANPEC 2013-13)  </strong></span>Considere o seguinte processo <span class="math inline">\(x_t = \mu + e_t + \alpha_1 e_{t-1}\)</span>, para <span class="math inline">\(t=1,2,\cdots\)</span>, no qual <span class="math inline">\(e_t\)</span> é uma sequência i.i.d com média 0 e variância <span class="math inline">\(\sigma_e^2\)</span> .
+Julgue as seguintes afirmativas:</p>
+<div class="line-block">   0) <span class="math inline">\(\mbox{Var}[ x_t ] = (1 + \alpha_1^2 )\sigma_e^2\)</span>.</div>
+<div class="line-block">   1) <span class="math inline">\(\mbox{Cov}( x_t , x_{t +h} ) = 0\)</span>, <span class="math inline">\(h &gt; 1\)</span>.</div>
+<div class="line-block">   2) <span class="math inline">\(\mathbb{E}[ x_t ] = \mu + t\)</span>.</div>
+<div class="line-block">   3) O processo descrito acima é estacionário em covariância.</div>
+<div class="line-block">   4) A função de autocorrelação deste processo é: <span class="math inline">\(\rho_1 =\frac{\alpha_1}{1+\alpha_1^2}\)</span> e <span class="math inline">\(\rho_j=0\)</span> para <span class="math inline">\(j&gt;1\)</span>.</div>
+</div>
+
+<p><br></p>
+
+<div class="exercise">
+<span id="exr:a128" class="exercise"><strong>Exercício 4.13  (ANPEC 2012-08)  </strong></span>Suponha que <span class="math inline">\(Yt\)</span> seja descrito por um processo auto-regressivo de ordem 3, isto é,
+<span class="math display">\[Y_t = Y_{t-1} - 0,50Y_{t-3} + u_t\]</span>
+e que
+<span class="math display">\[u_t | Y_{t - j}\sim N(0,\sigma^2),\,\,\,\, \forall j &gt; 0.\]</span>
+Calcule a correlação entre <span class="math inline">\(Y_t\)</span> e <span class="math inline">\(Y_{t-2}\)</span>. Multiplique o resultado por 100.
+</div>
+
+<p><br></p>
+
+<div class="exercise">
+<p><span id="exr:a1111" class="exercise"><strong>Exercício 4.14  (ANPEC 2011-11)  </strong></span>Julgue as seguintes afirmativas:</p>
+<div class="line-block">   0) O processo AR(2), <span class="math inline">\(y_t = \rho_1 y_{t-1} + \rho_2 y_{t-2} + \varepsilon_t\)</span> , em que <span class="math inline">\(\varepsilon_t\)</span> é um ruído branco com média zero e variância <span class="math inline">\(\sigma^2\)</span>, é estacionário de segunda ordem se e somente se as raízes do polinômio <span class="math inline">\(x^2-\rho_1 x +\rho_2\)</span> estão fora do círculo unitário.</div>
+<div class="line-block">   1) No processo MA(2), <span class="math inline">\(y_t = \varepsilon_t + \theta_1\varepsilon_{t-1} + \theta_2 \varepsilon_{t-2}\)</span> , em que <span class="math inline">\(\varepsilon_t\)</span> é um ruído branco com média zero e variância <span class="math inline">\(\sigma^2\)</span>, a covariância entre <span class="math inline">\(y_t\)</span> e <span class="math inline">\(y_{t-3}\)</span> é igual a zero.</div>
+<div class="line-block">   2) No passeio aleatório com drift, <span class="math inline">\(y_t = c + y_{t-1} + \varepsilon_t\)</span>, <span class="math inline">\(y_0 = 0\)</span>, em que <span class="math inline">\(\varepsilon_t\)</span> é um ruído branco com média zero e variância <span class="math inline">\(\sigma^2,\)</span> a média de <span class="math inline">\(y_t\)</span> varia com <span class="math inline">\(t\)</span>.</div>
+<div class="line-block">   3) No processo MA(1), <span class="math inline">\(y_t = \varepsilon_t + \theta_1 \varepsilon_{t-1}\)</span> , em que <span class="math inline">\(\varepsilon_t\)</span> é um ruído branco com média zero e variância <span class="math inline">\(\sigma^2\)</span>, a correlação entre <span class="math inline">\(y_t\)</span> e <span class="math inline">\(y_{t-1}\)</span> é menor ou igual a 0,5 em valor absoluto.</div>
+<div class="line-block">   4) O processo ARMA(1,1), <span class="math inline">\(y_t = \rho y_{t-1} + \varepsilon_t + \theta \varepsilon_{t-1}\)</span> , em que <span class="math inline">\(\varepsilon_t\)</span> é um ruído branco com média zero e variância <span class="math inline">\(\sigma^2\)</span>, é estacionário de segunda ordem se e somente se <span class="math inline">\(|\rho| &lt; 1\)</span> e <span class="math inline">\(|\theta| &lt; 1\)</span>.</div>
+</div>
+
+<p><br></p>
+
+<div class="exercise">
+<p><span id="exr:a0915" class="exercise"><strong>Exercício 4.15  (ANPEC 2009-15)  </strong></span>É correto afirmar que:</p>
+<div class="line-block">   0) No processo AR(1), <span class="math inline">\(y_t = \phi_0 + \phi_1 y_{t-1} + e_t\)</span>, em que <span class="math inline">\(\phi_1 &lt; 1\)</span> e <span class="math inline">\(e_t\)</span> é um ruído branco de média nula e variância <span class="math inline">\(\sigma^2\)</span>, a média de <span class="math inline">\(y_t\)</span> será igual a <span class="math inline">\(\phi_0\)</span>.</div>
+<div class="line-block">   1) O processo MA(1), <span class="math inline">\(y_t = e_t + \theta e_{t-1}\)</span>, em que <span class="math inline">\(e_t\)</span> é um ruído branco de média nula e variância constante, será estacionário mesmo que <span class="math inline">\(\theta &gt; 1\)</span>.</div>
+<div class="line-block">   2) Seja a função de autocorrelação do processo AR(1) definido no item (0) dada por <span class="math inline">\(\rho_j\)</span>. É correto afirmar que <span class="math inline">\(\rho_j = \phi_1^j\)</span>.</div>
+<div class="line-block">   3) O processo AR(2), <span class="math inline">\(y t = \phi_0 + \phi_1 y_{t-1} + \phi_2 y_{t-2} + e_t\)</span>, em que <span class="math inline">\(e_t\)</span> é um ruído branco de média nula e variância <span class="math inline">\(\sigma^2\)</span>, será estacionário de segunda ordem se, e somente se, <span class="math inline">\(\phi_1 &lt; 1\)</span> e <span class="math inline">\(\phi_2 &lt; 1\)</span>.</div>
+<div class="line-block">   4) No modelo ARMA(1,1), <span class="math inline">\(y_t = \phi_0 + \phi_1 y_{t-1} + e_t + \theta e_{t-1}\)</span> , em que <span class="math inline">\(e_t\)</span> é um ruído branco de média nula e variância constante (<span class="math inline">\(\sigma^2\)</span>), a variância de <span class="math inline">\(y_t\)</span> é dada por <span class="math inline">\(\frac{\sigma^2(1+\theta^2)}{1-\phi^2}\)</span>.</div>
+</div>
+
+<p><br></p>
+
+<div class="exercise">
+<span id="exr:s200" class="exercise"><strong>Exercício 4.16  </strong></span>Considere uma série temporal com 200 observações. A Figura <a href="st.html#fig:exarma">4.14</a> mostra a evolução da série ao longo do tempo. A tabela a seguir fornece as autocorrelações, <span class="math inline">\(\rho\)</span>´s, e autocorrelações parciais, <span class="math inline">\(\phi\)</span>s, estimados a partir dessa série.
+</div>
+
+<div class="figure"><span id="fig:exarma"></span>
+<img src="03-SeriesTemp_files/figure-html/exarma-1.png" alt="Série temporal simulada" width="95%" />
+<p class="caption">
+Figura 4.14: Série temporal simulada
+</p>
+</div>
+<p><br></p>
+<table>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(k\)</span></th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\rho_k\)</span></td>
+<td>0.51</td>
+<td>0.13</td>
+<td>0.01</td>
+<td>0.04</td>
+<td>0.03</td>
+<td>0.00</td>
+<td>0.04</td>
+<td>0.02</td>
+<td>0.08</td>
+<td>0.01</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\phi_{k,k}\)</span></td>
+<td>0.51</td>
+<td>-0.18</td>
+<td>0.03</td>
+<td>0.06</td>
+<td>-0.03</td>
+<td>-0.00</td>
+<td>0.07</td>
+<td>-0.05</td>
+<td>0.13</td>
+<td>-0.11</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<div class="line-block">   a) Analisando a Figura <a href="st.html#fig:exarma">4.14</a> a série parece ser estacionária? Explique.</div>
+<div class="line-block">   b) Faça o gráfico da FAC e FACP para esse processo.</div>
+<div class="line-block">   c) Calcule o critério para decisão quanto à significância das autocorrelações estimadas e represente esse critério nos gráficos da FAC e FACP.</div>
+<div class="line-block">   d) Qual(is) modelo(s) você propõe para ajustar essa série temporal? Justifique.</div>
+<p><br></p>
+
+<div class="exercise">
+<p><span id="exr:exprev" class="exercise"><strong>Exercício 4.17  </strong></span>Usando a esperança condicional, calcule as previsões 1, 2 e 3 passos a frente <span class="math inline">\((\widehat{y}_T(1)\)</span>, <span class="math inline">\(\widehat{y}_T(2)\)</span>, <span class="math inline">\(\widehat{y}_T(3))\)</span> para os seguintes processos:</p>
+<div class="line-block">   a) AR(1);</div>
+<div class="line-block">   b) AR(2);</div>
+<div class="line-block">   c) MA(1);</div>
+<div class="line-block">   d) MA(3);</div>
+<div class="line-block">   e) ARMA(1,1);</div>
+<div class="line-block">   f) ARMA(2,2).</div>
+</div>
+
+<p><br></p>
+
+<div class="exercise">
+<span id="exr:exprev200" class="exercise"><strong>Exercício 4.18  </strong></span>Abaixo (Figura 2) encontram-se os gráficos da FAC e FACP calculados para uma série
+<span class="math inline">\(\{y_t\}^{200}_{t=1}\)</span>.
+</div>
+
+<p><br></p>
+<div class="figure"><span id="fig:exarmapf"></span>
+<img src="03-SeriesTemp_files/figure-html/exarmapf-1.png" alt="FAC e FACP de uma série temporal simulada" width="45%" /><img src="03-SeriesTemp_files/figure-html/exarmapf-2.png" alt="FAC e FACP de uma série temporal simulada" width="45%" />
+<p class="caption">
+Figura 4.15: FAC e FACP de uma série temporal simulada
+</p>
+</div>
+<p><br></p>
+<div class="line-block">   a) Analisando a Figura <a href="st.html#fig:exarmapf">4.15</a> a série parece ser estacionária? Explique.</div>
+<div class="line-block">   b) Usando os gráficos da FAC e FACP, qual(is) modelo(s) você propõe para ajustar essa série temporal? Justifique. (Note que o primeiro <span class="math inline">\(lag\)</span> é o 1 em ambos os gráficos).</div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="streg.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="stnoest.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/03-SeriesTemp.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Econometria-e-series-temporais-com-o-R.pdf", "Econometria-e-series-temporais-com-o-R.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

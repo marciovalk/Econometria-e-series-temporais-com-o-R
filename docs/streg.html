@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 3 Séries temporais no contexto de regressão | Econometria e Séries Temporais com R</title>
+  <meta name="description" content="Este livro pode ser usado em um curso de graduação que proponha estudar econometria e séreis temporais em um nível introdutório. No entanto, também é abordado um pouco da teoria e tecnicalidade." />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 3 Séries temporais no contexto de regressão | Econometria e Séries Temporais com R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Este livro pode ser usado em um curso de graduação que proponha estudar econometria e séreis temporais em um nível introdutório. No entanto, também é abordado um pouco da teoria e tecnicalidade." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 3 Séries temporais no contexto de regressão | Econometria e Séries Temporais com R" />
+  
+  <meta name="twitter:description" content="Este livro pode ser usado em um curso de graduação que proponha estudar econometria e séreis temporais em um nível introdutório. No entanto, também é abordado um pouco da teoria e tecnicalidade." />
+  
+
+<meta name="author" content="Marcio Valk e Guilherme Pumi" />
+
+
+<meta name="date" content="2020-07-12" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="rev.html"/>
+<link rel="next" href="st.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefácio</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Breve introdução ao R</a><ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#apresentação-da-linguagem-r"><i class="fa fa-check"></i><b>1.1</b> Apresentação da linguagem R</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#instalando-o-r"><i class="fa fa-check"></i><b>1.2</b> Instalando o R</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#instalando-o-rstudio"><i class="fa fa-check"></i><b>1.3</b> Instalando o RStudio</a></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#diretório-de-trabalho"><i class="fa fa-check"></i><b>1.4</b> Diretório de trabalho</a></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#rstudio-cloud"><i class="fa fa-check"></i><b>1.5</b> RStudio Cloud</a></li>
+<li class="chapter" data-level="1.6" data-path="intro.html"><a href="intro.html#instalação-de-pacotes"><i class="fa fa-check"></i><b>1.6</b> Instalação de pacotes</a></li>
+<li class="chapter" data-level="1.7" data-path="intro.html"><a href="intro.html#funcionalidades-básicas"><i class="fa fa-check"></i><b>1.7</b> Funcionalidades básicas</a><ul>
+<li class="chapter" data-level="1.7.1" data-path="intro.html"><a href="intro.html#operações"><i class="fa fa-check"></i><b>1.7.1</b> Operações</a></li>
+<li class="chapter" data-level="1.7.2" data-path="intro.html"><a href="intro.html#operadores-lógicos"><i class="fa fa-check"></i><b>1.7.2</b> Operadores lógicos</a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="intro.html"><a href="intro.html#variáveis-no-r"><i class="fa fa-check"></i><b>1.8</b> Variáveis no R</a><ul>
+<li class="chapter" data-level="1.8.1" data-path="intro.html"><a href="intro.html#operações-1"><i class="fa fa-check"></i><b>1.8.1</b> Operações</a></li>
+</ul></li>
+<li class="chapter" data-level="1.9" data-path="intro.html"><a href="intro.html#vetores"><i class="fa fa-check"></i><b>1.9</b> Vetores</a><ul>
+<li class="chapter" data-level="1.9.1" data-path="intro.html"><a href="intro.html#operações-com-vetores"><i class="fa fa-check"></i><b>1.9.1</b> Operações com vetores</a></li>
+</ul></li>
+<li class="chapter" data-level="1.10" data-path="intro.html"><a href="intro.html#matrizes"><i class="fa fa-check"></i><b>1.10</b> Matrizes</a><ul>
+<li class="chapter" data-level="1.10.1" data-path="intro.html"><a href="intro.html#operações-com-matrizes"><i class="fa fa-check"></i><b>1.10.1</b> Operações com Matrizes</a></li>
+</ul></li>
+<li class="chapter" data-level="1.11" data-path="intro.html"><a href="intro.html#uso-do-for-loop"><i class="fa fa-check"></i><b>1.11</b> Uso do for (loop)</a></li>
+<li class="chapter" data-level="1.12" data-path="intro.html"><a href="intro.html#funções"><i class="fa fa-check"></i><b>1.12</b> Funções</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="rev.html"><a href="rev.html"><i class="fa fa-check"></i><b>2</b> Revisão</a><ul>
+<li class="chapter" data-level="2.1" data-path="rev.html"><a href="rev.html#aleatoriedade-a-essência-da-estatística"><i class="fa fa-check"></i><b>2.1</b> Aleatoriedade, a essência da estatística</a></li>
+<li class="chapter" data-level="2.2" data-path="rev.html"><a href="rev.html#variável-aleatória"><i class="fa fa-check"></i><b>2.2</b> Variável aleatória</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="rev.html"><a href="rev.html#distribuição-de-probabilidade"><i class="fa fa-check"></i><b>2.2.1</b> Distribuição de probabilidade</a></li>
+<li class="chapter" data-level="2.2.2" data-path="rev.html"><a href="rev.html#distribuições-conjunta-marginal-e-condicional"><i class="fa fa-check"></i><b>2.2.2</b> Distribuições conjunta, marginal e condicional</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="rev.html"><a href="rev.html#a-distribuição-normal-e-distribuições-relacionadas"><i class="fa fa-check"></i><b>2.3</b> A distribuição Normal e distribuições relacionadas</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="rev.html"><a href="rev.html#a-distribuição-normal"><i class="fa fa-check"></i><b>2.3.1</b> A distribuição Normal</a></li>
+<li class="chapter" data-level="2.3.2" data-path="rev.html"><a href="rev.html#distribuições-relacionadas"><i class="fa fa-check"></i><b>2.3.2</b> Distribuições relacionadas</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="rev.html"><a href="rev.html#parâmetros-estimadores-e-valores-estimados"><i class="fa fa-check"></i><b>2.4</b> Parâmetros, estimadores e valores estimados</a></li>
+<li class="chapter" data-level="2.5" data-path="rev.html"><a href="rev.html#propriedades-de-variáveis-aleatórias"><i class="fa fa-check"></i><b>2.5</b> Propriedades de variáveis aleatórias</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="rev.html"><a href="rev.html#média-valor-esperado-ou-esperança-matemática"><i class="fa fa-check"></i><b>2.5.1</b> Média, valor esperado ou esperança matemática</a></li>
+<li class="chapter" data-level="2.5.2" data-path="rev.html"><a href="rev.html#propriedades-da-esperança"><i class="fa fa-check"></i><b>2.5.2</b> Propriedades da Esperança</a></li>
+<li class="chapter" data-level="2.5.3" data-path="rev.html"><a href="rev.html#variância"><i class="fa fa-check"></i><b>2.5.3</b> Variância</a></li>
+<li class="chapter" data-level="2.5.4" data-path="rev.html"><a href="rev.html#covariância"><i class="fa fa-check"></i><b>2.5.4</b> Covariância</a></li>
+<li class="chapter" data-level="2.5.5" data-path="rev.html"><a href="rev.html#correlação"><i class="fa fa-check"></i><b>2.5.5</b> Correlação</a></li>
+<li class="chapter" data-level="2.5.6" data-path="rev.html"><a href="rev.html#propriedades-da-variância-covariância-e-correlação"><i class="fa fa-check"></i><b>2.5.6</b> Propriedades da variância, covariância e correlação</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="rev.html"><a href="rev.html#estimadores"><i class="fa fa-check"></i><b>2.6</b> Estimadores</a><ul>
+<li class="chapter" data-level="2.6.1" data-path="rev.html"><a href="rev.html#propriedades-dos-estimadores"><i class="fa fa-check"></i><b>2.6.1</b> Propriedades dos estimadores</a></li>
+<li class="chapter" data-level="2.6.2" data-path="rev.html"><a href="rev.html#vícioviés"><i class="fa fa-check"></i><b>2.6.2</b> Vício/Viés</a></li>
+<li class="chapter" data-level="2.6.3" data-path="rev.html"><a href="rev.html#consistência"><i class="fa fa-check"></i><b>2.6.3</b> Consistência</a></li>
+<li class="chapter" data-level="2.6.4" data-path="rev.html"><a href="rev.html#eficiência"><i class="fa fa-check"></i><b>2.6.4</b> Eficiência</a></li>
+<li class="chapter" data-level="2.6.5" data-path="rev.html"><a href="rev.html#erro-quadrático-médio-eqm"><i class="fa fa-check"></i><b>2.6.5</b> Erro quadrático médio (EQM)</a></li>
+<li class="chapter" data-level="2.6.6" data-path="rev.html"><a href="rev.html#vício-versus-vvariância-mínima"><i class="fa fa-check"></i><b>2.6.6</b> Vício versus Vvariância mínima</a></li>
+<li class="chapter" data-level="2.6.7" data-path="rev.html"><a href="rev.html#método-de-mínimos-quadrados-mqo"><i class="fa fa-check"></i><b>2.6.7</b> Método de mínimos quadrados (MQO)</a></li>
+<li class="chapter" data-level="2.6.8" data-path="rev.html"><a href="rev.html#regressão-liner-múltipla-rml"><i class="fa fa-check"></i><b>2.6.8</b> Regressão liner múltipla (RML)</a></li>
+<li class="chapter" data-level="2.6.9" data-path="rev.html"><a href="rev.html#hipóteses-do-modelo-de-regressão"><i class="fa fa-check"></i><b>2.6.9</b> Hipóteses do modelo de regressão</a></li>
+<li class="chapter" data-level="2.6.10" data-path="rev.html"><a href="rev.html#o-coeficiente-de-dterminação"><i class="fa fa-check"></i><b>2.6.10</b> O coeficiente de dterminação</a></li>
+<li class="chapter" data-level="2.6.11" data-path="rev.html"><a href="rev.html#propriedade-de-não-viés-dos-estimadores-mqo"><i class="fa fa-check"></i><b>2.6.11</b> Propriedade de não-viés dos estimadores MQO</a></li>
+<li class="chapter" data-level="2.6.12" data-path="rev.html"><a href="rev.html#testes-de-hipóteses"><i class="fa fa-check"></i><b>2.6.12</b> Testes de hipóteses</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="rev.html"><a href="rev.html#formas-funcionais-logarítmicas"><i class="fa fa-check"></i><b>2.7</b> Formas funcionais logarítmicas</a></li>
+<li class="chapter" data-level="2.8" data-path="rev.html"><a href="rev.html#exercícios"><i class="fa fa-check"></i><b>2.8</b> Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="streg.html"><a href="streg.html"><i class="fa fa-check"></i><b>3</b> Séries temporais no contexto de regressão</a><ul>
+<li class="chapter" data-level="3.1" data-path="streg.html"><a href="streg.html#introdução"><i class="fa fa-check"></i><b>3.1</b> Introdução</a></li>
+<li class="chapter" data-level="3.2" data-path="streg.html"><a href="streg.html#exemplos-de-séries-temporais"><i class="fa fa-check"></i><b>3.2</b> Exemplos de séries temporais</a></li>
+<li class="chapter" data-level="3.3" data-path="streg.html"><a href="streg.html#regressão-com-dados-de-séries-temporais"><i class="fa fa-check"></i><b>3.3</b> Regressão com dados de séries temporais</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="streg.html"><a href="streg.html#diferença-entre-dados-de-séries-temporais-e-dados-de-corte-transversal"><i class="fa fa-check"></i><b>3.3.1</b> Diferença entre dados de séries temporais e dados de corte transversal</a></li>
+<li class="chapter" data-level="3.3.2" data-path="streg.html"><a href="streg.html#modelos-de-regressão-de-séries-temporais"><i class="fa fa-check"></i><b>3.3.2</b> Modelos de regressão de séries temporais</a></li>
+<li class="chapter" data-level="3.3.3" data-path="streg.html"><a href="streg.html#modelos-de-defasagem-distribuída-finita"><i class="fa fa-check"></i><b>3.3.3</b> Modelos de defasagem distribuída finita</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="streg.html"><a href="streg.html#suposições-para-modelos-com-séries-temporais"><i class="fa fa-check"></i><b>3.4</b> Suposições para modelos com séries temporais</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="streg.html"><a href="streg.html#inexistência-de-viés-do-mqo"><i class="fa fa-check"></i><b>3.4.1</b> Inexistência de viés do MQO</a></li>
+<li class="chapter" data-level="3.4.2" data-path="rev.html"><a href="rev.html#variância-dos-estimadores-mqo"><i class="fa fa-check"></i><b>3.4.2</b> Variância dos estimadores MQO</a></li>
+<li class="chapter" data-level="3.4.3" data-path="streg.html"><a href="streg.html#inferência-sob-as-hipóteses-do-modelo-linear-clássico"><i class="fa fa-check"></i><b>3.4.3</b> Inferência sob as hipóteses do modelo linear clássico</a></li>
+<li class="chapter" data-level="3.4.4" data-path="streg.html"><a href="streg.html#tendência"><i class="fa fa-check"></i><b>3.4.4</b> Tendência</a></li>
+<li class="chapter" data-level="3.4.5" data-path="streg.html"><a href="streg.html#usando-variáveis-de-tendência-na-análise-de-regressão"><i class="fa fa-check"></i><b>3.4.5</b> Usando variáveis de tendência na análise de regressão</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="streg.html"><a href="streg.html#sazonalidade"><i class="fa fa-check"></i><b>3.5</b> Sazonalidade</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="streg.html"><a href="streg.html#processos-de-covariância-estacionária"><i class="fa fa-check"></i><b>3.5.1</b> Processos de covariância estacionária</a></li>
+<li class="chapter" data-level="3.5.2" data-path="streg.html"><a href="streg.html#processos-fracamente-dependente"><i class="fa fa-check"></i><b>3.5.2</b> Processos fracamente dependente</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="rev.html"><a href="rev.html#exercícios"><i class="fa fa-check"></i><b>3.6</b> Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="st.html"><a href="st.html"><i class="fa fa-check"></i><b>4</b> Séries Temporais</a><ul>
+<li class="chapter" data-level="4.1" data-path="st.html"><a href="st.html#objetivos"><i class="fa fa-check"></i><b>4.1</b> Objetivos</a></li>
+<li class="chapter" data-level="4.2" data-path="st.html"><a href="st.html#séries-temporais-definição-formal"><i class="fa fa-check"></i><b>4.2</b> Séries temporais: definição formal</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="st.html"><a href="st.html#processos-estocásticos"><i class="fa fa-check"></i><b>4.2.1</b> Processos estocásticos</a></li>
+<li class="chapter" data-level="4.2.2" data-path="st.html"><a href="st.html#especificação-de-um-processo-estocástico"><i class="fa fa-check"></i><b>4.2.2</b> Especificação de um processo estocástico</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="st.html"><a href="st.html#médias-e-covariâncias"><i class="fa fa-check"></i><b>4.3</b> Médias e covariâncias</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="st.html"><a href="st.html#propriedades-importantes"><i class="fa fa-check"></i><b>4.3.1</b> Propriedades importantes</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="st.html"><a href="st.html#estacionariedade"><i class="fa fa-check"></i><b>4.4</b> Estacionariedade</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="st.html"><a href="st.html#estacionariedade-forte-ou-estrita"><i class="fa fa-check"></i><b>4.4.1</b> Estacionariedade forte ou estrita</a></li>
+<li class="chapter" data-level="4.4.2" data-path="st.html"><a href="st.html#estacionariedade-fraca-ou-de-segunda-ordem"><i class="fa fa-check"></i><b>4.4.2</b> Estacionariedade fraca ou de segunda ordem</a></li>
+<li class="chapter" data-level="4.4.3" data-path="st.html"><a href="st.html#teste-para-significância-das-autocorrelações"><i class="fa fa-check"></i><b>4.4.3</b> Teste para significância das autocorrelações</a></li>
+<li class="chapter" data-level="4.4.4" data-path="st.html"><a href="st.html#função-de-autocorrelação-parcial-facp"><i class="fa fa-check"></i><b>4.4.4</b> Função de autocorrelação parcial ( <em>FACP</em> )</a></li>
+<li class="chapter" data-level="4.4.5" data-path="st.html"><a href="st.html#operador-de-defasagem-ou-operador-lag"><i class="fa fa-check"></i><b>4.4.5</b> Operador de defasagem ou operador <em>lag</em></a></li>
+<li class="chapter" data-level="4.4.6" data-path="st.html"><a href="st.html#ruído-branco"><i class="fa fa-check"></i><b>4.4.6</b> Ruído branco</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="st.html"><a href="st.html#metodologia-de-box-jenkins-ou-modelagem-arima"><i class="fa fa-check"></i><b>4.5</b> Metodologia de Box-Jenkins ou modelagem ARIMA</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="st.html"><a href="st.html#modelo-autorregressivo-de-ordem-1-ar1"><i class="fa fa-check"></i><b>4.5.1</b> Modelo autorregressivo de ordem 1 AR(1)</a></li>
+<li class="chapter" data-level="4.5.2" data-path="st.html"><a href="st.html#passeio-aleatório-random-walk"><i class="fa fa-check"></i><b>4.5.2</b> Passeio aleatório (<em>Random Walk</em>)</a></li>
+<li class="chapter" data-level="4.5.3" data-path="st.html"><a href="st.html#modelos-autorregressivos-de-ordem-p-arp"><i class="fa fa-check"></i><b>4.5.3</b> Modelos autorregressivos de ordem <span class="math inline">\(p\)</span>, AR(<span class="math inline">\(p\)</span>)</a></li>
+<li class="chapter" data-level="4.5.4" data-path="st.html"><a href="st.html#modelo-de-médias-móveis-maq"><i class="fa fa-check"></i><b>4.5.4</b> Modelo de médias-móveis, MA(<em>q</em>)</a></li>
+<li class="chapter" data-level="4.5.5" data-path="st.html"><a href="st.html#o-modelo-ma1"><i class="fa fa-check"></i><b>4.5.5</b> O modelo MA(1)</a></li>
+<li class="chapter" data-level="4.5.6" data-path="st.html"><a href="st.html#propriedades-do-modelo-maq"><i class="fa fa-check"></i><b>4.5.6</b> Propriedades do modelo MA(<span class="math inline">\(q\)</span>)</a></li>
+<li class="chapter" data-level="4.5.7" data-path="st.html"><a href="st.html#modelo-armapq"><i class="fa fa-check"></i><b>4.5.7</b> Modelo ARMA(<span class="math inline">\(p\)</span>,<span class="math inline">\(q\)</span>)</a></li>
+<li class="chapter" data-level="4.5.8" data-path="st.html"><a href="st.html#causalidade"><i class="fa fa-check"></i><b>4.5.8</b> Causalidade</a></li>
+<li class="chapter" data-level="4.5.9" data-path="st.html"><a href="st.html#invertibilidade"><i class="fa fa-check"></i><b>4.5.9</b> Invertibilidade</a></li>
+<li class="chapter" data-level="4.5.10" data-path="st.html"><a href="st.html#polinômio-característico"><i class="fa fa-check"></i><b>4.5.10</b> Polinômio característico</a></li>
+<li class="chapter" data-level="4.5.11" data-path="st.html"><a href="st.html#estacionariedade-e-causalidade-de-um-processo-arma"><i class="fa fa-check"></i><b>4.5.11</b> Estacionariedade e causalidade de um processo ARMA</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="rev.html"><a href="rev.html#exercícios"><i class="fa fa-check"></i><b>4.6</b> Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="stnoest.html"><a href="stnoest.html"><i class="fa fa-check"></i><b>5</b> Séries temporais não estacionárias</a><ul>
+<li class="chapter" data-level="5.1" data-path="stnoest.html"><a href="stnoest.html#como-lidar-com-tendências-determinísticas"><i class="fa fa-check"></i><b>5.1</b> Como lidar com tendências determinísticas</a></li>
+<li class="chapter" data-level="5.2" data-path="stnoest.html"><a href="stnoest.html#testes-de-raiz-unitária"><i class="fa fa-check"></i><b>5.2</b> Testes de raiz unitária</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="stnoest.html"><a href="stnoest.html#identificando-tendência-estocástica"><i class="fa fa-check"></i><b>5.2.1</b> Identificando tendência estocástica</a></li>
+<li class="chapter" data-level="5.2.2" data-path="stnoest.html"><a href="stnoest.html#teste-de-dickey-fuller-df"><i class="fa fa-check"></i><b>5.2.2</b> Teste de Dickey Fuller (<em>DF</em>)</a></li>
+<li class="chapter" data-level="5.2.3" data-path="stnoest.html"><a href="stnoest.html#teste-adf"><i class="fa fa-check"></i><b>5.2.3</b> Teste ADF</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="stnoest.html"><a href="stnoest.html#eliminando-tendência-estocástica"><i class="fa fa-check"></i><b>5.3</b> Eliminando tendência estocástica</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="stnoest.html"><a href="stnoest.html#diferenças-sucessivas"><i class="fa fa-check"></i><b>5.3.1</b> Diferenças sucessivas</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="stnoest.html"><a href="stnoest.html#modelagem-arima"><i class="fa fa-check"></i><b>5.4</b> Modelagem ARIMA</a></li>
+<li class="chapter" data-level="5.5" data-path="stnoest.html"><a href="stnoest.html#previsão"><i class="fa fa-check"></i><b>5.5</b> Previsão</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="stnoest.html"><a href="stnoest.html#erro-de-previsão"><i class="fa fa-check"></i><b>5.5.1</b> Erro de previsão</a></li>
+<li class="chapter" data-level="5.5.2" data-path="stnoest.html"><a href="stnoest.html#medidas-de-desempenho"><i class="fa fa-check"></i><b>5.5.2</b> Medidas de desempenho</a></li>
+<li class="chapter" data-level="5.5.3" data-path="stnoest.html"><a href="stnoest.html#previsão-dinâmica-e-estática"><i class="fa fa-check"></i><b>5.5.3</b> Previsão dinâmica e estática</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="stnoest.html"><a href="stnoest.html#regressão-espúria-e-cointegração"><i class="fa fa-check"></i><b>5.6</b> Regressão espúria e cointegração</a><ul>
+<li class="chapter" data-level="5.6.1" data-path="stnoest.html"><a href="stnoest.html#quando-é-possível-regredir-duas-séries-id"><i class="fa fa-check"></i><b>5.6.1</b> Quando é possível regredir duas séries I(d)</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="rev.html"><a href="rev.html#exercícios"><i class="fa fa-check"></i><b>5.7</b> Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="vi.html"><a href="vi.html"><i class="fa fa-check"></i><b>6</b> Variáveis instrumentais</a><ul>
+<li class="chapter" data-level="6.1" data-path="vi.html"><a href="vi.html#conceito-da-exogeneidade-dos-regressores"><i class="fa fa-check"></i><b>6.1</b> Conceito da exogeneidade dos regressores</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="vi.html"><a href="vi.html#variável-proxy"><i class="fa fa-check"></i><b>6.1.1</b> Variável proxy</a></li>
+<li class="chapter" data-level="6.1.2" data-path="vi.html"><a href="vi.html#variável-omitida"><i class="fa fa-check"></i><b>6.1.2</b> Variável omitida</a></li>
+<li class="chapter" data-level="6.1.3" data-path="vi.html"><a href="vi.html#erros-de-mensuração"><i class="fa fa-check"></i><b>6.1.3</b> Erros de mensuração</a></li>
+<li class="chapter" data-level="6.1.4" data-path="vi.html"><a href="vi.html#variável-com-erro-de-medição"><i class="fa fa-check"></i><b>6.1.4</b> Variável com erro de medição</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="vi.html"><a href="vi.html#variável-instrumental"><i class="fa fa-check"></i><b>6.2</b> Variável instrumental</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="vi.html"><a href="vi.html#diferença-entre-proxy-e-variável-instrumental"><i class="fa fa-check"></i><b>6.2.1</b> Diferença entre proxy e variável instrumental</a></li>
+<li class="chapter" data-level="6.2.2" data-path="vi.html"><a href="vi.html#o-método-de-estimação-por-variável-instrumental"><i class="fa fa-check"></i><b>6.2.2</b> O método de estimação por variável instrumental</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="vi.html"><a href="vi.html#inferência-com-o-estimador-por-variável-instrumental"><i class="fa fa-check"></i><b>6.3</b> Inferência com o estimador por variável instrumental</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="vi.html"><a href="vi.html#teste-de-hipóteses"><i class="fa fa-check"></i><b>6.3.1</b> Teste de hipóteses</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="vi.html"><a href="vi.html#variáveis-instrumentais-em-modelos-de-regressão-múltipla"><i class="fa fa-check"></i><b>6.4</b> Variáveis instrumentais em modelos de regressão múltipla</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="vi.html"><a href="vi.html#mínimos-quadrados-em-dois-estágios-mq2e"><i class="fa fa-check"></i><b>6.4.1</b> Mínimos quadrados em dois estágios (MQ2E)</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="vi.html"><a href="vi.html#testes-de-endogeneidade"><i class="fa fa-check"></i><b>6.5</b> Testes de endogeneidade</a><ul>
+<li class="chapter" data-level="6.5.1" data-path="vi.html"><a href="vi.html#teste-de-hausmann"><i class="fa fa-check"></i><b>6.5.1</b> Teste de Hausmann</a></li>
+<li class="chapter" data-level="6.5.2" data-path="vi.html"><a href="vi.html#teste-de-regressão"><i class="fa fa-check"></i><b>6.5.2</b> Teste de regressão</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="rev.html"><a href="rev.html#exercícios"><i class="fa fa-check"></i><b>6.6</b> Exercícios</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Econometria e Séries Temporais com R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="streg" class="section level1">
+<h1><span class="header-section-number">Capítulo 3</span> Séries temporais no contexto de regressão</h1>
+<p>Neste capítulo abordamos regressão no contexto de séries temporais. Começamos
+definindo o que é uma série temporal e introduzimos algumas propriedades teóricas.</p>
+<div id="introdução" class="section level2">
+<h2><span class="header-section-number">3.1</span> Introdução</h2>
+<p>Uma série temporal é qualquer conjunto de observações ordenadas no tempo. Alguns
+exemplos são citados abaixo:</p>
+<div class="line-block">   a) Estimativas trimestrais do Produto Interno Bruto (PIB);</div>
+<div class="line-block">   b) Valores diários da temperatura em Campo Bom;</div>
+<div class="line-block">   c) Índices diários da bolsa de valores de São Paulo;</div>
+<div class="line-block">   d) Quantidade anual de chuva na cidade do Recife;</div>
+<div class="line-block">   e) Um registro de marés no porto de Santos.</div>
+<p>Nos exemplos de a) a d) temos séries temporais discretas, enquanto que e) é um exemplo de série contínua. Podemos obter uma série temporal discreta a partir da amostragem de uma série temporal contínua considerando intervalos de tempos iguais, <span class="math inline">\(\Delta t\)</span>. Assim para analisar a série e) será necessário amostrá-la, convertendo-a e observando-a no intervalo de tempo <span class="math inline">\([0,T]\)</span>, supondo uma série discreta com <span class="math inline">\(N\)</span>
+pontos, em que <span class="math inline">\(N = \Delta t/T\)</span> (T horas). Existem dois enfoques utilizados na análise de séries temporais. Em ambos, o objetivo é construir modelos para estas séries. No primeiro enfoque, a análise é feita no domínio temporal e os modelos propostos são modelos paramétricos (com um número finito de parâmetros). No segundo, a análise é conduzida no domínio de frequências e os modelos propostos são modelos não-paramétricos. Dentre os modelos paramétricos temos, por exemplo, os modelos ARIMA, que serão estudados neste curso nos próximos capítulos. No domínio de frequências temos a análise espectral, que tem inúmeras aplicações em ciências físicas e engenharia, principalmente na engenharia elétrica, e que consiste em decompor a série dada em componentes de frequências e onde a existência do espectro é a característica fundamental. Este tipo de análise não será estudado nestas notas de aulas, para detalhes o aluno deve consultar <span class="citation">Watts and Jenkins (<a href="#ref-watts1968" role="doc-biblioref">1968</a>)</span>, <span class="citation">Koopmans (<a href="#ref-koopmans1974" role="doc-biblioref">1974</a>)</span>, <span class="citation">Morettin (<a href="#ref-morettin1978" role="doc-biblioref">1978</a>)</span> e <span class="citation">Marple (<a href="#ref-marple1980" role="doc-biblioref">1980</a>)</span>.</p>
+</div>
+<div id="exemplos-de-séries-temporais" class="section level2">
+<h2><span class="header-section-number">3.2</span> Exemplos de séries temporais</h2>
+
+<div class="example">
+<span id="exm:exemptemp" class="example"><strong>Exemplo 3.1  </strong></span>Vamos supor que desejamos medir a temperatura máxima do ar, de um local,
+durante 24 horas, poderíamos obter um gráfico semelhante a figura abaixo:
+</div>
+
+<div class="figure" style="text-align: center"><span id="fig:figts1"></span>
+<img src="02-SeriesReg_files/figure-html/figts1-1.png" alt="Temperaturas médias diárias nas cidades de Manaus (MA) e Porto Alegre (POA)" width="90%" />
+<p class="caption">
+Figura 3.1: Temperaturas médias diárias nas cidades de Manaus (MA) e Porto Alegre (POA)
+</p>
+</div>
+<p>Cada curva do gráfico é chamada de trajetória ou série temporal ou função amostral. No gráfico acima <span class="math inline">\(Z_{(j)}(t)\)</span> é o valor da temperatura no instante <span class="math inline">\(t\)</span>, para a <span class="math inline">\(j\)</span>-ésima trajetória (<span class="math inline">\(j\)</span>-ésimo ponto de observação). Para cada <span class="math inline">\(t\)</span> fixo, teremos os valores de uma variável aleatória <span class="math inline">\(Z(t)\)</span> que terá certa distribuição de probabilidade. Na realidade o que chamamos de série temporal, é uma parte de uma trajetória, dentre muitas que poderiam ter sido observadas. O parâmetro <span class="math inline">\(t\)</span> pode ser função de algum outro parâmetro físico como por exemplo: espaço e volume.</p>
+</div>
+<div id="regressão-com-dados-de-séries-temporais" class="section level2">
+<h2><span class="header-section-number">3.3</span> Regressão com dados de séries temporais</h2>
+<p>Nesta seção estudaremos modelos de regressão cujas variáveis são séries temporais. O interesse principal recai sobre as condições necessárias para que o estimador de MQO apresente boas propriedades.</p>
+<div id="diferença-entre-dados-de-séries-temporais-e-dados-de-corte-transversal" class="section level3">
+<h3><span class="header-section-number">3.3.1</span> Diferença entre dados de séries temporais e dados de corte transversal</h3>
+<p>A primeira diferença entre dados de séries temporais e dados de corte transversal é que uma série temporal tem uma ordenação temporal. Outra característica, é que não temos mais independência entre as observações, ou seja, não temos mais uma amostra aleatória de indivíduos. Logo, para estimar um modelo do tipo
+<span class="math display" id="eq:eq1STR">\[\begin{equation}
+ y_t = \beta_0 + \beta_1 + \beta_2 x_{t1}+ x_{t2} + \ldots+\beta_k x_{tk}+ u_t,
+ \tag{3.1}
+\end{equation}\]</span>
+são necessárias novas suposições para que o estimador de MQO tenha boas propriedades.</p>
+</div>
+<div id="modelos-de-regressão-de-séries-temporais" class="section level3">
+<h3><span class="header-section-number">3.3.2</span> Modelos de regressão de séries temporais</h3>
+<div id="modelos-estáticos" class="section level4">
+<h4><span class="header-section-number">3.3.2.1</span> Modelos estáticos</h4>
+<p>Suponha que temos dados de séries temporais disponíveis para duas variáveis, digamos <span class="math inline">\(y\)</span> e <span class="math inline">\(z\)</span>, em que <span class="math inline">\(y_t\)</span> e <span class="math inline">\(z_t\)</span> são datadas contemporaneamente. Um modelo que relaciona <span class="math inline">\(y\)</span> a <span class="math inline">\(z\)</span> é:
+<span class="math display" id="eq:modelstatic">\[\begin{equation}
+y_t = \beta_0 + \beta_1 z_t + u_t,  \,\,\,\,t=1,2,\ldots,n.
+\tag{3.2}
+\end{equation}\]</span>
+O nome “Modelo Estático” deriva do fato de relacionar as variáveis de forma contemporânea.</p>
+
+<div class="example">
+<span id="exm:exampcurvphilips" class="example"><strong>Exemplo 3.2  </strong></span>Um exemplo de modelo estático é a <strong>curva de Phillips estática</strong>, representada por:
+<span class="math display" id="eq:philcurve">\[\begin{equation}
+inf_t = \beta_0 + \beta_1 desemp_t + u_t,
+\tag{3.3}
+\end{equation}\]</span>
+em que <span class="math inline">\(inf_t\)</span> é a inflação anual e <span class="math inline">\(desemp_t\)</span> é a taxa de desemprego.
+</div>
+
+<p>Este modelo é usado para estudar a relação de trocas contemporânea entre <span class="math inline">\(inf_t\)</span> e <span class="math inline">\(desemp_t\)</span> pressupondo uma  e expectativas inflacionárias constantes.</p>
+</div>
+</div>
+<div id="modelos-de-defasagem-distribuída-finita" class="section level3">
+<h3><span class="header-section-number">3.3.3</span> Modelos de defasagem distribuída finita</h3>
+<p>Em um  (MDD) permite-se que uma ou mais variáveis
+afetem <span class="math inline">\(y\)</span> com defasagens
+<span class="math display" id="eq:eqmdd2">\[\begin{equation}
+y_t = \alpha_0 + \delta_0 z_t+\delta_1 z_{t-1} + \delta_2 z_{t-2} + u_t,
+\tag{3.4}
+\end{equation}\]</span>
+que é um MDD de . De modo mais geral, um modelo de defasagem distribuída de ordem <span class="math inline">\(q\)</span> incluirá <span class="math inline">\(q\)</span> defasagens de <span class="math inline">\(z\)</span>.</p>
+<p>Para interpretar os coeficientes em <a href="streg.html#eq:eqmdd2">(3.4)</a> suponha que <span class="math inline">\(z\)</span> seja constante igual a <span class="math inline">\(c\)</span>,
+em todos os períodos de tempo antes de <span class="math inline">\(t\)</span> (, <span class="math inline">\(z_{t-2}=c\)</span>, <span class="math inline">\(z_{t-1}=c\)</span>). Em <span class="math inline">\(t\)</span>, <span class="math inline">\(z\)</span> aumenta em uma unidade, ou seja, <span class="math inline">\(z_t=c+1\)</span>, e, em seguida, retorna ao seu nível anterior em <span class="math inline">\(t+1\)</span>, isto é, <span class="math inline">\(z_{t+1}=c\)</span>.</p>
+<p>Para enfatizar o efeito  de <span class="math inline">\(z\)</span> sobre <span class="math inline">\(y\)</span>, suponhamos que o termo de erro em cada período seja zero. Então,
+<span class="math display">\[\begin{eqnarray*}
+y_{t-1}&amp;=&amp;\alpha_0+\delta_0c+\delta_1c+\delta_2c\\
+y_{t}&amp;=&amp;\alpha_0+\delta_0(c+1)+\delta_1c+\delta_2c\\
+y_{t+1}&amp;=&amp;\alpha_0+\delta_0c+\delta_1(c+1)+\delta_2c\\
+y_{t+2}&amp;=&amp;\alpha_0+\delta_0c+\delta_1c+\delta_2(c+1)\\
+y_{t+3}&amp;=&amp;\alpha_0+\delta_0c+\delta_1c+\delta_2c,\\
+\end{eqnarray*}\]</span>
+e assim por diante. Das duas primeiras equações temos
+<span class="math display">\[\begin{equation*}
+y_t-y_{t-1} =\delta_0,
+\end{equation*}\]</span>
+mostra que <span class="math inline">\(\delta_0\)</span> é a mudança imediata em <span class="math inline">\(y\)</span> em razão do aumento de uma unidade em <span class="math inline">\(z\)</span> no tempo <span class="math inline">\(t\)</span>. Denomina-se <span class="math inline">\(\delta_0\)</span> como  ou .</p>
+<p>Da mesma forma,
+<span class="math display">\[\begin{equation*}
+\delta_1  =  y_{t+1} - y_{t-1},
+\end{equation*}\]</span>
+é a mudança em <span class="math inline">\(y\)</span> após a mudança temporária e
+<span class="math display">\[\begin{equation*}
+\delta_2  =  y_{t+2} - y_{t-1},
+\end{equation*}\]</span>
+é a mudança em <span class="math inline">\(y\)</span> dois períodos após a mudança. Em <span class="math inline">\(t+3\)</span>, <span class="math inline">\(y\)</span> retornou ao seu nível inicial <span class="math inline">\(y_{t+3}=y_{t-1}\)</span>. Isso ocorre porque presumimos que apenas duas defasagens de <span class="math inline">\(z\)</span> aparecem em <a href="streg.html#eq:eqmdd2">(3.4)</a>.</p>
+<p>Quando traçamos um gráfico de <span class="math inline">\(\delta_j\)</span> como uma função de <span class="math inline">\(j\)</span> obtemos a , que resume o efeito dinâmico que um aumento temporário em <span class="math inline">\(z\)</span> tem em <span class="math inline">\(y\)</span>.</p>
+<p>No entanto, o aumento em <span class="math inline">\(z\)</span> pode ser permanente. Suponhamos que antes do tempo <span class="math inline">\(t\)</span> <span class="math inline">\(z\)</span> é constante igual a <span class="math inline">\(c\)</span>, ou seja, <span class="math inline">\(z_s=c\)</span>, para <span class="math inline">\(s&lt;t\)</span>, e no tempo <span class="math inline">\(t\)</span>, <span class="math inline">\(z\)</span> sofre um aumento permanente de uma unidade no tempo <span class="math inline">\(t\)</span>, ou seja, <span class="math inline">\(z_s=c+1\)</span> para <span class="math inline">\(s\geq t\)</span>. Novamente, fazendo os erros iguais a zero, temos
+<span class="math display">\[\begin{eqnarray*}
+y_{t-1}&amp;=&amp;\alpha_0+\delta_0c+\delta_1c+\delta_2c\\
+y_{t}&amp;=&amp;\alpha_0+\delta_0(c+1)+\delta_1c+\delta_2c\\
+y_{t+1}&amp;=&amp;\alpha_0+\delta_0(c+1)+\delta_1(c+1)+\delta_2c\\
+y_{t+2}&amp;=&amp;\alpha_0+\delta_0(c+1)+\delta_1(c+1)+\delta_2(c+1)\\
+\end{eqnarray*}\]</span>
+e assim por diante. Com o aumento permanente em <span class="math inline">\(z\)</span>, depois de um período <span class="math inline">\(y\)</span> aumentou <span class="math inline">\(\delta_0+\delta_1\)</span>, e depois de dois períodos, <span class="math inline">\(y\)</span> aumentou <span class="math inline">\(\delta_0+\delta_1+\delta_2\)</span>. Isso mostra que a soma dos coeficientes de <span class="math inline">\(z\)</span> atual e defazadas,
+<span class="math display" id="eq:eqPLP2">\[\begin{equation}
+ \delta_0+\delta_1+\delta_2
+ \tag{3.5}
+\end{equation}\]</span>
+é a  em <span class="math inline">\(y\)</span> quando há um aumento permanente em <span class="math inline">\(z\)</span>. A equação <a href="streg.html#eq:eqPLP2">(3.5)</a> é chamada .</p>
+<p>A generalização para <span class="math inline">\(q\)</span> defasagens é imediata.</p>
+</div>
+</div>
+<div id="suposições-para-modelos-com-séries-temporais" class="section level2">
+<h2><span class="header-section-number">3.4</span> Suposições para modelos com séries temporais</h2>
+<p>Nesta seção o objetivo é mostrar como as hipóteses clássicas devem ser alteradas
+para cobrir regressão de séries temporais.</p>
+<div id="inexistência-de-viés-do-mqo" class="section level3">
+<h3><span class="header-section-number">3.4.1</span> Inexistência de viés do MQO</h3>
+<p>Para que as estimativas via MQO dos parâmetros de um modelo de regressão com séries temporais não sejam viesadas são necessárias a seguintes hipóteses:</p>
+<p><br></p>
+<blockquote>
+<p><strong><em>Suposição TS.1:</em></strong> .
+O processo estocástico
+<span class="math display">\[\{(x_{t1}, x_{t2},\ldots, y_t):\,\,\, t = 1, 2,\ldots, n\}\]</span>
+segue o modelo linear:
+<span class="math display">\[y_t = \beta_0 + \beta_1 x_{t1} + \cdots + \beta_k x_{tk}+u_t,\]</span>
+em que <span class="math inline">\(\{u_t:\,\,\,t=1,2,\ldots,n\}\)</span> é a sequência de erros ou perturbações.</p>
+</blockquote>
+<p><br></p>
+<blockquote>
+<p><strong><em>Suposição TS.2:</em></strong> . Na amostra, nenhuma das variáveis independentes é constante ou combinação linear perfeita das outras.</p>
+</blockquote>
+<p><br></p>
+<p>As hipóteses <strong>TS.1</strong> e <strong>TS.2</strong> são essencialmente as mesmas daquelas usadas no contexto de
+dados de cortes transversais.</p>
+<p><br></p>
+<blockquote>
+<p><strong><em>Suposição TS.3:</em></strong> . O termo de erro em qualquer dado período é não correlacionado com as variáveis explicativas em todos os períodos de tempo, ou seja <span class="math inline">\(\mathbb{E} (u_t | X) = 0\)</span>, para $ t = 1, 2,, n$.</p>
+</blockquote>
+<p><br></p>
+<p>Analisando-se a hipótese TS.3, percebemos que ela difere da hipótese clássica.
+Observe que a hipótese TS.3 exige que o erro no tempo <span class="math inline">\(t\)</span>, <span class="math inline">\(u_t\)</span> seja não correlacionado
+com cada variável explicativa em  os períodos de tempo.</p>
+<p>Se em termos de média condicional, temos somente a condição de não correlação somente no tempo
+<span class="math inline">\(t\)</span>, da forma
+<span class="math display" id="eq:exoc">\[\begin{equation}
+\mathbb{E}(u_t|x_{1t},\ldots,x_{tk})=\mathbb{E} (u_t | X_t) = 0,
+\tag{3.6}
+\end{equation}\]</span>
+diz-se que vale a  das variáveis explicativas. Exogeneidade contemporânea só será suficiente em grandes amostras.
+<a href="streg.html#eq:exoc">(3.6)</a></p>
+<p>A hipótese <strong>TS.3</strong> é muito forte e muitas vezes não verificada. Nos seguintes exemplos podemos ver como ela pode ser verificada na prática.</p>
+<p><br></p>
+
+<div class="example">
+<p><span id="exm:examphomic" class="example"><strong>Exemplo 3.3  </strong></span>Suponha que a taxa de homicídios (<span class="math inline">\(homi_t\)</span>) em uma cidade em termos do número de policiais per capita (<span class="math inline">\(polpc_t\)</span>)
+<span class="math display">\[homi_t = \beta_0 + \beta_1 polpc_t + u_t.\]</span></p>
+O termo de erro <span class="math inline">\(u\)</span> precisaria ser não correlacionados com os valores atuais,os valores passados e futuros de <span class="math inline">\(polpc_t\)</span>. Podemos aceitar que <span class="math inline">\(u\)</span> não é correlacionado com valores corrente e valores passados do regressor. Mas é evidente que um aumento em <span class="math inline">\(u\)</span> hoje, provavelmente, levará a políticas que tentem aumentar <span class="math inline">\(polpc_t\)</span> no futuro. Logo <strong>TS.3</strong> falha.
+</div>
+
+<p>Quando <span class="math inline">\(u\)</span> é correlacionado com o passado dos regressores, podemos resolver o problema incluindo defasagens dos regressores e utilizando um modelo de defasagem distribuída. Mas não podemos ter, de forma alguma, a influência de <span class="math inline">\(u\)</span> no futuro dos regressores.</p>
+
+<div class="theorem">
+<span id="thm:teovies" class="theorem"><strong>Teorema 3.1  </strong></span> Sob as Hipóteses <strong>ST.1</strong>, <strong>ST.2</strong> e <strong>ST.3</strong> os estimadores de MQO são não viesados condicionados a <span class="math inline">\(X\)</span> e, portanto, também incondicionalmente:
+<span class="math display">\[\begin{equation*}
+   \mathbb{E}(\hat{\beta}_j)=\beta_j, \,\,\,j=1,\ldots,k.
+ \end{equation*}\]</span>
+</div>
+
+</div>
+<div id="variância-dos-estimadores-mqo" class="section level3">
+<h3><span class="header-section-number">3.4.2</span> Variância dos estimadores MQO</h3>
+<p>É necessário mais duas hipóteses para completar o conjunto de hipóteses de Gauss-Markov para
+regressões de séries temporais. A primeira delas é familiar da análise de corte transversal.</p>
+<p><br></p>
+<blockquote>
+<p><strong><em>Suposição TS.4:</em></strong> . Condicional a <span class="math inline">\(X\)</span>, a variância de <span class="math inline">\(u_t\)</span> é a mesma para todo <span class="math inline">\(t\)</span>:
+<span class="math display">\[Var(u_t | X) = Var(u_t)=\sigma^2,\]</span> para $ t = 1, 2,, n$.</p>
+</blockquote>
+<p><br></p>
+<blockquote>
+<p><strong><em>Suposição TS.5:</em></strong> .
+Condicional a <span class="math inline">\(X\)</span>, os erros em dois períodos de tempos diferentes são não correlacionados:
+<span class="math display">\[Corr(u_t ,u_s| X) =0,\]</span> para todo $ t s$.</p>
+</blockquote>
+<p>Com este conjunto de condições podemos enunciar o teorema de Gauss-Markov no contexto de séries temporais.</p>
+
+<div class="theorem">
+<span id="thm:teogm" class="theorem"><strong>Teorema 3.2  (Teorema de Gauss-Markov)  </strong></span>Sob as Hipóteses <strong>ST.1</strong> a <strong>ST.5</strong> os estimadores de MQO são os melhores estimadores lineares não viesados condicionais a <span class="math inline">\(X\)</span>, ou seja, são <strong><em>BLUE</em></strong>.
+</div>
+
+</div>
+<div id="inferência-sob-as-hipóteses-do-modelo-linear-clássico" class="section level3">
+<h3><span class="header-section-number">3.4.3</span> Inferência sob as hipóteses do modelo linear clássico</h3>
+<p>Para que sejam válidos os testes <span class="math inline">\(t\)</span>, <span class="math inline">\(F\)</span> e outros testes estatísticos baseadas nos erros padrões é necessário adicionar mais uma hipótese a respeito da distribuição dos erros. Esta hipótese é análoga à hipótese de normalidade usada para análise de corte transversal.</p>
+<blockquote>
+<p><strong><em>Suposição TS.6:</em></strong> . Os erros <span class="math inline">\(u_t\)</span> são independentes de <span class="math inline">\(X\)</span> e são i.i.d. com distribuição normal com média zero e variância <span class="math inline">\(\sigma^2\)</span>
+<span class="math display">\[u_t\sim\mathcal{N}(0,\sigma^2),\]</span> para $ t = 1, 2,, n$.</p>
+</blockquote>
+
+<div class="theorem">
+<span id="thm:teoinfmqo" class="theorem"><strong>Teorema 3.3  </strong></span>Sob as hipóteses <strong>TS.1</strong> a <strong>TS.6</strong>, as hipóteses do modelo linear clássico para séries temporais, os estimadores MQO são normalmente distribuídos, condicional em <span class="math inline">\(X\)</span>. Além disso, a estatística <span class="math inline">\(t\)</span> tem uma distribuição <span class="math inline">\(t\)</span>, e cada estatística <span class="math inline">\(F\)</span> tem uma distribuição <span class="math inline">\(F\)</span>.
+</div>
+
+</div>
+<div id="tendência" class="section level3">
+<h3><span class="header-section-number">3.4.4</span> Tendência</h3>
+<p>Quando trabalhamos com séries temporais é necessário saber reconhecer se estas séries contém uma tendência temporal. Ignorar o fato de que duas séries temporais podem ser correlacionadas somente porque ambas estão apresentando uma mesma tendência ao longo do tempo, em vez de uma relação causal, pode levar a conclusões errôneas e a possibilidade de uma regressão espúria. Vejamos o exemplo de uma série temporal com tendência temporal:</p>
+<p><br></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="co">#library(readxl)</span></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="co">#library(ggplot2)</span></a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="co"># Dados baixados em 25/06/2020 de</span></a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="co"># https://seriesestatisticas.ibge.gov.br/series.aspx?vcodigo=PRECO415&amp;t=custo-medio-m2</span></a>
+<a class="sourceLine" id="cb1-5" title="5"></a>
+<a class="sourceLine" id="cb1-6" title="6">custo_medio &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;Dados/custo_medio_m2.xls&quot;</span>)</a>
+<a class="sourceLine" id="cb1-7" title="7"><span class="kw">ggplot</span>(custo_medio, <span class="kw">aes</span>(<span class="dt">x =</span> data, <span class="dt">y =</span> cm)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1-8" title="8"><span class="st">  </span><span class="kw">geom_line</span>()<span class="op">+</span><span class="st"> </span><span class="kw">theme_light</span>()<span class="op">+</span><span class="kw">labs</span>( <span class="dt">x=</span><span class="st">&quot;&quot;</span>, <span class="dt">y=</span><span class="st">&quot;Custo médio&quot;</span>)</a></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:figcn"></span>
+<img src="02-SeriesReg_files/figure-html/figcn-1.png" alt="Custo médio do $m^2$ no Brasil a partir do plano real" width="65%" />
+<p class="caption">
+Figura 3.2: Custo médio do <span class="math inline">\(m^2\)</span> no Brasil a partir do plano real
+</p>
+</div>
+<p><br></p>
+<p>Um modelo que captura tendência temporal é:
+<span class="math display" id="eq:tendmodel">\[\begin{equation}
+y_t = \alpha_0+ \alpha_1t + e_t, \hspace{1cm} t = 1, 2, \ldots,
+\tag{3.7}
+\end{equation}\]</span>
+em que assume-se que <span class="math inline">\(\{e_t\}\)</span> é i.i.d. com <span class="math inline">\(\mathbb{E}(e_t)=0\)</span> e <span class="math inline">\(\mbox{Var}(e_t)=\sigma^2\)</span>.
+Observe que o parâmetro <span class="math inline">\(\alpha_1\)</span> multiplica o tempo, resultando em uma . Assim, <span class="math inline">\(\alpha_1\)</span> mede a mudança em <span class="math inline">\(y_t\)</span>, de um período para o próximo, motivado pela passagem do tempo, mantendo-se todos os outros fatores fixos.</p>
+<p>Outros modelos podem ser usados para capturar tendências temporais, dependendo da situação.
+No modelo em que o logaritmo natural de <span class="math inline">\(y_t\)</span> (presumindo que <span class="math inline">\(y_t&gt;0\)</span>) apresenta uma tendência temporal linear,</p>
+<p><span class="math display" id="eq:logtend">\[\begin{equation}
+\log(y_t) = \beta_0+ \beta_1t + e_t, \hspace{1cm} t = 1, 2, \ldots,
+\tag{3.8}
+\end{equation}\]</span>
+diz-se que <span class="math inline">\(y_t\)</span> tem uma <strong><em>tendência exponencial</em></strong>.</p>
+<p>Outra possibilidade é que em vez de uma tendência temporal linear, poderíamos ter uma
+<strong><em>tendência temporal quadrática</em></strong>,</p>
+<p><span class="math display" id="eq:quadtend">\[\begin{equation}
+y_t = \beta_0+ \beta_1t +\beta_t^2+ e_t, \hspace{1cm} t = 1, 2, \ldots.
+\tag{3.9}
+\end{equation}\]</span></p>
+</div>
+<div id="usando-variáveis-de-tendência-na-análise-de-regressão" class="section level3">
+<h3><span class="header-section-number">3.4.5</span> Usando variáveis de tendência na análise de regressão</h3>
+<p>Suponha que existam dois fatores observados, <span class="math inline">\(x_{t1}\)</span> e <span class="math inline">\(x_{t2}\)</span> que afetam <span class="math inline">\(y_t\)</span>. Além disso,
+existem fatores não observados que estão sistematicamente crescendo ou decrescendo ao longo do tempo.
+Um modelo que captura isso é:
+<span class="math display" id="eq:tr2">\[\begin{equation}
+y_t = \beta_0 + \beta_1x_{t1} + \beta_2x_{t2} + \beta_3t + u_t.
+\tag{3.10}
+\end{equation}\]</span>
+Permitindo uma tendência temporal no modelo, reconhece-se que <span class="math inline">\(y_t\)</span> pode estar crescendo
+ou decrescendo ao longo do tempo por razões essencialmente não relacionadas a <span class="math inline">\(x_{t1}\)</span> e <span class="math inline">\(x_{t2}\)</span>.</p>
+<p>A omissão da variável <span class="math inline">\(t\)</span> pode levar ao viés por omissão de variável, especialmente se <span class="math inline">\(x_{t1}\)</span> ou <span class="math inline">\(x_{t2}\)</span> apresentarem algum tipo de tendência, pois elas podem ser altamente correlacionadas com <span class="math inline">\(t\)</span>.</p>
+<p>Adicionando um termo de tendência linear em um modelo de regressão é a mesma coisa que usar
+série “destendenciada” numa regressão. Os estimadores <span class="math inline">\(\beta_1\)</span> e <span class="math inline">\(\beta_2\)</span> do modelo <a href="streg.html#eq:tr2">(3.10)</a> podem ser obtidos através de um procedimento de “remoção da tendência temporal” das séries originais:</p>
+<p>Destendenciar uma série envolve regredir cada variável do modelo em <span class="math inline">\(t\)</span> e uma constante (no caso de <a href="streg.html#eq:tr2">(3.10)</a>, regredir <span class="math inline">\(y_t\)</span>, <span class="math inline">\(x_{t1}\)</span> e <span class="math inline">\(x_{t2}\)</span> contra <span class="math inline">\(t\)</span> e uma constante).</p>
+<p>Os resíduos destas regressões, <span class="math inline">\(\ddot{y}_t\)</span>, <span class="math inline">\(\ddot{x}_{t1}\)</span> e <span class="math inline">\(\ddot{x}_{t2}\)</span>, constituem uma série temporal sem tendência.</p>
+<p>Em seguida, realizar a regressão com variáveis retificada,
+<span class="math display" id="eq:varrat">\[\begin{equation}
+\ddot{y}_t= \delta_1\ddot{x}_{t1}+\delta_2\ddot{x}_{t2}+v,
+\tag{3.11}
+\end{equation}\]</span>
+(não precisa intercepto, será igual a 0). As estimativas via MQO, <span class="math inline">\(\hat{\delta}_1\)</span> e <span class="math inline">\(\hat{\delta}_2\)</span> serão iguais as estimativas <span class="math inline">\(\hat{\beta}_1\)</span> e <span class="math inline">\(\hat{\beta}_2\)</span> da regressão <a href="streg.html#eq:tr2">(3.10)</a>.</p>
+</div>
+</div>
+<div id="sazonalidade" class="section level2">
+<h2><span class="header-section-number">3.5</span> Sazonalidade</h2>
+<p>Sazonalidade ocorre quando uma série exibe comportamentos semelhantes em determinados períodos. Um exemplo é o **Índice de produção física industrial de bens intermediários*. O objetivo do índice é servir como uma medida aproximada da evolução de curto prazo do valor adicionado da indústria, dado um determinado período de referência (base: média de 2012).</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="co">#library(readxl)</span></a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="co">#library(plotly)</span></a>
+<a class="sourceLine" id="cb2-3" title="3"><span class="co">#Fonte: &quot;IBGE - Pesquisa Industrial Mensal - Produção Física&quot;</span></a>
+<a class="sourceLine" id="cb2-4" title="4">prodind &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;Dados/ProducaoIndustrial.xls&quot;</span>)</a>
+<a class="sourceLine" id="cb2-5" title="5"><span class="kw">ggplot</span>(prodind,<span class="kw">aes</span>(<span class="dt">x=</span>Data, <span class="dt">y=</span>intermediarios))<span class="op">+</span></a>
+<a class="sourceLine" id="cb2-6" title="6"><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">col=</span><span class="st">&quot;#D95F02&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb2-7" title="7"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;&quot;</span>,<span class="dt">y=</span><span class="st">&quot;Índice&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb2-8" title="8"><span class="st">  </span><span class="kw">theme_minimal</span>()</a></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:figpi"></span>
+<img src="02-SeriesReg_files/figure-html/figpi-1.png" alt="Produção física industrial de Bens Intermediários" width="85%" />
+<p class="caption">
+Figura 3.3: Produção física industrial de Bens Intermediários
+</p>
+</div>
+<p>É comum que as séries de dados mensais e trimestrais exibam padrões sazonais, mas isso não é uma regra. Por exemplo, não existe padrão sazonal observável nas taxas de juros ou de inflação. Além disso, séries que exibem padrões sazonais são <strong><em>ajustadas sazonalmente</em></strong> antes de serem informadas para o público.</p>
+<p>Uma série ajustada sazonalmente é a série que teve os fatores sazonais removidos. Existem vários métodos para isso. Um dos métodos mais simples é incluir um conjunto de variáveis dummies sazonais. Seja o seguinte modelo para dados mensais:</p>
+<p><span class="math display" id="eq:saz1">\[\begin{equation}
+y_t = \beta_0 + \delta_1fev_t + \delta_2mar_t + \cdots + \delta_{11}dez_t + \beta_1x_{t1} +\cdots + \beta_kx_{tk} + u_t.
+\tag{3.12}
+\end{equation}\]</span>
+em que <span class="math inline">\(fev_t,mar_t,\cdots,dez_t\)</span> são variáveis dummy indicando se o período de tempo <span class="math inline">\(t\)</span> correspondo ao mês apropriado. Nesta formulação, janeiro é o mês-base e <span class="math inline">\(\beta_0\)</span> seu intercepto. Se colocarmos janeiro no modelo e um intercepto, teremos um problema de multicolineariedade.</p>
+<p>Se não existir sazonalidade em <span class="math inline">\(y_t\)</span>, dado que controlamos os regressores <span class="math inline">\(x_{tj}\)</span>, então
+os coeficientes <span class="math inline">\(\delta_1;\ldots; \delta_{11}\)</span> devem ser todos iguais a zero, o que pode ser testado através de um teste <span class="math inline">\(F\)</span>.</p>
+<p>Considere o modelo <a href="streg.html#eq:saz1">(3.12)</a>, para <span class="math inline">\(k = 2\)</span>, ou seja 2 regressores. Podemos obter os seus estimadores, <span class="math inline">\(\hat{\beta}_1\)</span> e <span class="math inline">\(\hat{\beta}_2\)</span>, através do seguinte procedimento:</p>
+<p>Regrida a variável dependente, e cada um dos regressores, separadamente, contra
+uma constante e as dummies mensais e guarde os resíduos, digamos <span class="math inline">\(\ddot{y}_t\)</span>, <span class="math inline">\(\ddot{x}_{t1}\)</span> e <span class="math inline">\(\ddot{x}_{t2}\)</span>.</p>
+<p>Por exemplo,
+<span class="math display">\[\begin{equation*}
+\ddot{y}_t = y_t-\hat{\alpha}_0 - \hat{\alpha}_1fev_t - \hat{\alpha}_2mar_t -\cdots - \hat{\alpha}_{11}dez_t.
+\end{equation*}\]</span>
+Este é o método para dessazonalizar uma série temporal mensal.</p>
+<p>Roda a regressão de <span class="math inline">\(\ddot{y}_t\)</span> contra <span class="math inline">\(\ddot{x}_{t1}\)</span> e <span class="math inline">\(\ddot{x}_{t2}\)</span> sem as dummies mensais.</p>
+<div id="processos-de-covariância-estacionária" class="section level3">
+<h3><span class="header-section-number">3.5.1</span> Processos de covariância estacionária</h3>
+<p>Um processo estocástico é covariância estacionária se <span class="math inline">\(\mathbb{E} (x_t)\)</span> é constante, <span class="math inline">\(\mbox{Var}(x_t)\)</span> é constante e para qualquer <span class="math inline">\(t, h\geq 1\)</span>, <span class="math inline">\(\mbox{Cov}(x_t,x_{t + h})\)</span> depende apenas em <span class="math inline">\(h\)</span>, e não em <span class="math inline">\(t\)</span>. Mais adiante abordaremos essa definição com maior profundidade.</p>
+</div>
+<div id="processos-fracamente-dependente" class="section level3">
+<h3><span class="header-section-number">3.5.2</span> Processos fracamente dependente</h3>
+<p>Uma série temporal estacionária é fracamente dependente se <span class="math inline">\(x_t\)</span> e <span class="math inline">\(x_{t + h}\)</span> são
+“quase independentes”, quando <span class="math inline">\(h\)</span> aumenta.</p>
+<p>Se, para um processo de covariância estacionária <span class="math inline">\(\mbox{Cor}(x_t, x_{t + h})\rightarrow 0\)</span> quando <span class="math inline">\(h\rightarrow \infty\)</span>, dizemos que este processo de covariância estacionária é fracamente dependente.</p>
+<p>Essa definição é necessária para usar <em>Leis dos Grandes Números</em> e <em>Teorema Central do Limite</em>.</p>
+<p><br></p>
+
+<div class="example">
+<span id="exm:Wpg365" class="example"><strong>Exemplo 3.4  </strong></span>MA(1) pg 356 Wooldridge.
+</div>
+
+<p><br></p>
+
+<div class="example">
+<span id="exm:Wpg366" class="example"><strong>Exemplo 3.5  </strong></span>Exemplo: AR(1) pg 356 Wooldridge.
+</div>
+
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div id="exercícios" class="section level2">
+<h2><span class="header-section-number">3.6</span> Exercícios</h2>
+<p><br></p>
+
+<div class="exercise">
+<p><span id="exr:exsr1" class="exercise"><strong>Exercício 3.1  </strong></span>Sobre regressão com séries temporais responda:</p>
+<div class="line-block">   a) Quais as principais diferenças entre dados transversais e séries temporais?<br />
+   b) Explique o que é exogeneidade contemporânea e exogeneidade estrita.</div>
+<div class="line-block">   c) Comente sobre a diferença entre homocedasticidade e correlação serial.</div>
+| d) A suposição de normalidade dos erros é necessária para se obter estimadores consistentes via MQO? Qual é o objetivo ao se fazer uma suposição para distribuição dos erros?
+</div>
+
+<p><br></p>
+
+<div class="exercise">
+<p><span id="exr:exsr2" class="exercise"><strong>Exercício 3.2  (anpec-2010)  </strong></span>Considere o modelo de regressão linear múltipla com regressores estocásticos <span class="math inline">\(y_t = \beta_1 x_{1t} + \beta_2 x_{2t} + \varepsilon_t\)</span>, no qual <span class="math inline">\(\varepsilon_t\)</span> não é autocorrelacionado e tem média e variância condicionais a <span class="math inline">\(x_{1t}\)</span> e <span class="math inline">\(x_{2t}\)</span> iguais a zero e <span class="math inline">\(s^2\)</span>, respectivamente. Por simplicidade, suponha que as variáveis são expressas como desvios com relação às respectivas médias.</p>
+<p>Responda:</p>
+<div class="line-block">   a) Se <span class="math inline">\(\beta_2 = 0\)</span> e incluirmos <span class="math inline">\(x_{2t}\)</span> na regressão, o estimador de mínimos quadrados ordinários de <span class="math inline">\(\beta_1\)</span> será viesado?</div>
+<div class="line-block">   b) Se não conseguirmos observar <span class="math inline">\(x_{1t}\)</span>, mas apenas <span class="math inline">\(x_{1t}^*=x_{1t}+u_t\)</span>, em que <span class="math inline">\(u_t\)</span> é um erro de medida, e se substituirmos <span class="math inline">\(x_{1t}\)</span> por <span class="math inline">\(x_{1t}\)</span> na regressão, o estimador de mínimos quadrados ordinários de <span class="math inline">\(\beta_1\)</span> ainda assim será consistente?</div>
+<div class="line-block">   c) Se <span class="math inline">\(x_{2t} = y_{t-1}\)</span> e relaxarmos a hipótese de que os erros <span class="math inline">\(\varepsilon_t\)</span>`s não são autocorrelacionados, o estimador de mínimos quadrados ordinários de <span class="math inline">\(\beta_2\)</span> será consistente, porém não será eficiente?</div>
+<div class="line-block">   d) Seja <span class="math inline">\(c\)</span> uma constante diferente de zero. Defina <span class="math inline">\(\tilde{y}= cy_t\)</span>, <span class="math inline">\(\tilde{x}_{1t}= cx_{1t}\)</span> e <span class="math inline">\(\tilde{x}_{2t} = cx_{2t}\)</span>. Os estimadores de mínimos quadrados ordinários (MQO) em uma regressão de <span class="math inline">\(\tilde{y}\)</span> contra <span class="math inline">\(\tilde{x}_{1t}\)</span> e <span class="math inline">\(\tilde{x}_{2t}\)</span> coincidem com os estimadores de MQO em uma regressão de <span class="math inline">\(y_t\)</span> contra <span class="math inline">\(x_{1t}\)</span> e <span class="math inline">\(x_{2t}\)</span>?</div>
+<div class="line-block">   e) A variância do estimador de mínimos quadrados ordinários diverge para infinito à medida que a correlação entre <span class="math inline">\(x_{1t}\)</span> e <span class="math inline">\(x_{2t}\)</span> aproxima-se de 1;</div>
+| f) Denote por <span class="math inline">\(\widehat{\varepsilon}_t\)</span> o resíduo da regressão de mínimos quadrados ordinários. A hipótese de que o erro é correlacionado com <span class="math inline">\(x_{1t}\)</span> pode ser testada utilizando a estatística <span class="math inline">\(\frac{1}{T}\sum_{i=1}^{T}x_{1i}\widehat{\varepsilon}_{i}\)</span>?
+</div>
+
+<p><br></p>
+
+<div class="exercise">
+<p><span id="exr:exsr3" class="exercise"><strong>Exercício 3.3  </strong></span>Em uma equação de dados anuais, supondo que
+<span class="math display">\[jur_t=1,6+0,48inf_t-0,15inf_{t-1}+0,32inf_{t-2}+u_t,\]</span>
+em que <span class="math inline">\(jur\)</span> é a taxa de juros e <span class="math inline">\(inf\)</span> é a taxa de inflação.</p>
+<p>| a) Supondo válida a hipótese de exogeneidade estrita, como deve ter sido estimado o modelo acima? Justifique?</p>
+| b) Qual é o efeito de curto prazo (propensão de impacto) da taxa de inflação sobre a taxa juros? Qual é o efeito de longo prazo da taxa de inflação sobre a taxa de juros?
+</div>
+
+<p><br></p>
+
+<div class="exercise">
+<p><span id="exr:exsr4" class="exercise"><strong>Exercício 3.4  </strong></span>Considere uma série temporal de 10 anos contendo PIB (em R$ ) e número de homicídios (em unidades) em um determinado país. O primeiro modelo estimado foi <span class="math inline">\(pib_t=\beta_0+\beta_1homic_t+u_t\)</span>. Os resultados da estimação se encontram na tabela 1. Um segundo modelo foi <span class="math inline">\(pib_t=\beta_0+\beta_1homic_t+\beta_2t+u_t\)</span>, em que <span class="math inline">\(t\)</span> é um termo de tendência. Os resultados da estimação desse modelo se encontram na tabela 2:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Tabela 1</th>
+<th>Estimate</th>
+<th>Std. Error</th>
+<th>t-value</th>
+<th>Pr(&gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>(Intercept)</td>
+<td>-3461194.26</td>
+<td>314948.06</td>
+<td>-10.99</td>
+<td>0.00</td>
+</tr>
+<tr class="even">
+<td>homic</td>
+<td>102.63</td>
+<td>6.12</td>
+<td>16.76</td>
+<td>0.00</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<table>
+<thead>
+<tr class="header">
+<th>Tabela 2</th>
+<th>Estimate</th>
+<th>Std. Error</th>
+<th>t-value</th>
+<th>Pr(&gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>(Intercept)</td>
+<td>5564710.45</td>
+<td>2539866.04</td>
+<td>2.19</td>
+<td>0.06</td>
+</tr>
+<tr class="even">
+<td>homic</td>
+<td>-123.64</td>
+<td>63.59</td>
+<td>-1.94</td>
+<td>0.09</td>
+</tr>
+<tr class="odd">
+<td>t</td>
+<td>423054.01</td>
+<td>118647.95</td>
+<td>3.57</td>
+<td>0.01</td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">   a) O coeficiente de <span class="math inline">\(homic\)</span> é significativo no primeiro modelo a 5% de significância? Interprete o valor desse coeficiente.</div>
+<div class="line-block">   b) O coeficiente de <span class="math inline">\(homic\)</span> é significativo no segundo modelo a 5% de significância? Interprete o valor desse coeficiente.</div>
+<div class="line-block">   c) O coeficiente de <span class="math inline">\(t\)</span> é significativo no segundo modelo a 5% de significância? Interprete o valor desse coeficiente.</div>
+<div class="line-block">   d) Explique o resultado (surpreendente) encontrado no primeiro modelo, ressaltando a importância do procedimento adotado no segundo modelo.</div>
+</div>
+
+<p><br></p>
+
+<div class="exercise">
+<p><span id="exr:exsr5" class="exercise"><strong>Exercício 3.5  </strong></span>Considere uma série do PIB brasileiro com início no primeiro trimestre 1996 e fim no segundo bimestre de 2010. Essa série foi decomposta em sua tendência <span class="math inline">\((t)\)</span> e variáveis dummy para a sazonalidade, em que <span class="math inline">\(S_i = 1\)</span>, se a observação pertence ao trimestre <span class="math inline">\(i\)</span> e <span class="math inline">\(S_i = 0\)</span>, caso contrário.</p>
+<div class="line-block">   a) Se tentarmos estimar o modelo <span class="math inline">\(pib_t=\beta_0+\beta_1S_1+\beta_2S_2+\beta_3S_3+\beta_4S_4+\gamma t+u_t\)</span>, qual problema encontraremos? Explique porque isso ocorre.</div>
+<div class="line-block">   b) No modelo <span class="math inline">\(pib_t=\beta_1S_1+\beta_2S_2+\beta_3S_3+\beta_4S_4+\gamma t+u_t\)</span>, o que mede cada um dos <span class="math inline">\(\beta\)</span>`s?</div>
+<div class="line-block">   c) No modelo <span class="math inline">\(pib_t=\beta_0+\beta_2S_2+\beta_3S_3+\beta_4S_4+\gamma t+u_t\)</span>, o que mede <span class="math inline">\(\beta_2\)</span>?</div>
+<div class="line-block">   d) No modelo <span class="math inline">\(pib_t=\beta_0+\gamma t+\beta_2S_2+\beta_3S_3+\beta_4S_4+u_t\)</span>, foi estimado e apresentou a seguinte tabela ANOVA (Tabela 3). Faça um teste F para a hipótese nula de que não há sazonalidade. Use</div>
+<p><span class="math inline">\(\alpha=5\%\)</span></p>
+<table>
+<thead>
+<tr class="header">
+<th>Tabela 3</th>
+<th>Df</th>
+<th>Sum Sq</th>
+<th>Mean Sq</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>t</td>
+<td>1</td>
+<td>2287298699531.79</td>
+<td>2287298699531.79</td>
+</tr>
+<tr class="even">
+<td>s2</td>
+<td>1</td>
+<td>1216754395.49</td>
+<td>1216754395.49</td>
+</tr>
+<tr class="odd">
+<td>s3</td>
+<td>1</td>
+<td>31129772.60</td>
+<td>31129772.60</td>
+</tr>
+<tr class="even">
+<td>s4</td>
+<td>1</td>
+<td>5037536508.88</td>
+<td>5037536508.88</td>
+</tr>
+<tr class="odd">
+<td>Residuals</td>
+<td>53</td>
+<td>106216397798.70</td>
+<td>2004082977.33</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<p><br></p>
+
+<div class="exercise">
+<p><span id="exr:exsr6" class="exercise"><strong>Exercício 3.6  </strong></span>Considere o modelo <span class="math inline">\(y_t=\alpha_0+\delta_0z_t+\delta_1z_{t-1}+\delta_2z_{t-2}+u_t\)</span>.</p>
+<div class="line-block">   a) Por que devemos considerar a possibilidade de multicolinearidade nesse modelo?</div>
+<div class="line-block">   b) Reparametrize o modelo de modo a isolar o efeito de longo prazo como coeficiente da variável <span class="math inline">\(z_t\)</span>.</div>
+| c) Qual o benefício dessa reparametrização se estivermos interessados em testar a significância do efeito de LP da <span class="math inline">\(z\)</span> sobre <span class="math inline">\(y\)</span>?
+</div>
+
+<p><br></p>
+
+<div class="exercise">
+<p><span id="exr:exsr7" class="exercise"><strong>Exercício 3.7  </strong></span>Considere o seguinte modelo estático <span class="math inline">\(crime_t=\beta_0+\beta_1+pol_t+u_t\)</span>, em que <span class="math inline">\(crime_t\)</span> é um índice de criminalidade no período <span class="math inline">\(t\)</span> e <span class="math inline">\(pol_t\)</span> é o número de policiais em <span class="math inline">\(t\)</span>.</p>
+<div class="line-block">   a) Supondo que <span class="math inline">\(pol\)</span> seja estritamente exógeno na equação, como você estimaria <span class="math inline">\(\beta_0\)</span> e <span class="math inline">\(\beta_1\)</span>. Quais as propriedades do estimador proposto em termos de viés e consistência?</div>
+<div class="line-block">   b) Suponha agora que o número de policiais em <span class="math inline">\(t\)</span> seja definido em função do índice de criminalidade do período anterior. A hipótese de exogeneidade estrita continua válida? Justifique.</div>
+</div>
+
+<p><br></p>
+
+<div class="exercise">
+<p><span id="exr:exsr8" class="exercise"><strong>Exercício 3.8  </strong></span>Um modelo de ajustamento parcial é dado por:
+<span class="math display">\[y^*_t=\beta_0+\beta_1x_t+e_t\]</span>
+<span class="math display">\[y_t-y_{t-1}=\lambda(y^*_t-y_{t-1}),\]</span>
+em que <span class="math inline">\(y^*_t\)</span> é o nível desejável ou ótimo de <span class="math inline">\(y\)</span>, e <span class="math inline">\(y_t\)</span> é o nível efetivo (observado). Por exemplo, <span class="math inline">\(y^*_t\)</span> é o crescimento desejável nos estoques de uma firma e <span class="math inline">\(x_t\)</span> é o crescimento de vendas da firma. O parâmetro <span class="math inline">\(\lambda\)</span> mede a
+velocidade do ajustamento e satisfaz <span class="math inline">\(0 &lt; \lambda &lt; 1\)</span>.</p>
+<div class="line-block">   a) Insira a primeira equação na segunda equação e mostre que podemos escrever <span class="math inline">\(y_t=\alpha_0+\alpha_1 y_{t-1}+\alpha_2 x_t+u_t\)</span>. Quem são os <span class="math inline">\(\alpha\)</span>s em termos dos <span class="math inline">\(\beta\)</span>s e <span class="math inline">\(\lambda\)</span>? Quem é <span class="math inline">\(u_t\)</span> em termos de <span class="math inline">\(e_t\)</span>?</div>
+<div class="line-block">   b) Supondo que <span class="math inline">\(\mathbb{E}(e_t|x_t,y_{t-1})=0\)</span> e todas as séries sejam fracamente dependentes,</div>
+<p>como você estimaria os <span class="math inline">\(\alpha\)</span>s? É consistente? Justifique sua resposta. O estimador proposto é viciado?</p>
+<div class="line-block">   c) Seja <span class="math inline">\(\hat{\alpha}_1 = 0,7\)</span> e <span class="math inline">\(\hat{\alpha}_2 = 0,2\)</span>.</div>
+<pre><code>(i) Qual o coeficiente de ajustamento estimado?
+
+(ii) Qual o efeito de CP (curto prazo) de um crescimento das vendas da firma sobre o crescimento de estoques da firma?
+
+(iii) Qual é o efeito de LP (longo prazo)?</code></pre>
+</div>
+
+<p><br></p>
+
+<div class="exercise">
+<p><span id="exr:exsr9" class="exercise"><strong>Exercício 3.9  </strong></span>Imagine o seguinte modelo: <span class="math inline">\(Y_t = \beta_0 + \beta_1 X_t + u_t\)</span> , onde <span class="math inline">\(Y\)</span> é a demanda por moeda, <span class="math inline">\(X^*\)</span> é a taxa de juros esperada no longo prazo e <span class="math inline">\(u\)</span> é um termo de erro clássico, não correlacionado com <span class="math inline">\(X^*\)</span>. Como a variável de expectativa <span class="math inline">\(X^*\)</span> não é diretamente observável, proporemos a seguinte hipótese para formação de expectativas (adaptativas): <span class="math inline">\(X^*_t- X^*_{t-1} = \gamma(X_t- X_{t-1} )\)</span>, em que <span class="math inline">\(\gamma\)</span>, tal que <span class="math inline">\(0 &lt; \gamma &lt; 1\)</span>, é conhecido como coeficiente de expectativas.</p>
+<div class="line-block">   a) Mostre que podemos escrever esse modelo como <span class="math inline">\(Y_t=\alpha_0+\alpha_1X_t+\alpha_2Y_{t-1}+v_t\)</span>. Quem são os <span class="math inline">\(\alpha\)</span>s em termos dos <span class="math inline">\(\beta\)</span>s e <span class="math inline">\(\gamma\)</span>? Quem é <span class="math inline">\(v_t\)</span> em termos de <span class="math inline">\(u_t\)</span>?</div>
+<div class="line-block">   b) O que podemos dizer a respeito dos estimadores de MQO nesse caso? Justifique.</div>
+<div class="line-block">   c) Imagine que no modelo original <span class="math inline">\(u_t\)</span> siga o esquema auto-regressivo de primeira ordem, i.e., <span class="math inline">\(u_t = \rho u_{t-1} + \varepsilon_t\)</span>, em que <span class="math inline">\(\rho\)</span> é o coeficiente de autocorrelação e onde <span class="math inline">\(\varepsilon_t\)</span> satisfaz as premissas clássicas. Se <span class="math inline">\(\rho=\lambda\)</span>, como você estimaria o modelo? Justifique.</div>
+<div class="line-block">   d) As estimativas obtidas no item anterior são não-viciadas? Consistentes? Justifique sua resposta.</div>
+</div>
+
+<p><br></p>
+
+<div class="exercise">
+<p><span id="exr:exsr10" class="exercise"><strong>Exercício 3.10  </strong></span>Seja o processo <span class="math inline">\(y_t = e_t + \alpha_1 e_{t-1}\)</span>, em que <span class="math inline">\(e_t \sim iid(0,\sigma^2).\)</span></p>
+<div class="line-block">   a) Calcule <span class="math inline">\(\mathbb{E}(y_t )\)</span>, <span class="math inline">\(\mbox{Var}(y_t )\)</span> e <span class="math inline">\(\mbox{Cov}(y_t , y_{t-h} )\)</span>, <span class="math inline">\(h = 1, 2, 3,\ldots\)</span>. O processo <span class="math inline">\(y_t\)</span> é de covariância estacionária?</div>
+<div class="line-block">   b) Calcule as autocorrelações de primeira ordem e de segunda ordem para esse processo. Podemos dizer que o processo é fracamente dependente? Justifique.</div>
+<div class="line-block">   c) Faça o correlograma (gráfico da função de autocorrelação em função das defasagens) para esse processo.</div>
+</div>
+
+<p><br></p>
+
+<div class="exercise">
+<p><span id="exr:exsr11" class="exercise"><strong>Exercício 3.11  </strong></span>Seja o processo <span class="math inline">\(y_t = c + \rho y_{t-1} + e_t\)</span>, em que <span class="math inline">\(e_t \sim iid(0,\sigma^2)\)</span>.</p>
+<div class="line-block">   a) Qual é a condição de estabilidade para esse processo? Calcule <span class="math inline">\(\mathbb{E}(y_t )\)</span> e <span class="math inline">\(\mbox{Var}(y_t )\)</span> considerando válida a condição de estabilidade.</div>
+<div class="line-block">   b) Para o processo <span class="math inline">\(y_t\)</span> acima temos que <span class="math inline">\(\mbox{Cov}(y_t,y_{t-h} ) = \frac{\rho^h\sigma^2}{1-\rho^2}\)</span>, <span class="math inline">\(h = 1, 2, 3,\ldots\)</span>. O processo <span class="math inline">\(y_t\)</span> é de covariância estacionária? Justifique.</div>
+<div class="line-block">   c) Calcule a autocorrelação de ordem <span class="math inline">\(h\)</span> para o processo <span class="math inline">\(y_t\)</span>. Faça o correlograma até quatro defasagens para esse processo considerando <span class="math inline">\(\rho = 0,5\)</span>.</div>
+</div>
+
+
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-koopmans1974">
+<p>Koopmans, LH. 1974. “The Spectral Analysis of Time Series Academic Press.” <em>New York, San Francisco, London</em>.</p>
+</div>
+<div id="ref-marple1980">
+<p>Marple, Larry. 1980. “A New Autoregressive Spectrum Analysis Algorithm.” <em>IEEE Transactions on Acoustics, Speech, and Signal Processing</em> 28 (4): 441–54.</p>
+</div>
+<div id="ref-morettin1978">
+<p>Morettin, PA. 1978. “Estimation of the Spectrum and of the Covariance Function of a Dyadic-Stationary Series.” <em>Boletim Da Sociedade Brasileira de Matemática-Bulletin/Brazilian Mathematical Society</em> 9 (2): 83–88.</p>
+</div>
+<div id="ref-watts1968">
+<p>Watts, Donald G, and G Jenkins. 1968. “Spectral Analysis and Its Applications.” <em>San Francisco</em>.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="rev.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="st.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/02-SeriesReg.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Econometria-e-series-temporais-com-o-R.pdf", "Econometria-e-series-temporais-com-o-R.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

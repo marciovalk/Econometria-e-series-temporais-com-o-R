@@ -1,0 +1,1824 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 5 Séries temporais não estacionárias | Econometria e Séries Temporais com R</title>
+  <meta name="description" content="Este livro pode ser usado em um curso de graduação que proponha estudar econometria e séreis temporais em um nível introdutório. No entanto, também é abordado um pouco da teoria e tecnicalidade." />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 5 Séries temporais não estacionárias | Econometria e Séries Temporais com R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Este livro pode ser usado em um curso de graduação que proponha estudar econometria e séreis temporais em um nível introdutório. No entanto, também é abordado um pouco da teoria e tecnicalidade." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 5 Séries temporais não estacionárias | Econometria e Séries Temporais com R" />
+  
+  <meta name="twitter:description" content="Este livro pode ser usado em um curso de graduação que proponha estudar econometria e séreis temporais em um nível introdutório. No entanto, também é abordado um pouco da teoria e tecnicalidade." />
+  
+
+<meta name="author" content="Marcio Valk e Guilherme Pumi" />
+
+
+<meta name="date" content="2020-07-12" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="st.html"/>
+<link rel="next" href="vi.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefácio</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Breve introdução ao R</a><ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#apresentação-da-linguagem-r"><i class="fa fa-check"></i><b>1.1</b> Apresentação da linguagem R</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#instalando-o-r"><i class="fa fa-check"></i><b>1.2</b> Instalando o R</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#instalando-o-rstudio"><i class="fa fa-check"></i><b>1.3</b> Instalando o RStudio</a></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#diretório-de-trabalho"><i class="fa fa-check"></i><b>1.4</b> Diretório de trabalho</a></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#rstudio-cloud"><i class="fa fa-check"></i><b>1.5</b> RStudio Cloud</a></li>
+<li class="chapter" data-level="1.6" data-path="intro.html"><a href="intro.html#instalação-de-pacotes"><i class="fa fa-check"></i><b>1.6</b> Instalação de pacotes</a></li>
+<li class="chapter" data-level="1.7" data-path="intro.html"><a href="intro.html#funcionalidades-básicas"><i class="fa fa-check"></i><b>1.7</b> Funcionalidades básicas</a><ul>
+<li class="chapter" data-level="1.7.1" data-path="intro.html"><a href="intro.html#operações"><i class="fa fa-check"></i><b>1.7.1</b> Operações</a></li>
+<li class="chapter" data-level="1.7.2" data-path="intro.html"><a href="intro.html#operadores-lógicos"><i class="fa fa-check"></i><b>1.7.2</b> Operadores lógicos</a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="intro.html"><a href="intro.html#variáveis-no-r"><i class="fa fa-check"></i><b>1.8</b> Variáveis no R</a><ul>
+<li class="chapter" data-level="1.8.1" data-path="intro.html"><a href="intro.html#operações-1"><i class="fa fa-check"></i><b>1.8.1</b> Operações</a></li>
+</ul></li>
+<li class="chapter" data-level="1.9" data-path="intro.html"><a href="intro.html#vetores"><i class="fa fa-check"></i><b>1.9</b> Vetores</a><ul>
+<li class="chapter" data-level="1.9.1" data-path="intro.html"><a href="intro.html#operações-com-vetores"><i class="fa fa-check"></i><b>1.9.1</b> Operações com vetores</a></li>
+</ul></li>
+<li class="chapter" data-level="1.10" data-path="intro.html"><a href="intro.html#matrizes"><i class="fa fa-check"></i><b>1.10</b> Matrizes</a><ul>
+<li class="chapter" data-level="1.10.1" data-path="intro.html"><a href="intro.html#operações-com-matrizes"><i class="fa fa-check"></i><b>1.10.1</b> Operações com Matrizes</a></li>
+</ul></li>
+<li class="chapter" data-level="1.11" data-path="intro.html"><a href="intro.html#uso-do-for-loop"><i class="fa fa-check"></i><b>1.11</b> Uso do for (loop)</a></li>
+<li class="chapter" data-level="1.12" data-path="intro.html"><a href="intro.html#funções"><i class="fa fa-check"></i><b>1.12</b> Funções</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="rev.html"><a href="rev.html"><i class="fa fa-check"></i><b>2</b> Revisão</a><ul>
+<li class="chapter" data-level="2.1" data-path="rev.html"><a href="rev.html#aleatoriedade-a-essência-da-estatística"><i class="fa fa-check"></i><b>2.1</b> Aleatoriedade, a essência da estatística</a></li>
+<li class="chapter" data-level="2.2" data-path="rev.html"><a href="rev.html#variável-aleatória"><i class="fa fa-check"></i><b>2.2</b> Variável aleatória</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="rev.html"><a href="rev.html#distribuição-de-probabilidade"><i class="fa fa-check"></i><b>2.2.1</b> Distribuição de probabilidade</a></li>
+<li class="chapter" data-level="2.2.2" data-path="rev.html"><a href="rev.html#distribuições-conjunta-marginal-e-condicional"><i class="fa fa-check"></i><b>2.2.2</b> Distribuições conjunta, marginal e condicional</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="rev.html"><a href="rev.html#a-distribuição-normal-e-distribuições-relacionadas"><i class="fa fa-check"></i><b>2.3</b> A distribuição Normal e distribuições relacionadas</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="rev.html"><a href="rev.html#a-distribuição-normal"><i class="fa fa-check"></i><b>2.3.1</b> A distribuição Normal</a></li>
+<li class="chapter" data-level="2.3.2" data-path="rev.html"><a href="rev.html#distribuições-relacionadas"><i class="fa fa-check"></i><b>2.3.2</b> Distribuições relacionadas</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="rev.html"><a href="rev.html#parâmetros-estimadores-e-valores-estimados"><i class="fa fa-check"></i><b>2.4</b> Parâmetros, estimadores e valores estimados</a></li>
+<li class="chapter" data-level="2.5" data-path="rev.html"><a href="rev.html#propriedades-de-variáveis-aleatórias"><i class="fa fa-check"></i><b>2.5</b> Propriedades de variáveis aleatórias</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="rev.html"><a href="rev.html#média-valor-esperado-ou-esperança-matemática"><i class="fa fa-check"></i><b>2.5.1</b> Média, valor esperado ou esperança matemática</a></li>
+<li class="chapter" data-level="2.5.2" data-path="rev.html"><a href="rev.html#propriedades-da-esperança"><i class="fa fa-check"></i><b>2.5.2</b> Propriedades da Esperança</a></li>
+<li class="chapter" data-level="2.5.3" data-path="rev.html"><a href="rev.html#variância"><i class="fa fa-check"></i><b>2.5.3</b> Variância</a></li>
+<li class="chapter" data-level="2.5.4" data-path="rev.html"><a href="rev.html#covariância"><i class="fa fa-check"></i><b>2.5.4</b> Covariância</a></li>
+<li class="chapter" data-level="2.5.5" data-path="rev.html"><a href="rev.html#correlação"><i class="fa fa-check"></i><b>2.5.5</b> Correlação</a></li>
+<li class="chapter" data-level="2.5.6" data-path="rev.html"><a href="rev.html#propriedades-da-variância-covariância-e-correlação"><i class="fa fa-check"></i><b>2.5.6</b> Propriedades da variância, covariância e correlação</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="rev.html"><a href="rev.html#estimadores"><i class="fa fa-check"></i><b>2.6</b> Estimadores</a><ul>
+<li class="chapter" data-level="2.6.1" data-path="rev.html"><a href="rev.html#propriedades-dos-estimadores"><i class="fa fa-check"></i><b>2.6.1</b> Propriedades dos estimadores</a></li>
+<li class="chapter" data-level="2.6.2" data-path="rev.html"><a href="rev.html#vícioviés"><i class="fa fa-check"></i><b>2.6.2</b> Vício/Viés</a></li>
+<li class="chapter" data-level="2.6.3" data-path="rev.html"><a href="rev.html#consistência"><i class="fa fa-check"></i><b>2.6.3</b> Consistência</a></li>
+<li class="chapter" data-level="2.6.4" data-path="rev.html"><a href="rev.html#eficiência"><i class="fa fa-check"></i><b>2.6.4</b> Eficiência</a></li>
+<li class="chapter" data-level="2.6.5" data-path="rev.html"><a href="rev.html#erro-quadrático-médio-eqm"><i class="fa fa-check"></i><b>2.6.5</b> Erro quadrático médio (EQM)</a></li>
+<li class="chapter" data-level="2.6.6" data-path="rev.html"><a href="rev.html#vício-versus-vvariância-mínima"><i class="fa fa-check"></i><b>2.6.6</b> Vício versus Vvariância mínima</a></li>
+<li class="chapter" data-level="2.6.7" data-path="rev.html"><a href="rev.html#método-de-mínimos-quadrados-mqo"><i class="fa fa-check"></i><b>2.6.7</b> Método de mínimos quadrados (MQO)</a></li>
+<li class="chapter" data-level="2.6.8" data-path="rev.html"><a href="rev.html#regressão-liner-múltipla-rml"><i class="fa fa-check"></i><b>2.6.8</b> Regressão liner múltipla (RML)</a></li>
+<li class="chapter" data-level="2.6.9" data-path="rev.html"><a href="rev.html#hipóteses-do-modelo-de-regressão"><i class="fa fa-check"></i><b>2.6.9</b> Hipóteses do modelo de regressão</a></li>
+<li class="chapter" data-level="2.6.10" data-path="rev.html"><a href="rev.html#o-coeficiente-de-dterminação"><i class="fa fa-check"></i><b>2.6.10</b> O coeficiente de dterminação</a></li>
+<li class="chapter" data-level="2.6.11" data-path="rev.html"><a href="rev.html#propriedade-de-não-viés-dos-estimadores-mqo"><i class="fa fa-check"></i><b>2.6.11</b> Propriedade de não-viés dos estimadores MQO</a></li>
+<li class="chapter" data-level="2.6.12" data-path="rev.html"><a href="rev.html#testes-de-hipóteses"><i class="fa fa-check"></i><b>2.6.12</b> Testes de hipóteses</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="rev.html"><a href="rev.html#formas-funcionais-logarítmicas"><i class="fa fa-check"></i><b>2.7</b> Formas funcionais logarítmicas</a></li>
+<li class="chapter" data-level="2.8" data-path="rev.html"><a href="rev.html#exercícios"><i class="fa fa-check"></i><b>2.8</b> Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="streg.html"><a href="streg.html"><i class="fa fa-check"></i><b>3</b> Séries temporais no contexto de regressão</a><ul>
+<li class="chapter" data-level="3.1" data-path="streg.html"><a href="streg.html#introdução"><i class="fa fa-check"></i><b>3.1</b> Introdução</a></li>
+<li class="chapter" data-level="3.2" data-path="streg.html"><a href="streg.html#exemplos-de-séries-temporais"><i class="fa fa-check"></i><b>3.2</b> Exemplos de séries temporais</a></li>
+<li class="chapter" data-level="3.3" data-path="streg.html"><a href="streg.html#regressão-com-dados-de-séries-temporais"><i class="fa fa-check"></i><b>3.3</b> Regressão com dados de séries temporais</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="streg.html"><a href="streg.html#diferença-entre-dados-de-séries-temporais-e-dados-de-corte-transversal"><i class="fa fa-check"></i><b>3.3.1</b> Diferença entre dados de séries temporais e dados de corte transversal</a></li>
+<li class="chapter" data-level="3.3.2" data-path="streg.html"><a href="streg.html#modelos-de-regressão-de-séries-temporais"><i class="fa fa-check"></i><b>3.3.2</b> Modelos de regressão de séries temporais</a></li>
+<li class="chapter" data-level="3.3.3" data-path="streg.html"><a href="streg.html#modelos-de-defasagem-distribuída-finita"><i class="fa fa-check"></i><b>3.3.3</b> Modelos de defasagem distribuída finita</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="streg.html"><a href="streg.html#suposições-para-modelos-com-séries-temporais"><i class="fa fa-check"></i><b>3.4</b> Suposições para modelos com séries temporais</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="streg.html"><a href="streg.html#inexistência-de-viés-do-mqo"><i class="fa fa-check"></i><b>3.4.1</b> Inexistência de viés do MQO</a></li>
+<li class="chapter" data-level="3.4.2" data-path="rev.html"><a href="rev.html#variância-dos-estimadores-mqo"><i class="fa fa-check"></i><b>3.4.2</b> Variância dos estimadores MQO</a></li>
+<li class="chapter" data-level="3.4.3" data-path="streg.html"><a href="streg.html#inferência-sob-as-hipóteses-do-modelo-linear-clássico"><i class="fa fa-check"></i><b>3.4.3</b> Inferência sob as hipóteses do modelo linear clássico</a></li>
+<li class="chapter" data-level="3.4.4" data-path="streg.html"><a href="streg.html#tendência"><i class="fa fa-check"></i><b>3.4.4</b> Tendência</a></li>
+<li class="chapter" data-level="3.4.5" data-path="streg.html"><a href="streg.html#usando-variáveis-de-tendência-na-análise-de-regressão"><i class="fa fa-check"></i><b>3.4.5</b> Usando variáveis de tendência na análise de regressão</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="streg.html"><a href="streg.html#sazonalidade"><i class="fa fa-check"></i><b>3.5</b> Sazonalidade</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="streg.html"><a href="streg.html#processos-de-covariância-estacionária"><i class="fa fa-check"></i><b>3.5.1</b> Processos de covariância estacionária</a></li>
+<li class="chapter" data-level="3.5.2" data-path="streg.html"><a href="streg.html#processos-fracamente-dependente"><i class="fa fa-check"></i><b>3.5.2</b> Processos fracamente dependente</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="rev.html"><a href="rev.html#exercícios"><i class="fa fa-check"></i><b>3.6</b> Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="st.html"><a href="st.html"><i class="fa fa-check"></i><b>4</b> Séries Temporais</a><ul>
+<li class="chapter" data-level="4.1" data-path="st.html"><a href="st.html#objetivos"><i class="fa fa-check"></i><b>4.1</b> Objetivos</a></li>
+<li class="chapter" data-level="4.2" data-path="st.html"><a href="st.html#séries-temporais-definição-formal"><i class="fa fa-check"></i><b>4.2</b> Séries temporais: definição formal</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="st.html"><a href="st.html#processos-estocásticos"><i class="fa fa-check"></i><b>4.2.1</b> Processos estocásticos</a></li>
+<li class="chapter" data-level="4.2.2" data-path="st.html"><a href="st.html#especificação-de-um-processo-estocástico"><i class="fa fa-check"></i><b>4.2.2</b> Especificação de um processo estocástico</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="st.html"><a href="st.html#médias-e-covariâncias"><i class="fa fa-check"></i><b>4.3</b> Médias e covariâncias</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="st.html"><a href="st.html#propriedades-importantes"><i class="fa fa-check"></i><b>4.3.1</b> Propriedades importantes</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="st.html"><a href="st.html#estacionariedade"><i class="fa fa-check"></i><b>4.4</b> Estacionariedade</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="st.html"><a href="st.html#estacionariedade-forte-ou-estrita"><i class="fa fa-check"></i><b>4.4.1</b> Estacionariedade forte ou estrita</a></li>
+<li class="chapter" data-level="4.4.2" data-path="st.html"><a href="st.html#estacionariedade-fraca-ou-de-segunda-ordem"><i class="fa fa-check"></i><b>4.4.2</b> Estacionariedade fraca ou de segunda ordem</a></li>
+<li class="chapter" data-level="4.4.3" data-path="st.html"><a href="st.html#teste-para-significância-das-autocorrelações"><i class="fa fa-check"></i><b>4.4.3</b> Teste para significância das autocorrelações</a></li>
+<li class="chapter" data-level="4.4.4" data-path="st.html"><a href="st.html#função-de-autocorrelação-parcial-facp"><i class="fa fa-check"></i><b>4.4.4</b> Função de autocorrelação parcial ( <em>FACP</em> )</a></li>
+<li class="chapter" data-level="4.4.5" data-path="st.html"><a href="st.html#operador-de-defasagem-ou-operador-lag"><i class="fa fa-check"></i><b>4.4.5</b> Operador de defasagem ou operador <em>lag</em></a></li>
+<li class="chapter" data-level="4.4.6" data-path="st.html"><a href="st.html#ruído-branco"><i class="fa fa-check"></i><b>4.4.6</b> Ruído branco</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="st.html"><a href="st.html#metodologia-de-box-jenkins-ou-modelagem-arima"><i class="fa fa-check"></i><b>4.5</b> Metodologia de Box-Jenkins ou modelagem ARIMA</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="st.html"><a href="st.html#modelo-autorregressivo-de-ordem-1-ar1"><i class="fa fa-check"></i><b>4.5.1</b> Modelo autorregressivo de ordem 1 AR(1)</a></li>
+<li class="chapter" data-level="4.5.2" data-path="st.html"><a href="st.html#passeio-aleatório-random-walk"><i class="fa fa-check"></i><b>4.5.2</b> Passeio aleatório (<em>Random Walk</em>)</a></li>
+<li class="chapter" data-level="4.5.3" data-path="st.html"><a href="st.html#modelos-autorregressivos-de-ordem-p-arp"><i class="fa fa-check"></i><b>4.5.3</b> Modelos autorregressivos de ordem <span class="math inline">\(p\)</span>, AR(<span class="math inline">\(p\)</span>)</a></li>
+<li class="chapter" data-level="4.5.4" data-path="st.html"><a href="st.html#modelo-de-médias-móveis-maq"><i class="fa fa-check"></i><b>4.5.4</b> Modelo de médias-móveis, MA(<em>q</em>)</a></li>
+<li class="chapter" data-level="4.5.5" data-path="st.html"><a href="st.html#o-modelo-ma1"><i class="fa fa-check"></i><b>4.5.5</b> O modelo MA(1)</a></li>
+<li class="chapter" data-level="4.5.6" data-path="st.html"><a href="st.html#propriedades-do-modelo-maq"><i class="fa fa-check"></i><b>4.5.6</b> Propriedades do modelo MA(<span class="math inline">\(q\)</span>)</a></li>
+<li class="chapter" data-level="4.5.7" data-path="st.html"><a href="st.html#modelo-armapq"><i class="fa fa-check"></i><b>4.5.7</b> Modelo ARMA(<span class="math inline">\(p\)</span>,<span class="math inline">\(q\)</span>)</a></li>
+<li class="chapter" data-level="4.5.8" data-path="st.html"><a href="st.html#causalidade"><i class="fa fa-check"></i><b>4.5.8</b> Causalidade</a></li>
+<li class="chapter" data-level="4.5.9" data-path="st.html"><a href="st.html#invertibilidade"><i class="fa fa-check"></i><b>4.5.9</b> Invertibilidade</a></li>
+<li class="chapter" data-level="4.5.10" data-path="st.html"><a href="st.html#polinômio-característico"><i class="fa fa-check"></i><b>4.5.10</b> Polinômio característico</a></li>
+<li class="chapter" data-level="4.5.11" data-path="st.html"><a href="st.html#estacionariedade-e-causalidade-de-um-processo-arma"><i class="fa fa-check"></i><b>4.5.11</b> Estacionariedade e causalidade de um processo ARMA</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="rev.html"><a href="rev.html#exercícios"><i class="fa fa-check"></i><b>4.6</b> Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="stnoest.html"><a href="stnoest.html"><i class="fa fa-check"></i><b>5</b> Séries temporais não estacionárias</a><ul>
+<li class="chapter" data-level="5.1" data-path="stnoest.html"><a href="stnoest.html#como-lidar-com-tendências-determinísticas"><i class="fa fa-check"></i><b>5.1</b> Como lidar com tendências determinísticas</a></li>
+<li class="chapter" data-level="5.2" data-path="stnoest.html"><a href="stnoest.html#testes-de-raiz-unitária"><i class="fa fa-check"></i><b>5.2</b> Testes de raiz unitária</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="stnoest.html"><a href="stnoest.html#identificando-tendência-estocástica"><i class="fa fa-check"></i><b>5.2.1</b> Identificando tendência estocástica</a></li>
+<li class="chapter" data-level="5.2.2" data-path="stnoest.html"><a href="stnoest.html#teste-de-dickey-fuller-df"><i class="fa fa-check"></i><b>5.2.2</b> Teste de Dickey Fuller (<em>DF</em>)</a></li>
+<li class="chapter" data-level="5.2.3" data-path="stnoest.html"><a href="stnoest.html#teste-adf"><i class="fa fa-check"></i><b>5.2.3</b> Teste ADF</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="stnoest.html"><a href="stnoest.html#eliminando-tendência-estocástica"><i class="fa fa-check"></i><b>5.3</b> Eliminando tendência estocástica</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="stnoest.html"><a href="stnoest.html#diferenças-sucessivas"><i class="fa fa-check"></i><b>5.3.1</b> Diferenças sucessivas</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="stnoest.html"><a href="stnoest.html#modelagem-arima"><i class="fa fa-check"></i><b>5.4</b> Modelagem ARIMA</a></li>
+<li class="chapter" data-level="5.5" data-path="stnoest.html"><a href="stnoest.html#previsão"><i class="fa fa-check"></i><b>5.5</b> Previsão</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="stnoest.html"><a href="stnoest.html#erro-de-previsão"><i class="fa fa-check"></i><b>5.5.1</b> Erro de previsão</a></li>
+<li class="chapter" data-level="5.5.2" data-path="stnoest.html"><a href="stnoest.html#medidas-de-desempenho"><i class="fa fa-check"></i><b>5.5.2</b> Medidas de desempenho</a></li>
+<li class="chapter" data-level="5.5.3" data-path="stnoest.html"><a href="stnoest.html#previsão-dinâmica-e-estática"><i class="fa fa-check"></i><b>5.5.3</b> Previsão dinâmica e estática</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="stnoest.html"><a href="stnoest.html#regressão-espúria-e-cointegração"><i class="fa fa-check"></i><b>5.6</b> Regressão espúria e cointegração</a><ul>
+<li class="chapter" data-level="5.6.1" data-path="stnoest.html"><a href="stnoest.html#quando-é-possível-regredir-duas-séries-id"><i class="fa fa-check"></i><b>5.6.1</b> Quando é possível regredir duas séries I(d)</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="rev.html"><a href="rev.html#exercícios"><i class="fa fa-check"></i><b>5.7</b> Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="vi.html"><a href="vi.html"><i class="fa fa-check"></i><b>6</b> Variáveis instrumentais</a><ul>
+<li class="chapter" data-level="6.1" data-path="vi.html"><a href="vi.html#conceito-da-exogeneidade-dos-regressores"><i class="fa fa-check"></i><b>6.1</b> Conceito da exogeneidade dos regressores</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="vi.html"><a href="vi.html#variável-proxy"><i class="fa fa-check"></i><b>6.1.1</b> Variável proxy</a></li>
+<li class="chapter" data-level="6.1.2" data-path="vi.html"><a href="vi.html#variável-omitida"><i class="fa fa-check"></i><b>6.1.2</b> Variável omitida</a></li>
+<li class="chapter" data-level="6.1.3" data-path="vi.html"><a href="vi.html#erros-de-mensuração"><i class="fa fa-check"></i><b>6.1.3</b> Erros de mensuração</a></li>
+<li class="chapter" data-level="6.1.4" data-path="vi.html"><a href="vi.html#variável-com-erro-de-medição"><i class="fa fa-check"></i><b>6.1.4</b> Variável com erro de medição</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="vi.html"><a href="vi.html#variável-instrumental"><i class="fa fa-check"></i><b>6.2</b> Variável instrumental</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="vi.html"><a href="vi.html#diferença-entre-proxy-e-variável-instrumental"><i class="fa fa-check"></i><b>6.2.1</b> Diferença entre proxy e variável instrumental</a></li>
+<li class="chapter" data-level="6.2.2" data-path="vi.html"><a href="vi.html#o-método-de-estimação-por-variável-instrumental"><i class="fa fa-check"></i><b>6.2.2</b> O método de estimação por variável instrumental</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="vi.html"><a href="vi.html#inferência-com-o-estimador-por-variável-instrumental"><i class="fa fa-check"></i><b>6.3</b> Inferência com o estimador por variável instrumental</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="vi.html"><a href="vi.html#teste-de-hipóteses"><i class="fa fa-check"></i><b>6.3.1</b> Teste de hipóteses</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="vi.html"><a href="vi.html#variáveis-instrumentais-em-modelos-de-regressão-múltipla"><i class="fa fa-check"></i><b>6.4</b> Variáveis instrumentais em modelos de regressão múltipla</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="vi.html"><a href="vi.html#mínimos-quadrados-em-dois-estágios-mq2e"><i class="fa fa-check"></i><b>6.4.1</b> Mínimos quadrados em dois estágios (MQ2E)</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="vi.html"><a href="vi.html#testes-de-endogeneidade"><i class="fa fa-check"></i><b>6.5</b> Testes de endogeneidade</a><ul>
+<li class="chapter" data-level="6.5.1" data-path="vi.html"><a href="vi.html#teste-de-hausmann"><i class="fa fa-check"></i><b>6.5.1</b> Teste de Hausmann</a></li>
+<li class="chapter" data-level="6.5.2" data-path="vi.html"><a href="vi.html#teste-de-regressão"><i class="fa fa-check"></i><b>6.5.2</b> Teste de regressão</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="rev.html"><a href="rev.html#exercícios"><i class="fa fa-check"></i><b>6.6</b> Exercícios</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Econometria e Séries Temporais com R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="stnoest" class="section level1">
+<h1><span class="header-section-number">Capítulo 5</span> Séries temporais não estacionárias</h1>
+<p>No capítulo anterior estudamos processos estacionários, ou seja, processos satisfazendo</p>
+<p><span class="math display">\[
+\left\{
+\begin{array}{l}
+\mathbb{E}(Z_t)=0; \\
+\mbox{Var}(Z_t)=\sigma^2, \,\,\,\mbox{ para todo $t$}; \\
+\gamma(k)=\mbox{Cov}(Z_t,Z_{t-k})\mbox{ não depende de $t$, somente de $k$}.
+\end{array}\right.
+\]</span></p>
+<p>No entanto muitas séries temporais econômicas são claramente não estacionárias no sentido de que a média, variância e/ou estrutura de covariancia dependem do tempo. Uma série com estas características tende a se afastar permanentemente de qualquer valor à medida que o tempo passa. Fontes comuns de não estacionariedade em séries temporais são tendências, sazonalidades e quebras estruturais diversas. Destas, as mais simples de lidar são as tendências e sazonalidades. Uma série é dita apresentar uma tendência determinística se esta se desenvolve ao redor de uma função determinística, geralmente simples. A Figura <a href="stnoest.html#fig:nstac2">5.1</a> apresenta alguns diferentes tipos de tendências determinísticas: linear, logaritmica, quadrática e exponencial (veja também a Figura <a href="st.html#fig:nsstac">4.2</a>).</p>
+<p><br></p>
+<div class="figure"><span id="fig:nstac2"></span>
+<img src="04-SeriesTempNaoEstac_files/figure-html/nstac2-1.png" alt="Séries não-estacionárias apresentando tendências determinísticas: (a) Tendência linear, (b) tendência logarítmica, (c) tendência quadrática e (d) tendência exponencial." width="45%" /><img src="04-SeriesTempNaoEstac_files/figure-html/nstac2-2.png" alt="Séries não-estacionárias apresentando tendências determinísticas: (a) Tendência linear, (b) tendência logarítmica, (c) tendência quadrática e (d) tendência exponencial." width="45%" /><img src="04-SeriesTempNaoEstac_files/figure-html/nstac2-3.png" alt="Séries não-estacionárias apresentando tendências determinísticas: (a) Tendência linear, (b) tendência logarítmica, (c) tendência quadrática e (d) tendência exponencial." width="45%" /><img src="04-SeriesTempNaoEstac_files/figure-html/nstac2-4.png" alt="Séries não-estacionárias apresentando tendências determinísticas: (a) Tendência linear, (b) tendência logarítmica, (c) tendência quadrática e (d) tendência exponencial." width="45%" />
+<p class="caption">
+Figura 5.1: Séries não-estacionárias apresentando tendências determinísticas: (a) Tendência linear, (b) tendência logarítmica, (c) tendência quadrática e (d) tendência exponencial.
+</p>
+</div>
+<p><br></p>
+<p>Da Figura <a href="stnoest.html#fig:nstac2">5.1</a> fica clara que uma série apresentando tendência determinística é não-estacionária: de imediato percebe-se que a média varia com o tempo em todos os casos apresentados. Antes que qualquer tipo de análise adicional possa ser feita, em especial, qualquer tipo de modelagem e previsão utilizando os modelos vistos até aqui, é obrigatória a remoção de tendências. Existem dois tipos fundamentais de tendências que serão estudadas adiante. Nos concentraremos inicialmente na remoção de tendências determinísticas.</p>
+<div id="como-lidar-com-tendências-determinísticas" class="section level2">
+<h2><span class="header-section-number">5.1</span> Como lidar com tendências determinísticas</h2>
+<p>Existem várias maneiras de eliminarmos tendências determinísticas. Neste trabalho apresentaremos uma metodologia paramétrica de estimação da tendência determinística em uma série. Primeiramente é importante observar que, neste contexto, a forma funcional da tendência determinística deve ser identificada e especificada a priori. Uma maneira muito simples e útil para a remoção da tendência é a inclusão de uma função da variável tempo no modelo, geralmente carregando informações sobre o formato da tendência que se quer remover. Assumiremos que a forma funcional da tendência determinística depende de certos parâmetros de forma linear. Podemos dar alguns exemplos de modelos com tendência determinística: o modelo
+<span class="math display">\[\begin{equation}
+Y_t=a + bt +\varepsilon_t
+\end{equation}\]</span>
+em que <span class="math inline">\(\varepsilon_t\sim RB(0,\sigma_{\varepsilon}^2)\)</span>,
+torna-se um ruído branco com tendência determinística. O modelo AR(1) com tendência logarítmica
+pode ser escrito da seguinte forma
+<span class="math display" id="eq:modRBt">\[\begin{equation}
+Y_t=a + b\ln(t)+\phi Y_{t-1} +\varepsilon_t.
+\tag{5.1}
+\end{equation}\]</span>
+Nestes casos, acrescentamos uma tendência funcional ao processo, linear nos parâmetros, e procedemos a estimação desta tendência via MQO. Vejamos alguns exemplos.</p>
+
+<div class="example">
+<span id="exm:combust" class="example"><strong>Exemplo 5.1  </strong></span>Os dados referentes à receita nominal mensal de vendas do varejo nacional no ramo de combustíveis e lubrificantes (índice de base fixa, sendo o ano de referência 2003 com valor 100) no período de janeiro de 2000 à dezembro de 2011 estão apresentados na Figura <a href="stnoest.html#fig:combustivel">5.2</a>(a) (fonte: IBGE, Pesquisa Mensal do Comércio 2000/jan-2011/dez). Observe que a série apresenta uma nítida tendência linear crescente. Para removê-la, vamos assumir que a série é da forma
+<span class="math display">\[Y_t=\alpha_0+\alpha_1t+X_t,\]</span>
+onde <span class="math inline">\(Y_t\)</span> denota o receita nominal no tempo <span class="math inline">\(t\)</span> e <span class="math inline">\(X_t\)</span> é a série residual após removida a tendência determinística. Denotando por <span class="math inline">\(x_1,\cdots,x_{144}\)</span> os dados, procedemos com a estimação de <span class="math inline">\(\alpha_0\)</span> e <span class="math inline">\(\alpha_1\)</span> utilizando MQO que, neste caso, resulta <span class="math inline">\(\hat\alpha_0=68.668\)</span> e <span class="math inline">\(\hat\alpha_1=0.568\)</span> ambos altamente significativos (p-valores muito próximos de zero). Na Figura <a href="stnoest.html#fig:combustivel">5.2</a>(b) apresentamos os dados e a reta ajustada (o eixo <span class="math inline">\(x\)</span> foi reescalado para para refletir os meses). Para obtermos a série residual <span class="math inline">\(X_t\)</span> tomamos, naturalmente, <span class="math inline">\({\hat X}_t=Y_t-(68.668+0.568t)\)</span>. Na Figura <a href="stnoest.html#fig:combustivel">5.2</a>(c) apresentamos a reta residual, com o eixo <span class="math inline">\(x\)</span> reescalado para refletir as datas da série.
+</div>
+
+<p><br></p>
+<div class="figure"><span id="fig:combustivel"></span>
+<img src="04-SeriesTempNaoEstac_files/figure-html/combustivel-1.png" alt="Séries da receita nominal mensal de vendas do varejo nacional no ramo de combustíveis e lubrificantes. (a) Série, (b) série e reta ajustada e (c) residual." width="99%" />
+<p class="caption">
+Figura 5.2: Séries da receita nominal mensal de vendas do varejo nacional no ramo de combustíveis e lubrificantes. (a) Série, (b) série e reta ajustada e (c) residual.
+</p>
+</div>
+<p>Utilizando MQO podemos ainda remover qualquer tipo de função do tempo que seja linear nos parâmetros, como mostra o exemplo abaixo.</p>
+
+<div class="example">
+<span id="exm:desocup" class="example"><strong>Exemplo 5.2  </strong></span>Os dados referentes à série mensal de pessoas desocupadas com idade superior a 11 anos em Porto Alegre entre março de 2002 e outubro de 2015 estão apresentados na Figura <a href="stnoest.html#fig:desocupados">5.3</a>(a). Os dados apresentam o coeficiente de variação mensal relativo para o número de pessoas sem trabalho mas que estavam disponíveis para assumir um trabalho e que tomaram alguma providência efetiva para conseguir trabalho no período de referência de 30 dias, sem terem tido qualquer trabalho ou após terem saído do último emprego que tiveram nesse período (fonte: IBGE, Pesquisa Mensal de Emprego). A série apresenta uma distinta tendência logarítmica ao longo do tempo, que pode ser modelada por
+<span class="math display">\[Y_t=\alpha_0+\alpha_1\ln(t)+X_t,\]</span>
+onde <span class="math inline">\(Y_t\)</span> denota o coeficiente de variação do número de pessoas desocupadas no tempo <span class="math inline">\(t\)</span> e <span class="math inline">\(X_t\)</span> é a série residual após removida a tendência determinística. A estimação dos coeficientes via MQO fornecem <span class="math inline">\(\hat\alpha_0=28,5875\)</span> e <span class="math inline">\(\hat\alpha_1=5,7317\)</span>, altamente significativos (p-valor próximo a zero). A reta ajustada (função) é dada por <span class="math inline">\(17.4652+23.1394*\log(t)\)</span> e está apresentada na Figura <a href="stnoest.html#fig:desocupados">5.3</a>(b), junto com a série original. Na Figura <a href="stnoest.html#fig:desocupados">5.3</a>(c) apresentamos o residual.
+</div>
+
+<div class="figure"><span id="fig:desocupados"></span>
+<img src="04-SeriesTempNaoEstac_files/figure-html/desocupados-1.png" alt="Séries do número de pessoas desocupadas em Porto Alegre. (a) Série, (b) série e tendência ajustada e (c) residual" width="99%" />
+<p class="caption">
+Figura 5.3: Séries do número de pessoas desocupadas em Porto Alegre. (a) Série, (b) série e tendência ajustada e (c) residual
+</p>
+</div>
+</div>
+<div id="testes-de-raiz-unitária" class="section level2">
+<h2><span class="header-section-number">5.2</span> Testes de raiz unitária</h2>
+<div id="identificando-tendência-estocástica" class="section level3">
+<h3><span class="header-section-number">5.2.1</span> Identificando tendência estocástica</h3>
+<p>Uma série com uma tendência estocástica se diferencia de outra com uma tendência determinística, pois as mudanças na mesma deixam de ter um caráter transitório e passam a apresentar um caráter permanente <span class="citation">(Gujarati <a href="#ref-gujarati2003" role="doc-biblioref">2003</a>)</span> e [(Pereira, 1988)].</p>
+<blockquote>
+<p>A presença de uma tendência estocástica implica que flutuações em uma série temporal são o resultado de choques não somente no
+componente transitório ou cíclico, mas também no componente de tendência. [Balke (1991) e <span class="citation">(Gujarati <a href="#ref-gujarati2003" role="doc-biblioref">2003</a>)</span> ]</p>
+</blockquote>
+<p>Como vimos nas sessões anteriores, para um processo ARMA ser estacionário, o polinômio característico da parte AR não pode conter raízes de módulo igual a um, chamadas de raízes unitárias. Acontece que a presença de raízes unitárias no polinômio AR resulta na presença de tendência estocástica na série. A identificação de raízes unitárias é de grande importância na análise de séries temporais, e este fato se reflete na literatura relativamente longa tratando do assunto. Várias abordagens para a detecção de raízes unitárias estão a nosso dispor. Um dos testes mais utilizados na literatura é o teste de <span style="color: blue;"> Dickey Fuller</span> que veremos a seguir.</p>
+</div>
+<div id="teste-de-dickey-fuller-df" class="section level3">
+<h3><span class="header-section-number">5.2.2</span> Teste de Dickey Fuller (<em>DF</em>)</h3>
+<p>Considere o modelo autorregessivo de ordem 1, AR(1)</p>
+<p><span class="math display" id="eq:ar1">\[\begin{equation}
+Y_{t}=a_0+\rho Y_{t-1}+\varepsilon_{t}
+\tag{5.2}
+\end{equation}\]</span>
+em que <span class="math inline">\(Y_t\)</span> é a variável de interesse, <span class="math inline">\(t\)</span> é o índice temporal, <span class="math inline">\(\rho\)</span> é coeficente e <span class="math inline">\(\varepsilon_t\)</span> é o termo de erro.
+Uma raíz unitária está presente se <span class="math inline">\(\rho=1\)</span> implicando que o modelo será não estacionário.</p>
+<p>Nota-se que, quando <span class="math inline">\(\rho=1\)</span></p>
+<p><span class="math display">\[Y_t =a_0 +Y_{t-1}+ \varepsilon_t\]</span>
+%
+pode ser reescrito como</p>
+<p><span class="math display">\[Y_t = Y_0 + \sum_{i=1}^t \varepsilon_i + a_0t \]</span>
+com uma tendência determinística vindo de <span class="math inline">\(a_0t\)</span> e um intercepto estocástico vindo de <span class="math inline">\(Y_0 + \sum_{i=1}^t \varepsilon_i\)</span>, resultando no que chamamos de tendência estocástica. O teste de Dickey Fuller consiste em fazer um <strong>teste t</strong> (mas com distribuição de Dickey-Fuller) para a significância do seguinte modelo</p>
+<p><br></p>
+<hr />
+<blockquote>
+<p><span style="color: blue;"> Teste de Dickey Fuller</span>
+<span class="math display">\[\begin{equation*}
+\Delta  Y_{t}=(\rho-1)Y_{t-1}+\varepsilon_{t}=\delta Y_{t-1}+\varepsilon_{t},
+\end{equation*}\]</span>
+- <span class="math inline">\(H_0\)</span>: <span class="math inline">\(\delta=0\)</span> (Não estacionário)<br />
+- <span class="math inline">\(H_1\)</span>: <span class="math inline">\(\delta&lt;0\)</span> (Estacionário)</p>
+</blockquote>
+<hr />
+<p><br></p>
+<div class="figure"><span id="fig:shadcurve"></span>
+<img src="04-SeriesTempNaoEstac_files/figure-html/shadcurve-1.png" alt="Distribuição de Dickey Fuller" width="99%" />
+<p class="caption">
+Figura 5.4: Distribuição de Dickey Fuller
+</p>
+</div>
+<p>em que $$ é a operador de diferenciação, dado por <span class="math inline">\(\Delta Y_t=Y_t-Y_{t-1}\)</span>. Testar a presença de raíz unitária neste modelo (<span class="math inline">\(\rho=1\)</span>) é equivalente a atestar se <span class="math inline">\(\delta=\rho-1=0\)</span>. Como o teste é feito sobre os resíduos, a distribuição de um teste <span class="math inline">\(t\)</span> usual não será usual, nem mesmo assintoticamente. Para isso existe uma estatística de teste específica, <span class="math inline">\(\tau\)</span>, cujos valores críticos estão dispostos na tabela de Dickey Fuller.</p>
+<p>Existem três versões principais do teste:</p>
+<div class="line-block">   1) <span style="color: blue;"> Teste para raíz unitária</span> <span class="math display">\[\Delta Y_t =\delta Y_{t-1}+\varepsilon_t \rightarrow \tau;\]</span></div>
+<div class="line-block">   2) <span style="color: blue;"> Teste para raíz unitária com drift</span></div>
+<p><span class="math display">\[\Delta Y_t =\mu+\delta Y_{t-1}+\varepsilon_t\rightarrow \tau_{\mu};\]</span></p>
+<div class="line-block">   3) <span style="color: blue;"> Teste de raíz unitária com drift e tendêcia temporal determinística</span> <span class="math display">\[\Delta  Y_t = \mu+at+\delta Y_{t-1}+\varepsilon_t \rightarrow \tau_{\tau}\]</span></div>
+<p>O teste de Dickey Fuller é um teste unilateral a esquerda (veja figura <a href="stnoest.html#fig:shadcurve">5.4</a>)</p>
+<p>A estatística <span class="math inline">\(\hat{\tau}\)</span> para cada um dos modelos pode ser obtida da seguinte forma:</p>
+<p><span class="math display" id="eq:esttau">\[\begin{equation}
+\hat{\tau}=\frac{\hat{\delta}}{s(\hat{\delta})}
+\tag{5.3}
+\end{equation}\]</span>
+em que <span class="math inline">\(s(\hat{\delta})\)</span> é o desvio padrão de</p>
+<p><span class="math display">\[\hat{\delta}=\frac{\sum_{t=2}^{n} Y_{t-1}Y_t}{\sum_{t=2}^{n}Y_{t-1}^2}-1,\]</span>
+que é a estimativa de mínimos quadráticos de <span class="math inline">\(\rho\)</span> menos 1, para garantir que, sob <span class="math inline">\(H_0\)</span>, tenhamos <span class="math inline">\(\delta=0\)</span>. O desvio padrão pode ser obtido a partir do cálculo da variância residual, que no caso mais simples se torna</p>
+<p><span class="math display">\[S^2=\frac{1}{n}\sum_{t=1}^{n}(\Delta Y_t-\hat{\delta}Y_{t-1})^2.\]</span></p>
+<p>Cada versão do teste (<span class="math inline">\(\tau\)</span>, <span class="math inline">\(\tau_\mu\)</span> e <span class="math inline">\(\tau_\tau\)</span>) tem sua própria estatística de teste e portanto tem seu próprio valor crítico o qual depende do tamanho amostral. Esses valores foram obtidos a partir e simulações de Monte Carlo.</p>
+<p>Em cada caso, a hipótese nula de que  é representada por <span class="math inline">\(\delta=0\)</span>. Para estes testes é conhecido que eles tem  no sentido de que frequentemente não conseguem distinguir entre processos com raíz unitária (<span class="math inline">\(\delta=0\)</span>)
+de processos com raíz quase-unitária (<span class="math inline">\(\delta\)</span> próximo de zero), ou até mesmo com tendências não lineares.</p>
+<p>A tabela a seguir apresenta alguns valores críticos para o teste de Dickey Fuller</p>
+<p><br></p>
+<table>
+<thead>
+<tr class="header">
+<th>Estatística</th>
+<th>n</th>
+<th>1%</th>
+<th>2.5%</th>
+<th>5%</th>
+<th>10%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>25</td>
+<td>-2.66</td>
+<td>-2.26</td>
+<td>-1.95</td>
+<td>-1.60</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>50</td>
+<td>-2.62</td>
+<td>-2.25</td>
+<td>-1.95</td>
+<td>-1.61</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\tau\)</span></td>
+<td>100</td>
+<td>-2.60</td>
+<td>-2.24</td>
+<td>-1.95</td>
+<td>-1.61</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>250</td>
+<td>-2.58</td>
+<td>-2.23</td>
+<td>-1.95</td>
+<td>-1.61</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>500</td>
+<td>-2.58</td>
+<td>-2.23</td>
+<td>-1.95</td>
+<td>-1.61</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>&gt;500</td>
+<td>-2.58</td>
+<td>-2.23</td>
+<td>-1.95</td>
+<td>-1.61</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>25</td>
+<td>-3.75</td>
+<td>-3.33</td>
+<td>-3.00</td>
+<td>-2.62</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>50</td>
+<td>-3.58</td>
+<td>-3.22</td>
+<td>-2.93</td>
+<td>-2.60</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\tau_\mu\)</span></td>
+<td>100</td>
+<td>-3.51</td>
+<td>-3.17</td>
+<td>-2.89</td>
+<td>-2.58</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>250</td>
+<td>-3.46</td>
+<td>-3.14</td>
+<td>-2.88</td>
+<td>-2.57</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>500</td>
+<td>-3.44</td>
+<td>-3.13</td>
+<td>-2.87</td>
+<td>-2.57</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>&gt;500</td>
+<td>-3.43</td>
+<td>-3.12</td>
+<td>-2.86</td>
+<td>-2.57</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>25</td>
+<td>-4.38</td>
+<td>-3.95</td>
+<td>-3.60</td>
+<td>-3.24</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>50</td>
+<td>-4.15</td>
+<td>-3.80</td>
+<td>-3.50</td>
+<td>-3.18</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\tau_\tau\)</span></td>
+<td>100</td>
+<td>-4.04</td>
+<td>-3.73</td>
+<td>-3.45</td>
+<td>-3.15</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>250</td>
+<td>-3.99</td>
+<td>-3.69</td>
+<td>-3.43</td>
+<td>-3.13</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>&gt;500</td>
+<td>-3.98</td>
+<td>-3.68</td>
+<td>-3.42</td>
+<td>-3.13</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="teste-adf" class="section level3">
+<h3><span class="header-section-number">5.2.3</span> Teste ADF</h3>
+<p>Existe uma extenção do teste de Dickey-Fuller (DF) chamado de Teste de Dickey-Fuller aumentado (ADF) o qual remove todos os efeitos estuturais (autocorrelações) da série temporal e então testa usando o mesmo procedimento.</p>
+<p>Existem outro testes bem reconhecidos, que surgiram para resolver o problema de baixo poder do teste de Dickey Fuller. Estes testes devem ser também utilizados em caso de dúvida na hora da modelagem. São os testes de <strong>Phillips-Perron, KPSS, ERS, NG e Perron </strong> entre outros. Alguns estão disponíveis no Gretl, na opção .</p>
+</div>
+</div>
+<div id="eliminando-tendência-estocástica" class="section level2">
+<h2><span class="header-section-number">5.3</span> Eliminando tendência estocástica</h2>
+<div id="diferenças-sucessivas" class="section level3">
+<h3><span class="header-section-number">5.3.1</span> Diferenças sucessivas</h3>
+<p>O método de diferenciação sucessivas é utilizado para eliminar tendência estocástica. Para isso precisamos definir o operador diferença.</p>
+<p><br></p>
+<hr />
+<blockquote>
+<p><span style="color: blue;">Operador Diferença</span>
+<span class="math display">\[\begin{equation*}
+\Delta =1-L
+\end{equation*}\]</span>
+em que <span class="math inline">\(L\)</span> é o operador de defasagem.</p>
+</blockquote>
+<hr />
+<p><br></p>
+<p>Na figura a seguir temos uma aplicação do operador diferença.</p>
+<p><br></p>
+<div class="figure"><span id="fig:diffpa"></span>
+<img src="04-SeriesTempNaoEstac_files/figure-html/diffpa-1.png" alt="Passeio Aleatório (a) e sua diferença (b)" width="45%" /><img src="04-SeriesTempNaoEstac_files/figure-html/diffpa-2.png" alt="Passeio Aleatório (a) e sua diferença (b)" width="45%" />
+<p class="caption">
+Figura 5.5: Passeio Aleatório (a) e sua diferença (b)
+</p>
+</div>
+<p></p>
+</div>
+</div>
+<div id="modelagem-arima" class="section level2">
+<h2><span class="header-section-number">5.4</span> Modelagem ARIMA</h2>
+<p>Quando uma séries temporal apresenta tendência estocástica (não estacionária) diz-se que está é <span style="color: blue;">integrada <span class="math inline">\(I(\cdot)\)</span></span>. É necessário retirar a tendência para então analisar o ruído. Esse ruído não necessariamente é um ruído branco. Pode ser um modelo ARMA, por exemplo. Como visto anteriormente, a maneira de retirar a tendência estocástica de uma série temporal é diferenciando-á. Algumas vezes, é necessário diferenciar mais do que uma vez a série temporal até torná-la estacionária.</p>
+<p><br></p>
+<hr />
+<blockquote>
+<ul>
+<li>Diz que uma série sem nenhuma raiz unitária é <span class="math inline">\(I(0)\)</span>.</li>
+<li>A série é dita <span class="math inline">\(I(1)\)</span> se for necessário diferenciá-la uma vez para torná-la estacionária.</li>
+<li>A série é dita <span class="math inline">\(I(d)\)</span> se for necessário diferenciá-la <span class="math inline">\(d\)</span> vezes para torná-la estacionária.</li>
+</ul>
+</blockquote>
+<hr />
+<p><br></p>
+
+<div class="example">
+<span id="exm:exempbj" class="example"><strong>Exemplo 5.3  </strong></span>Na figura <a href="stnoest.html#fig:diff2">5.6</a> são apresentados a série sobre dados de vendas  de <span class="citation">(Box and Jenkins <a href="#ref-box1970" role="doc-biblioref">1970</a>)</span>.
+</div>
+
+<p><br></p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1"><span class="kw">layout</span>(<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="dv">2</span>, <span class="dv">2</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>),<span class="dt">width=</span><span class="dv">1</span><span class="op">:</span><span class="dv">1</span>,<span class="dt">height=</span><span class="dv">1</span><span class="op">:</span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb16-2" title="2"><span class="kw">plot</span>(BJsales<span class="dv">-200</span>, <span class="dt">type=</span><span class="st">&quot;l&quot;</span>,<span class="dt">lwd=</span><span class="dv">2</span>,<span class="dt">cex.lab=</span><span class="fl">1.4</span>, <span class="dt">xlab=</span><span class="st">&quot; &quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;Vendas&quot;</span>,  <span class="dt">main=</span><span class="st">&quot; &quot;</span>, <span class="dt">cex.main=</span><span class="fl">1.3</span>,<span class="dt">col=</span><span class="st">&quot;cadetblue4&quot;</span>)</a>
+<a class="sourceLine" id="cb16-3" title="3"><span class="kw">plot</span>(<span class="kw">diff</span>(BJsales), <span class="dt">type=</span><span class="st">&quot;l&quot;</span>,<span class="dt">lwd=</span><span class="dv">2</span>,<span class="dt">cex.lab=</span><span class="fl">1.4</span>, <span class="dt">xlab=</span><span class="st">&quot; &quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;diff(Vendas)&quot;</span>,  <span class="dt">main=</span><span class="st">&quot; &quot;</span>, <span class="dt">cex.main=</span><span class="fl">1.3</span>,<span class="dt">col=</span><span class="st">&quot;cadetblue4&quot;</span>)</a>
+<a class="sourceLine" id="cb16-4" title="4"><span class="kw">plot</span>(<span class="kw">diff</span>(<span class="kw">diff</span>(BJsales)), <span class="dt">type=</span><span class="st">&quot;l&quot;</span>,<span class="dt">lwd=</span><span class="dv">2</span>,<span class="dt">cex.lab=</span><span class="fl">1.4</span>, <span class="dt">xlab=</span><span class="st">&quot; &quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;diff(diff(Vendas))&quot;</span>,  <span class="dt">main=</span><span class="st">&quot; &quot;</span>, <span class="dt">cex.main=</span><span class="fl">1.3</span>,<span class="dt">col=</span><span class="st">&quot;cadetblue4&quot;</span>)</a></code></pre></div>
+<div class="figure"><span id="fig:diff2"></span>
+<img src="04-SeriesTempNaoEstac_files/figure-html/diff2-1.png" alt="Série de vendas, primeira e segunda diferenças" width="99%" />
+<p class="caption">
+Figura 5.6: Série de vendas, primeira e segunda diferenças
+</p>
+</div>
+<p><br></p>
+
+<div class="exercise">
+<p><span id="exr:an1207" class="exercise"><strong>Exercício 5.1  (ANPEC 2012-07)  </strong></span>Suponha que <span class="math inline">\(\Delta Y_t\)</span> pode ser representado pelo seguinte processo:</p>
+<span class="math display">\[\Delta Y_t=\varepsilon_t-0,6\varepsilon_{t-1},\,\,\,\mbox{para}\,\,\,t=1 \]</span>
+<span class="math display">\[\Delta Y_t=\Delta Y_{t-1}+\varepsilon_t-0,6\varepsilon_{t-1},\,\,\,\mbox{para}\,\,\,t\geq 2 \]</span>
+em que <span class="math inline">\(\varepsilon_t\)</span>, <span class="math inline">\(t=1,2,\cdots\)</span> é uma sequência de variáveis aleatórias independentes e identicamente distribuídas com média igual a 0. Se <span class="math inline">\(Y_t=0\)</span>, quando <span class="math inline">\(t=0\)</span>, calcule o valor da <span class="math inline">\(\mathbb{E}[Y_3]\)</span>.
+</div>
+
+<div style="page-break-after: always;"></div>
+</div>
+<div id="previsão" class="section level2">
+<h2><span class="header-section-number">5.5</span> Previsão</h2>
+<p>Um dos objetivos finais na análise de séries temporais é a previsão. Assim, pode-se usar informações do passado para tomar decisões para o futuro. Existem outros métodos de previsão para séries temporais, como o de <strong>Média Móveis Simples (MMS)</strong>, <strong>Suavizamento Exponencial (SE)</strong>, entre outros, mas estes métodos não dependem de um ajuste de um modelo e não são considerados agora. Para uma boa previsão é fundamental que o modelo esteja bem ajustado e por isso deixamos este tópico para o final. Como é feita a previsão na prática?</p>
+<p><br></p>
+<hr />
+<blockquote>
+<p>A ideia da previsão é utilizar o conhecimento/observações que se tem até o tempo <span class="math inline">\(t\)</span>,
+(digamos que temos observações para uma certa variável durante os últimos 20 anos e, assim, <span class="math inline">\(t\)</span> seria o último ano observado
+e <span class="math inline">\(\cdots,Y_{t-2},Y_{t-1},Y_t\)</span> as observações).
+É conveniente definir
+<span class="math display">\[
+\mathbb{E}_t(Y_s)=E(Y_s|Y_t,Y_{t-1},\cdots,Y_2,Y_1),
+\]</span>
+Assim,
+<span class="math display">\[\mathbb{E}_t(Y_s)=Y_s, \mbox{ se $s\leq t$}\]</span></p>
+</blockquote>
+<hr />
+<p><br></p>
+
+<div class="example">
+<span id="exm:airpass" class="example"><strong>Exemplo 5.4  (Previsão para a série de dados <em>AirPassengers</em> )  </strong></span>Para essa série o ajuste foi feito para o log dos dados. Além da sazonalidade, incorporada pelo parâmetro <em>seasonal</em>, também foi utilizado o ARIMA(0,1,1) para a componente não sazonal do log da série.
+</div>
+
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" title="1">pass &lt;-<span class="st"> </span><span class="kw">ts</span>(AirPassengers, <span class="dt">frequency =</span> <span class="dv">12</span>, <span class="dt">start=</span><span class="kw">c</span>(<span class="dv">1949</span>,<span class="dv">1</span>), <span class="dt">end=</span><span class="kw">c</span>(<span class="dv">1959</span>,<span class="dv">12</span>))</a>
+<a class="sourceLine" id="cb17-2" title="2">m1 &lt;-<span class="st"> </span><span class="kw">arima</span>(<span class="kw">log</span>(pass),<span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>),<span class="dt">seasonal =</span> <span class="kw">list</span>(<span class="dt">order=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>),<span class="dt">period=</span><span class="dv">12</span>))</a>
+<a class="sourceLine" id="cb17-3" title="3">prev &lt;-<span class="st"> </span><span class="kw">predict</span>(m1,<span class="dt">n.ahead=</span><span class="dv">4</span><span class="op">*</span><span class="dv">12</span>)  <span class="co"># previsão de 1960 até 1964</span></a>
+<a class="sourceLine" id="cb17-4" title="4">l &lt;-<span class="st"> </span>prev<span class="op">$</span>pred <span class="op">-</span><span class="st"> </span><span class="fl">1.96</span> <span class="op">*</span><span class="st"> </span>prev<span class="op">$</span>se</a>
+<a class="sourceLine" id="cb17-5" title="5">u &lt;-<span class="st"> </span>prev<span class="op">$</span>pred <span class="op">+</span><span class="st"> </span><span class="fl">1.96</span> <span class="op">*</span><span class="st"> </span>prev<span class="op">$</span>se</a>
+<a class="sourceLine" id="cb17-6" title="6"><span class="kw">ts.plot</span>(AirPassengers,<span class="kw">exp</span>(prev<span class="op">$</span>pred), <span class="kw">exp</span>(l), <span class="kw">exp</span>(u), <span class="dt">log =</span> <span class="st">&quot;y&quot;</span>, <span class="dt">lty =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">2</span>),<span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;cadetblue4&quot;</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">2</span>),<span class="dt">xlab=</span><span class="st">&quot; &quot;</span>,<span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">1957</span>,<span class="dv">1964</span>), <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">200</span>,<span class="dv">1300</span>))</a></code></pre></div>
+<div class="figure"><span id="fig:prev"></span>
+<img src="04-SeriesTempNaoEstac_files/figure-html/prev-1.png" alt="Previsão para o log da série de passageiros das companhias aéreas americanas" width="99%" />
+<p class="caption">
+Figura 5.7: Previsão para o log da série de passageiros das companhias aéreas americanas
+</p>
+</div>
+<p>Para um exemplo de previsão, consideremos o modelo AR(1):</p>
+
+<div class="example">
+<p><span id="exm:prevar1" class="example"><strong>Exemplo 5.5  (Previsão para o modelo AR(1))  </strong></span>O modelo AR(1) é representado por:
+<span class="math display">\[Y_{t+1}=c+\phi Y_t+\varepsilon_t.\]</span>
+Assim,</p>
+<span class="math display">\[\begin{eqnarray*}
+ \mathbb{E}_t(Y_{t+1})&amp;=&amp;c+\phi Y_t=Y_{t+1}-\varepsilon_{t+1}\\
+ \mathbb{E}_t(Y_{t+2})&amp;=&amp;c+\phi \mathbb{E}_t(Y_{t+1})=c+\phi(c+\phi Y_t)\\
+ &amp;\vdots&amp;\\
+  \mathbb{E}_t(Y_{t+h})&amp;=&amp;c\sum_{i=1}^{h-1}\phi^{i-1}+\phi^h Y_t.
+\end{eqnarray*}\]</span>
+</div>
+
+<p><br></p>
+<p>Logo</p>
+<hr />
+<blockquote>
+<p><span style="color: blue;">Previsão <em>h</em>-passos à frente para o modelo AR(1)</span>
+<span class="math display">\[\hat{y}_t(h)=\mathbb{E}_t(Y_{t+h})\]</span>
+representa previsão  a frente, dado que observamos até o tempo <span class="math inline">\(t\)</span>.</p>
+</blockquote>
+<hr />
+<div id="erro-de-previsão" class="section level3">
+<h3><span class="header-section-number">5.5.1</span> Erro de previsão</h3>
+<p>O erro de previsão é definido como sendo o valor observado menos o valor previsto. Para um período <span class="math inline">\(h\)</span>,
+<span class="math inline">\(\varepsilon_t(h)\)</span> é dado por:</p>
+<p><br></p>
+<hr />
+<blockquote>
+<p><span style="color: blue;">Erro de previsão</span>
+<span class="math display">\[\varepsilon_t(h) = Y_{t+h}-\mathbb{E}_t(Y_{t+h}) \]</span>
+os quais são não viesados, isto é, <span class="math inline">\(\mathbb{E}(\varepsilon_t(h))=0;\)</span></p>
+</blockquote>
+<hr />
+<p><span class="math display">\[\begin{eqnarray*}
+ \varepsilon_t(1)&amp;=&amp;Y_{t+1}-\mathbb{E}_t(Y_{t+1})=\varepsilon_{t+1}\\
+ \varepsilon_t(2)&amp;=&amp;Y_{t+2}-\mathbb{E}_t(Y_{t+2})=c+\rho Y_{t+1}+\varepsilon_{t+2}-c-\rho \mathbb{E}_t(Y_{t+1})\\
+       &amp;=&amp;\rho\varepsilon_{t+1}+\varepsilon_{t+2}\\
+ \varepsilon_t(3)&amp;=&amp;Y_{t+3}-\mathbb{E}_t(Y_{t+3})=c+\rho Y_{t+2}+\varepsilon_{t+3}-c-\rho \mathbb{E}_t(Y_{t+2})\\
+       &amp;=&amp;\rho^2\varepsilon_{t+1}+\rho\varepsilon_{t+2}+\varepsilon_{t+3}\\
+       &amp;\vdots&amp;\\
+ \varepsilon_t(h)&amp;=&amp;Y_{t+h}-\mathbb{E}_t(Y_{t+h}) = \rho^{h-1}\varepsilon_{t+1}+\rho^{h-2}\varepsilon_{t+2}\cdots+\rho\varepsilon_{t+h-1}+\varepsilon_{t+h}\\
+\end{eqnarray*}\]</span></p>
+<p>Tomando-se a <span style="color: blue;">esperança do erro de previsão</span>, podemos observar que estes são não viesados, <span class="math inline">\(\mathbb{E}(\varepsilon_t(h))=0;\)</span></p>
+<p>A <span style="color: blue;"> variância do erro de previsão</span> é dada por:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+ \mbox{Var}(\varepsilon_t(h))&amp;=&amp;\mbox{Var}\left(\rho^{h-1}\varepsilon_{t+1}+\rho^{h-2}\varepsilon_{t+2}\cdots+\rho\varepsilon_{t+h-1}+\varepsilon_{t+h}\right)\\
+            &amp;=&amp;\sigma_{\varepsilon}^2\left(\phi^{2(h-1)}+\phi^{2(h-2)}+\cdots+\phi^{2}+1\right)
+\end{eqnarray*}\]</span></p>
+<p>Note que a variância converge para uma constante, quando <span class="math inline">\(h\rightarrow\infty\)</span>, que é
+<span class="math inline">\(\frac{\sigma_{\varepsilon}^2}{1-\rho^2}\)</span> que é a variância não condicional da série <span class="math inline">\(Y_t\)</span>.</p>
+<p>Se a distribuição dos resíduos <span class="math inline">\(\varepsilon_t\)</span> é a Normal, então o <span style="color: blue;">intervalo de confiança para os resíduos</span> é dado portanto</p>
+<p><span class="math display">\[c\sum_{i=1}^{h-1}\rho^{i-1}+\rho^h y \pm 2\sigma_{\varepsilon}\left(\phi^{2(h-1)}+\phi^{2(h-2)}+\cdots+\phi^{2}+1\right)^\frac{1}{2}\]</span></p>
+</div>
+<div id="medidas-de-desempenho" class="section level3">
+<h3><span class="header-section-number">5.5.2</span> Medidas de desempenho</h3>
+<p>Diferentes modelos produzem previsões distintas, o que torna necessários avaliar essas previsões. Para isso são utilizadas algumas medidas de desempenho. As estatísticas mais conhecidas são:</p>
+<ul>
+<li><p><strong>MSE</strong> - Mean Square Error (erro quadrático médio)
+<span class="math display">\[MSE_{t,H}=\sqrt{\frac{\sum_{h=1}^{H}\varepsilon^2_t(h)}{H}}\]</span>
+Para calculá-los, deve-se deixar algumas observações fora da amostra. Por exemplo, em uma série com <span class="math inline">\(n\)</span> observações , deixa-se as <span class="math inline">\(H\)</span> últimas observações fora da amostra e estima-se o modelo agora com <span class="math inline">\(n-H\)</span> observações restantes.</p></li>
+<li><p><strong>MAE</strong> - Mean Absolute Error (erro absoluto médio)
+<span class="math display">\[MAE_{t,H}=\frac{\sum_{h=1}^{H}|\varepsilon_t(h)|}{H}\]</span></p></li>
+<li><p><strong>MAPE</strong> - Mean Absolute Percentual Error (erro absoluto percentual médio)
+<span class="math display">\[MAPE_{t,H}=\sum_{h=1}^{H}\left|\frac{\varepsilon_t(h)}{Hy_{t+h}}\right|\]</span></p></li>
+</ul>
+</div>
+<div id="previsão-dinâmica-e-estática" class="section level3">
+<h3><span class="header-section-number">5.5.3</span> Previsão dinâmica e estática</h3>
+<p>Quando faz-se previsões <span class="math inline">\(h\)</span> passos a frente, <span class="math inline">\(\hat{y}_t(h)\)</span>, usando somente a informação até o tempo <span class="math inline">\(t\)</span>, tem-se a previsão dinâmica cuja variância acaba sendo maior. Quando, para prever algum passo a frente usa-se as observações até o tempo imediatamente anterior, tem-se a previsão estática. A previsão estática só é útil para efeito de comparação de modelos. Na prática, a previsão dinâmica é a única que interessa de fato.</p>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div id="regressão-espúria-e-cointegração" class="section level2">
+<h2><span class="header-section-number">5.6</span> Regressão espúria e cointegração</h2>
+<p>A utilização dos modelos de regressão envolvendo séries temporais não estacionárias pode conduzir ao problema que se convencionou chamar de regressão espúria, isto é quando temos um alto <span class="math inline">\(R^2\)</span> sem uma relação significativa entre as variáveis <span class="citation">(Harris et al. <a href="#ref-harris1995" role="doc-biblioref">1995</a>)</span>. Assim, na presença de raiz unitária podem-se encontrar relações econométricas entre duas variáveis econômicas sem qualquer relação de causalidade entre uma e outra por puro acaso. Por exemplo, a regressão de uma variável I(1) com outra I(1) obtida independentemente gera alto <span class="math inline">\(R^2\)</span> e estatística <span class="math inline">\(t\)</span> significante. No entanto o resultado não tem significado econômico.</p>
+<p><br></p>
+
+<div class="example">
+<span id="exm:passaleexp" class="example"><strong>Exemplo 5.6  (Correlação entre duas séries independentes)  </strong></span>Fizemos a seguinte experiência. Geramos duas séries I(1) independentes entre si e regredimos um contra a outra.
+O resultado segue.
+</div>
+
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1"><span class="kw">set.seed</span>(<span class="dv">76543210</span>)</a>
+<a class="sourceLine" id="cb18-2" title="2">s1=<span class="kw">cumsum</span>(<span class="kw">rnorm</span>(<span class="dv">100</span>)) <span class="co"># Série I(1), s1</span></a>
+<a class="sourceLine" id="cb18-3" title="3"><span class="kw">set.seed</span>(<span class="dv">01234567</span>)</a>
+<a class="sourceLine" id="cb18-4" title="4">s2=<span class="kw">cumsum</span>(<span class="kw">rnorm</span>(<span class="dv">100</span>)) <span class="co"># Série I(1), s2 independente de s1</span></a>
+<a class="sourceLine" id="cb18-5" title="5">m1=<span class="kw">lm</span>(s1<span class="op">~</span>s2)</a>
+<a class="sourceLine" id="cb18-6" title="6"><span class="kw">summary</span>(m1)</a></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = s1 ~ s2)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -6.5336 -1.6894  0.1274  1.7391  6.6388 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  3.36738    0.47727   7.056 2.47e-10 ***
+## s2           0.76312    0.08868   8.606 1.27e-13 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 2.955 on 98 degrees of freedom
+## Multiple R-squared:  0.4304,	Adjusted R-squared:  0.4246 
+## F-statistic: 74.06 on 1 and 98 DF,  p-value: 1.273e-13</code></pre>
+<p><br></p>
+<p>Como podemos observar, encontramos um <span class="math inline">\(R^2=0.43\)</span> alto e estatísticas significativas. No entanto, as séries são independentes. O resultado disso, é que quando colocamos no mesmo gráfico, a série <span class="math inline">\(Y\)</span> e o predito, podemos observar que o predito não é nem de perto razoável.</p>
+<div class="figure"><span id="fig:I1I1"></span>
+<img src="04-SeriesTempNaoEstac_files/figure-html/I1I1-1.png" alt="Correlação expúria. Dois passeios aleatórios independentes" width="99%" />
+<p class="caption">
+Figura 5.8: Correlação expúria. Dois passeios aleatórios independentes
+</p>
+</div>
+<p>Isto ocorre devido ao fato de que a presença de uma tendência, decrescente ou crescente, em ambas as séries leva a um alto valor do <span class="math inline">\(R^2\)</span> mas não necessariamente, a presença de uma relação verdadeira entre séries <span class="citation">(Gujarati <a href="#ref-gujarati2003" role="doc-biblioref">2003</a>)</span></p>
+<p>Detectada a presença de raiz unitária, então deve-se trabalhar com as séries temporais diferenciadas e não em nível, ou seja, a tendência precisa ser removida. Assim, quando uma série econômica apresentar uma tendência estocástica tornar-se-á estacionária após a aplicação de uma ou mais diferenças, pois terá pelo menos uma raiz unitária. No entanto, ao se remover a tendência, elementos de longo prazo entre as variáveis são eliminados.</p>
+<p>A interpretação econômica da cointegração é que se duas (ou mais) variáveis possuem uma relação de equilíbrio de longo prazo, então mesmo que as séries possam conter tendências estocásticas (isto é, serem não estacionárias), elas irão mover-se juntas no tempo e a diferença entre elas será estável (isto é, estacionária). Em suma, o conceito de cointegração indica a existência de um equilíbrio de longo prazo, para o
+qual o sistema econômico converge no tempo <span class="citation">(Harris et al. <a href="#ref-harris1995" role="doc-biblioref">1995</a>)</span>.</p>
+<div id="quando-é-possível-regredir-duas-séries-id" class="section level3">
+<h3><span class="header-section-number">5.6.1</span> Quando é possível regredir duas séries I(d)</h3>
+<p>Para que a regressão entre duas séries temporais não seja espúria, elas devem satisfazer uma das seguintes situações:</p>
+<p><br></p>
+<hr />
+<blockquote>
+<p><span style="color: blue;">Séries que cointegram</span>,
+1) <span class="math inline">\(\{Y_t\}\)</span> e <span class="math inline">\(\{X_t\}\)</span> devem ser estacionárias.<br />
+2) <span class="math inline">\(\{Y_t\}\)</span> e <span class="math inline">\(\{X_t\}\)</span> devem ser integradas de mesma ordem e o resíduo deve ser estacionário.</p>
+</blockquote>
+<hr />
+<p>Se <span class="math inline">\(\{Y_t\}\)</span> e <span class="math inline">\(\{X_t\}\)</span> são integrados de ordens diferentes ou se <span class="math inline">\(\{Y_t\}\)</span> e <span class="math inline">\(\{X_t\}\)</span> são integrados de mesma ordem e o resíduo não é estacionário, então a regressão é espúria.</p>
+<p>Um teste utilizado para detectar cointegração é o teste de <span style="color: blue;">Durbin-Watson</span>.</p>
+</div>
+</div>
+<div id="exercícios" class="section level2">
+<h2><span class="header-section-number">5.7</span> Exercícios</h2>
+
+<div class="exercise">
+<p><span id="exr:exns1" class="exercise"><strong>Exercício 5.2  (ANPEC 2013-05)  </strong></span>Um pesquisador corretamente postula o seguinte modelo de regressão:</p>
+<p><span class="math display">\[
+  y_t = \beta_1 + \beta_2t + u_t,\,\,\,\,\,\,\, t = 1,\cdots, T;
+\]</span>
+em que <span class="math inline">\(u_t\)</span> é uma variável aleatória independente e identicamente distribuída ao longo do tempo, com média zero e variância finita.<br />
+Julgue as afirmativas:</p>
+<div class="line-block">   0) <span class="math inline">\(y_t\)</span> é um processo estacionário.</div>
+<div class="line-block">   1) <span class="math inline">\(\Delta y_t = y_t - y_{t-1}\)</span> é um processo estacionário de segunda ordem.</div>
+<div class="line-block">   2) Mínimos quadrados ordinários aplicado à equação () produz uma estimativa não viesada de <span class="math inline">\(\beta_2\)</span>.</div>
+<div class="line-block">   3) Seja <span class="math inline">\(\hat{\beta}_2 =\sum_{t =2}^T (y_t - y_{t-1})/(T - 1)\)</span>. <span class="math inline">\(\hat{\beta}_2\)</span> é um estimador consistente de <span class="math inline">\(\beta_2\)</span>.<br />
+   4) Suponha que <span class="math inline">\(u_t = \rho u_{t-1} + \varepsilon_t\)</span>, <span class="math inline">\(\rho &lt; 1\)</span> e que <span class="math inline">\(\varepsilon_t\)</span> seja uma variável aleatória</div>
+<p>independente e identicamente distribuída ao longo do tempo, com média zero e variância finita. O estimador de mínimos quadrados ordinários de <span class="math inline">\(\beta_2\)</span> no modelo é não viesado.</p>
+</div>
+
+<p><br></p>
+
+<div class="exercise">
+<p><span id="exr:exns2" class="exercise"><strong>Exercício 5.3  (ANPEC 2007-07)  </strong></span> Sejam <span class="math inline">\(Y_t\)</span> e <span class="math inline">\(X_t\)</span> duas séries temporais. Considere os resultados dos seguintes modelos de regressão estimados por mínimos quadrados ordinários (MQO):</p>
+<p><span class="math display">\[\Delta Y_t = \underset{(1,70)}{4,8788} - \underset{(-1,97)}{0,1512} Y_{t-1} \mbox{e}
+ \Delta X_t = \underset{(1,26)}{0,1094} -\underset{(-2,21)}{0,1807}X_{t-1} \]</span></p>
+<p>Considere também os resultados da regressão de <span class="math inline">\(Y_t\)</span> em <span class="math inline">\(X_t\)</span></p>
+<p><span class="math display">\[Y_t = \underset{(1,70)}{23,3924} + \underset{-1,97}{14,4006} X_t + \widehat{e}_t,\]</span>
+em que <span class="math inline">\(\widehat{e}_t\)</span> é o resíduo. Finalmente, considere a seguinte regressão:</p>
+<p><span class="math display">\[\Delta \widehat{e}_t = \underset{(0,06)}{0,0730} - \underset{(-3,43)}{0,4157} \widehat{e}_{t-1}.\]</span></p>
+<p>Os números entre parênteses são os valores do teste t de significância individual dos parâmetros. Dado que o valor crítico a 5% da estatística de Dickey-Fuller é -2,938, é correto afirmar que:</p>
+<div class="line-block">   0) <span class="math inline">\(Y_t\)</span> e <span class="math inline">\(X_t\)</span> são séries temporais integradas de ordem 1.</div>
+<div class="line-block">   1) A regressão de <span class="math inline">\(Y_t\)</span> em <span class="math inline">\(X_t\)</span> é espúria.</div>
+<div class="line-block">   2) A hipótese de cointegração entre <span class="math inline">\(Y_t\)</span> e <span class="math inline">\(X_t\)</span> é rejeitada pois os resíduos da regressão de <span class="math inline">\(Y_t\)</span> em <span class="math inline">\(X_t\)</span> são não-estacionários.</div>
+<div class="line-block">   3) Para que duas variáveis sejam cointegradas é necessário que ambas tenham a mesma ordem de integração.</div>
+<div class="line-block">   4) A rejeição da hipótese nula do teste Dickey-Fuller implica que a variável em questão é não-estacionária.</div>
+</div>
+
+<p><br></p>
+
+<div class="exercise">
+<p><span id="exr:exns3" class="exercise"><strong>Exercício 5.4  (ANPEC 2007-09)  </strong></span>
+Julgue as proposições:</p>
+<div class="line-block">   0) A soma de dois processos estocásticos independentes e estacionários de segunda ordem será estacionária de segunda ordem.</div>
+<div class="line-block">   1) A soma de dois processos estocásticos não-estacionários será não-estacionária.</div>
+<div class="line-block">   2) Seja <span class="math inline">\(L\)</span> o operador defasagem tal que <span class="math inline">\(LY_t = Y_{t-1}\)</span>. Se <span class="math inline">\(Y_t\)</span> segue um processo AR(1) estacionário</div>
+<p>de segunda ordem, então <span class="math inline">\((1-L)²Y_t\)</span> é um processo ARMA(2,2).</p>
+<div class="line-block">   3) O processo ARMA(2,2) definido na forma <span class="math inline">\((1-L-0,25L²)Y_t=(1-0,5L-0,06L²)u_t\)</span> é não estacionário, em que <span class="math inline">\(u_t\)</span> é o erro aleatório com média nula e variância constante.</div>
+<div class="line-block">   4) Todo processo MA é estacionário de segunda ordem.</div>
+</div>
+
+<p><br></p>
+
+<div class="exercise">
+<span id="exr:exns4" class="exercise"><strong>Exercício 5.5  </strong></span>Para este exercício consideremos uma série temporal de vendas <em>BJsales</em>.
+</div>
+
+<p><br></p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1"><span class="co"># Teste de Dickey - Fuller para BJsales</span></a>
+<a class="sourceLine" id="cb20-2" title="2">adf1=<span class="kw">adf.test</span>(BJsales)</a></code></pre></div>
+<pre><code>## Augmented Dickey-Fuller Test 
+## alternative: stationary 
+##  
+## Type 1: no drift no trend 
+##      lag  ADF p.value
+## [1,]   0 3.52   0.990
+## [2,]   1 2.45   0.990
+## [3,]   2 1.94   0.986
+## [4,]   3 1.71   0.978
+## [5,]   4 1.42   0.960
+## Type 2: with drift no trend 
+##      lag    ADF p.value
+## [1,]   0 -0.172   0.935
+## [2,]   1 -0.478   0.880
+## [3,]   2 -0.664   0.814
+## [4,]   3 -0.837   0.754
+## [5,]   4 -1.010   0.693
+## Type 3: with drift and trend 
+##      lag    ADF p.value
+## [1,]   0 -0.986   0.937
+## [2,]   1 -1.316   0.861
+## [3,]   2 -1.606   0.739
+## [4,]   3 -1.789   0.662
+## [5,]   4 -2.077   0.541
+## ---- 
+## Note: in fact, p.value = 0.01 means p.value &lt;= 0.01</code></pre>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1"><span class="co"># Teste de Dickey - Fuller para diff(BJsales)</span></a>
+<a class="sourceLine" id="cb22-2" title="2">adf2=<span class="kw">adf.test</span>(<span class="kw">diff</span>(BJsales))</a></code></pre></div>
+<pre><code>## Augmented Dickey-Fuller Test 
+## alternative: stationary 
+##  
+## Type 1: no drift no trend 
+##      lag   ADF p.value
+## [1,]   0 -8.25    0.01
+## [2,]   1 -5.34    0.01
+## [3,]   2 -4.24    0.01
+## [4,]   3 -3.38    0.01
+## [5,]   4 -3.18    0.01
+## Type 2: with drift no trend 
+##      lag   ADF p.value
+## [1,]   0 -8.77    0.01
+## [2,]   1 -5.76    0.01
+## [3,]   2 -4.64    0.01
+## [4,]   3 -3.72    0.01
+## [5,]   4 -3.50    0.01
+## Type 3: with drift and trend 
+##      lag   ADF p.value
+## [1,]   0 -8.74  0.0100
+## [2,]   1 -5.74  0.0100
+## [3,]   2 -4.62  0.0100
+## [4,]   3 -3.70  0.0262
+## [5,]   4 -3.48  0.0461
+## ---- 
+## Note: in fact, p.value = 0.01 means p.value &lt;= 0.01</code></pre>
+<div class="line-block">   a) O que podemos afirmar a respeito da tendência da série <em>BJsales</em>? Use os resultados dos testes de hipóteses para justificar a sua resposta.</div>
+<div class="line-block">   b) O que podemos afirmar a respeito da tendência da primeira diferença da série <em>BJsales</em>? Use os resultados dos testes de hipóteses para justificar a sua resposta.</div>
+<div class="line-block">   c) Dos gráficos apresentados na figura <a href="stnoest.html#fig:bjfig">5.9</a>, qual(is) pode(m) representar a série <em>BJsales</em>? E qual(is) pode(m) representar a primeira diferença da série <em>BJsales</em>? Explique.</div>
+<div class="figure"><span id="fig:bjfig"></span>
+<img src="04-SeriesTempNaoEstac_files/figure-html/bjfig-1.png" alt="Séries Temporais S1,S2 e S3" width="33%" /><img src="04-SeriesTempNaoEstac_files/figure-html/bjfig-2.png" alt="Séries Temporais S1,S2 e S3" width="33%" /><img src="04-SeriesTempNaoEstac_files/figure-html/bjfig-3.png" alt="Séries Temporais S1,S2 e S3" width="33%" />
+<p class="caption">
+Figura 5.9: Séries Temporais S1,S2 e S3
+</p>
+</div>
+<div class="line-block">  d) Na figura <a href="stnoest.html#fig:figcs">5.10</a> qual(is) dos gráficos de FAC e FACP pode(m) corresponder à FAC e FACP de um ruído branco? Justifique.</div>
+<div class="figure"><span id="fig:figcs"></span>
+<img src="04-SeriesTempNaoEstac_files/figure-html/figcs-1.png" alt="FAC e FACP para três séries temporais distintas $X_1$, $X_2$ e $X_3$." width="33%" /><img src="04-SeriesTempNaoEstac_files/figure-html/figcs-2.png" alt="FAC e FACP para três séries temporais distintas $X_1$, $X_2$ e $X_3$." width="33%" /><img src="04-SeriesTempNaoEstac_files/figure-html/figcs-3.png" alt="FAC e FACP para três séries temporais distintas $X_1$, $X_2$ e $X_3$." width="33%" />
+<p class="caption">
+Figura 5.10: FAC e FACP para três séries temporais distintas <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span> e <span class="math inline">\(X_3\)</span>.
+</p>
+</div>
+<div class="line-block">   e) Na figura <a href="stnoest.html#fig:figcs">5.10</a> qual(is) dos gráficos de FAC e FACP pode(m) corresponder à FAC e FACP de um ruído branco? Justifique.<br />
+   f) Na figura <a href="stnoest.html#fig:figcs">5.10</a> qual(is) dos gráficos de FAC e FACP pode(m) corresponder à FAC e FACP da Série <em>BJsales</em>? Justifique.</div>
+<div class="line-block">   g) Dos seguintes modelos: AR(1), MA(1), ARMA(1,1), ARIMA(1,1,1), ARIMA(3,1,2) e ARIMA(1,2,1), qual(is) poderiam ajustar corretamente a série temporal <em>BJsales</em>? Justifique.</div>
+<div class="line-block">   h) Foram ajustados 3 modelos para a série <em>BJsales</em>: ARMA(1,1) (AIC =546.7917), ARIMA(2,1,3)(AIC =520.1139) e ARIMA(1,1,1) (AIC =514.736). A FAC e FACP dos resíduos dos ajustes são apresentados na figura <a href="#aj"><strong>??</strong></a>. Qual é o melhor modelo? Justifique.</div>
+<div class="figure"><span id="fig:aj"></span>
+<img src="04-SeriesTempNaoEstac_files/figure-html/aj-1.png" alt="FAC e FACP dos resíduos do ajuste de três modelos a série _BJsales_," width="33%" /><img src="04-SeriesTempNaoEstac_files/figure-html/aj-2.png" alt="FAC e FACP dos resíduos do ajuste de três modelos a série _BJsales_," width="33%" /><img src="04-SeriesTempNaoEstac_files/figure-html/aj-3.png" alt="FAC e FACP dos resíduos do ajuste de três modelos a série _BJsales_," width="33%" />
+<p class="caption">
+Figura 5.11: FAC e FACP dos resíduos do ajuste de três modelos a série <em>BJsales</em>,
+</p>
+</div>
+<div class="line-block">   i) Faça a correspondência dos teste de Teste <em>LJUNG-BOX</em> na Tabela a seguir com a figura <a href="stnoest.html#fig:aj">5.11</a> explicando o seu raciocínio.</div>
+<p><font size="0.5"></p>
+<table>
+<colgroup>
+<col width="9%" />
+<col width="6%" />
+<col width="2%" />
+<col width="5%" />
+<col width="3%" />
+<col width="7%" />
+<col width="8%" />
+<col width="6%" />
+<col width="3%" />
+<col width="5%" />
+<col width="2%" />
+<col width="5%" />
+<col width="8%" />
+<col width="3%" />
+<col width="0%" />
+<col width="5%" />
+<col width="1%" />
+<col width="4%" />
+<col width="8%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th></th>
+<th></th>
+<th>Teste 1</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th>Teste 2</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th>Teste 3</th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Def</td>
+<td>ACF</td>
+<td></td>
+<td>PACF</td>
+<td></td>
+<td>Q-stat</td>
+<td>[p-valor]</td>
+<td>ACF</td>
+<td></td>
+<td>PACF</td>
+<td></td>
+<td>Q-stat</td>
+<td>[p-valor]</td>
+<td>ACF</td>
+<td></td>
+<td>PACF</td>
+<td></td>
+<td>Q-stat</td>
+<td>[p-valor]</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>-0.483</td>
+<td>***</td>
+<td>-0.483</td>
+<td>***</td>
+<td>47.49</td>
+<td>[0.00]</td>
+<td>-0.406</td>
+<td>***</td>
+<td>-0.406</td>
+<td>***</td>
+<td>31.42</td>
+<td>[0.00]</td>
+<td>-0.031</td>
+<td></td>
+<td>-0.031</td>
+<td></td>
+<td>0.19</td>
+<td>[0.65]</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>-0.079</td>
+<td></td>
+<td>-0.408</td>
+<td>***</td>
+<td>48.77</td>
+<td>[0.00]</td>
+<td>0.044</td>
+<td></td>
+<td>-0.145</td>
+<td>**</td>
+<td>31.79</td>
+<td>[0.00]</td>
+<td>-0.121</td>
+<td>*</td>
+<td>-0.122</td>
+<td>*</td>
+<td>3.22</td>
+<td>[0.19]</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>0.089</td>
+<td></td>
+<td>-0.254</td>
+<td>***</td>
+<td>50.40</td>
+<td>[0.00]</td>
+<td>0.016</td>
+<td></td>
+<td>-0.026</td>
+<td></td>
+<td>31.85</td>
+<td>[0.00]</td>
+<td>0.089</td>
+<td></td>
+<td>0.082</td>
+<td></td>
+<td>4.88</td>
+<td>[0.18]</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>-0.029</td>
+<td></td>
+<td>-0.216</td>
+<td>***</td>
+<td>50.58</td>
+<td>[0.00]</td>
+<td>0.030</td>
+<td></td>
+<td>0.042</td>
+<td></td>
+<td>32.03</td>
+<td>[0.00]</td>
+<td>0.038</td>
+<td></td>
+<td>0.029</td>
+<td></td>
+<td>5.19</td>
+<td>[0.26]</td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td>0.044</td>
+<td></td>
+<td>-0.098</td>
+<td></td>
+<td>50.98</td>
+<td>[0.00]</td>
+<td>0.008</td>
+<td></td>
+<td>0.052</td>
+<td></td>
+<td>32.04</td>
+<td>[0.00]</td>
+<td>0.066</td>
+<td></td>
+<td>0.091</td>
+<td></td>
+<td>6.12</td>
+<td>[0.29]</td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td>-0.095</td>
+<td></td>
+<td>-0.189</td>
+<td>***</td>
+<td>52.87</td>
+<td>[0.00]</td>
+<td>-0.020</td>
+<td></td>
+<td>0.008</td>
+<td></td>
+<td>32.12</td>
+<td>[0.00]</td>
+<td>0.034</td>
+<td></td>
+<td>0.040</td>
+<td></td>
+<td>6.37</td>
+<td>[0.38]</td>
+</tr>
+<tr class="even">
+<td>7</td>
+<td>0.072</td>
+<td></td>
+<td>-0.121</td>
+<td>*</td>
+<td>53.99</td>
+<td>[0.00]</td>
+<td>0.027</td>
+<td></td>
+<td>0.023</td>
+<td></td>
+<td>32.27</td>
+<td>[0.00]</td>
+<td>0.053</td>
+<td></td>
+<td>0.070</td>
+<td></td>
+<td>6.96</td>
+<td>[0.43]</td>
+</tr>
+<tr class="odd">
+<td>8</td>
+<td>-0.002</td>
+<td></td>
+<td>-0.100</td>
+<td></td>
+<td>53.99</td>
+<td>[0.00]</td>
+<td>0.045</td>
+<td></td>
+<td>0.075</td>
+<td></td>
+<td>32.68</td>
+<td>[0.00]</td>
+<td>-0.031</td>
+<td></td>
+<td>-0.035</td>
+<td></td>
+<td>7.18</td>
+<td>[0.51]</td>
+</tr>
+<tr class="even">
+<td>9</td>
+<td>-0.108</td>
+<td></td>
+<td>-0.249</td>
+<td>***</td>
+<td>56.49</td>
+<td>[0.00]</td>
+<td>-0.096</td>
+<td></td>
+<td>-0.056</td>
+<td></td>
+<td>34.52</td>
+<td>[0.00]</td>
+<td>0.043</td>
+<td></td>
+<td>0.045</td>
+<td></td>
+<td>7.58</td>
+<td>[0.57]</td>
+</tr>
+<tr class="odd">
+<td>10</td>
+<td>0.167</td>
+<td>**</td>
+<td>-0.090</td>
+<td></td>
+<td>62.44</td>
+<td>[0.00]</td>
+<td>0.122</td>
+<td>*</td>
+<td>0.073</td>
+<td></td>
+<td>37.54</td>
+<td>[0.00]</td>
+<td>0.048</td>
+<td></td>
+<td>0.023</td>
+<td></td>
+<td>8.09</td>
+<td>[0.61]</td>
+</tr>
+</tbody>
+</table>
+<p></font></p>
+<p><br></p>
+
+<div class="exercise">
+<span id="exr:exersr" class="exercise"><strong>Exercício 5.6  </strong></span>Escreva a equação do modelo para a seguinte saída do R
+</div>
+
+<pre><code>## 
+## Call:
+## arima(x = X, order = c(2, 1, 1))
+## 
+## Coefficients:
+##          ar1     ar2     ma1
+##       0.8305  0.0360  -0.607
+## s.e.  0.1774  0.1178   0.160
+## 
+## sigma^2 estimated as 1.774:  log likelihood = -254.32,  aic = 516.64</code></pre>
+<p><br></p>
+
+<div class="exercise">
+<p><span id="exr:exar2" class="exercise"><strong>Exercício 5.7  </strong></span>Seja <span class="math inline">\(\{y_t\}_{t=1}^{440}\)</span> uma série temporal. Essa série foi ajustada de acordo com um modelo AR(2). A equação estimada foi:
+<span class="math inline">\(y_t=14.62-0.61y_{t-1}+0.15y_{t-2}\)</span>. Os seguintes dados estão disponíveis:</p>
+<table>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(t\)</span></th>
+<th>436</th>
+<th>437</th>
+<th>438</th>
+<th>439</th>
+<th>440</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(y_t\)</span></td>
+<td>9.88</td>
+<td>10.42</td>
+<td>11.08</td>
+<td>8.12</td>
+<td>11.71</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\widehat{e}_t\)</span></td>
+<td>-0.21</td>
+<td>0.40</td>
+<td>1.33</td>
+<td>-1.30</td>
+<td>0.38</td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">   a) Calcule a previsão um passo a frente e dois passos a frente para a série <span class="math inline">\(y_t\)</span>, ou seja, <span class="math inline">\(\widehat{y}_{440}(1)\)</span> e <span class="math inline">\(\widehat{y}_{440}(2)\)</span>. R: <span class="math inline">\(\widehat{y}_{440}(1)=8.6949\)</span> e <span class="math inline">\(\widehat{y}_{440}(2)=11.07261\)</span>.</div>
+<div class="line-block">   b) Calcule o erro de previsão um e dois passos a frente, <span class="math inline">\(e_{440}(1)\)</span> e <span class="math inline">\(e_{440}(2)\)</span>, sabendo-se que <span class="math inline">\(y_{441}=8.83\)</span> e <span class="math inline">\(y_{442}=12.24\)</span>. <strong>R</strong>: <span class="math inline">\(e_{440}(1)=0.1351\)</span> e <span class="math inline">\(e_{440}(2)=1.167389\)</span>.</div>
+</div>
+
+<p><br></p>
+
+<div class="exercise">
+<p><span id="exr:exarma2" class="exercise"><strong>Exercício 5.8  </strong></span>Seja <span class="math inline">\(\{y_t\}_{t=1}^{450}\)</span> uma série temporal. Essa série foi ajustada de acordo com um modelo MA(2). A equação estimada foi: <span class="math inline">\(y_t=10.01+e_t-0.64e_{t-1}+0.22e_{t-2}\)</span>. Os seguintes dados estão disponíveis:</p>
+<table>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(t\)</span></th>
+<th>446</th>
+<th>447</th>
+<th>448</th>
+<th>449</th>
+<th>450</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(y_t\)</span></td>
+<td>9.79</td>
+<td>10.22</td>
+<td>7.43</td>
+<td>12.41</td>
+<td>8.35</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\widehat{e}_t\)</span></td>
+<td>-0.52</td>
+<td>0.21</td>
+<td>-2.34</td>
+<td>0.87</td>
+<td>-0.60</td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">  a) Calcule a previsão um, dois e três passos a frente para a série <span class="math inline">\(y_t\)</span>, ou seja, <span class="math inline">\(\widehat{y}_{450}(1)\)</span>, <span class="math inline">\(\widehat{y}_{450}(2)\)</span> e <span class="math inline">\(\widehat{y}_{450}(3)\)</span>. <strong>R</strong>: <span class="math inline">\(\widehat{y}_{450}(1)=10.5854\)</span>, <span class="math inline">\(\widehat{y}_{450}(2)=9.878\)</span> e <span class="math inline">\(\widehat{y}_{450}(3)=10.01\)</span>.</div>
+| b) Calcule o erro de previsão um, dois e três passos a frente, <span class="math inline">\(e_{450}(1)\)</span>, <span class="math inline">\(e_{450}(2)\)</span> e <span class="math inline">\(e_{450}(3)\)</span>, sabendo-se que <span class="math inline">\(y_{451}=9.80\)</span>, <span class="math inline">\(y_{452}=8.78\)</span> e <span class="math inline">\(y_{453}=9.33\)</span>. <strong>R</strong>: <span class="math inline">\(e_{450}(1)=-0.7767\)</span>, <span class="math inline">\(e_{450}(2)=-1.098\)</span> e <span class="math inline">\(e_{450}(3)=-0.68\)</span>.
+</div>
+
+<p><br></p>
+
+<div class="exercise">
+<p><span id="exr:exerarma2" class="exercise"><strong>Exercício 5.9  </strong></span>Escreva cada um dos seguintes processos usando o operador de defasagem <strong>L</strong>.</p>
+<div class="line-block">   a) <span class="math inline">\(X_t=0.3X_{t-1}+a_t\)</span>;</div>
+<div class="line-block">   b) <span class="math inline">\(X_t=\sum_{j=1}^{t}a_t,\,\,\, t\geq 1\)</span>;</div>
+<div class="line-block">   c) <span class="math inline">\(X_t=a_t+0.4a_{t-1}-0.2a_{t-2}+0.17a_{t-3}\)</span>;</div>
+<div class="line-block">   d) <span class="math inline">\(X_t=1.5X_{t-1}-0.75X_{t-2}+a_t+4.0\)</span>;</div>
+<div class="line-block">   e) <span class="math inline">\(X_t=0.5X_{t-1}+a_t+0.4a_{t-1}-0.2a_{t-2}\)</span>;</div>
+<div class="line-block">   f) <span class="math inline">\(X_t-X_{t-1}=-0.3X_{t-1}+a_t+0.4a_{t-1}\)</span>;</div>
+</div>
+
+<p><br></p>
+
+<div class="exercise">
+<p><span id="exr:exarma22" class="exercise"><strong>Exercício 5.10  </strong></span>Seja <span class="math inline">\(\{y_t\}_{t=1}^{450}\)</span> uma série temporal. Essa série foi ajustada de acordo com um modelo ARMA(2,2). A equação estimada
+foi: <span class="math inline">\(y_t=1.61+1.39y_{t-1}-0.55y_{t-2}+e_t-0.81e_{t-1}+0.25e_{t-2}\)</span>. Os seguintes dados estão disponíveis:</p>
+<table>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(t\)</span></th>
+<th>446</th>
+<th>447</th>
+<th>448</th>
+<th>449</th>
+<th>450</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(y_t\)</span></td>
+<td>12.16</td>
+<td>11.69</td>
+<td>11.56</td>
+<td>10.32</td>
+<td>10.87</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\widehat{e}_t\)</span></td>
+<td>0.56</td>
+<td>-0.07</td>
+<td>0.19</td>
+<td>-0.75</td>
+<td>0.62</td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">   a) Calcule a previsão um, dois e três passos a frente para a série <span class="math inline">\(y_t\)</span>, ou seja, <span class="math inline">\(\widehat{y}_{450}(1)\)</span>,</div>
+<p><span class="math inline">\(\widehat{y}_{450}(2)\)</span> e <span class="math inline">\(\widehat{y}_{450}(3)\)</span>. <strong>R</strong>: <span class="math inline">\(\widehat{y}_{450}(1)=10.3536\)</span>, <span class="math inline">\(\widehat{y}_{450}(2)=10.178\)</span> e
+<span class="math inline">\(\widehat{y}_{450}(3)=10.06295\)</span>.</p>
+<div class="line-block">   b) Calcule o erro de previsão um, dois e três passos a frente, <span class="math inline">\(e_{450}(1)\)</span>, <span class="math inline">\(e_{450}(2)\)</span> e <span class="math inline">\(e_{450}(3)\)</span>, sabendo-se que <span class="math inline">\(y_{451}=9.80\)</span>, <span class="math inline">\(y_{452}=8.78\)</span> e <span class="math inline">\(y_{453}=9.33\)</span>. <strong>R</strong>: <span class="math inline">\(e_{450}(1)=1.53\)</span>, <span class="math inline">\(e_{450}(2)=2.052\)</span> e <span class="math inline">\(e_{450}(3)=0.69\)</span>.</div>
+</div>
+
+<p><br></p>
+
+<div class="exercise">
+<p><span id="exr:exear1" class="exercise"><strong>Exercício 5.11  </strong></span>Considere o modelo autorregressivo de primeira ordem, AR(1), definido por</p>
+<p><span class="math display">\[Y_t=a+bY_{t-1}+u_t,\]</span>
+em que <span class="math inline">\(a\)</span> e <span class="math inline">\(b\)</span> são parâmetros e <span class="math inline">\(u_t\)</span> é uma sequência de variáveis aleatórias independentes e igualmente distribuídas, com média nula e variância <span class="math inline">\(\sigma^2\)</span>. Suponha que <span class="math inline">\(|b| &lt; 1\)</span>. A previsão <span class="math inline">\(n\)</span> passos-à-frente para a variável <span class="math inline">\(Y\)</span> convergirá para</p>
+<div class="line-block">   a) <span class="math inline">\(a\)</span>.</div>
+<div class="line-block">   b) a média de <span class="math inline">\(u_t\)</span>.</div>
+<div class="line-block">   c) <span class="math inline">\(\frac{a}{1-b}\)</span>.</div>
+<div class="line-block">   d) <span class="math inline">\(E(Y_t)\)</span>.</div>
+<div class="line-block">   e) <span class="math inline">\(\infty\)</span>.</div>
+</div>
+
+<p><br></p>
+
+<div class="exercise">
+<p><span id="exr:exema2" class="exercise"><strong>Exercício 5.12  </strong></span>As vendas mensais de um certo produto são representadas pelo modelo
+<span class="math display">\[Z_t=3+a_t+0.5a_{t-1}-0.25a_{t-2}, \,\,\,\,\,\sigma_a^2=4.\]</span></p>
+<div class="line-block">   a) Obtenha <span class="math inline">\(\hat{Z}(\ell), \,\,\,\ell=1,2,3,100\)</span>;</div>
+<div class="line-block">   b) Calcule Var<span class="math inline">\([e_t(\ell)], \,\,\,\ell=1,2,3,100\)</span>;</div>
+<div class="line-block">   c) Dados <span class="math inline">\(Z_1=3.25\)</span>, <span class="math inline">\(Z_2=4.75\)</span>, <span class="math inline">\(Z_3=2.25\)</span> e <span class="math inline">\(Z_4=1.75\)</span>, calcule <span class="math inline">\(\hat{Z}_4(\ell)\)</span> para <span class="math inline">\(\ell=1,2,3,100\)</span>;</div>
+</div>
+
+<p><br></p>
+
+<div class="exercise">
+<span id="exr:exestarima" class="exercise"><strong>Exercício 5.13  </strong></span>Explique os passos que devem ser seguidos para a modelagem de uma série temporal na metodologia ARIMA. Considere a possibilidade de não-estacionariedade da série.
+</div>
+
+<p><br></p>
+
+<div class="exercise">
+<p><span id="exr:exerarima" class="exercise"><strong>Exercício 5.14  </strong></span>Usando a esperança condicional, calcule as previsões 1, 2 e 3 passos a frente (<span class="math inline">\(\widehat{y}_T(1)\)</span>, <span class="math inline">\(\widehat{y}_T(2)\)</span>, <span class="math inline">\(\widehat{y}_T (3)\)</span>) para os seguintes processos:</p>
+<div class="line-block">   a) ARIMA(1,1,0);</div>
+<div class="line-block">   b) ARIMA(1,1,1);</div>
+<div class="line-block">   c) ARIMA(1,2,1);<br />
+   d) ARIMA(2,1,2);</div>
+</div>
+
+<p><br></p>
+
+<div class="exercise">
+<p><span id="exr:exerarimaprev" class="exercise"><strong>Exercício 5.15  </strong></span>Seja <span class="math inline">\(\{y_t\}_{t=1}^{440}\)</span> uma série temporal. Essa série foi ajustada de acordo com um modelo ARIMA(1,1,1). O coeficiente estimado para o componente auto-regressivo foi 0,6347 e o coeficiente estimado referente à parte MA foi 0,3711. As seguintes informações estão disponíveis:</p>
+<table>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(t\)</span></th>
+<th>436</th>
+<th>437</th>
+<th>438</th>
+<th>439</th>
+<th>440</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(y_t\)</span></td>
+<td>20.52</td>
+<td>20.04</td>
+<td>20.52</td>
+<td>19.64</td>
+<td>16.13</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\widehat{e}_t\)</span></td>
+<td>-0.092</td>
+<td>-1.29</td>
+<td>1.27</td>
+<td>-1.66</td>
+<td>-2.33</td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">   a) Escreva o modelo usando a notação do operador <span class="math inline">\(lag\)</span>.</div>
+<div class="line-block">   b) Calcule a previsão um passo a frente e dois passos a frente para a série <span class="math inline">\(y_t\)</span>, ou seja, <span class="math inline">\(\widehat{y}_{440}(1)\)</span> e</div>
+<p><span class="math inline">\(\widehat{y}_{440}(2)\)</span>. R: <span class="math inline">\(\widehat{y}_{440}(1)=13.05\)</span> e <span class="math inline">\(\widehat{y}_{440}(2)=11.09\)</span>.</p>
+<div class="line-block">   c) Calcule o erro de previsão um e dois passos a frente, <span class="math inline">\(e_{440}(1)\)</span> e <span class="math inline">\(e_{440}(2)\)</span>, sabendo-se que <span class="math inline">\(y_{441}=12.57\)</span> e <span class="math inline">\(y_{442}=9.93\)</span>. R: <span class="math inline">\(e_{440}(1)=0.478\)</span> e <span class="math inline">\(e_{440}(2)=-1.157\)</span>.</div>
+</div>
+
+<p><br></p>
+
+<div class="exercise">
+<p><span id="exr:exerarima2prev" class="exercise"><strong>Exercício 5.16  </strong></span>Seja <span class="math inline">\(\{y_t\}_{t=1}^{440}\)</span> uma série temporal. Essa série foi ajustada de acordo com um modelo ARIMA(1,2,1). O coeficiente estimado para o componente auto-regressivo foi 0,6364 e o coeficiente estimado referente a parte MA foi 0,3599. As seguintes informações estão disponíveis:</p>
+<table>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(t\)</span></th>
+<th>436</th>
+<th>437</th>
+<th>438</th>
+<th>439</th>
+<th>440</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(y_t\)</span></td>
+<td>782.78</td>
+<td>803.30</td>
+<td>823.34</td>
+<td>843.86</td>
+<td>863.50</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\widehat{e}_t\)</span></td>
+<td>1.34</td>
+<td>-0.08</td>
+<td>-1.30</td>
+<td>1.26</td>
+<td>-1.65</td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">   a) Escreva o modelo usando a notação do operador <span class="math inline">\(lag\)</span>.</div>
+<div class="line-block">   b) Calcule a previsão um passo a frente e dois passos a frente para a série <span class="math inline">\(y_t\)</span>, ou seja, <span class="math inline">\(\widehat{y}_{440}(1)\)</span> e</div>
+<p><span class="math inline">\(\widehat{y}_{440}(2)\)</span>. <strong>R</strong>: <span class="math inline">\(\widehat{y}_{440}(1)=881.99\)</span> e <span class="math inline">\(\widehat{y}_{440}(2)=899.74\)</span>.</p>
+<div class="line-block">   c) Calcule o erro de previsão um e dois passos a frente, <span class="math inline">\(e_{440}(1)\)</span> e <span class="math inline">\(e_{440}(2)\)</span>, sabendo-se que <span class="math inline">\(y_{441}=879.64\)</span> e <span class="math inline">\(y_{442}=892.21\)</span>. <strong>R</strong>: <span class="math inline">\(e_{440}(1)=-2.35\)</span> e <span class="math inline">\(e_{440}(2)=-7.53\)</span>.</div>
+</div>
+
+<p><br></p>
+
+<div class="exercise">
+<p><span id="exr:exeriene" class="exercise"><strong>Exercício 5.17  </strong></span>Seja <span class="math inline">\(y_t\)</span> o logaritmo de taxa de câmbio iene/US $. A seguinte regressão foi proposta: <span class="math inline">\(\Delta y_t=\beta_0+\beta_1 y_{t-1}+u_t\)</span>.
+As estimativas seguem abaixo:</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>Estimativa</th>
+<th>dp(<span class="math inline">\(\cdot\)</span>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\widehat{\beta}_0\)</span></td>
+<td>0.162</td>
+<td>0.435</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\widehat{\beta}_1\)</span></td>
+<td>0.099</td>
+<td>0.025</td>
+</tr>
+</tbody>
+</table>
+<p>Sabendo-se que <span class="math inline">\(n=777\)</span>, faça o teste <em>DF</em> e responda se a série <em>inf</em> apresenta raiz unitária.</p>
+<div class="line-block"><strong>Nota</strong>: </div>
+</div>
+
+<p><br></p>
+
+<div class="exercise">
+<p><span id="exr:exerlpib" class="exercise"><strong>Exercício 5.18  </strong></span>Utilizando os dados anuais (1959-1995) de <span class="math inline">\(\log(PIB)\)</span> norte americano, a seguinte regressão foi proposta: |
+[log(PIB)_t=_0+_1 t+<em>2 log(PIB)</em>{t-1}+<em>3 log(PIB)</em>{t-1}+u_t.]
+As estimativas seguem abaixo:</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>Estimativa</th>
+<th>dp(<span class="math inline">\(\cdot\)</span>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\widehat{\beta}_0\)</span></td>
+<td>1.650</td>
+<td>0.670</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\widehat{\beta}_1\)</span></td>
+<td>0.0059</td>
+<td>0.003</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\widehat{\beta}_2\)</span></td>
+<td>-0.320</td>
+<td>0.087</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\widehat{\beta}_3\)</span></td>
+<td>0.264</td>
+<td>0.126</td>
+</tr>
+</tbody>
+</table>
+<div class="line-block"> <span class="math inline">\(n=35\)</span></div>
+<div class="line-block">   a) Faça o teste ADF e responda se a série <span class="math inline">\(inf\)</span> apresenta raiz unitária.</div>
+<div class="line-block">   b) A inclusão da variável <span class="math inline">\(\Delta log(PIB)_{t-1}\)</span> no modelo acima parece ser necessária? Justifique.</div>
+</div>
+
+<p><br></p>
+
+<div class="exercise">
+<p><span id="exr:exerinf" class="exercise"><strong>Exercício 5.19  </strong></span>Utilizando os dados anuais (1948-1996) de inflação norte americana, a seguinte regressão foi proposta:
+<span class="math display">\[\Delta inf_t =\beta_0 + \beta_1inf_{t-1} + \beta_2 \Delta inf_{t-1} + u_t.\]</span>
+As estimativas seguem abaixo:</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>Estimativa</th>
+<th>dp(<span class="math inline">\(\cdot\)</span>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\widehat{\beta}_0\)</span></td>
+<td>1.360</td>
+<td>0.517</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\widehat{\beta}_1\)</span></td>
+<td>-0.310</td>
+<td>0.103</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\widehat{\beta}_2\)</span></td>
+<td>0.138</td>
+<td>0.126</td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">  <span class="math inline">\(n=47\)</span></div>
+<div class="line-block">   a) Faça o teste ADF e responda se a série <span class="math inline">\(inf\)</span> apresenta raiz unitária.</div>
+<div class="line-block">   b) A inclusão da variável <span class="math inline">\(\Delta inf_{t-1}\)</span> no modelo acima parece ser necessária? Justifique.</div>
+</div>
+
+<p><br></p>
+
+<div class="exercise">
+<p><span id="exr:exervf" class="exercise"><strong>Exercício 5.20  </strong></span>Responda V ou F, justificando sua resposta: Seja o processo auto-regressivo: <span class="math inline">\(y_t=\phi_1 y_{t-1} + \varepsilon_t\)</span>. Pode-se afirmar que:</p>
+<div class="line-block">   a) O processo é estacionário para <span class="math inline">\(\phi_ 1 &lt; 1\)</span>. F</div>
+<div class="line-block">   b) Se <span class="math inline">\(\phi_1 = 1\)</span>, o processo é dito um passeio aleatório. V</div>
+<div class="line-block">   c) O estimador de MQO do parâmetro <span class="math inline">\(\phi_1\)</span> é não-viciado. F</div>
+<div class="line-block">   d) A estatística t-Student pode ser usada para testar a presença de raiz unitária. F</div>
+<div class="line-block">   e) O processo pode ser escrito em uma forma alternativa como <span class="math inline">\(\Delta y_t = \delta y_{t-1}+\varepsilon_t\)</span> em que $=</div>
+<p>_1-1$ e <span class="math inline">\(\Delta y_t = y_t - y_{t-1}\)</span>. V</p>
+</div>
+
+<p><br></p>
+
+<div class="exercise">
+<p><span id="exr:exervf2" class="exercise"><strong>Exercício 5.21  </strong></span>Responda V ou F, justificando sua resposta: Um econometrista estimou uma função consumo usando 25 observações anuais da renda pessoal disponível e consumo, a partir do modelo: <span class="math inline">\(C_t = \beta_0 +\beta_1 Y_t +u_t\)</span> em que <span class="math inline">\(C_t\)</span> representa consumo em <span class="math inline">\(t\)</span>; <span class="math inline">\(Y_t\)</span> representa renda pessoal disponível em <span class="math inline">\(t\)</span> e <span class="math inline">\(u_t\)</span> é um erro aleatório. O econometrista fez o teste de Dickey-Fuller aumentado (ADF) para as séries de renda e de consumo, obtendo estimativas
+para a estatística do teste menores que os valores críticos tabelados, a 1%, 5% e 10%. Consequentemente, o econometrista:</p>
+<div class="line-block">   a) Aceitou a hipótese nula do teste ADF, concluindo que as séries de renda e consumo são não-estacionárias. V</div>
+<div class="line-block">   b) Concluiu que o teste <span class="math inline">\(t\)</span> não é válido. V</div>
+<div class="line-block">   c) Concluiu que a regressão estimada é espúria. F</div>
+<div class="line-block">   d) Necessita fazer mais outros testes para verificar se a regressão estimada é espúria. V</div>
+</div>
+
+<p><br></p>
+
+<div class="exercise">
+<p><span id="exr:exervf3" class="exercise"><strong>Exercício 5.22  </strong></span>Responda V ou F, justificando sua resposta. Considere o modelo de regressão linear <span class="math inline">\(C_t = \beta_0 + \beta_1Y_t + u_t\)</span>. As variáveis são definidas como na questão anterior.</p>
+<div class="line-block">   a) se <span class="math inline">\(C_t\)</span> e <span class="math inline">\(Y_t\)</span> são I(1), então <span class="math inline">\(u_t\)</span> será obrigatoriamente estacionário. F</div>
+<div class="line-block">   b) se <span class="math inline">\(C_t\)</span> e <span class="math inline">\(Y_t\)</span> são integradas, mas com ordens de integração diferentes, então a regressão será inválida. V</div>
+<div class="line-block">   c) se <span class="math inline">\(C_t\)</span> e <span class="math inline">\(Y_t\)</span> são I(1), então o teste ADF aplicado aos resíduos da regressão poderá identificar a presença de co-integração entre as variáveis. V</div>
+<div class="line-block">   d) se <span class="math inline">\(C_t\)</span> e <span class="math inline">\(Y_t\)</span> são I(1), mas os resíduos são I(0), então há co-integração entre as variáveis. V</div>
+<div class="line-block">   e) se <span class="math inline">\(C_t\)</span> e <span class="math inline">\(Y_t\)</span> são I(1) e os resíduos também são I(1), então a regressão de <span class="math inline">\(\Delta C_t\)</span> em <span class="math inline">\(\Delta Y_t\)</span> é inválida. F</div>
+</div>
+
+<p><br></p>
+
+<div class="exercise">
+<p><span id="exr:exervf4" class="exercise"><strong>Exercício 5.23  </strong></span>Responda V ou F, justificando sua resposta. Considere a seguinte regressão entre <span class="math inline">\(y_t\)</span> e <span class="math inline">\(z_t: y_t = \alpha z_t + u_t\)</span>, em que <span class="math inline">\(u_t\)</span> é o erro. São corretas as afirmativas:</p>
+<div class="line-block">   a) se <span class="math inline">\(y_t\)</span> for I(1) e <span class="math inline">\(z_t\)</span> for I(0), então <span class="math inline">\(y_t\)</span> e <span class="math inline">\(z_t\)</span> são co-integradas. F</div>
+<div class="line-block">   b) se <span class="math inline">\(y_t\)</span> for I(0) e <span class="math inline">\(z_t\)</span> for I(1), então <span class="math inline">\(y_t\)</span> e <span class="math inline">\(z_t\)</span> são co-integradas. F</div>
+<div class="line-block">   c) se <span class="math inline">\(y_t\)</span> for I(1) e <span class="math inline">\(z_t\)</span> for I(1), então <span class="math inline">\(y_t\)</span> e <span class="math inline">\(z_t\)</span> são co-integradas. F</div>
+<div class="line-block">   d) se <span class="math inline">\(y_t\)</span> for I(1), <span class="math inline">\(z_t\)</span> for I(1) e <span class="math inline">\(u_t\)</span> for I(0), então <span class="math inline">\(y_t\)</span> e <span class="math inline">\(z_t\)</span> são co-integradas. V</div>
+</div>
+
+<p><br></p>
+
+<div class="exercise">
+<p><span id="exr:exervf5" class="exercise"><strong>Exercício 5.24  </strong></span>Responda V ou F, justificando sua resposta. Com respeito à teoria das séries temporais, são corretas as afirmativas:</p>
+<div class="line-block"> a) Considere uma série temporal <span class="math inline">\(Y_t\)</span> auto-regressiva de ordem 1 com parâmetro <span class="math inline">\(\rho\)</span>. No modelo: <span class="math inline">\(Y_t - Y_{t-1} = \delta Y_{t-1} + u_t\)</span>, em que <span class="math inline">\(u_t\)</span> é um ruído branco e <span class="math inline">\(\delta = \rho - 1\)</span>, se <span class="math inline">\(\delta\)</span> for de fato igual a zero, a série <span class="math inline">\(Y_t\)</span> será não estacionária. V</div>
+<div class="line-block">   b) Numa regressão linear simples de duas séries temporais não estacionárias de ordem 1, o teste usual <span class="math inline">\(t\)</span> de Student ainda é válido. F</div>
+<div class="line-block">   c) Numa regressão linear múltipla de séries temporais de ordem 1, mas cointegráveis, não se corre o risco de os resultados serem espúrios. V</div>
+<div class="line-block">   d) Numa regressão linear múltipla de séries temporais de ordem 1, mas cointegráveis, os resíduos da regressão são estacionários. V</div>
+<div class="line-block">   e) Se uma série temporal tiver que ser diferenciada <span class="math inline">\(n\)</span> vezes antes de se tornar estacionária, a série original é integrada de ordem <span class="math inline">\(n-1\)</span>. F</div>
+</div>
+
+<p><br></p>
+
+<div class="exercise">
+<p><span id="exr:exervf6" class="exercise"><strong>Exercício 5.25  </strong></span>Sejam <span class="math inline">\(Y_t\)</span> e <span class="math inline">\(X_t\)</span> duas séries temporais. Considere os resultados dos seguintes modelos de regressão estimados por mínimos quadrados ordinários (MQO):
+<span class="math display">\[\begin{equation*}
+    \Delta\hat{Y}_t=\underset{(1,70)}{4,8788}-\underset{(-1,97)}{0,1512}Y_{t-1}\,\,\,\,\,\,e\,\,\,\,\,\,
+ \Delta\hat{X}_t=\underset{(1,26)}{0,1094}-\underset{(2,21)}{0,1807}X_{t-1}.
+\end{equation*}\]</span></p>
+<p>Considere também os resultados da regressão de <span class="math inline">\(Y_t\)</span> em <span class="math inline">\(X_t\)</span>.
+<span class="math display">\[\begin{equation*}
+    {Y}_t=\underset{(1,70)}{23,3924}+\underset{(-1,97)}{14,4006}X_{t}+\hat{e}_t,
+\end{equation*}\]</span>
+em que <span class="math inline">\(\hat{e}_t\)</span> é o resíduo. Finalmente, considere a seguinte
+regressão:</p>
+<p><span class="math display">\[\begin{equation*}
+    \Delta\hat{e}_t=\underset{(0,06)}{0,0730}-\underset{(-3,43)}{0,4157}\hat{e}_{t-1}
+\end{equation*}\]</span></p>
+<p>Os números entre parênteses são os valores do teste t de significância individual dos parâmetros. Dado que o valor crítico a 5% da estatística de Dickey-Fuller é -2,938, é correto afirmar que:</p>
+<div class="line-block">   a) <span class="math inline">\(Y_t\)</span> e <span class="math inline">\(X_t\)</span> são séries temporais integradas de ordem 1.</div>
+<div class="line-block">   b) A regressão de <span class="math inline">\(Y_t\)</span> em <span class="math inline">\(X_t\)</span> é espúria.</div>
+<div class="line-block">   c) A hipótese de cointegração entre <span class="math inline">\(Y_t\)</span> e <span class="math inline">\(X_t\)</span> é rejeitada pois os resíduos da regressão de <span class="math inline">\(Y_t\)</span> em <span class="math inline">\(X_t\)</span> são não-estacionários.</div>
+<div class="line-block">   d) Para que duas variáveis sejam cointegradas é necessário que ambas tenham a mesma ordem de integração.</div>
+<div class="line-block">   e) A rejeição da hipótese nula do teste Dickey-Fuller implica que a variável em questão é não-estacionária.</div>
+</div>
+
+<p><br></p>
+
+<div class="exercise">
+<p><span id="exr:exervf7" class="exercise"><strong>Exercício 5.26  (ANPEC 2013-10)  </strong></span>Julgue as seguintes afirmativas:</p>
+<div class="line-block">   0) O passeio aleatório com drift, <span class="math inline">\(y_t = c + y_{t-1} + \varepsilon_t\)</span>, <span class="math inline">\(y_0 = 0\)</span>, em que <span class="math inline">\(\varepsilon_t\)</span> é um ruído branco, com média zero e variância <span class="math inline">\(\sigma^2\)</span>, é um processo estacionário de segunda ordem se <span class="math inline">\(c = 0\)</span>.</div>
+<div class="line-block">   1) O processo MA(1), <span class="math inline">\(yt = \varepsilon_t + \theta_1 \varepsilon_{t-1}\)</span> , em que <span class="math inline">\(\varepsilon_t\)</span> é um ruído branco, com média zero e variância <span class="math inline">\(\sigma^2\)</span>, é estacionário de segunda ordem se, e somente se, a raiz do polinômio <span class="math inline">\(1 + \theta_1x\)</span> cair fora do círculo unitário.</div>
+<div class="line-block">   2) O processo MA(1), <span class="math inline">\(y_t = \varepsilon_t -\theta_1 \varepsilon_{t-1}\)</span> , em que <span class="math inline">\(\varepsilon_t\)</span> é um ruído branco, com média zero e variância <span class="math inline">\(\sigma^2\)</span>, é inversível se, e somente se, <span class="math inline">\(|\theta_1| &lt; 1\)</span>.</div>
+<div class="line-block">   3) O processo AR(2), <span class="math inline">\(y_t = \phi_1y_{t-1} + \phi_2y_{t-2} + \varepsilon_t\)</span>, em que <span class="math inline">\(\varepsilon_t\)</span> é um ruído branco, com média zero e variância <span class="math inline">\(\sigma^2\)</span>, é estacionário de segunda ordem se</div>
+<p><span class="math display">\[|\phi_2| &lt; 1,\,\,\,\, \phi_2 - \phi_1 &lt; 1\,\,\,\,\mbox{ e }\,\,\,\,\, \phi_2 + \phi_1 &lt; 1.\]</span></p>
+<div class="line-block">   4) No passeio aleatório, <span class="math inline">\(y_t = y_{t-1} + \varepsilon_t\)</span>, <span class="math inline">\(y_0 = 0\)</span>, em que <span class="math inline">\(\varepsilon_t\)</span> é um ruído branco, com média zero e variância <span class="math inline">\(\sigma^2\)</span>, a variância de <span class="math inline">\(y_t\)</span> varia com <span class="math inline">\(t\)</span>.</div>
+</div>
+
+
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-box1970">
+<p>Box, George EP, and Jenkins. 1970. <em>Time Series Analysis: Forecasting and Control</em>. San Francisco: Holden-Day.</p>
+</div>
+<div id="ref-gujarati2003">
+<p>Gujarati, Damodar N. 2003. “Basic Econometrics. Forth Edition.” <em>Singapura: McGraw-Hill</em>.</p>
+</div>
+<div id="ref-harris1995">
+<p>Harris, Frederick H deB, Thomas H Mclnish, Gary L Shoesmith, and Robert A Wood. 1995. “Cointegration, Error Correction, and Price Discovery on Informationally Linked Security Markets.” <em>JOURNAL OF FINANCIAL AND QUANTITATIVE ANALYSIS</em> 30: N0.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="st.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="vi.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/04-SeriesTempNaoEstac.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Econometria-e-series-temporais-com-o-R.pdf", "Econometria-e-series-temporais-com-o-R.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

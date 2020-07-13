@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 5 Variáveis instrumentais | Introdução à Econometria de Série Temporais com R</title>
+  <meta name="description" content="Este livro pode ser usado em um curso de graduação que proponha estudar econometria e séreis temporais em um nível introdutório. No entanto, também é abordado um pouco da teoria e tecnicalidade." />
+  <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 5 Variáveis instrumentais | Introdução à Econometria de Série Temporais com R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Este livro pode ser usado em um curso de graduação que proponha estudar econometria e séreis temporais em um nível introdutório. No entanto, também é abordado um pouco da teoria e tecnicalidade." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 5 Variáveis instrumentais | Introdução à Econometria de Série Temporais com R" />
+  
+  <meta name="twitter:description" content="Este livro pode ser usado em um curso de graduação que proponha estudar econometria e séreis temporais em um nível introdutório. No entanto, também é abordado um pouco da teoria e tecnicalidade." />
+  
+
+<meta name="author" content="Marcio Valk" />
+
+
+<meta name="date" content="2020-07-10" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="séries-temporais-não-estacionárias.html"/>
+<link rel="next" href="final-words.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefácio</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introdução</a><ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#breve-introdução-ao-r"><i class="fa fa-check"></i><b>1.1</b> Breve introdução ao R</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#aleatoriedade-a-essência-da-estatística"><i class="fa fa-check"></i><b>1.2</b> Aleatoriedade, a essência da Estatística</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#variável-aleatória"><i class="fa fa-check"></i><b>1.3</b> Variável Aleatória</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="intro.html"><a href="intro.html#distribuição-de-probabilidade"><i class="fa fa-check"></i><b>1.3.1</b> Distribuição de Probabilidade</a></li>
+<li class="chapter" data-level="1.3.2" data-path="intro.html"><a href="intro.html#distribuições-conjunta-marginal-e-condicional"><i class="fa fa-check"></i><b>1.3.2</b> Distribuições conjunta, marginal e condicional</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#a-distribuição-normal-e-distribuições-relacionadas"><i class="fa fa-check"></i><b>1.4</b> A distribuição Normal e distribuições relacionadas</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="intro.html"><a href="intro.html#a-distribuição-normal"><i class="fa fa-check"></i><b>1.4.1</b> A distribuição Normal</a></li>
+<li class="chapter" data-level="1.4.2" data-path="intro.html"><a href="intro.html#distribuições-relacionadas"><i class="fa fa-check"></i><b>1.4.2</b> Distribuições Relacionadas</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#parâmetros-estimadores-e-valores-estimados"><i class="fa fa-check"></i><b>1.5</b> Parâmetros, Estimadores e Valores Estimados</a></li>
+<li class="chapter" data-level="1.6" data-path="intro.html"><a href="intro.html#propriedades-de-variáveis-aleatórias"><i class="fa fa-check"></i><b>1.6</b> Propriedades de Variáveis Aleatórias</a><ul>
+<li class="chapter" data-level="1.6.1" data-path="intro.html"><a href="intro.html#média-valor-esperado-ou-esperança-matemática"><i class="fa fa-check"></i><b>1.6.1</b> Média, Valor Esperado ou Esperança Matemática</a></li>
+<li class="chapter" data-level="1.6.2" data-path="intro.html"><a href="intro.html#propriedades-da-esperança"><i class="fa fa-check"></i><b>1.6.2</b> Propriedades da Esperança</a></li>
+<li class="chapter" data-level="1.6.3" data-path="intro.html"><a href="intro.html#variância"><i class="fa fa-check"></i><b>1.6.3</b> Variância</a></li>
+<li class="chapter" data-level="1.6.4" data-path="intro.html"><a href="intro.html#covariância"><i class="fa fa-check"></i><b>1.6.4</b> Covariância</a></li>
+<li class="chapter" data-level="1.6.5" data-path="intro.html"><a href="intro.html#correlação"><i class="fa fa-check"></i><b>1.6.5</b> Correlação</a></li>
+<li class="chapter" data-level="1.6.6" data-path="intro.html"><a href="intro.html#propriedades-da-variância-covariância-e-correlação"><i class="fa fa-check"></i><b>1.6.6</b> Propriedades da Variância, Covariância e Correlação</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="intro.html"><a href="intro.html#estimadores"><i class="fa fa-check"></i><b>1.7</b> Estimadores</a><ul>
+<li class="chapter" data-level="1.7.1" data-path="intro.html"><a href="intro.html#propriedades-dos-estimadores"><i class="fa fa-check"></i><b>1.7.1</b> Propriedades dos Estimadores</a></li>
+<li class="chapter" data-level="1.7.2" data-path="intro.html"><a href="intro.html#vícioviés"><i class="fa fa-check"></i><b>1.7.2</b> Vício/Viés</a></li>
+<li class="chapter" data-level="1.7.3" data-path="intro.html"><a href="intro.html#consistência"><i class="fa fa-check"></i><b>1.7.3</b> Consistência</a></li>
+<li class="chapter" data-level="1.7.4" data-path="intro.html"><a href="intro.html#eficiência"><i class="fa fa-check"></i><b>1.7.4</b> Eficiência</a></li>
+<li class="chapter" data-level="1.7.5" data-path="intro.html"><a href="intro.html#erro-quadrático-médio-eqm"><i class="fa fa-check"></i><b>1.7.5</b> Erro Quadrático Médio (EQM)</a></li>
+<li class="chapter" data-level="1.7.6" data-path="intro.html"><a href="intro.html#vício-versus-variância-mínima"><i class="fa fa-check"></i><b>1.7.6</b> Vício versus Variância Mínima</a></li>
+<li class="chapter" data-level="1.7.7" data-path="intro.html"><a href="intro.html#método-de-mínimos-quadrados-mqo"><i class="fa fa-check"></i><b>1.7.7</b> Método de Mínimos Quadrados (MQO)</a></li>
+<li class="chapter" data-level="1.7.8" data-path="intro.html"><a href="intro.html#regressão-liner-múltipla-rml"><i class="fa fa-check"></i><b>1.7.8</b> Regressão Liner Múltipla (RML)</a></li>
+<li class="chapter" data-level="1.7.9" data-path="intro.html"><a href="intro.html#hipóteses-do-modelo-de-regressão"><i class="fa fa-check"></i><b>1.7.9</b> Hipóteses do modelo de regressão</a></li>
+<li class="chapter" data-level="1.7.10" data-path="intro.html"><a href="intro.html#o-coeficiente-de-determinação"><i class="fa fa-check"></i><b>1.7.10</b> O Coeficiente de Determinação</a></li>
+<li class="chapter" data-level="1.7.11" data-path="intro.html"><a href="intro.html#propriedade-de-não-viés-dos-estimadores-mqo"><i class="fa fa-check"></i><b>1.7.11</b> Propriedade de Não-Viés dos Estimadores MQO</a></li>
+<li class="chapter" data-level="1.7.12" data-path="intro.html"><a href="intro.html#testes-de-hipóteses"><i class="fa fa-check"></i><b>1.7.12</b> Testes de Hipóteses</a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="intro.html"><a href="intro.html#formas-funcionais-logarítmicas"><i class="fa fa-check"></i><b>1.8</b> Formas Funcionais Logarítmicas</a></li>
+<li class="chapter" data-level="1.9" data-path="intro.html"><a href="intro.html#exercícios"><i class="fa fa-check"></i><b>1.9</b> Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="séries-temporais-no-contexto-de-regressão.html"><a href="séries-temporais-no-contexto-de-regressão.html"><i class="fa fa-check"></i><b>2</b> Séries Temporais no Contexto de Regressão</a><ul>
+<li class="chapter" data-level="2.1" data-path="séries-temporais-no-contexto-de-regressão.html"><a href="séries-temporais-no-contexto-de-regressão.html#introdução"><i class="fa fa-check"></i><b>2.1</b> Introdução</a></li>
+<li class="chapter" data-level="2.2" data-path="séries-temporais-no-contexto-de-regressão.html"><a href="séries-temporais-no-contexto-de-regressão.html#exemplos-de-séries-temporais"><i class="fa fa-check"></i><b>2.2</b> Exemplos de Séries Temporais</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="séries-temporais.html"><a href="séries-temporais.html"><i class="fa fa-check"></i><b>3</b> Séries Temporais</a><ul>
+<li class="chapter" data-level="3.1" data-path="séries-temporais.html"><a href="séries-temporais.html#objetivos"><i class="fa fa-check"></i><b>3.1</b> Objetivos</a></li>
+<li class="chapter" data-level="3.2" data-path="séries-temporais.html"><a href="séries-temporais.html#séries-temporais-definição-formal"><i class="fa fa-check"></i><b>3.2</b> Séries Temporais: Definição Formal</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="séries-temporais.html"><a href="séries-temporais.html#processos-estocásticos"><i class="fa fa-check"></i><b>3.2.1</b> Processos Estocásticos</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="séries-temporais-não-estacionárias.html"><a href="séries-temporais-não-estacionárias.html"><i class="fa fa-check"></i><b>4</b> Séries temporais não estacionárias</a><ul>
+<li class="chapter" data-level="4.1" data-path="séries-temporais-não-estacionárias.html"><a href="séries-temporais-não-estacionárias.html#como-lidar-com-tendências-determinísticas"><i class="fa fa-check"></i><b>4.1</b> Como lidar com tendências determinísticas</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="variáveis-instrumentais.html"><a href="variáveis-instrumentais.html"><i class="fa fa-check"></i><b>5</b> Variáveis instrumentais</a><ul>
+<li class="chapter" data-level="5.1" data-path="variáveis-instrumentais.html"><a href="variáveis-instrumentais.html#conceito-da-exogeneidade-dos-regressores"><i class="fa fa-check"></i><b>5.1</b> Conceito da exogeneidade dos regressores</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="variáveis-instrumentais.html"><a href="variáveis-instrumentais.html#variável-proxy"><i class="fa fa-check"></i><b>5.1.1</b> Variável proxy</a></li>
+<li class="chapter" data-level="5.1.2" data-path="variáveis-instrumentais.html"><a href="variáveis-instrumentais.html#variável-omitida"><i class="fa fa-check"></i><b>5.1.2</b> Variável Omitida</a></li>
+<li class="chapter" data-level="5.1.3" data-path="variáveis-instrumentais.html"><a href="variáveis-instrumentais.html#erros-de-mensuração"><i class="fa fa-check"></i><b>5.1.3</b> Erros de Mensuração</a></li>
+<li class="chapter" data-level="5.1.4" data-path="variáveis-instrumentais.html"><a href="variáveis-instrumentais.html#variável-com-erro-de-medição"><i class="fa fa-check"></i><b>5.1.4</b> Variável com erro de medição</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>6</b> Final Words</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introdução à Econometria de Série Temporais com R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="variáveis-instrumentais" class="section level1">
+<h1><span class="header-section-number">Capítulo 5</span> Variáveis instrumentais</h1>
+<p>Em estatística, econometria, epidemiologia e áreas relacionadas, o método de variáveis instrumentais é usado para estimar relações causais, quando experimentos controlados não são viáveis. O método de <span style="color: blue;"> variáveis instrumentais </span> (<em>VI</em>) permite estimações consistentes quando as variáveis explicativas são endógenas.</p>
+<div id="conceito-da-exogeneidade-dos-regressores" class="section level2">
+<h2><span class="header-section-number">5.1</span> Conceito da exogeneidade dos regressores</h2>
+<p>Nos modelos econométricos estruturais de uma equação a variável dependente <span style="color: blue;"> (endógena) </span> é explicada através de um conjunto de variáveis explicativas (não estocásticas) e do termo de erro. Nos modelos econométricos estruturais de uma equação, as variáveis explicativas são a causa que explicam a variação da variável dependente e a variável endógena reflete o efeito provocado pela variação das variáveis explicativas.
+Uma das hipóteses básicas iniciais da regressão MQO admite a ausência de correlação das variáveis explicativas <span class="math inline">\(X_1,\cdots,X_k\)</span> com o termo de erro, isto é <span class="math inline">\(\cov(X_i,\eps)=0\)</span>, para todo <span class="math inline">\(i=1,\cdots,k\)</span>. Desta forma as variáveis explicativas são consideradas exógenas no modelo tradicional de regressão. Contudo, a hipótese da exogeneidade das variáveis explicativas é muitas vezes infringida. Entre as causas mais comuns da endogeneidade das variáveis explicativas podemos citar <em>erros de mensuração das variáveis</em>, <em>variável omitida</em> e <em>simultaneidade</em>.</p>
+<p>Quando temos um problema de endogeneidade causado por uma <em>variável não-observável</em>, uma possível solução é a utilização de uma variável <span style="color: blue;"> proxy </span> .</p>
+<div id="variável-proxy" class="section level3">
+<h3><span class="header-section-number">5.1.1</span> Variável proxy</h3>
+<p>No exemplo apresentado por <span class="citation">(Wooldridge <a href="#ref-wooldridge2016" role="doc-biblioref">2016</a>)</span> é considerada a regressão para explicar a <strong>renda</strong> em função do <strong>nível de escolaridade</strong> (<span class="math inline">\(educ\)</span>) e a aptidão para determinada tarefa (<span class="math inline">\(aptid\)</span>),</p>
+<p><span class="math display" id="eq:logsal">\[\begin{equation}
+  \log(salario)=\beta_0+\beta_1 educ+\beta_2 aptid+u.
+  \tag{5.1}
+ \end{equation}\]</span>
+Observe que <span class="math inline">\(aptid\)</span> é uma variável inata, não observável. Podemos esperar que <span class="math inline">\(aptid\)</span> seja correlacionada com <span class="math inline">\(educ\)</span> e, nesse caso, a omissão da variável <span class="math inline">\(aptid\)</span> da regressão <a href="variáveis-instrumentais.html#eq:logsal">(5.1)</a> (por motivos que veremos logo mais) torna a estimativa via MQO de <span class="math inline">\(\beta_1\)</span> viciada e inconsistente. Uma maneira de contornar este problema é substituir a variável <span class="math inline">\(aptid\)</span> por uma variável observável altamente correlacionada com <span class="math inline">\(aptid\)</span> que será usada como proxy para aptidão. Tal variável é denominada variável  e idealmente deve satisfazer as seguintes condições:</p>
+<div class="line-block">   a) Ser altamente correlacionada com a variável não observada que pretende substituir;<br />
+   b) Não ser correlacionada com o termo de erro da regressão.</div>
+<p>Com uma boa proxy, podemos estimar o modelo por MQO e obter ``boas’’ estimativas para <span class="math inline">\(\beta_1\)</span> <a href="variáveis-instrumentais.html#eq:logsal">(5.1)</a>. No que segue assumiremos que variáveis proxys não estão à disposição.</p>
+</div>
+<div id="variável-omitida" class="section level3">
+<h3><span class="header-section-number">5.1.2</span> Variável Omitida</h3>
+<p>O modelo <a href="variáveis-instrumentais.html#eq:logsal">(5.1)</a> pode ser reescrito como
+<span class="math display" id="eq:yicorreto">\[\begin{equation}
+ Y=\beta_0+\beta_1X_1+\beta_2X_2+\eps,
+ \tag{5.2}
+\end{equation}\]</span>
+<span class="math inline">\(Y\)</span> representa o logaritmo do salário, <span class="math inline">\(X_{1}\)</span> representa a variável educação, <span class="math inline">\(X_2\)</span> a aptidão e <span class="math inline">\(\eps\)</span> representa o termo de erro do modelo, com <span class="math inline">\(\cov(X_i,\eps)=0\)</span>, i=1,2. Como já discutimos, a variável aptidão, não é observável e vamos assumir que uma variável proxy para aptidão não está disponível. Omitindo a variável <span class="math inline">\(X_2\)</span> no modelo obtemos
+<span class="math display" id="eq:varomitida">\[\begin{equation}
+Y=\beta_0+\beta_1X_1+\xi
+\tag{5.3}
+\end{equation}\]</span>
+onde <span class="math inline">\(\xi=\beta_2X_2+\eps\)</span> representa o erro na regressão acima. Estimando <span class="math inline">\(\bf{\beta}=(\beta_0,\beta_1)\)</span> por MQO obtemos
+<span class="math display">\[\begin{align*}
+\E(\hat{\bf\beta})&amp;=\E\left(\frac{\cov(X_1,Y)}{\var(X_1)}\right)=\E\left(\frac{\cov(X_1,\beta_0+\beta_1X_1+\xi)}{\var(X_1)}\right)\\
+&amp;=\E\left(\frac{\beta_1\var(X_1)+\cov(X_1,\xi)}{\var(X_1)}\right)=\E\left(\frac{\beta_1\var(X_1)+\cov(X_1,\xi)}{\var(X_1)}\right)\\
+&amp;=\beta_1+\E\left(\frac{\cov(X_1,\xi)}{\var(X_1)}\right),
+\end{align*}\]</span>
+de onde segue que o estimador de MQO é não viciado se, e somente se, <span class="math inline">\(\cov(X_1,\xi)=0\)</span>. Pode-se mostrar ainda que se <span class="math inline">\(\cov(X_1,\xi)\neq0\)</span>, o estimador de MQO será inconsistente. Agora observe que
+<span class="math display">\[\cov(X_1,\xi)=\cov(X_1,\beta_2X_2+\eps)=\beta_2\cov(X_1,X_2)+\cov(X_1,\eps)=\beta_2\cov(X_1,X_2)\]</span>
+que é zero se, e somente se, <span class="math inline">\(\cov(X_1,X_2)=0\)</span>, o que nem sempre acontece na prática. Em outras palavras, olhando <a href="variáveis-instrumentais.html#eq:yicorreto">(5.2)</a> como um modelo geral de onde foi omitida a variável <span class="math inline">\(X_2\)</span> resultando no modelo <a href="variáveis-instrumentais.html#eq:varomitida">(5.3)</a>, se <span class="math inline">\(X_1\)</span> e <span class="math inline">\(X_2\)</span> são correlacionados então o estimador de MQO é viciado e inconsistente!</p>
+<p><br></p>
+
+<div class="example">
+<span id="exm:tabaco" class="example"><strong>Exemplo 5.1  </strong></span>Suponha que um pesquisador deseja estimar o efeito causal do tabagismo sobre a saúde geral, como em Leigh e Schembri 2004 [1]). Em princípio, a existência de correlação entre a saúde e o hábito de fumar não implica necessariamente que o fumo piora a saúde, porque outras variáveis podem afetar tanto a saúde quanto o hábito de fumar. Por exemplo, pode ocorrer por acaso que pessoas de uma certa cidade exposta à poluição radioativa fumem muito, mas é a poluição que realmente causa problemas de saúde à esta população em estudo. Mesmo que o tabagismo cause realmente problemas, a saúde em si pode afetar o hábito de fumar (digamos, um paciente muito doente pode se sentir instigado a fumar mais). Fazer estudos controlados (por exemplo, colocar uma pessoa num laboratório, sem exposição à poluição, fumando quantidades controladas) pode ser difícil, caro ou anti-ético. Uma opção alternativa, portanto, seria o pesquisador tentar estimar o efeito causal do tabagismo sobre a saúde a partir de dados observacionais, utilizando, por exemplo,
+a alíquota de imposto sobre o tabaco como um instrumento para fumar em uma regressão de saúde. Se as alíquotas de imposto sobre o tabaco afetam apenas (positivamente, imagina-se) a saúde porque eles afetam o hábito de fumar (mantendo as outras variáveis do modelo fixas), a correlação entre impostos sobre o tabaco e a saúde é uma evidência de que o tabagismo provoca alterações na saúde. Uma estimativa do efeito do tabagismo sobre a saúde podem ser feita também fazendo uso da correlação entre os impostos e os hábitos de fumar.
+</div>
+
+</div>
+<div id="erros-de-mensuração" class="section level3">
+<h3><span class="header-section-number">5.1.3</span> Erros de Mensuração</h3>
+<p>O problema de erros de mensuração em estudos práticos é bastante comum. Porém, dependendo da natureza do problema pode trazer consequências nefastas a estimação via MQO.</p>
+<p><br></p>
+
+<div class="example">
+<span id="exm:alunosufrgs" class="example"><strong>Exemplo 5.2  </strong></span> Para explicar o rendimento de um aluno da UFRGS, podemos estar interessados em usar como variáveis explicativas (dentre outras): renda familiar, número de horas dedicadas ao estudo, tempo necessário para o trajeto casa-UFRGS, etc. Todas essas variáveis estão sujeitas a erros de mensuração,
+pois os alunos podem errar (deliberadamente ou não) ao responder à pesquisa. Se os erros forem puramente aleatórios, isto é, não estiverem correlacionados com outras variáveis relevantes, as hipóteses do modelo acima serão satisfeitas.
+</div>
+
+<p><br></p>
+
+<div class="example">
+<span id="exm:metaanalise" class="example"><strong>Exemplo 5.3  </strong></span>A Meta-análise é uma técnica que visa agregar a informação contida em várias fontes. Em áreas como música, cinema e televisão são muito comuns os sites que apresentam resumos das críticas de um determinado álbum/filme/série em uma única avaliação agregada. Exemplos são os sites Rotten Tomatoes, Metacritic, Allmusic, dentre muitos outros. A idéia estatística destes sites é obter uma avaliação para um determinado assunto a partir da análise agragada de avaliações dadas por críticos, espectadores, mídia, blogs, sites, etc. Cada avaliação obtida é agregada ao total, de onde uma avaliação única é calculada. Para exemplificar vamos supor que estamos interessados na avaliação do último álbum do Metallica (Hard Wired… to Self-Destruct, 2016). Para isso, estabelecemos uma escala a avaliação do álbum e passamos a vasculhar a internet por informações a respeito do álbum. Vamos supor que encontramos 20 sites com avaliações do álbum. Cada uma dessas avaliações é baseada em diversas avaliações individuais de pessoas que visitaram o site. Por exemplo, a avaliação final de um determinado site é dada pela média das avaliações dos visitantes do site. No final, teremos coletado 20 avaliações de sites especializados, onde cada avaliação representa a média dos indivíduos que avaliaram o álbum. Desta forma os dados que coletamos não representam a opinião de ouvintes individuais (a população neste caso), mas a média dessas opiniões, que pode ser diferente de todas as avaliações dadas e que certamente varia de site pra site. Esta avaliação, portanto, considerada como uma observação de indivíduos da população, traz consigo um erro aleatório de medição gerada pelo agregamento das informações individuais.
+</div>
+
+</div>
+<div id="variável-com-erro-de-medição" class="section level3">
+<h3><span class="header-section-number">5.1.4</span> Variável com erro de medição</h3>
+<p>Considere o modelo de regressão simples:
+<span class="math display">\[\begin{equation}\label{eqERROM}
+Y = \beta_0 + \beta_1 X + \eps,
+\end{equation}\]</span>
+em que <span class="math inline">\(\cov(X,\eps) = 0\)</span> e <span class="math inline">\(\var(\eps)=\sigma^2_\eps\)</span>. A princípio, nesse contexto a estimação por MQO deveria gerar estimadores consistentes dos parâmetros. Vamos supor que, por algum motivo, a variável <span class="math inline">\(X\)</span> seja observada com um erro aleatório. Isto é, suponha que observamos na prática observamos
+<span class="math display">\[\begin{equation}
+X^* = X + e,
+\end{equation}\]</span>
+onde assumimos que
+<span class="math display">\[\E(e) = 0; \quad \cov(X,e) = 0; \quad \cov(e,\eps) = 0; \quad \mbox{ e }  \var(e)=\sigma_e^2&gt;0.\]</span>
+A aleatoriedade dos erros é fundamental na análise que segue. Reescrevendo o modelo () em função da variável observada <span class="math inline">\(X^*\)</span>:
+<span class="math display">\[\begin{align}\label{neghs}
+Y = \beta_0 + \beta_1 X + \eps = \beta_0 + \beta_1( X^* - e) + \eps=\beta_0 + \beta_1 X^* + \xi,
+\end{align}\]</span>
+onde <span class="math inline">\(\xi=\eps -\beta_1 e\)</span> faz o papel de erro na regressão. Observe que os estimadores via MQO de <span class="math inline">\(\beta_0\)</span> e <span class="math inline">\(\beta_1\)</span> em  são exatamente os mesmos de , embora seja esta última regressão que estamos efetivamente estimando dada a presença de erros aleatórios nas observações. Agora
+<span class="math display">\[\begin{align*}
+\cov( X^*, \xi )&amp;=\cov(X + e, \eps -\beta_1 e) =  \cov(X,\eps)-\beta_1\cov(X,e)+\cov(e,\eps)-\beta_1\var(e)\\
+&amp;=-\beta_1\sigma_e^2\neq 0.
+\end{align*}\]</span>
+Em outras palavras, a estimação via MQO na presença de variáveis com erro (aleatório) de medição resulta em estimativas inconsistentes.
+Observe ainda que, dada uma amostra de tamanho <span class="math inline">\(n\)</span> do modelo ,</p>
+<p><span class="math display">\[ \hat{\beta}=\frac{\sum_{i=1}^{n}(x_i-\overline{x})y_i}{\sum_{i=1}^{n}(x_i-\overline{x})^2}
+            =\beta+\frac{\sum_{i=1}^{n}(x_i-\overline{x})\varepsilon_i}{\sum_{i=1}^{n}(x_i-\overline{x})^2},\]</span>
+e note que <span class="math inline">\(\var( X^* ) = \var( X ) + \var( e ) = \sigma_{X}^2+\sigma_e^2\)</span>, de onde segue que
+<span class="math display">\[\mathrm{Plim}(\hat\beta_1) = \beta_1 + \frac{\cov(X^*, \eps )}{\var(X^*)}=\beta_1-\frac{ \beta_1 \sigma_e^2}{\sigma_{X}^2 + \sigma_e^2} =\beta_1\left(1-\frac{\sigma_e^2}{\sigma_{X}^2 + \sigma_e^2}\right)\neq 0.\]</span></p>
+
+</div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-wooldridge2016">
+<p>Wooldridge, Jeffrey M. 2016. <em>Introductory Econometrics: A Modern Approach</em>. Nelson Education.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="séries-temporais-não-estacionárias.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="final-words.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/05-VI.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Econometria-e-series-temporais-com-o-R.pdf", "Econometria-e-series-temporais-com-o-R.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
