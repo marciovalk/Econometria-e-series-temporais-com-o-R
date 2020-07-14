@@ -41,6 +41,7 @@
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 \urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=0.7in]{geometry}
 \usepackage{color}
 \usepackage{fancyvrb}
 \newcommand{\VerbBar}{|}
@@ -130,7 +131,7 @@
 
 \title{Econometria e Séries Temporais com R}
 \author{Marcio Valk e Guilherme Pumi}
-\date{2020-07-12}
+\date{2020-07-13}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Teorema}[chapter]
@@ -160,8 +161,26 @@
 
 Escrever aqui sobre\ldots.
 
+\hypertarget{suxe9ries-temporais}{%
+\chapter{Séries temporais}\label{suxe9ries-temporais}}
+
+Dados de séries temporais são obeservações de um evento ou fenômeno ao longo do tempo. Os intervalos de observações devem ser igualmente espaçados. Geralmente são anos, trimestres, meses, semanas, dias, horas, minutos e segundos. Mas outros tipos de espaçamentos entre observações também são comuns. Como é o caso do \href{https://www.ibge.gov.br/estatisticas/sociais/populacao/22827-censo-2020-censo4.html}{Censo Demográfico}.
+
+No Figura \ref{fig:tsint00} apresentamos alguns exemplos de sériestemporais com diferentes intervalos de observações.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.45\linewidth]{00-intro_files/figure-latex/tsint00-1} \includegraphics[width=0.45\linewidth]{00-intro_files/figure-latex/tsint00-2} \includegraphics[width=0.45\linewidth]{00-intro_files/figure-latex/tsint00-3} \includegraphics[width=0.45\linewidth]{00-intro_files/figure-latex/tsint00-4} 
+
+}
+
+\caption{Séries temporais com diferentes intervalos de observações}\label{fig:tsint00}
+\end{figure}
+
+Uma série temporal com observações a cada dez anos é a da população brasileira.
+
 \hypertarget{intro}{%
-\chapter{Breve introdução ao R}\label{intro}}
+\section{Breve introdução ao R}\label{intro}}
 
 Das linguagems de programação voltadas a manipulação, vizualização e análises de dados, o R é umas das mais difundidas entre a comunidade Estatística. Outras linguagens, como o Python, tem um apelo maior quando se trata de ciência de dados, no seu sentido mais amplo.
 
@@ -1322,18 +1341,17 @@ exemplos são citados abaixo:
 
 ~~~c) Índices diários da bolsa de valores de São Paulo;
 
-~~~d) Quantidade anual de chuva na cidade do Recife;
+~~~d) Quantidade anual de chuva na cidade do Porto Alegre;
 
 ~~~e) Um registro de marés no porto de Santos.
 
-Nos exemplos de a) a d) temos séries temporais discretas, enquanto que e) é um exemplo de série contínua. Podemos obter uma série temporal discreta a partir da amostragem de uma série temporal contínua considerando intervalos de tempos iguais, \(\Delta t\). Assim para analisar a série e) será necessário amostrá-la, convertendo-a e observando-a no intervalo de tempo \([0,T]\), supondo uma série discreta com \(N\)
-pontos, em que \(N = \Delta t/T\) (T horas). Existem dois enfoques utilizados na análise de séries temporais. Em ambos, o objetivo é construir modelos para estas séries. No primeiro enfoque, a análise é feita no domínio temporal e os modelos propostos são modelos paramétricos (com um número finito de parâmetros). No segundo, a análise é conduzida no domínio de frequências e os modelos propostos são modelos não-paramétricos. Dentre os modelos paramétricos temos, por exemplo, os modelos ARIMA, que serão estudados neste curso nos próximos capítulos. No domínio de frequências temos a análise espectral, que tem inúmeras aplicações em ciências físicas e engenharia, principalmente na engenharia elétrica, e que consiste em decompor a série dada em componentes de frequências e onde a existência do espectro é a característica fundamental. Este tipo de análise não será estudado nestas notas de aulas, para detalhes o aluno deve consultar \citet{watts1968}, \citet{koopmans1974}, \citet{morettin1978} e \citet{marple1980}.
+Nos exemplos de a) a d) temos séries temporais discretas, enquanto que e) é um exemplo de série contínua. Podemos obter uma série temporal discreta a partir da amostragem de uma série temporal contínua considerando intervalos de tempos iguais, \(\Delta t\). Assim para analisar a série e) será necessário amostrá-la, convertendo-a e observando-a no intervalo de tempo \([0,T]\), supondo uma série discreta com \(N\) pontos, em que \(N = \Delta t/T\) (T horas). Existem dois enfoques utilizados na análise de séries temporais. Em ambos, o objetivo é construir modelos para estas séries. No primeiro enfoque, a análise é feita no domínio temporal e os modelos propostos são modelos paramétricos (com um número finito de parâmetros). No segundo, a análise é conduzida no domínio de frequências e os modelos propostos são modelos não-paramétricos. Dentre os modelos paramétricos temos, por exemplo, os modelos ARIMA, que serão estudados neste curso nos próximos capítulos. No domínio de frequências temos a análise espectral, que tem inúmeras aplicações em ciências físicas e engenharia, principalmente na engenharia elétrica, e que consiste em decompor a série dada em componentes de frequências e onde a existência do espectro é a característica fundamental. Este tipo de análise não será estudado nestas notas de aulas, para detalhes o aluno deve consultar \citet{watts1968}, \citet{koopmans1974}, \citet{morettin1978} e \citet{marple1980}.
 
 \hypertarget{exemplos-de-suxe9ries-temporais}{%
 \section{Exemplos de séries temporais}\label{exemplos-de-suxe9ries-temporais}}
 
 \begin{example}
-\protect\hypertarget{exm:exemptemp}{}{\label{exm:exemptemp} }Vamos supor que desejamos medir a temperatura máxima do ar, de um local,
+\protect\hypertarget{exm:exemptemp}{}{\label{exm:exemptemp} }Vamos supor que desejamos medir a temperatura média do ar, de um local,
 durante 24 horas, poderíamos obter um gráfico semelhante a figura abaixo:
 \end{example}
 

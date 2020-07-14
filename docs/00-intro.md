@@ -1,4 +1,22 @@
-# Breve introdução ao R {#intro}
+# Séries temporais
+
+
+
+Dados de séries temporais são obeservações de um evento ou fenômeno ao longo do tempo. Os intervalos de observações devem ser igualmente espaçados. Geralmente são anos, trimestres, meses, semanas, dias, horas, minutos e segundos. Mas outros tipos de espaçamentos entre observações também são comuns. Como é o caso do [Censo Demográfico](<https://www.ibge.gov.br/estatisticas/sociais/populacao/22827-censo-2020-censo4.html>). 
+
+No Figura \@ref(fig:tsint00) apresentamos alguns exemplos de sériestemporais com diferentes intervalos de observações.
+
+<div class="figure" style="text-align: center">
+<img src="00-intro_files/figure-epub3/tsint00-1.png" alt="Séries temporais com diferentes intervalos de observações" width="45%" /><img src="00-intro_files/figure-epub3/tsint00-2.png" alt="Séries temporais com diferentes intervalos de observações" width="45%" /><img src="00-intro_files/figure-epub3/tsint00-3.png" alt="Séries temporais com diferentes intervalos de observações" width="45%" /><img src="00-intro_files/figure-epub3/tsint00-4.png" alt="Séries temporais com diferentes intervalos de observações" width="45%" />
+<p class="caption">(\#fig:tsint00)Séries temporais com diferentes intervalos de observações</p>
+</div>
+
+
+
+Uma série temporal com observações a cada dez anos é a da população brasileira. 
+
+
+## Breve introdução ao R {#intro}
 
 Das linguagems de programação voltadas a manipulação, vizualização e análises de dados, o R é umas das mais difundidas entre a comunidade Estatística. Outras linguagens, como o Python, tem um apelo maior quando se trata de ciência de dados, no seu sentido mais amplo.
 

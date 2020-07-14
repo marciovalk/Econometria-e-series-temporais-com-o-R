@@ -3,6 +3,13 @@ output:
   pdf_document: default
   html_document: default
 ---
+```{r aux1,echo=FALSE,message=FALSE,warning=FALSE}
+library(readxl)
+library(tidyr)
+library(dplyr)
+library(ggplot2)
+```
+
 # Séries temporais no contexto de regressão {#streg}
 
 Neste capítulo abordamos regressão no contexto de séries temporais. Começamos 
@@ -23,29 +30,22 @@ exemplos são citados abaixo:
 
 |    c) Índices diários da bolsa de valores de São Paulo;
 
-|    d) Quantidade anual de chuva na cidade do Recife;
+|    d) Quantidade anual de chuva na cidade do Porto Alegre;
 
 |    e) Um registro de marés no porto de Santos.
 
-Nos exemplos de a) a d) temos séries temporais discretas, enquanto que e) é um exemplo de série contínua. Podemos obter uma série temporal discreta a partir da amostragem de uma série temporal contínua considerando intervalos de tempos iguais, $\Delta t$. Assim para analisar a série e) será necessário amostrá-la, convertendo-a e observando-a no intervalo de tempo $[0,T]$, supondo uma série discreta com $N$
-pontos, em que $N = \Delta t/T$ (T horas). Existem dois enfoques utilizados na análise de séries temporais. Em ambos, o objetivo é construir modelos para estas séries. No primeiro enfoque, a análise é feita no domínio temporal e os modelos propostos são modelos paramétricos (com um número finito de parâmetros). No segundo, a análise é conduzida no domínio de frequências e os modelos propostos são modelos não-paramétricos. Dentre os modelos paramétricos temos, por exemplo, os modelos ARIMA, que serão estudados neste curso nos próximos capítulos. No domínio de frequências temos a análise espectral, que tem inúmeras aplicações em ciências físicas e engenharia, principalmente na engenharia elétrica, e que consiste em decompor a série dada em componentes de frequências e onde a existência do espectro é a característica fundamental. Este tipo de análise não será estudado nestas notas de aulas, para detalhes o aluno deve consultar @watts1968, @koopmans1974, @morettin1978 e @marple1980.
+Nos exemplos de a) a d) temos séries temporais discretas, enquanto que e) é um exemplo de série contínua. Podemos obter uma série temporal discreta a partir da amostragem de uma série temporal contínua considerando intervalos de tempos iguais, $\Delta t$. Assim para analisar a série e) será necessário amostrá-la, convertendo-a e observando-a no intervalo de tempo $[0,T]$, supondo uma série discreta com $N$ pontos, em que $N = \Delta t/T$ (T horas). Existem dois enfoques utilizados na análise de séries temporais. Em ambos, o objetivo é construir modelos para estas séries. No primeiro enfoque, a análise é feita no domínio temporal e os modelos propostos são modelos paramétricos (com um número finito de parâmetros). No segundo, a análise é conduzida no domínio de frequências e os modelos propostos são modelos não-paramétricos. Dentre os modelos paramétricos temos, por exemplo, os modelos ARIMA, que serão estudados neste curso nos próximos capítulos. No domínio de frequências temos a análise espectral, que tem inúmeras aplicações em ciências físicas e engenharia, principalmente na engenharia elétrica, e que consiste em decompor a série dada em componentes de frequências e onde a existência do espectro é a característica fundamental. Este tipo de análise não será estudado nestas notas de aulas, para detalhes o aluno deve consultar @watts1968, @koopmans1974, @morettin1978 e @marple1980.
 
 
 
 ## Exemplos de séries temporais
 
 ```{example exemptemp}
-Vamos supor que desejamos medir a temperatura máxima do ar, de um local,
+Vamos supor que desejamos medir a temperatura média do ar, de um local,
 durante 24 horas, poderíamos obter um gráfico semelhante a figura abaixo:
 ``` 
 
 
-```{r aux1,echo=FALSE,message=FALSE,warning=FALSE}
-library(readxl)
-library(tidyr)
-library(dplyr)
-library(ggplot2)
-```
 
 
 

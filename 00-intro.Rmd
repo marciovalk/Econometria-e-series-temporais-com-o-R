@@ -1,4 +1,50 @@
-# Breve introdução ao R {#intro}
+# Séries temporais
+
+```{r aux1,echo=FALSE,message=FALSE,warning=FALSE}
+library(readxl)
+library(tidyr)
+library(dplyr)
+library(ggplot2)
+```
+
+Dados de séries temporais são obeservações de um evento ou fenômeno ao longo do tempo. Os intervalos de observações devem ser igualmente espaçados. Geralmente são anos, trimestres, meses, semanas, dias, horas, minutos e segundos. Mas outros tipos de espaçamentos entre observações também são comuns. Como é o caso do [Censo Demográfico](<https://www.ibge.gov.br/estatisticas/sociais/populacao/22827-censo-2020-censo4.html>). 
+
+No Figura \@ref(fig:tsint00) apresentamos alguns exemplos de sériestemporais com diferentes intervalos de observações.
+
+```{r tsint00,echo=FALSE,fig.align='center',fig.show='hold',out.width=c("45%","45%"), fig.cap="Séries temporais com diferentes intervalos de observações"}
+pib=read_excel("Dados/PIBbcb.xlsx")
+ggplot(pib, aes(x = Data, y = PIB)) + 
+  geom_line( size = 2,col="#00AFBB") +
+  labs(x="Dados anuais - Fonte: BCB ",y="Pib do Brasil (em bilhões)")+
+  theme_minimal()
+cb=read_excel("Dados/cestabasicapoa.xlsx")
+ggplot(cb, aes(x = Data, y = Cestabasica)) + 
+  geom_line( size = 2,col="#E7B800") +
+  labs(x="Dados mensais - Fonte: BCB ",y="Valor da cesta básica em POA (RS)")+
+  theme_minimal()
+covid=read.csv("Dados/casos-br-total.csv")
+covid$Data=seq.Date(from=as.Date("2020-02-25"),to=as.Date("2020-07-12"),by="d")
+dc=diff(covid$Confirmados)
+covid=covid[-1,]
+covid$Confirmados_d=dc
+ggplot(covid, aes(x = Data, y = Confirmados_d)) + 
+  geom_line( size = 1,col="#993300") +
+  labs(x="Dados diários - Fonte: Ministério da Saúde",y="Casos confirmados Covid19")+
+  theme_minimal()
+pop=read_excel("Dados/censo_pop_ibge.xlsx")
+ggplot(pop, aes(x = Ano, y = Populacao)) + 
+  geom_line( size = 2,col="#66FF00") +
+  labs(x="Dados com intervalos de 10 anos (ou mais) - Fonte: IBGE ",y="População total do Brasil")+
+  theme_minimal()
+
+```
+
+
+
+Uma série temporal com observações a cada dez anos é a da população brasileira. 
+
+
+## Breve introdução ao R {#intro}
 
 Das linguagems de programação voltadas a manipulação, vizualização e análises de dados, o R é umas das mais difundidas entre a comunidade Estatística. Outras linguagens, como o Python, tem um apelo maior quando se trata de ciência de dados, no seu sentido mais amplo.
 

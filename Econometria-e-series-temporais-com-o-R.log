@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020/W32TeX) (preloaded format=xelatex 2020.7.9)  12 JUL 2020 21:01
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020/W32TeX) (preloaded format=xelatex 2020.7.9)  13 JUL 2020 22:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -415,24 +415,45 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip52
 )
+(c:/Users/Cleber.PROFCLEBER/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/geomet
+ry/geometry.sty
+Package: geometry 2020/01/02 v5.9 Page Geometry
+
+(c:/Users/Cleber.PROFCLEBER/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/ifte
+x/ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+)
+\Gm@cnth=\count283
+\Gm@cntv=\count284
+\c@Gm@tempcnt=\count285
+\Gm@bindingoffset=\dimen151
+\Gm@wd@mp=\dimen152
+\Gm@odd@mp=\dimen153
+\Gm@even@mp=\dimen154
+\Gm@layoutwidth=\dimen155
+\Gm@layoutheight=\dimen156
+\Gm@layouthoffset=\dimen157
+\Gm@layoutvoffset=\dimen158
+\Gm@dimlist=\toks22
+)
 (c:/Users/Cleber.PROFCLEBER/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/fancyv
 rb/fancyvrb.sty
 Package: fancyvrb 2020/05/03 v3.6 verbatim text (tvz,hv)
-\FV@CodeLineNo=\count283
+\FV@CodeLineNo=\count286
 \FV@InFile=\read2
 \FV@TabBox=\box49
-\c@FancyVerbLine=\count284
-\FV@StepNumber=\count285
+\c@FancyVerbLine=\count287
+\FV@StepNumber=\count288
 \FV@OutFile=\write3
 )
 (c:/Users/Cleber.PROFCLEBER/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/framed
 /framed.sty
 Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
 \OuterFrameSep=\skip53
-\fb@frw=\dimen151
-\fb@frh=\dimen152
-\FrameRule=\dimen153
-\FrameSep=\dimen154
+\fb@frw=\dimen159
+\fb@frh=\dimen160
+\FrameRule=\dimen161
+\FrameSep=\dimen162
 )
 (c:/Users/Cleber.PROFCLEBER/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tools/
 longtable.sty
@@ -441,49 +462,49 @@ Package: longtable 2020/01/07 v4.13 Multi-page Table package (DPC)
 \LTright=\skip55
 \LTpre=\skip56
 \LTpost=\skip57
-\LTchunksize=\count286
-\LTcapwidth=\dimen155
+\LTchunksize=\count289
+\LTcapwidth=\dimen163
 \LT@head=\box50
 \LT@firsthead=\box51
 \LT@foot=\box52
 \LT@lastfoot=\box53
-\LT@cols=\count287
-\LT@rows=\count288
-\c@LT@tables=\count289
-\c@LT@chunks=\count290
-\LT@p@ftn=\toks22
+\LT@cols=\count290
+\LT@rows=\count291
+\c@LT@tables=\count292
+\c@LT@chunks=\count293
+\LT@p@ftn=\toks23
 )
 (c:/Users/Cleber.PROFCLEBER/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/bookta
 bs/booktabs.sty
 Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
-\heavyrulewidth=\dimen156
-\lightrulewidth=\dimen157
-\cmidrulewidth=\dimen158
-\belowrulesep=\dimen159
-\belowbottomsep=\dimen160
-\aboverulesep=\dimen161
-\abovetopsep=\dimen162
-\cmidrulesep=\dimen163
-\cmidrulekern=\dimen164
-\defaultaddspace=\dimen165
-\@cmidla=\count291
-\@cmidlb=\count292
-\@aboverulesep=\dimen166
-\@belowrulesep=\dimen167
-\@thisruleclass=\count293
-\@lastruleclass=\count294
-\@thisrulewidth=\dimen168
+\heavyrulewidth=\dimen164
+\lightrulewidth=\dimen165
+\cmidrulewidth=\dimen166
+\belowrulesep=\dimen167
+\belowbottomsep=\dimen168
+\aboverulesep=\dimen169
+\abovetopsep=\dimen170
+\cmidrulesep=\dimen171
+\cmidrulekern=\dimen172
+\defaultaddspace=\dimen173
+\@cmidla=\count294
+\@cmidlb=\count295
+\@aboverulesep=\dimen174
+\@belowrulesep=\dimen175
+\@thisruleclass=\count296
+\@lastruleclass=\count297
+\@thisrulewidth=\dimen176
 )
 (c:/Users/Cleber.PROFCLEBER/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/etoolb
 ox/etoolbox.sty
 Package: etoolbox 2019/09/21 v2.5h e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count295
+\etb@tempcnta=\count298
 )
 (c:/Users/Cleber.PROFCLEBER/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/mdwtoo
 ls/footnote.sty
 Package: footnote 1997/01/28 1.13 Save footnotes around boxes
 \fn@notes=\box54
-\fn@width=\dimen169
+\fn@width=\dimen177
 )
 (c:/Users/Cleber.PROFCLEBER/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphi
 cs/graphicx.sty
@@ -503,8 +524,8 @@ File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: xetex.def on input line 105.
 )
-\Gin@req@height=\dimen170
-\Gin@req@width=\dimen171
+\Gin@req@height=\dimen178
+\Gin@req@width=\dimen179
 )
 (c:/Users/Cleber.PROFCLEBER/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/grffil
 e/grffile.sty
@@ -516,15 +537,15 @@ line 40.
 (c:/Users/Cleber.PROFCLEBER/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amscls
 /amsthm.sty
 Package: amsthm 2020/05/29 v2.20.6
-\thm@style=\toks23
-\thm@bodyfont=\toks24
-\thm@headfont=\toks25
-\thm@notefont=\toks26
-\thm@headpunct=\toks27
+\thm@style=\toks24
+\thm@bodyfont=\toks25
+\thm@headfont=\toks26
+\thm@notefont=\toks27
+\thm@headpunct=\toks28
 \thm@preskip=\skip58
 \thm@postskip=\skip59
 \thm@headsep=\skip60
-\dth@everypar=\toks28
+\dth@everypar=\toks29
 )
 (c:/Users/Cleber.PROFCLEBER/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/bbm-ma
 cros/bbm.sty
@@ -540,16 +561,16 @@ Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibhang=\skip61
 \bibsep=\skip62
 LaTeX Info: Redefining \cite on input line 694.
-\c@NAT@ctr=\count296
+\c@NAT@ctr=\count299
 )
-\c@theorem=\count297
-\c@lemma=\count298
-\c@corollary=\count299
-\c@proposition=\count300
-\c@conjecture=\count301
-\c@definition=\count302
-\c@example=\count303
-\c@exercise=\count304
+\c@theorem=\count300
+\c@lemma=\count301
+\c@corollary=\count302
+\c@proposition=\count303
+\c@conjecture=\count304
+\c@definition=\count305
+\c@example=\count306
+\c@exercise=\count307
 (./Econometria-e-series-temporais-com-o-R.aux
 
 LaTeX Warning: Label `variuxe2ncia-dos-estimadores-mqo' multiply defined.
@@ -569,40 +590,40 @@ LaTeX Warning: Label `exercuxedcios' multiply defined.
 )
 \openout1 = `Econometria-e-series-temporais-com-o-R.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 150.
-LaTeX Font Info:    ... okay on input line 150.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 150.
-LaTeX Font Info:    ... okay on input line 150.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 150.
-LaTeX Font Info:    ... okay on input line 150.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 150.
-LaTeX Font Info:    ... okay on input line 150.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 150.
-LaTeX Font Info:    ... okay on input line 150.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 150.
-LaTeX Font Info:    ... okay on input line 150.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 150.
-LaTeX Font Info:    ... okay on input line 150.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 150.
-LaTeX Font Info:    ... okay on input line 150.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 150.
-LaTeX Font Info:    ... okay on input line 150.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 150.
-LaTeX Font Info:    ... okay on input line 150.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 151.
+LaTeX Font Info:    ... okay on input line 151.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 151.
+LaTeX Font Info:    ... okay on input line 151.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 151.
+LaTeX Font Info:    ... okay on input line 151.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 151.
+LaTeX Font Info:    ... okay on input line 151.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 151.
+LaTeX Font Info:    ... okay on input line 151.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 151.
+LaTeX Font Info:    ... okay on input line 151.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 151.
+LaTeX Font Info:    ... okay on input line 151.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 151.
+LaTeX Font Info:    ... okay on input line 151.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 151.
+LaTeX Font Info:    ... okay on input line 151.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 151.
+LaTeX Font Info:    ... okay on input line 151.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/lmr/m/n --> TU/lmr/m/n on input line 150.
+(Font)                  OT1/lmr/m/n --> TU/lmr/m/n on input line 151.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/lmr/m/it --> TU/lmr/m/it on input line 150.
+(Font)                  OT1/lmr/m/it --> TU/lmr/m/it on input line 151.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/lmr/bx/n --> TU/lmr/bx/n on input line 150.
+(Font)                  OT1/lmr/bx/n --> TU/lmr/bx/n on input line 151.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/lmss/m/n --> TU/lmss/m/n on input line 150.
+(Font)                  OT1/lmss/m/n --> TU/lmss/m/n on input line 151.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/lmss/bx/n --> TU/lmss/bx/n on input line 150.
+(Font)                  OT1/lmss/bx/n --> TU/lmss/bx/n on input line 151.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/lmtt/m/n --> TU/lmtt/m/n on input line 150.
+(Font)                  OT1/lmtt/m/n --> TU/lmtt/m/n on input line 151.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/lmtt/m/n --> TU/lmtt/bx/n on input line 150.
+(Font)                  OT1/lmtt/m/n --> TU/lmtt/bx/n on input line 151.
 
 Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
 
@@ -631,7 +652,7 @@ pt=math;language=dflt;"
 (fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
 
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(0)/m/n' will be
-(Font)              scaled to size 10.0pt on input line 150.
+(Font)              scaled to size 10.0pt on input line 151.
 
 Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
 
@@ -670,18 +691,18 @@ pt=math;language=dflt;"
 (fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
 
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 10.0pt on input line 150.
+(Font)              scaled to size 10.0pt on input line 151.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 150.
+(Font)              `operators' in the math version `normal' on input line 151.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  OT1/lmr/m/n --> TU/latinmodern-math.otf(1)/m/n on input
- line 150.
+ line 151.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 150.
+(Font)              `operators' in the math version `bold' on input line 151.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
 (Font)                  OT1/lmr/bx/n --> TU/latinmodern-math.otf(1)/b/n on inpu
-t line 150.
+t line 151.
 
 Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
 
@@ -768,15 +789,15 @@ t=math;language=dflt;"
 (fontspec)             \fontdimen 21\font =0pt\relax 
 
 LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
-(Font)              `symbols' in the math version `normal' on input line 150.
+(Font)              `symbols' in the math version `normal' on input line 151.
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
 (Font)                  OMS/lmsy/m/n --> TU/latinmodern-math.otf(2)/m/n on inpu
-t line 150.
+t line 151.
 LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
-(Font)              `symbols' in the math version `bold' on input line 150.
+(Font)              `symbols' in the math version `bold' on input line 151.
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
 (Font)                  OMS/lmsy/b/n --> TU/latinmodern-math.otf(2)/b/n on inpu
-t line 150.
+t line 151.
 
 Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
 
@@ -846,18 +867,18 @@ pt=math;language=dflt;"
 
 LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
 (Font)              `largesymbols' in the math version `normal' on input line 1
-50.
+51.
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
 (Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/m/n on inpu
-t line 150.
+t line 151.
 LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
-(Font)              `largesymbols' in the math version `bold' on input line 150
+(Font)              `largesymbols' in the math version `bold' on input line 151
 .
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
 (Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/b/n on inpu
-t line 150.
+t line 151.
 \AtBeginShipoutBox=\box55
-Package hyperref Info: Link coloring OFF on input line 150.
+Package hyperref Info: Link coloring OFF on input line 151.
 
 (c:/Users/Cleber.PROFCLEBER/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hyperr
 ef/nameref.sty
@@ -871,49 +892,83 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 itlestring/gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count305
+\c@section@level=\count308
 )
-LaTeX Info: Redefining \ref on input line 150.
-LaTeX Info: Redefining \pageref on input line 150.
-LaTeX Info: Redefining \nameref on input line 150.
+LaTeX Info: Redefining \ref on input line 151.
+LaTeX Info: Redefining \pageref on input line 151.
+LaTeX Info: Redefining \nameref on input line 151.
 (./Econometria-e-series-temporais-com-o-R.out) (./Econometria-e-series-temporai
 s-com-o-R.out)
 \@outlinefile=\write4
 \openout4 = `Econometria-e-series-temporais-com-o-R.out'.
 
+*geometry* driver: auto-detecting
+*geometry* detected driver: xetex
+*geometry* verbose mode - [ preamble ] result:
+* driver: xetex
+* paper: <default>
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: twoside 
+* h-part:(L,W,R)=(50.58878pt, 513.11745pt, 50.58878pt)
+* v-part:(T,H,B)=(50.58878pt, 693.79243pt, 50.58878pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=513.11745pt
+* \textheight=693.79243pt
+* \oddsidemargin=-21.68121pt
+* \evensidemargin=-21.68121pt
+* \topmargin=-51.7487pt
+* \headheight=12.0pt
+* \headsep=18.06749pt
+* \topskip=10.0pt
+* \footskip=25.29494pt
+* \marginparwidth=125.0pt
+* \marginparsep=7.0pt
+* \columnsep=10.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidetrue
+* \@mparswitchtrue
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 12.0pt on input line 152.
+(Font)              scaled to size 12.0pt on input line 153.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 8.0pt on input line 152.
+(Font)              scaled to size 8.0pt on input line 153.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 6.0pt on input line 152.
+(Font)              scaled to size 6.0pt on input line 153.
 LaTeX Font Info:    Trying to load font information for OML+lmm on input line 1
-52.
+53.
 
 (c:/Users/Cleber.PROFCLEBER/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/oml
 lmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 12.0011pt on input line 152.
+(Font)              scaled to size 12.0011pt on input line 153.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 8.00073pt on input line 152.
+(Font)              scaled to size 8.00073pt on input line 153.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 6.00055pt on input line 152.
+(Font)              scaled to size 6.00055pt on input line 153.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 11.99872pt on input line 152.
+(Font)              scaled to size 11.99872pt on input line 153.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 7.99915pt on input line 152.
+(Font)              scaled to size 7.99915pt on input line 153.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 5.99936pt on input line 152.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 152
+(Font)              scaled to size 5.99936pt on input line 153.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 153
 .
 
 (c:/Users/Cleber.PROFCLEBER/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfon
 ts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 152
+LaTeX Font Info:    Trying to load font information for U+msb on input line 153
 .
 
 (c:/Users/Cleber.PROFCLEBER/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfon
@@ -945,151 +1000,117 @@ LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 \tf@toc=\write5
 \openout5 = `Econometria-e-series-temporais-com-o-R.toc'.
 
-[4] [5] [6
+[4] [5
 
-] [7] [8
+] [6
 
 ]
 Chapter 1.
+File: 00-intro_files/figure-latex/tsint00-1.pdf Graphic file (type pdf)
+<use 00-intro_files/figure-latex/tsint00-1.pdf>
+File: 00-intro_files/figure-latex/tsint00-2.pdf Graphic file (type pdf)
+<use 00-intro_files/figure-latex/tsint00-2.pdf>
+File: 00-intro_files/figure-latex/tsint00-3.pdf Graphic file (type pdf)
+<use 00-intro_files/figure-latex/tsint00-3.pdf>
+File: 00-intro_files/figure-latex/tsint00-4.pdf Graphic file (type pdf)
+<use 00-intro_files/figure-latex/tsint00-4.pdf>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[7]
 File: Figuras/CRAN.png Graphic file (type bmp)
 <Figuras/CRAN.png>
-
-Underfull \vbox (badness 1237) has occurred while \output is active []
-
-[9]
+[8]
 File: Figuras/RStudio.png Graphic file (type bmp)
 <Figuras/RStudio.png>
 
-LaTeX Warning: Reference `fig:rstudio2' on page 10 undefined on input line 206.
+LaTeX Warning: Reference `fig:rstudio2' on page 9 undefined on input line 225.
 
 
-[10]
-
-Package natbib Warning: Citation `rstudiocloud' on page 11 undefined on input l
-ine 219.
+Package natbib Warning: Citation `rstudiocloud' on page 9 undefined on input li
+ne 238.
 
 File: Figuras/RStudioCloud.png Graphic file (type bmp)
 <Figuras/RStudioCloud.png>
 File: Figuras/RStudioCloud2.png Graphic file (type bmp)
 <Figuras/RStudioCloud2.png>
-
-Underfull \vbox (badness 2229) has occurred while \output is active []
-
-[11] [12] [13] [14
+[9] [10] [11] [12
 
 ]
 Chapter 2.
 File: Figuras/dados-vp.jpg Graphic file (type bmp)
 <Figuras/dados-vp.jpg>
-[15] [16]
+[13]
 File: Figuras/VA.jpg Graphic file (type bmp)
 <Figuras/VA.jpg>
-[17]
+[14]
 Missing character: There is no ⧵ in font [latinmodern-math.otf]/OT:script=math;
 language=dflt;!
-[18] [19]
-Overfull \hbox (34.19908pt too wide) detected at line 430
-[][][][][][][] [] [][][] [] [][][] [] [][] [] []
- []
-
-[20] [21]
+[15] [16]
 File: Figuras/Loc_Esc_Normal.jpg Graphic file (type bmp)
 <Figuras/Loc_Esc_Normal.jpg>
-[22] [23]
+[17] [18]
 File: Figuras/chi_t_F_density.jpg Graphic file (type bmp)
 <Figuras/chi_t_F_density.jpg>
-[24] [25]
+[19]
 File: Figuras/gfig1a.png Graphic file (type bmp)
 <Figuras/gfig1a.png>
 File: Figuras/gfig1b.png Graphic file (type bmp)
 <Figuras/gfig1b.png>
 File: Figuras/gfig1c.png Graphic file (type bmp)
 <Figuras/gfig1c.png>
-[26] [27] [28] [29]
-Underfull \hbox (badness 1983) in paragraph at lines 725--726
-[]\TU/lmr/m/n/10 Como mencionado anteriormente, se $[]$ e $[]$ são independente
-s, então
- []
-
-[30] [31]
+[20] [21] [22] [23] [24]
 File: Figuras/vicio_var.png Graphic file (type bmp)
 <Figuras/vicio_var.png>
-[32] [33]
-Overfull \hbox (54.58914pt too wide) detected at line 880
-[]
- []
-
-[34] [35] [36] [37] [38] [39] [40]
-Underfull \hbox (badness 1152) in paragraph at lines 1145--1146
-[][][][]$\TU/lmr/m/n/10 %. Este coeficiente é denominado muitas vezes como semi
--
- []
-
-[41] [42] [43] [44]
-Chapter 3.
-
-Underfull \hbox (badness 3792) in paragraph at lines 1310--1312
-\TU/lmr/m/n/10 Neste capítulo abordamos regressão no contexto de séries tempora
-is.
- []
-
-[45
+[25] [26] [27] [28] [29] [30] [31] [32] [33] [34
 
 ]
+Chapter 3.
 File: 02-SeriesReg_files/figure-latex/figts1-1.pdf Graphic file (type pdf)
 <use 02-SeriesReg_files/figure-latex/figts1-1.pdf>
-[46] [47] [48] [49] [50]
+[35] [36] [37] [38]
 Missing character: There is no ≠ in font [lmroman10-regular]:mapping=tex-text;!
-[51]
+[39]
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 1557.
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 1575.
 File: 02-SeriesReg_files/figure-latex/figcn-1.pdf Graphic file (type pdf)
 <use 02-SeriesReg_files/figure-latex/figcn-1.pdf>
-[52] [53]
+[40]
 File: 02-SeriesReg_files/figure-latex/figpi-1.pdf Graphic file (type pdf)
 <use 02-SeriesReg_files/figure-latex/figpi-1.pdf>
-[54] [55] [56] [57] [58]
-Overfull \hbox (274.5pt too wide) in paragraph at lines 1844--1844
+[41] [42] [43]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[44] [45]
+Overfull \hbox (106.38255pt too wide) in paragraph at lines 1862--1862
 []\TU/lmtt/m/n/10 (ii) Qual o efeito de CP (curto prazo) de um crescimento das 
 vendas da firma sobre o crescimento de estoques da firma?[] 
  []
 
-[59] [60
-
-]
+[46]
 Chapter 4.
-[61] [62]
-Overfull \hbox (11.86131pt too wide) detected at line 1954
-[][][][][][] [][] [] [][][][][] [][][] [] [][][][][] [] [][][][][][] [] [][][][
-] [] [][][][][][][] [] [][][][][]  [] [][] [] [] [][]
- []
+[47
 
-[63] [64]
+] [48]
 File: 03-SeriesTemp_files/figure-latex/stac-1.pdf Graphic file (type pdf)
 <use 03-SeriesTemp_files/figure-latex/stac-1.pdf>
 File: 03-SeriesTemp_files/figure-latex/stac-2.pdf Graphic file (type pdf)
 <use 03-SeriesTemp_files/figure-latex/stac-2.pdf>
 
-LaTeX Warning: Reference `fig:nstac' on page 65 undefined on input line 2003.
+LaTeX Warning: Reference `fig:nstac' on page 49 undefined on input line 2021.
 
 
-LaTeX Warning: Reference `fig:nstac' on page 65 undefined on input line 2005.
+LaTeX Warning: Reference `fig:nstac' on page 49 undefined on input line 2023.
 
-[65]
+[49]
 
-LaTeX Warning: Reference `fig:nstac' on page 66 undefined on input line 2007.
-
-
-LaTeX Warning: Reference `fig:nstac' on page 66 undefined on input line 2009.
+LaTeX Warning: Reference `fig:nstac' on page 50 undefined on input line 2025.
 
 
-LaTeX Warning: Reference `fig:nstac' on page 66 undefined on input line 2011.
+LaTeX Warning: Reference `fig:nstac' on page 50 undefined on input line 2027.
 
 
-Underfull \hbox (badness 1997) in paragraph at lines 2013--2014
-\TU/lmr/m/n/10 não-estacionariedade explosiva, como o crescimento de uma colôni
-a de
- []
+LaTeX Warning: Reference `fig:nstac' on page 50 undefined on input line 2029.
 
 File: 03-SeriesTemp_files/figure-latex/nsstac-1.pdf Graphic file (type pdf)
 <use 03-SeriesTemp_files/figure-latex/nsstac-1.pdf>
@@ -1100,28 +1121,11 @@ File: 03-SeriesTemp_files/figure-latex/nsstac-3.pdf Graphic file (type pdf)
 File: 03-SeriesTemp_files/figure-latex/nsstac-4.pdf Graphic file (type pdf)
 <use 03-SeriesTemp_files/figure-latex/nsstac-4.pdf>
 
-Underfull \hbox (badness 10000) in paragraph at lines 2016--2016
+Underfull \hbox (badness 10000) in paragraph at lines 2034--2034
 [][] []
  []
 
-
-Overfull \hbox (40.58595pt too wide) detected at line 2029
-[][][][] [][] [] [][][][][] [][][] [] [][][][][] [][][] [] [][][][][] [][][] []
- [][][][][] [][][] [] [][][] [] [][] [][][]
- []
-
-[66] [67] [68] [69] [70] [71]
-Overfull \hbox (14.8613pt too wide) detected at line 2252
-[][] [] [][][][][][][] [] [][] [] [][] [] [][][][] [] [][][][][] [] [][] [] [][
-][][][] [] [][][][][][][] [] [][] [] [] [] [][] [] [] []
- []
-
-
-Overfull \hbox (18.58374pt too wide) detected at line 2261
-[]
- []
-
-[72]
+[50] [51] [52] [53] [54] [55]
 File: 03-SeriesTemp_files/figure-latex/rbsim-1.pdf Graphic file (type pdf)
 <use 03-SeriesTemp_files/figure-latex/rbsim-1.pdf>
 File: 03-SeriesTemp_files/figure-latex/rbsim-2.pdf Graphic file (type pdf)
@@ -1129,48 +1133,16 @@ File: 03-SeriesTemp_files/figure-latex/rbsim-2.pdf Graphic file (type pdf)
 File: 03-SeriesTemp_files/figure-latex/rbsim-3.pdf Graphic file (type pdf)
 <use 03-SeriesTemp_files/figure-latex/rbsim-3.pdf>
 
-Underfull \hbox (badness 10000) in paragraph at lines 2310--2310
-[][] []
- []
-
-[73]
-Overfull \hbox (43.06577pt too wide) detected at line 2337
-[]
- []
+LaTeX Warning: Reference `(' on page 56 undefined on input line 2356.
 
 
-LaTeX Warning: Reference `(' on page 74 undefined on input line 2338.
+LaTeX Warning: Reference `(' on page 56 undefined on input line 2356.
 
-
-LaTeX Warning: Reference `(' on page 74 undefined on input line 2338.
-
-[74]
-Overfull \hbox (43.47882pt too wide) detected at line 2381
-[] [] [][][][][] [] [][][][] [] [][][][][][] [] [][][][][]  []  [] [] [] [] [][
-] [] []  []  [] [] [] []
- []
-
-[75]
-Overfull \hbox (65.65895pt too wide) detected at line 2412
-[]
- []
-
-
-Overfull \hbox (6.07289pt too wide) in alignment at lines 2429--2433
- [][][] []
- []
-
-[76] [77]
-Overfull \hbox (59.9908pt too wide) detected at line 2499
-[]
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2517--2518
+[56] [57] [58] [59]
+Underfull \hbox (badness 10000) in paragraph at lines 2535--2536
 
  []
 
-[78]
 File: 03-SeriesTemp_files/figure-latex/rw-1.pdf Graphic file (type pdf)
 <use 03-SeriesTemp_files/figure-latex/rw-1.pdf>
 File: 03-SeriesTemp_files/figure-latex/rw-2.pdf Graphic file (type pdf)
@@ -1178,66 +1150,41 @@ File: 03-SeriesTemp_files/figure-latex/rw-2.pdf Graphic file (type pdf)
 File: 03-SeriesTemp_files/figure-latex/rw-3.pdf Graphic file (type pdf)
 <use 03-SeriesTemp_files/figure-latex/rw-3.pdf>
 
-Underfull \hbox (badness 10000) in paragraph at lines 2550--2551
-
- []
-
-[79]
-Underfull \hbox (badness 10000) in paragraph at lines 2561--2562
+Underfull \hbox (badness 10000) in paragraph at lines 2568--2569
 
  []
 
 
-Overfull \hbox (96.49669pt too wide) detected at line 2565
-[]
+Underfull \hbox (badness 10000) in paragraph at lines 2579--2580
+
  []
 
+[60]
 File: 03-SeriesTemp_files/figure-latex/ar105-1.pdf Graphic file (type pdf)
 <use 03-SeriesTemp_files/figure-latex/ar105-1.pdf>
 File: 03-SeriesTemp_files/figure-latex/ar105-2.pdf Graphic file (type pdf)
 <use 03-SeriesTemp_files/figure-latex/ar105-2.pdf>
 File: 03-SeriesTemp_files/figure-latex/ar105-3.pdf Graphic file (type pdf)
 <use 03-SeriesTemp_files/figure-latex/ar105-3.pdf>
-
-Underfull \hbox (badness 10000) in paragraph at lines 2586--2586
-[][] []
- []
-
 File: 03-SeriesTemp_files/figure-latex/arm105-1.pdf Graphic file (type pdf)
 <use 03-SeriesTemp_files/figure-latex/arm105-1.pdf>
 File: 03-SeriesTemp_files/figure-latex/arm105-2.pdf Graphic file (type pdf)
 <use 03-SeriesTemp_files/figure-latex/arm105-2.pdf>
 File: 03-SeriesTemp_files/figure-latex/arm105-3.pdf Graphic file (type pdf)
 <use 03-SeriesTemp_files/figure-latex/arm105-3.pdf>
-
-Underfull \hbox (badness 10000) in paragraph at lines 2600--2600
-[][] []
- []
-
+[61]
 File: 03-SeriesTemp_files/figure-latex/ar108-1.pdf Graphic file (type pdf)
 <use 03-SeriesTemp_files/figure-latex/ar108-1.pdf>
 File: 03-SeriesTemp_files/figure-latex/ar108-2.pdf Graphic file (type pdf)
 <use 03-SeriesTemp_files/figure-latex/ar108-2.pdf>
 File: 03-SeriesTemp_files/figure-latex/ar108-3.pdf Graphic file (type pdf)
 <use 03-SeriesTemp_files/figure-latex/ar108-3.pdf>
-
-Underfull \hbox (badness 10000) in paragraph at lines 2614--2614
-[][] []
- []
-
-[80] [81]
 File: 03-SeriesTemp_files/figure-latex/ar2-1.pdf Graphic file (type pdf)
 <use 03-SeriesTemp_files/figure-latex/ar2-1.pdf>
 File: 03-SeriesTemp_files/figure-latex/ar2-2.pdf Graphic file (type pdf)
 <use 03-SeriesTemp_files/figure-latex/ar2-2.pdf>
 File: 03-SeriesTemp_files/figure-latex/ar2-3.pdf Graphic file (type pdf)
 <use 03-SeriesTemp_files/figure-latex/ar2-3.pdf>
-
-Underfull \hbox (badness 10000) in paragraph at lines 2628--2628
-[][] []
- []
-
-[82]
 File: 03-SeriesTemp_files/figure-latex/ar3-1.pdf Graphic file (type pdf)
 <use 03-SeriesTemp_files/figure-latex/ar3-1.pdf>
 File: 03-SeriesTemp_files/figure-latex/ar3-2.pdf Graphic file (type pdf)
@@ -1245,92 +1192,45 @@ File: 03-SeriesTemp_files/figure-latex/ar3-2.pdf Graphic file (type pdf)
 File: 03-SeriesTemp_files/figure-latex/ar3-3.pdf Graphic file (type pdf)
 <use 03-SeriesTemp_files/figure-latex/ar3-3.pdf>
 
-Underfull \hbox (badness 10000) in paragraph at lines 2642--2642
-[][] []
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2653--2654
+Underfull \hbox (badness 10000) in paragraph at lines 2671--2672
 
  []
 
-
-Underfull \hbox (badness 1648) in paragraph at lines 2662--2663
-[]\TU/lmr/m/n/10 Esta terminologia vem do fato que $[][]$ é obtido aplicando-se
- os pesos
- []
-
-
-Underfull \hbox (badness 2409) in paragraph at lines 2662--2663
-[][] [][][][] [][][][] [] [] [][][]$\TU/lmr/m/n/10 , às variáveis $[][] [] [][]
- [] [][] [] [] [] [][]$ e então
- []
-
-[83]
-Underfull \hbox (badness 10000) in paragraph at lines 2689--2690
+[62]
+Underfull \hbox (badness 10000) in paragraph at lines 2707--2708
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2698--2699
+Underfull \hbox (badness 10000) in paragraph at lines 2716--2717
 
  []
 
-
-Overfull \hbox (77.85474pt too wide) in alignment at lines 2710--2715
- [][][] []
- []
-
-
-Overfull \hbox (6.98184pt too wide) detected at line 2738
-[][][][] [] []  [][][][] [] []
- []
-
-[84]
-Underfull \hbox (badness 10000) in paragraph at lines 2765--2766
+[63]
+Underfull \hbox (badness 10000) in paragraph at lines 2783--2784
 
  []
 
-[85]
-Overfull \hbox (86.43951pt too wide) detected at line 2806
-[][][][] [] []  [] [][][][] [] []
- []
-
+[64]
 File: 03-SeriesTemp_files/figure-latex/ma11-1.pdf Graphic file (type pdf)
 <use 03-SeriesTemp_files/figure-latex/ma11-1.pdf>
 File: 03-SeriesTemp_files/figure-latex/ma11-2.pdf Graphic file (type pdf)
 <use 03-SeriesTemp_files/figure-latex/ma11-2.pdf>
 File: 03-SeriesTemp_files/figure-latex/ma11-3.pdf Graphic file (type pdf)
 <use 03-SeriesTemp_files/figure-latex/ma11-3.pdf>
-
-Underfull \hbox (badness 10000) in paragraph at lines 2823--2823
-[][] []
- []
-
-[86]
+[65]
 File: 03-SeriesTemp_files/figure-latex/ma1m08-1.pdf Graphic file (type pdf)
 <use 03-SeriesTemp_files/figure-latex/ma1m08-1.pdf>
 File: 03-SeriesTemp_files/figure-latex/ma1m08-2.pdf Graphic file (type pdf)
 <use 03-SeriesTemp_files/figure-latex/ma1m08-2.pdf>
 File: 03-SeriesTemp_files/figure-latex/ma1m08-3.pdf Graphic file (type pdf)
 <use 03-SeriesTemp_files/figure-latex/ma1m08-3.pdf>
-
-Underfull \hbox (badness 10000) in paragraph at lines 2838--2838
-[][] []
- []
-
-[87]
 File: 03-SeriesTemp_files/figure-latex/ma1m0804-1.pdf Graphic file (type pdf)
 <use 03-SeriesTemp_files/figure-latex/ma1m0804-1.pdf>
 File: 03-SeriesTemp_files/figure-latex/ma1m0804-2.pdf Graphic file (type pdf)
 <use 03-SeriesTemp_files/figure-latex/ma1m0804-2.pdf>
 File: 03-SeriesTemp_files/figure-latex/ma1m0804-3.pdf Graphic file (type pdf)
 <use 03-SeriesTemp_files/figure-latex/ma1m0804-3.pdf>
-
-Underfull \hbox (badness 10000) in paragraph at lines 2853--2853
-[][] []
- []
-
 File: 03-SeriesTemp_files/figure-latex/ma1m080414-1.pdf Graphic file (type pdf)
 
 <use 03-SeriesTemp_files/figure-latex/ma1m080414-1.pdf>
@@ -1340,52 +1240,29 @@ File: 03-SeriesTemp_files/figure-latex/ma1m080414-2.pdf Graphic file (type pdf)
 File: 03-SeriesTemp_files/figure-latex/ma1m080414-3.pdf Graphic file (type pdf)
 
 <use 03-SeriesTemp_files/figure-latex/ma1m080414-3.pdf>
+[66] [67]
 
-Underfull \hbox (badness 10000) in paragraph at lines 2868--2868
-[][] []
- []
+LaTeX Warning: Reference `sec:subar1' on page 68 undefined on input line 2975.
 
-[88] [89]
+[68]
 
-LaTeX Warning: Reference `sec:subar1' on page 90 undefined on input line 2957.
+LaTeX Warning: Reference `invert_def' on page 69 undefined on input line 3029.
 
-[90]
-Overfull \hbox (51.66428pt too wide) detected at line 2980
-[]
- []
-
-[91]
-
-LaTeX Warning: Reference `invert_def' on page 92 undefined on input line 3011.
-
-[92] [93] [94]
-Overfull \hbox (411.0pt too wide) in paragraph at lines 3178--3178
+[69] [70]
+Overfull \hbox (242.88255pt too wide) in paragraph at lines 3196--3196
 []\TU/lmtt/m/n/10 |    a\) Supondo que $E(y_t)=\mu$ e que $y_t=c_0+\beta_1y_{t-
 1}+e_t+\alpha_1e_{t-1}$, calcule o valor de $c_0$ em termos de $\mu$ e $\beta_{
 1}$.[] 
  []
 
-
-Overfull \hbox (127.5pt too wide) in paragraph at lines 3178--3178
-[]\TU/lmtt/m/n/10 |    b\) Explique como se comportam os gráficos da FAC e da F
-ACP em processos ARMA($p,q$).[] 
- []
-
-
-Overfull \hbox (22.5pt too wide) in paragraph at lines 3178--3178
-[]\TU/lmtt/m/n/10 |    c\) Esboce os gráficos da FAC e FACP para um processos A
-RMA(1,1).[] 
- []
-
-[95] [96]
+[71] [72]
 File: 03-SeriesTemp_files/figure-latex/exarma-1.pdf Graphic file (type pdf)
 <use 03-SeriesTemp_files/figure-latex/exarma-1.pdf>
-[97]
 File: 03-SeriesTemp_files/figure-latex/exarmapf-1.pdf Graphic file (type pdf)
 <use 03-SeriesTemp_files/figure-latex/exarmapf-1.pdf>
 File: 03-SeriesTemp_files/figure-latex/exarmapf-2.pdf Graphic file (type pdf)
 <use 03-SeriesTemp_files/figure-latex/exarmapf-2.pdf>
-[98]
+[73] [74]
 Chapter 5.
 File: 04-SeriesTempNaoEstac_files/figure-latex/nstac2-1.pdf Graphic file (type 
 pdf)
@@ -1400,61 +1277,57 @@ File: 04-SeriesTempNaoEstac_files/figure-latex/nstac2-4.pdf Graphic file (type
 pdf)
 <use 04-SeriesTempNaoEstac_files/figure-latex/nstac2-4.pdf>
 
-Underfull \hbox (badness 10000) in paragraph at lines 3347--3347
+Underfull \hbox (badness 10000) in paragraph at lines 3365--3365
 [][] []
  []
 
-[99
+[75
 
-] [100]
+]
 File: 04-SeriesTempNaoEstac_files/figure-latex/combustivel-1.pdf Graphic file (
 type pdf)
 <use 04-SeriesTempNaoEstac_files/figure-latex/combustivel-1.pdf>
-[101]
 File: 04-SeriesTempNaoEstac_files/figure-latex/desocupados-1.pdf Graphic file (
 type pdf)
 <use 04-SeriesTempNaoEstac_files/figure-latex/desocupados-1.pdf>
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[102] [103]
+[76] [77]
 File: 04-SeriesTempNaoEstac_files/figure-latex/shadcurve-1.pdf Graphic file (ty
 pe pdf)
 <use 04-SeriesTempNaoEstac_files/figure-latex/shadcurve-1.pdf>
 Missing character: There is no 𝛥 in font [lmroman10-regular]:mapping=tex-text;!
-[104] [105]
+[78] [79] [80]
 File: 04-SeriesTempNaoEstac_files/figure-latex/diffpa-1.pdf Graphic file (type 
 pdf)
 <use 04-SeriesTempNaoEstac_files/figure-latex/diffpa-1.pdf>
 File: 04-SeriesTempNaoEstac_files/figure-latex/diffpa-2.pdf Graphic file (type 
 pdf)
 <use 04-SeriesTempNaoEstac_files/figure-latex/diffpa-2.pdf>
-[106]
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[107]
+[81]
 File: 04-SeriesTempNaoEstac_files/figure-latex/diff2-1.pdf Graphic file (type p
 df)
 <use 04-SeriesTempNaoEstac_files/figure-latex/diff2-1.pdf>
-[108] [109]
+[82]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[83]
 File: 04-SeriesTempNaoEstac_files/figure-latex/prev-1.pdf Graphic file (type pd
 f)
 <use 04-SeriesTempNaoEstac_files/figure-latex/prev-1.pdf>
+[84] [85]
+Underfull \vbox (badness 1205) has occurred while \output is active []
 
-Underfull \vbox (badness 3590) has occurred while \output is active []
-
-[110] [111] [112]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[113]
+[86]
 File: 04-SeriesTempNaoEstac_files/figure-latex/I1I1-1.pdf Graphic file (type pd
 f)
 <use 04-SeriesTempNaoEstac_files/figure-latex/I1I1-1.pdf>
-[114] [115]
+[87]
 
-LaTeX Warning: Reference `qeqd' on page 116 undefined on input line 3811.
+LaTeX Warning: Reference `qeqd' on page 88 undefined on input line 3829.
 
-[116] [117] [118]
+[88] [89]
 File: 04-SeriesTempNaoEstac_files/figure-latex/bjfig-1.pdf Graphic file (type p
 df)
 <use 04-SeriesTempNaoEstac_files/figure-latex/bjfig-1.pdf>
@@ -1464,11 +1337,6 @@ df)
 File: 04-SeriesTempNaoEstac_files/figure-latex/bjfig-3.pdf Graphic file (type p
 df)
 <use 04-SeriesTempNaoEstac_files/figure-latex/bjfig-3.pdf>
-
-Underfull \hbox (badness 10000) in paragraph at lines 3945--3945
-[][] []
- []
-
 File: 04-SeriesTempNaoEstac_files/figure-latex/figcs-1.pdf Graphic file (type p
 df)
 <use 04-SeriesTempNaoEstac_files/figure-latex/figcs-1.pdf>
@@ -1478,14 +1346,9 @@ df)
 File: 04-SeriesTempNaoEstac_files/figure-latex/figcs-3.pdf Graphic file (type p
 df)
 <use 04-SeriesTempNaoEstac_files/figure-latex/figcs-3.pdf>
+[90]
 
-Underfull \hbox (badness 10000) in paragraph at lines 3951--3951
-[][] []
- []
-
-[119]
-
-LaTeX Warning: Reference `aj' on page 120 undefined on input line 3959.
+LaTeX Warning: Reference `aj' on page 91 undefined on input line 3977.
 
 File: 04-SeriesTempNaoEstac_files/figure-latex/aj-1.pdf Graphic file (type pdf)
 
@@ -1497,904 +1360,640 @@ File: 04-SeriesTempNaoEstac_files/figure-latex/aj-3.pdf Graphic file (type pdf)
 
 <use 04-SeriesTempNaoEstac_files/figure-latex/aj-3.pdf>
 
-Overfull \hbox (66.30206pt too wide) in paragraph at lines 3961--3964
+Overfull \hbox (64.62268pt too wide) in paragraph at lines 3979--3982
 []\TU/lmr/m/n/10 \begin{figure} [] [] []
  []
 
 
-Overfull \hbox (12.75043pt too wide) in paragraph at lines 3976--3977
+Overfull \hbox (7.70712pt too wide) in paragraph at lines 3994--3995
 []\TU/lmr/m/n/10 Teste 
  []
 
 
-Overfull \hbox (12.75043pt too wide) in paragraph at lines 3988--3989
+Overfull \hbox (7.70712pt too wide) in paragraph at lines 4006--4007
 []\TU/lmr/m/n/10 Teste 
  []
 
 
-Overfull \hbox (12.75043pt too wide) in paragraph at lines 4000--4001
+Overfull \hbox (7.70712pt too wide) in paragraph at lines 4018--4019
 []\TU/lmr/m/n/10 Teste 
  []
 
 
-Overfull \hbox (74.54903pt too wide) in alignment at lines 3967--4009
+Overfull \hbox (5.62pt too wide) in alignment at lines 3985--4027
  [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (7.17232pt too wide) in paragraph at lines 4013--4014
-[]\TU/lmr/m/n/10 ACF|  
- []
-
-
-Overfull \hbox (16.60042pt too wide) in paragraph at lines 4017--4018
+Overfull \hbox (11.55711pt too wide) in paragraph at lines 4035--4036
 []\TU/lmr/m/n/10 PACF|  
  []
 
 
-Overfull \hbox (2.92232pt too wide) in paragraph at lines 4021--4022
-\TU/lmr/m/n/10 stat|  
- []
-
-
-Overfull \hbox (6.94894pt too wide) in paragraph at lines 4023--4024
-\TU/lmr/m/n/10 valor]|  
- []
-
-
-Overfull \hbox (7.17232pt too wide) in paragraph at lines 4025--4026
-[]\TU/lmr/m/n/10 ACF|  
- []
-
-
-Overfull \hbox (16.60042pt too wide) in paragraph at lines 4029--4030
+Overfull \hbox (11.55711pt too wide) in paragraph at lines 4047--4048
 []\TU/lmr/m/n/10 PACF|  
  []
 
 
-Overfull \hbox (0.76042pt too wide) in paragraph at lines 4033--4034
-[]\TU/lmr/m/n/10 Q- 
- []
-
-
-Overfull \hbox (6.37042pt too wide) in paragraph at lines 4033--4034
+Overfull \hbox (1.32712pt too wide) in paragraph at lines 4051--4052
 \TU/lmr/m/n/10 stat|  
  []
 
 
-Overfull \hbox (6.94894pt too wide) in paragraph at lines 4035--4036
-\TU/lmr/m/n/10 valor]|  
- []
-
-
-Overfull \hbox (14.06853pt too wide) in paragraph at lines 4037--4038
+Overfull \hbox (10.70547pt too wide) in paragraph at lines 4055--4056
 []\TU/lmr/m/n/10 ACF|  
  []
 
 
-Overfull \hbox (16.60042pt too wide) in paragraph at lines 4041--4042
+Overfull \hbox (11.55711pt too wide) in paragraph at lines 4059--4060
 []\TU/lmr/m/n/10 PACF|  
  []
 
 
-Overfull \hbox (0.76042pt too wide) in paragraph at lines 4045--4046
-[]\TU/lmr/m/n/10 Q- 
- []
-
-
-Overfull \hbox (6.37042pt too wide) in paragraph at lines 4045--4046
+Overfull \hbox (1.32712pt too wide) in paragraph at lines 4063--4064
 \TU/lmr/m/n/10 stat|  
  []
 
 
-Overfull \hbox (6.94894pt too wide) in paragraph at lines 4047--4048
-\TU/lmr/m/n/10 valor]|  
- []
-
-
-Overfull \hbox (8.98232pt too wide) in paragraph at lines 4052--4053
+Overfull \hbox (2.25876pt too wide) in paragraph at lines 4070--4071
 \TU/lmr/m/n/10 0.483|  
  []
 
 
-Overfull \hbox (8.09853pt too wide) in paragraph at lines 4054--4055
+Overfull \hbox (4.73547pt too wide) in paragraph at lines 4072--4073
 []\TU/lmr/m/n/10 ***|  
  []
 
 
-Overfull \hbox (12.43042pt too wide) in paragraph at lines 4056--4057
+Overfull \hbox (7.38712pt too wide) in paragraph at lines 4074--4075
 \TU/lmr/m/n/10 0.483|  
  []
 
 
-Overfull \hbox (8.09853pt too wide) in paragraph at lines 4058--4059
+Overfull \hbox (4.73547pt too wide) in paragraph at lines 4076--4077
 []\TU/lmr/m/n/10 ***|  
  []
 
 
-Overfull \hbox (8.98232pt too wide) in paragraph at lines 4060--4061
+Overfull \hbox (2.25876pt too wide) in paragraph at lines 4078--4079
 []\TU/lmr/m/n/10 47.49|  
  []
 
 
-Overfull \hbox (6.08894pt too wide) in paragraph at lines 4062--4063
-[]\TU/lmr/m/n/10 [0.00]|  
- []
-
-
-Overfull \hbox (8.98232pt too wide) in paragraph at lines 4064--4065
+Overfull \hbox (2.25876pt too wide) in paragraph at lines 4082--4083
 \TU/lmr/m/n/10 0.406|  
  []
 
 
-Overfull \hbox (8.09853pt too wide) in paragraph at lines 4066--4067
+Overfull \hbox (4.73547pt too wide) in paragraph at lines 4084--4085
 []\TU/lmr/m/n/10 ***|  
  []
 
 
-Overfull \hbox (12.43042pt too wide) in paragraph at lines 4068--4069
+Overfull \hbox (7.38712pt too wide) in paragraph at lines 4086--4087
 \TU/lmr/m/n/10 0.406|  
  []
 
 
-Overfull \hbox (8.09853pt too wide) in paragraph at lines 4070--4071
+Overfull \hbox (4.73547pt too wide) in paragraph at lines 4088--4089
 []\TU/lmr/m/n/10 ***|  
  []
 
 
-Overfull \hbox (12.43042pt too wide) in paragraph at lines 4072--4073
+Overfull \hbox (7.38712pt too wide) in paragraph at lines 4090--4091
 []\TU/lmr/m/n/10 31.42|  
  []
 
 
-Overfull \hbox (6.08894pt too wide) in paragraph at lines 4074--4075
-[]\TU/lmr/m/n/10 [0.00]|  
- []
-
-
-Overfull \hbox (15.87852pt too wide) in paragraph at lines 4076--4077
+Overfull \hbox (12.51547pt too wide) in paragraph at lines 4094--4095
 \TU/lmr/m/n/10 0.031|  
  []
 
 
-Overfull \hbox (12.43042pt too wide) in paragraph at lines 4080--4081
+Overfull \hbox (7.38712pt too wide) in paragraph at lines 4098--4099
 \TU/lmr/m/n/10 0.031|  
  []
 
 
-Overfull \hbox (7.43042pt too wide) in paragraph at lines 4084--4085
+Overfull \hbox (2.38712pt too wide) in paragraph at lines 4102--4103
 []\TU/lmr/m/n/10 0.19|  
  []
 
 
-Overfull \hbox (6.08894pt too wide) in paragraph at lines 4086--4087
-[]\TU/lmr/m/n/10 [0.65]|  
- []
-
-
-Overfull \hbox (8.98232pt too wide) in paragraph at lines 4091--4092
+Overfull \hbox (2.25876pt too wide) in paragraph at lines 4109--4110
 \TU/lmr/m/n/10 0.079|  
  []
 
 
-Overfull \hbox (12.43042pt too wide) in paragraph at lines 4095--4096
+Overfull \hbox (7.38712pt too wide) in paragraph at lines 4113--4114
 \TU/lmr/m/n/10 0.408|  
  []
 
 
-Overfull \hbox (8.09853pt too wide) in paragraph at lines 4097--4098
+Overfull \hbox (4.73547pt too wide) in paragraph at lines 4115--4116
 []\TU/lmr/m/n/10 ***|  
  []
 
 
-Overfull \hbox (8.98232pt too wide) in paragraph at lines 4099--4100
+Overfull \hbox (2.25876pt too wide) in paragraph at lines 4117--4118
 []\TU/lmr/m/n/10 48.77|  
  []
 
 
-Overfull \hbox (6.08894pt too wide) in paragraph at lines 4101--4102
-[]\TU/lmr/m/n/10 [0.00]|  
- []
-
-
-Overfull \hbox (8.98232pt too wide) in paragraph at lines 4103--4104
+Overfull \hbox (2.25876pt too wide) in paragraph at lines 4121--4122
 []\TU/lmr/m/n/10 0.044|  
  []
 
 
-Overfull \hbox (12.43042pt too wide) in paragraph at lines 4107--4108
+Overfull \hbox (7.38712pt too wide) in paragraph at lines 4125--4126
 \TU/lmr/m/n/10 0.145|  
  []
 
 
-Overfull \hbox (3.09853pt too wide) in paragraph at lines 4109--4110
-[]\TU/lmr/m/n/10 **|  
- []
-
-
-Overfull \hbox (12.43042pt too wide) in paragraph at lines 4111--4112
+Overfull \hbox (7.38712pt too wide) in paragraph at lines 4129--4130
 []\TU/lmr/m/n/10 31.79|  
  []
 
 
-Overfull \hbox (6.08894pt too wide) in paragraph at lines 4113--4114
-[]\TU/lmr/m/n/10 [0.00]|  
- []
-
-
-Overfull \hbox (15.87852pt too wide) in paragraph at lines 4115--4116
+Overfull \hbox (12.51547pt too wide) in paragraph at lines 4133--4134
 \TU/lmr/m/n/10 0.121|  
  []
 
 
-Overfull \hbox (1.5519pt too wide) in paragraph at lines 4117--4118
-[]\TU/lmr/m/n/10 *|  
- []
-
-
-Overfull \hbox (12.43042pt too wide) in paragraph at lines 4119--4120
+Overfull \hbox (7.38712pt too wide) in paragraph at lines 4137--4138
 \TU/lmr/m/n/10 0.122|  
  []
 
 
-Overfull \hbox (1.5519pt too wide) in paragraph at lines 4121--4122
-[]\TU/lmr/m/n/10 *|  
- []
-
-
-Overfull \hbox (7.43042pt too wide) in paragraph at lines 4123--4124
+Overfull \hbox (2.38712pt too wide) in paragraph at lines 4141--4142
 []\TU/lmr/m/n/10 3.22|  
  []
 
 
-Overfull \hbox (6.08894pt too wide) in paragraph at lines 4125--4126
-[]\TU/lmr/m/n/10 [0.19]|  
- []
-
-
-Overfull \hbox (8.98232pt too wide) in paragraph at lines 4130--4131
+Overfull \hbox (2.25876pt too wide) in paragraph at lines 4148--4149
 []\TU/lmr/m/n/10 0.089|  
  []
 
 
-Overfull \hbox (12.43042pt too wide) in paragraph at lines 4134--4135
+Overfull \hbox (7.38712pt too wide) in paragraph at lines 4152--4153
 \TU/lmr/m/n/10 0.254|  
  []
 
 
-Overfull \hbox (8.09853pt too wide) in paragraph at lines 4136--4137
+Overfull \hbox (4.73547pt too wide) in paragraph at lines 4154--4155
 []\TU/lmr/m/n/10 ***|  
  []
 
 
-Overfull \hbox (8.98232pt too wide) in paragraph at lines 4138--4139
+Overfull \hbox (2.25876pt too wide) in paragraph at lines 4156--4157
 []\TU/lmr/m/n/10 50.40|  
  []
 
 
-Overfull \hbox (6.08894pt too wide) in paragraph at lines 4140--4141
-[]\TU/lmr/m/n/10 [0.00]|  
- []
-
-
-Overfull \hbox (8.98232pt too wide) in paragraph at lines 4142--4143
+Overfull \hbox (2.25876pt too wide) in paragraph at lines 4160--4161
 []\TU/lmr/m/n/10 0.016|  
  []
 
 
-Overfull \hbox (12.43042pt too wide) in paragraph at lines 4146--4147
+Overfull \hbox (7.38712pt too wide) in paragraph at lines 4164--4165
 \TU/lmr/m/n/10 0.026|  
  []
 
 
-Overfull \hbox (12.43042pt too wide) in paragraph at lines 4150--4151
+Overfull \hbox (7.38712pt too wide) in paragraph at lines 4168--4169
 []\TU/lmr/m/n/10 31.85|  
  []
 
 
-Overfull \hbox (6.08894pt too wide) in paragraph at lines 4152--4153
-[]\TU/lmr/m/n/10 [0.00]|  
- []
-
-
-Overfull \hbox (15.87852pt too wide) in paragraph at lines 4154--4155
+Overfull \hbox (12.51547pt too wide) in paragraph at lines 4172--4173
 []\TU/lmr/m/n/10 0.089|  
  []
 
 
-Overfull \hbox (12.43042pt too wide) in paragraph at lines 4158--4159
+Overfull \hbox (7.38712pt too wide) in paragraph at lines 4176--4177
 []\TU/lmr/m/n/10 0.082|  
  []
 
 
-Overfull \hbox (7.43042pt too wide) in paragraph at lines 4162--4163
+Overfull \hbox (2.38712pt too wide) in paragraph at lines 4180--4181
 []\TU/lmr/m/n/10 4.88|  
  []
 
 
-Overfull \hbox (6.08894pt too wide) in paragraph at lines 4164--4165
-[]\TU/lmr/m/n/10 [0.18]|  
- []
-
-
-Overfull \hbox (8.98232pt too wide) in paragraph at lines 4169--4170
+Overfull \hbox (2.25876pt too wide) in paragraph at lines 4187--4188
 \TU/lmr/m/n/10 0.029|  
  []
 
 
-Overfull \hbox (12.43042pt too wide) in paragraph at lines 4173--4174
+Overfull \hbox (7.38712pt too wide) in paragraph at lines 4191--4192
 \TU/lmr/m/n/10 0.216|  
  []
 
 
-Overfull \hbox (8.09853pt too wide) in paragraph at lines 4175--4176
+Overfull \hbox (4.73547pt too wide) in paragraph at lines 4193--4194
 []\TU/lmr/m/n/10 ***|  
  []
 
 
-Overfull \hbox (8.98232pt too wide) in paragraph at lines 4177--4178
+Overfull \hbox (2.25876pt too wide) in paragraph at lines 4195--4196
 []\TU/lmr/m/n/10 50.58|  
  []
 
 
-Overfull \hbox (6.08894pt too wide) in paragraph at lines 4179--4180
-[]\TU/lmr/m/n/10 [0.00]|  
- []
-
-
-Overfull \hbox (8.98232pt too wide) in paragraph at lines 4181--4182
+Overfull \hbox (2.25876pt too wide) in paragraph at lines 4199--4200
 []\TU/lmr/m/n/10 0.030|  
  []
 
 
-Overfull \hbox (12.43042pt too wide) in paragraph at lines 4185--4186
+Overfull \hbox (7.38712pt too wide) in paragraph at lines 4203--4204
 []\TU/lmr/m/n/10 0.042|  
  []
 
 
-Overfull \hbox (12.43042pt too wide) in paragraph at lines 4189--4190
+Overfull \hbox (7.38712pt too wide) in paragraph at lines 4207--4208
 []\TU/lmr/m/n/10 32.03|  
  []
 
 
-Overfull \hbox (6.08894pt too wide) in paragraph at lines 4191--4192
-[]\TU/lmr/m/n/10 [0.00]|  
- []
-
-
-Overfull \hbox (15.87852pt too wide) in paragraph at lines 4193--4194
+Overfull \hbox (12.51547pt too wide) in paragraph at lines 4211--4212
 []\TU/lmr/m/n/10 0.038|  
  []
 
 
-Overfull \hbox (12.43042pt too wide) in paragraph at lines 4197--4198
+Overfull \hbox (7.38712pt too wide) in paragraph at lines 4215--4216
 []\TU/lmr/m/n/10 0.029|  
  []
 
 
-Overfull \hbox (7.43042pt too wide) in paragraph at lines 4201--4202
+Overfull \hbox (2.38712pt too wide) in paragraph at lines 4219--4220
 []\TU/lmr/m/n/10 5.19|  
  []
 
 
-Overfull \hbox (6.08894pt too wide) in paragraph at lines 4203--4204
-[]\TU/lmr/m/n/10 [0.26]|  
- []
-
-
-Overfull \hbox (8.98232pt too wide) in paragraph at lines 4208--4209
+Overfull \hbox (2.25876pt too wide) in paragraph at lines 4226--4227
 []\TU/lmr/m/n/10 0.044|  
  []
 
 
-Overfull \hbox (12.43042pt too wide) in paragraph at lines 4212--4213
+Overfull \hbox (7.38712pt too wide) in paragraph at lines 4230--4231
 \TU/lmr/m/n/10 0.098|  
  []
 
 
-Overfull \hbox (8.98232pt too wide) in paragraph at lines 4216--4217
+Overfull \hbox (2.25876pt too wide) in paragraph at lines 4234--4235
 []\TU/lmr/m/n/10 50.98|  
  []
 
 
-Overfull \hbox (6.08894pt too wide) in paragraph at lines 4218--4219
-[]\TU/lmr/m/n/10 [0.00]|  
- []
-
-
-Overfull \hbox (8.98232pt too wide) in paragraph at lines 4220--4221
+Overfull \hbox (2.25876pt too wide) in paragraph at lines 4238--4239
 []\TU/lmr/m/n/10 0.008|  
  []
 
 
-Overfull \hbox (12.43042pt too wide) in paragraph at lines 4224--4225
+Overfull \hbox (7.38712pt too wide) in paragraph at lines 4242--4243
 []\TU/lmr/m/n/10 0.052|  
  []
 
 
-Overfull \hbox (12.43042pt too wide) in paragraph at lines 4228--4229
+Overfull \hbox (7.38712pt too wide) in paragraph at lines 4246--4247
 []\TU/lmr/m/n/10 32.04|  
  []
 
 
-Overfull \hbox (6.08894pt too wide) in paragraph at lines 4230--4231
-[]\TU/lmr/m/n/10 [0.00]|  
- []
-
-
-Overfull \hbox (15.87852pt too wide) in paragraph at lines 4232--4233
+Overfull \hbox (12.51547pt too wide) in paragraph at lines 4250--4251
 []\TU/lmr/m/n/10 0.066|  
  []
 
 
-Overfull \hbox (12.43042pt too wide) in paragraph at lines 4236--4237
+Overfull \hbox (7.38712pt too wide) in paragraph at lines 4254--4255
 []\TU/lmr/m/n/10 0.091|  
  []
 
 
-Overfull \hbox (7.43042pt too wide) in paragraph at lines 4240--4241
+Overfull \hbox (2.38712pt too wide) in paragraph at lines 4258--4259
 []\TU/lmr/m/n/10 6.12|  
  []
 
 
-Overfull \hbox (6.08894pt too wide) in paragraph at lines 4242--4243
-[]\TU/lmr/m/n/10 [0.29]|  
- []
-
-
-Overfull \hbox (8.98232pt too wide) in paragraph at lines 4247--4248
+Overfull \hbox (2.25876pt too wide) in paragraph at lines 4265--4266
 \TU/lmr/m/n/10 0.095|  
  []
 
 
-Overfull \hbox (12.43042pt too wide) in paragraph at lines 4251--4252
+Overfull \hbox (7.38712pt too wide) in paragraph at lines 4269--4270
 \TU/lmr/m/n/10 0.189|  
  []
 
 
-Overfull \hbox (8.09853pt too wide) in paragraph at lines 4253--4254
+Overfull \hbox (4.73547pt too wide) in paragraph at lines 4271--4272
 []\TU/lmr/m/n/10 ***|  
  []
 
 
-Overfull \hbox (8.98232pt too wide) in paragraph at lines 4255--4256
+Overfull \hbox (2.25876pt too wide) in paragraph at lines 4273--4274
 []\TU/lmr/m/n/10 52.87|  
  []
 
 
-Overfull \hbox (6.08894pt too wide) in paragraph at lines 4257--4258
-[]\TU/lmr/m/n/10 [0.00]|  
- []
-
-
-Overfull \hbox (8.98232pt too wide) in paragraph at lines 4259--4260
+Overfull \hbox (2.25876pt too wide) in paragraph at lines 4277--4278
 \TU/lmr/m/n/10 0.020|  
  []
 
 
-Overfull \hbox (12.43042pt too wide) in paragraph at lines 4263--4264
+Overfull \hbox (7.38712pt too wide) in paragraph at lines 4281--4282
 []\TU/lmr/m/n/10 0.008|  
  []
 
 
-Overfull \hbox (12.43042pt too wide) in paragraph at lines 4267--4268
+Overfull \hbox (7.38712pt too wide) in paragraph at lines 4285--4286
 []\TU/lmr/m/n/10 32.12|  
  []
 
 
-Overfull \hbox (6.08894pt too wide) in paragraph at lines 4269--4270
-[]\TU/lmr/m/n/10 [0.00]|  
- []
-
-
-Overfull \hbox (15.87852pt too wide) in paragraph at lines 4271--4272
+Overfull \hbox (12.51547pt too wide) in paragraph at lines 4289--4290
 []\TU/lmr/m/n/10 0.034|  
  []
 
 
-Overfull \hbox (12.43042pt too wide) in paragraph at lines 4275--4276
+Overfull \hbox (7.38712pt too wide) in paragraph at lines 4293--4294
 []\TU/lmr/m/n/10 0.040|  
  []
 
 
-Overfull \hbox (7.43042pt too wide) in paragraph at lines 4279--4280
+Overfull \hbox (2.38712pt too wide) in paragraph at lines 4297--4298
 []\TU/lmr/m/n/10 6.37|  
  []
 
 
-Overfull \hbox (6.08894pt too wide) in paragraph at lines 4281--4282
-[]\TU/lmr/m/n/10 [0.38]|  
- []
-
-
-Overfull \hbox (8.98232pt too wide) in paragraph at lines 4286--4287
+Overfull \hbox (2.25876pt too wide) in paragraph at lines 4304--4305
 []\TU/lmr/m/n/10 0.072|  
  []
 
 
-Overfull \hbox (12.43042pt too wide) in paragraph at lines 4290--4291
+Overfull \hbox (7.38712pt too wide) in paragraph at lines 4308--4309
 \TU/lmr/m/n/10 0.121|  
  []
 
 
-Overfull \hbox (8.98232pt too wide) in paragraph at lines 4294--4295
+Overfull \hbox (2.25876pt too wide) in paragraph at lines 4312--4313
 []\TU/lmr/m/n/10 53.99|  
  []
 
 
-Overfull \hbox (6.08894pt too wide) in paragraph at lines 4296--4297
-[]\TU/lmr/m/n/10 [0.00]|  
- []
-
-
-Overfull \hbox (8.98232pt too wide) in paragraph at lines 4298--4299
+Overfull \hbox (2.25876pt too wide) in paragraph at lines 4316--4317
 []\TU/lmr/m/n/10 0.027|  
  []
 
 
-Overfull \hbox (12.43042pt too wide) in paragraph at lines 4302--4303
+Overfull \hbox (7.38712pt too wide) in paragraph at lines 4320--4321
 []\TU/lmr/m/n/10 0.023|  
  []
 
 
-Overfull \hbox (12.43042pt too wide) in paragraph at lines 4306--4307
+Overfull \hbox (7.38712pt too wide) in paragraph at lines 4324--4325
 []\TU/lmr/m/n/10 32.27|  
  []
 
 
-Overfull \hbox (6.08894pt too wide) in paragraph at lines 4308--4309
-[]\TU/lmr/m/n/10 [0.00]|  
- []
-
-
-Overfull \hbox (15.87852pt too wide) in paragraph at lines 4310--4311
+Overfull \hbox (12.51547pt too wide) in paragraph at lines 4328--4329
 []\TU/lmr/m/n/10 0.053|  
  []
 
 
-Overfull \hbox (12.43042pt too wide) in paragraph at lines 4314--4315
+Overfull \hbox (7.38712pt too wide) in paragraph at lines 4332--4333
 []\TU/lmr/m/n/10 0.070|  
  []
 
 
-Overfull \hbox (7.43042pt too wide) in paragraph at lines 4318--4319
+Overfull \hbox (2.38712pt too wide) in paragraph at lines 4336--4337
 []\TU/lmr/m/n/10 6.96|  
  []
 
 
-Overfull \hbox (6.08894pt too wide) in paragraph at lines 4320--4321
-[]\TU/lmr/m/n/10 [0.43]|  
- []
-
-
-Overfull \hbox (8.98232pt too wide) in paragraph at lines 4325--4326
+Overfull \hbox (2.25876pt too wide) in paragraph at lines 4343--4344
 \TU/lmr/m/n/10 0.002|  
  []
 
 
-Overfull \hbox (12.43042pt too wide) in paragraph at lines 4329--4330
+Overfull \hbox (7.38712pt too wide) in paragraph at lines 4347--4348
 \TU/lmr/m/n/10 0.100|  
  []
 
 
-Overfull \hbox (8.98232pt too wide) in paragraph at lines 4333--4334
+Overfull \hbox (2.25876pt too wide) in paragraph at lines 4351--4352
 []\TU/lmr/m/n/10 53.99|  
  []
 
 
-Overfull \hbox (6.08894pt too wide) in paragraph at lines 4335--4336
-[]\TU/lmr/m/n/10 [0.00]|  
- []
-
-
-Overfull \hbox (8.98232pt too wide) in paragraph at lines 4337--4338
+Overfull \hbox (2.25876pt too wide) in paragraph at lines 4355--4356
 []\TU/lmr/m/n/10 0.045|  
  []
 
 
-Overfull \hbox (12.43042pt too wide) in paragraph at lines 4341--4342
+Overfull \hbox (7.38712pt too wide) in paragraph at lines 4359--4360
 []\TU/lmr/m/n/10 0.075|  
  []
 
 
-Overfull \hbox (12.43042pt too wide) in paragraph at lines 4345--4346
+Overfull \hbox (7.38712pt too wide) in paragraph at lines 4363--4364
 []\TU/lmr/m/n/10 32.68|  
  []
 
 
-Overfull \hbox (6.08894pt too wide) in paragraph at lines 4347--4348
-[]\TU/lmr/m/n/10 [0.00]|  
- []
-
-
-Overfull \hbox (15.87852pt too wide) in paragraph at lines 4349--4350
+Overfull \hbox (12.51547pt too wide) in paragraph at lines 4367--4368
 \TU/lmr/m/n/10 0.031|  
  []
 
 
-Overfull \hbox (12.43042pt too wide) in paragraph at lines 4353--4354
+Overfull \hbox (7.38712pt too wide) in paragraph at lines 4371--4372
 \TU/lmr/m/n/10 0.035|  
  []
 
 
-Overfull \hbox (7.43042pt too wide) in paragraph at lines 4357--4358
+Overfull \hbox (2.38712pt too wide) in paragraph at lines 4375--4376
 []\TU/lmr/m/n/10 7.18|  
  []
 
 
-Overfull \hbox (6.08894pt too wide) in paragraph at lines 4359--4360
-[]\TU/lmr/m/n/10 [0.51]|  
- []
-
-
-Overfull \hbox (8.98232pt too wide) in paragraph at lines 4364--4365
+Overfull \hbox (2.25876pt too wide) in paragraph at lines 4382--4383
 \TU/lmr/m/n/10 0.108|  
  []
 
 
-Overfull \hbox (12.43042pt too wide) in paragraph at lines 4368--4369
+Overfull \hbox (7.38712pt too wide) in paragraph at lines 4386--4387
 \TU/lmr/m/n/10 0.249|  
  []
 
 
-Overfull \hbox (8.09853pt too wide) in paragraph at lines 4370--4371
+Overfull \hbox (4.73547pt too wide) in paragraph at lines 4388--4389
 []\TU/lmr/m/n/10 ***|  
  []
 
 
-Overfull \hbox (8.98232pt too wide) in paragraph at lines 4372--4373
+Overfull \hbox (2.25876pt too wide) in paragraph at lines 4390--4391
 []\TU/lmr/m/n/10 56.49|  
  []
 
 
-Overfull \hbox (6.08894pt too wide) in paragraph at lines 4374--4375
-[]\TU/lmr/m/n/10 [0.00]|  
- []
-
-
-Overfull \hbox (8.98232pt too wide) in paragraph at lines 4376--4377
+Overfull \hbox (2.25876pt too wide) in paragraph at lines 4394--4395
 \TU/lmr/m/n/10 0.096|  
  []
 
 
-Overfull \hbox (12.43042pt too wide) in paragraph at lines 4380--4381
+Overfull \hbox (7.38712pt too wide) in paragraph at lines 4398--4399
 \TU/lmr/m/n/10 0.056|  
  []
 
 
-Overfull \hbox (12.43042pt too wide) in paragraph at lines 4384--4385
+Overfull \hbox (7.38712pt too wide) in paragraph at lines 4402--4403
 []\TU/lmr/m/n/10 34.52|  
  []
 
 
-Overfull \hbox (6.08894pt too wide) in paragraph at lines 4386--4387
-[]\TU/lmr/m/n/10 [0.00]|  
- []
-
-
-Overfull \hbox (15.87852pt too wide) in paragraph at lines 4388--4389
+Overfull \hbox (12.51547pt too wide) in paragraph at lines 4406--4407
 []\TU/lmr/m/n/10 0.043|  
  []
 
 
-Overfull \hbox (12.43042pt too wide) in paragraph at lines 4392--4393
+Overfull \hbox (7.38712pt too wide) in paragraph at lines 4410--4411
 []\TU/lmr/m/n/10 0.045|  
  []
 
 
-Overfull \hbox (7.43042pt too wide) in paragraph at lines 4396--4397
+Overfull \hbox (2.38712pt too wide) in paragraph at lines 4414--4415
 []\TU/lmr/m/n/10 7.58|  
  []
 
 
-Overfull \hbox (6.08894pt too wide) in paragraph at lines 4398--4399
-[]\TU/lmr/m/n/10 [0.57]|  
- []
-
-
-Overfull \hbox (8.98232pt too wide) in paragraph at lines 4403--4404
+Overfull \hbox (2.25876pt too wide) in paragraph at lines 4421--4422
 []\TU/lmr/m/n/10 0.167|  
  []
 
 
-Overfull \hbox (3.09853pt too wide) in paragraph at lines 4405--4406
-[]\TU/lmr/m/n/10 **|  
- []
-
-
-Overfull \hbox (12.43042pt too wide) in paragraph at lines 4407--4408
+Overfull \hbox (7.38712pt too wide) in paragraph at lines 4425--4426
 \TU/lmr/m/n/10 0.090|  
  []
 
 
-Overfull \hbox (8.98232pt too wide) in paragraph at lines 4411--4412
+Overfull \hbox (2.25876pt too wide) in paragraph at lines 4429--4430
 []\TU/lmr/m/n/10 62.44|  
  []
 
 
-Overfull \hbox (6.08894pt too wide) in paragraph at lines 4413--4414
-[]\TU/lmr/m/n/10 [0.00]|  
- []
-
-
-Overfull \hbox (8.98232pt too wide) in paragraph at lines 4415--4416
+Overfull \hbox (2.25876pt too wide) in paragraph at lines 4433--4434
 []\TU/lmr/m/n/10 0.122|  
  []
 
 
-Overfull \hbox (12.43042pt too wide) in paragraph at lines 4419--4420
+Overfull \hbox (7.38712pt too wide) in paragraph at lines 4437--4438
 []\TU/lmr/m/n/10 0.073|  
  []
 
 
-Overfull \hbox (12.43042pt too wide) in paragraph at lines 4423--4424
+Overfull \hbox (7.38712pt too wide) in paragraph at lines 4441--4442
 []\TU/lmr/m/n/10 37.54|  
  []
 
 
-Overfull \hbox (6.08894pt too wide) in paragraph at lines 4425--4426
-[]\TU/lmr/m/n/10 [0.00]|  
- []
-
-
-Overfull \hbox (15.87852pt too wide) in paragraph at lines 4427--4428
+Overfull \hbox (12.51547pt too wide) in paragraph at lines 4445--4446
 []\TU/lmr/m/n/10 0.048|  
  []
 
 
-Overfull \hbox (12.43042pt too wide) in paragraph at lines 4431--4432
+Overfull \hbox (7.38712pt too wide) in paragraph at lines 4449--4450
 []\TU/lmr/m/n/10 0.023|  
  []
 
 
-Overfull \hbox (7.43042pt too wide) in paragraph at lines 4435--4436
+Overfull \hbox (2.38712pt too wide) in paragraph at lines 4453--4454
 []\TU/lmr/m/n/10 8.09|  
  []
 
 
-Overfull \hbox (6.08894pt too wide) in paragraph at lines 4437--4438
-[]\TU/lmr/m/n/10 [0.61]|  
- []
-
-
-Overfull \hbox (74.54903pt too wide) in alignment at lines 4009--4440
+Overfull \hbox (5.62pt too wide) in alignment at lines 4027--4458
  [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[120]
-Overfull \hbox (27.75pt too wide) in paragraph at lines 4457--4457
-[]\TU/lmtt/m/n/10 ## sigma^2 estimated as 1.774:  log likelihood = -254.32,  ai
-c = 516.64[] 
- []
-
-[121] [122]
-Overfull \vbox (11.6314pt too high) has occurred while \output is active []
-
-[123]
+[91] [92] [93]
 Missing character: There is no 𝛥 in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no 𝛽 in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no 𝛽 in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no 𝛽 in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no 𝛽 in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no 𝛥 in font [lmroman10-italic]:mapping=tex-text;!
-[124]
+[94]
 Missing character: There is no 𝛿 in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no 𝜙 in font [lmroman10-regular]:mapping=tex-text;!
-[125]
-Underfull \hbox (badness 3396) in paragraph at lines 4704--4706
-[][]\TU/lmr/bx/n/10 Exercício 5.21. []\TU/lmr/m/n/10 Responda V ou F, justifica
-ndo sua resposta: Um
- []
-
-[126] [127] [128]
-Chapter 6.
-[129
+[95] [96] [97] [98
 
 ]
-Overfull \hbox (4.39516pt too wide) detected at line 4853
-[][][][][] [][] [] [][][][][] [][][][] [] [][] [] [][][][][][][] [][][] [] [][]
-[][][] [][] [] [][][][][][][] [][][]
- []
+Chapter 6.
+[99] [100]
 
-[130] [131]
-
-LaTeX Warning: Reference `eqERROM' on page 132 undefined on input line 4888.
+LaTeX Warning: Reference `eqERROM' on page 101 undefined on input line 4906.
 
 
-LaTeX Warning: Reference `neghs' on page 132 undefined on input line 4893.
+LaTeX Warning: Reference `neghs' on page 101 undefined on input line 4911.
 
 
-LaTeX Warning: Reference `eqERROM' on page 132 undefined on input line 4893.
+LaTeX Warning: Reference `eqERROM' on page 101 undefined on input line 4911.
 
 
-Overfull \hbox (25.00923pt too wide) detected at line 4897
-[]
- []
+LaTeX Warning: Reference `eqERROM' on page 101 undefined on input line 4916.
 
+[101]
 
-LaTeX Warning: Reference `eqERROM' on page 132 undefined on input line 4898.
+LaTeX Warning: Reference `eqConBI_1' on page 102 undefined on input line 4940.
 
-[132]
+[102]
 
-LaTeX Warning: Reference `eqConBI_1' on page 133 undefined on input line 4922.
+LaTeX Warning: Reference `(' on page 103 undefined on input line 5031.
 
-[133]
-Overfull \hbox (18.58pt too wide) in paragraph at lines 4968--4972
- [][][]$\TU/lmr/m/n/10 =$[]$ 
- []
+[103]
 
-[134]
+LaTeX Warning: Reference `eq:abs2' on page 104 undefined on input line 5098.
 
-LaTeX Warning: Reference `(' on page 135 undefined on input line 5013.
+[104]
 
-
-Overfull \hbox (20.06342pt too wide) has occurred while \output is active
-\TU/lmr/m/sl/10 6.3.  INFERÊNCIA COM O ESTIMADOR POR VARIÁVEL INSTRUMENTAL \TU/
-lmr/m/n/10 135
- []
-
-[135] [136]
-
-LaTeX Warning: Reference `eq:abs2' on page 137 undefined on input line 5080.
-
-
-Underfull \vbox (badness 1237) has occurred while \output is active []
-
-
-Overfull \hbox (20.06342pt too wide) has occurred while \output is active
-\TU/lmr/m/sl/10 6.3.  INFERÊNCIA COM O ESTIMADOR POR VARIÁVEL INSTRUMENTAL \TU/
-lmr/m/n/10 137
- []
-
-[137]
-
-LaTeX Warning: Reference `eq:formared' on page 138 undefined on input line 5115
+LaTeX Warning: Reference `eq:formared' on page 105 undefined on input line 5133
 .
 
 
-LaTeX Warning: Reference `eq:formared' on page 138 undefined on input line 5126
+LaTeX Warning: Reference `eq:formared' on page 105 undefined on input line 5144
 .
 
-[138]
-Overfull \hbox (42.11342pt too wide) has occurred while \output is active
-\TU/lmr/m/sl/10 6.4.  VARIÁVEIS INSTRUMENTAIS EM MODELOS DE REGRESSÃO MÚLTIPLA 
-\TU/lmr/m/n/10 139
- []
-
-[139] [140] [141] [142] [143]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[144] (./Econometria-e-series-temporais-com-o-R.bbl [145] [146
-
-])
+[105] [106] [107] [108] [109] (./Econometria-e-series-temporais-com-o-R.bbl [11
+0])
 
 Package natbib Warning: There were undefined citations.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 5400.
-[147]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 5400.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 5418.
+[111
+
+]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 5418.
 (./Econometria-e-series-temporais-com-o-R.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 5400.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 5400.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 5418.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 5418.
 
 Package rerunfilecheck Info: File `Econometria-e-series-temporais-com-o-R.out' 
 has not changed.
-(rerunfilecheck)             Checksum: 2763BE25594576CA55AB3048BC89D7AD;9402.
+(rerunfilecheck)             Checksum: 390D163F6F0D936B6C2417AF813EADF9;9544.
 
 LaTeX Warning: There were undefined references.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 5400.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 5418.
  ) 
 Here is how much of TeX's memory you used:
- 18591 strings out of 481269
- 344786 string characters out of 5922262
- 797564 words of memory out of 5000000
- 35768 multiletter control sequences out of 15000+600000
+ 19079 strings out of 481269
+ 352800 string characters out of 5922262
+ 810493 words of memory out of 5000000
+ 36245 multiletter control sequences out of 15000+600000
  538877 words of font info for 88 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 53i,15n,118p,1843b,507s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 53i,15n,118p,1843b,533s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Econometria-e-series-temporais-com-o-R.pdf (147 pages).
+Output written on Econometria-e-series-temporais-com-o-R.pdf (111 pages).
