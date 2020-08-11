@@ -7,8 +7,7 @@ Esse capítulo é uma breve revisão sobre conceitos estatísticos que são fund
 
 ## Aleatoriedade, a essência da estatística 
 
-Para iniciar qualquer curso em que são utilizadas técnicas estatísticas, é necessário
-esclarecer/fundamentar bem o conceito de aleatoriedade. 
+Para iniciar qualquer curso em que são utilizadas técnicas estatísticas, é necessário esclarecer/fundamentar bem o conceito de aleatoriedade. 
 
 > *Na história antiga, os conceitos de chance e de aleatoriedade eram interligados ao conceito que era atribuído a destino. Várias pessoas da antiguidade jogavam dados para   determinarem o destino, e posteriormente isso se desenvolveu em jogos de azar. A maioria das culturas usaram vários métodos de adivinhações para tentarem contornar a aleatoriedade e o destino, ou mesmo a dita sorte. A palavra aleatoriedade é utilizada para exprimir quebra de ordem, propósito, causa, ou imprevisibilidade em uma terminologia não científica. Um processo aleatório é o processo repetitivo cujo resultado não descreve um padrão determinístico, mas segue uma distribuição de probabilidade [Wikipédia](https://pt.wikipedia.org/wiki/Aleatoriedade).*
 
@@ -26,9 +25,7 @@ As técnicas estatísticas surgem para encontrar algum *padrão de variação*. 
 
 ## Variável aleatória
 
-Denomina-se **variável** uma propriedade (característica) qualquer das unidades da população para a qual foi definida uma unidade de medida, que pode ser quantitativa ou qualitativa. Observe que essa característica é comum a todos os indivíduos e portanto é uma característica da população. Em geral, queremos fazer afirmações sobre características e temos apenas informações de alguns indivíduos (amostra). Assim, toda afirmação feita a partir de uma amostra é passível de erros, ou seja, é uma
-aproximação. Além disso, em alguns casos não é possível "medir" toda a população e devemos pensar nessa característica como uma quantidade aleatória. Para isso, é necessário introduzirmos o
-conceito de _**variável aleatória**_.
+Denomina-se **variável** uma propriedade (característica) qualquer das unidades da população para a qual foi definida uma unidade de medida, que pode ser quantitativa ou qualitativa. Observe que essa característica é comum a todos os indivíduos e portanto é uma característica da população. Em geral, queremos fazer afirmações sobre características e temos apenas informações de alguns indivíduos (amostra). Assim, toda afirmação feita a partir de uma amostra é passível de erros, ou seja, é uma aproximação. Além disso, em alguns casos não é possível "medir" toda a população e devemos pensar nessa característica como uma quantidade aleatória. Para isso, é necessário introduzirmos o conceito de **variável aleatória**.
 
 \BeginKnitrBlock{definition}\iffalse{-91-69-115-112-97-231-111-32-65-109-111-115-116-114-97-108-93-}\fi{}<div class="definition"><span class="definition" id="def:EspacoAmostral"><strong>(\#def:EspacoAmostral)  \iffalse (Espaço Amostral) \fi{} </strong></span>Espaço amostral de um *experimento aleatório* (fenômeno que, mesmo repetidos várias vezes sob condições semelhantes, apresentam resultados imprevisíveis) é **qualquer** conjunto contendo todos os possíveis resultados do experimento. Aqui, sempre que não houver perigo de confusão, o espaço amostral de um experimento em questão será denotado por $\Omega$.</div>\EndKnitrBlock{definition}
 

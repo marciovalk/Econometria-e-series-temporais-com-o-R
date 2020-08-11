@@ -13,11 +13,15 @@ colorize <- function(x, color) {
 ```
 
 
+
 O estudo de séries temporais tem por objetivos principais definir o processo gerador de dados, fazer previsões futuras da série, identificar ciclos, tendências e/ou sazonalidades de forma que a decisão que envolve as variáveis em questão seja a mais acurada possível.
 
 
 
-## Objetivos
+## Objetivos {#objetivos}
+
+
+ Na seção \@ref(objetivos)
 
 Dada uma série temporal $\{Z(t_1 ),\ldots, Z(t_N)\}$, observada nos instantes $t_1,\ldots,t_N$,
 podemos estar interessados em:

@@ -3,11 +3,15 @@
 
 
 
+
 O estudo de séries temporais tem por objetivos principais definir o processo gerador de dados, fazer previsões futuras da série, identificar ciclos, tendências e/ou sazonalidades de forma que a decisão que envolve as variáveis em questão seja a mais acurada possível.
 
 
 
-## Objetivos
+## Objetivos {#objetivos}
+
+
+ Na seção \@ref(objetivos)
 
 Dada uma série temporal $\{Z(t_1 ),\ldots, Z(t_N)\}$, observada nos instantes $t_1,\ldots,t_N$,
 podemos estar interessados em:
@@ -130,7 +134,7 @@ Nesta seção definiremos o fundamental conceito da estacionariedade de uma sér
 
 
 <div class="figure">
-<img src="03-SeriesTemp_files/figure-epub3/stac-1.png" alt=" Séries estacionárias: (a) Ruído branco, (b) ARMA(1,2)." width="48%" /><img src="03-SeriesTemp_files/figure-epub3/stac-2.png" alt=" Séries estacionárias: (a) Ruído branco, (b) ARMA(1,2)." width="48%" />
+<img src="03-SeriesTemp_files/figure-html/stac-1.png" alt=" Séries estacionárias: (a) Ruído branco, (b) ARMA(1,2)." width="48%" /><img src="03-SeriesTemp_files/figure-html/stac-2.png" alt=" Séries estacionárias: (a) Ruído branco, (b) ARMA(1,2)." width="48%" />
 <p class="caption">(\#fig:stac) Séries estacionárias: (a) Ruído branco, (b) ARMA(1,2).</p>
 </div>
 
@@ -151,7 +155,7 @@ Entretanto, a maior parte das séries que encontramos na prática apresenta algu
 Mais detalhes serão apresentados adiante. A maior parte das séries que encontramos na prática apresenta alguma forma de não-estacionariedade. As séries econômicas apresentam em geral tendências lineares e muito comumente, tendência estocástica. Podemos ter, também, uma forma de não-estacionariedade explosiva, como o crescimento de uma colônia de bactérias.
 
 <div class="figure">
-<img src="03-SeriesTemp_files/figure-epub3/nsstac-1.png" alt=" Séries não-estacionárias apresentando: (a) Tendência linear, (b) quebra estrutural representada pela mudança de nível da série, (c) tendência estocástica e (d) sazonalidade." width="48%" /><img src="03-SeriesTemp_files/figure-epub3/nsstac-2.png" alt=" Séries não-estacionárias apresentando: (a) Tendência linear, (b) quebra estrutural representada pela mudança de nível da série, (c) tendência estocástica e (d) sazonalidade." width="48%" /><img src="03-SeriesTemp_files/figure-epub3/nsstac-3.png" alt=" Séries não-estacionárias apresentando: (a) Tendência linear, (b) quebra estrutural representada pela mudança de nível da série, (c) tendência estocástica e (d) sazonalidade." width="48%" /><img src="03-SeriesTemp_files/figure-epub3/nsstac-4.png" alt=" Séries não-estacionárias apresentando: (a) Tendência linear, (b) quebra estrutural representada pela mudança de nível da série, (c) tendência estocástica e (d) sazonalidade." width="48%" />
+<img src="03-SeriesTemp_files/figure-html/nsstac-1.png" alt=" Séries não-estacionárias apresentando: (a) Tendência linear, (b) quebra estrutural representada pela mudança de nível da série, (c) tendência estocástica e (d) sazonalidade." width="48%" /><img src="03-SeriesTemp_files/figure-html/nsstac-2.png" alt=" Séries não-estacionárias apresentando: (a) Tendência linear, (b) quebra estrutural representada pela mudança de nível da série, (c) tendência estocástica e (d) sazonalidade." width="48%" /><img src="03-SeriesTemp_files/figure-html/nsstac-3.png" alt=" Séries não-estacionárias apresentando: (a) Tendência linear, (b) quebra estrutural representada pela mudança de nível da série, (c) tendência estocástica e (d) sazonalidade." width="48%" /><img src="03-SeriesTemp_files/figure-html/nsstac-4.png" alt=" Séries não-estacionárias apresentando: (a) Tendência linear, (b) quebra estrutural representada pela mudança de nível da série, (c) tendência estocástica e (d) sazonalidade." width="48%" />
 <p class="caption">(\#fig:nsstac) Séries não-estacionárias apresentando: (a) Tendência linear, (b) quebra estrutural representada pela mudança de nível da série, (c) tendência estocástica e (d) sazonalidade.</p>
 </div>
 
@@ -470,7 +474,7 @@ pacf(eps,lwd=2,cex.lab=1.4, xlab=" lag ", main=" ", cex.main=1.7,col="cadetblue4
 ```
 
 <div class="figure">
-<img src="03-SeriesTemp_files/figure-epub3/rbsim-1.png" alt=" Ruído branco gaussiano simulado,FAC amostral e FACP  amostral" width="33%" /><img src="03-SeriesTemp_files/figure-epub3/rbsim-2.png" alt=" Ruído branco gaussiano simulado,FAC amostral e FACP  amostral" width="33%" /><img src="03-SeriesTemp_files/figure-epub3/rbsim-3.png" alt=" Ruído branco gaussiano simulado,FAC amostral e FACP  amostral" width="33%" />
+<img src="03-SeriesTemp_files/figure-html/rbsim-1.png" alt=" Ruído branco gaussiano simulado,FAC amostral e FACP  amostral" width="33%" /><img src="03-SeriesTemp_files/figure-html/rbsim-2.png" alt=" Ruído branco gaussiano simulado,FAC amostral e FACP  amostral" width="33%" /><img src="03-SeriesTemp_files/figure-html/rbsim-3.png" alt=" Ruído branco gaussiano simulado,FAC amostral e FACP  amostral" width="33%" />
 <p class="caption">(\#fig:rbsim) Ruído branco gaussiano simulado,FAC amostral e FACP  amostral</p>
 </div>
 
@@ -712,7 +716,7 @@ acf(rw,type = "partial" ,lag.max = 50,cex.main=1.7,col="cadetblue4",ylab="FACP",
 ```
 
 <div class="figure">
-<img src="03-SeriesTemp_files/figure-epub3/rw-1.png" alt=" Passeio aleatório simulado (a), FACV amostral (b) e FAC amostral (c)." width="30%" /><img src="03-SeriesTemp_files/figure-epub3/rw-2.png" alt=" Passeio aleatório simulado (a), FACV amostral (b) e FAC amostral (c)." width="30%" /><img src="03-SeriesTemp_files/figure-epub3/rw-3.png" alt=" Passeio aleatório simulado (a), FACV amostral (b) e FAC amostral (c)." width="30%" />
+<img src="03-SeriesTemp_files/figure-html/rw-1.png" alt=" Passeio aleatório simulado (a), FACV amostral (b) e FAC amostral (c)." width="30%" /><img src="03-SeriesTemp_files/figure-html/rw-2.png" alt=" Passeio aleatório simulado (a), FACV amostral (b) e FAC amostral (c)." width="30%" /><img src="03-SeriesTemp_files/figure-html/rw-3.png" alt=" Passeio aleatório simulado (a), FACV amostral (b) e FAC amostral (c)." width="30%" />
 <p class="caption">(\#fig:rw) Passeio aleatório simulado (a), FACV amostral (b) e FAC amostral (c).</p>
 </div>
 
@@ -768,7 +772,7 @@ acf(ar1,type = "partial" ,lag.max = 50,cex.main=1.7,col="cadetblue4",ylab="FACP"
 ```
 
 <div class="figure">
-<img src="03-SeriesTemp_files/figure-epub3/ar105-1.png" alt="AR(1) simulado com coeficiente $\phi_1=0.5$ (a), FACV amostral (b) e FAC amostral (c)." width="33%" /><img src="03-SeriesTemp_files/figure-epub3/ar105-2.png" alt="AR(1) simulado com coeficiente $\phi_1=0.5$ (a), FACV amostral (b) e FAC amostral (c)." width="33%" /><img src="03-SeriesTemp_files/figure-epub3/ar105-3.png" alt="AR(1) simulado com coeficiente $\phi_1=0.5$ (a), FACV amostral (b) e FAC amostral (c)." width="33%" />
+<img src="03-SeriesTemp_files/figure-html/ar105-1.png" alt="AR(1) simulado com coeficiente $\phi_1=0.5$ (a), FACV amostral (b) e FAC amostral (c)." width="33%" /><img src="03-SeriesTemp_files/figure-html/ar105-2.png" alt="AR(1) simulado com coeficiente $\phi_1=0.5$ (a), FACV amostral (b) e FAC amostral (c)." width="33%" /><img src="03-SeriesTemp_files/figure-html/ar105-3.png" alt="AR(1) simulado com coeficiente $\phi_1=0.5$ (a), FACV amostral (b) e FAC amostral (c)." width="33%" />
 <p class="caption">(\#fig:ar105)AR(1) simulado com coeficiente $\phi_1=0.5$ (a), FACV amostral (b) e FAC amostral (c).</p>
 </div>
 
@@ -785,7 +789,7 @@ acf(ar1m,type = "partial" ,lag.max = 50,cex.main=1.7,col="cadetblue4",ylab="FACP
 ```
 
 <div class="figure">
-<img src="03-SeriesTemp_files/figure-epub3/arm105-1.png" alt="AR(1) simulado com coeficiente $\phi_1=-0.5$ (a), FACV amostral (b) e FAC amostral (c)." width="33%" /><img src="03-SeriesTemp_files/figure-epub3/arm105-2.png" alt="AR(1) simulado com coeficiente $\phi_1=-0.5$ (a), FACV amostral (b) e FAC amostral (c)." width="33%" /><img src="03-SeriesTemp_files/figure-epub3/arm105-3.png" alt="AR(1) simulado com coeficiente $\phi_1=-0.5$ (a), FACV amostral (b) e FAC amostral (c)." width="33%" />
+<img src="03-SeriesTemp_files/figure-html/arm105-1.png" alt="AR(1) simulado com coeficiente $\phi_1=-0.5$ (a), FACV amostral (b) e FAC amostral (c)." width="33%" /><img src="03-SeriesTemp_files/figure-html/arm105-2.png" alt="AR(1) simulado com coeficiente $\phi_1=-0.5$ (a), FACV amostral (b) e FAC amostral (c)." width="33%" /><img src="03-SeriesTemp_files/figure-html/arm105-3.png" alt="AR(1) simulado com coeficiente $\phi_1=-0.5$ (a), FACV amostral (b) e FAC amostral (c)." width="33%" />
 <p class="caption">(\#fig:arm105)AR(1) simulado com coeficiente $\phi_1=-0.5$ (a), FACV amostral (b) e FAC amostral (c).</p>
 </div>
 
@@ -803,7 +807,7 @@ acf(ar108,type = "partial" ,lag.max = 50,cex.main=1.7,col="cadetblue4",ylab="FAC
 ```
 
 <div class="figure">
-<img src="03-SeriesTemp_files/figure-epub3/ar108-1.png" alt="AR(1) simulado com coeficiente $\phi_1=0.8$ (a), FACV amostral (b) e FAC amostral (c)." width="33%" /><img src="03-SeriesTemp_files/figure-epub3/ar108-2.png" alt="AR(1) simulado com coeficiente $\phi_1=0.8$ (a), FACV amostral (b) e FAC amostral (c)." width="33%" /><img src="03-SeriesTemp_files/figure-epub3/ar108-3.png" alt="AR(1) simulado com coeficiente $\phi_1=0.8$ (a), FACV amostral (b) e FAC amostral (c)." width="33%" />
+<img src="03-SeriesTemp_files/figure-html/ar108-1.png" alt="AR(1) simulado com coeficiente $\phi_1=0.8$ (a), FACV amostral (b) e FAC amostral (c)." width="33%" /><img src="03-SeriesTemp_files/figure-html/ar108-2.png" alt="AR(1) simulado com coeficiente $\phi_1=0.8$ (a), FACV amostral (b) e FAC amostral (c)." width="33%" /><img src="03-SeriesTemp_files/figure-html/ar108-3.png" alt="AR(1) simulado com coeficiente $\phi_1=0.8$ (a), FACV amostral (b) e FAC amostral (c)." width="33%" />
 <p class="caption">(\#fig:ar108)AR(1) simulado com coeficiente $\phi_1=0.8$ (a), FACV amostral (b) e FAC amostral (c).</p>
 </div>
 
@@ -820,7 +824,7 @@ acf(ar2,type = "partial" ,lag.max = 50,cex.main=1.7,col="cadetblue4",ylab="FACP"
 ```
 
 <div class="figure">
-<img src="03-SeriesTemp_files/figure-epub3/ar2-1.png" alt="AR(2) simulado com coeficiente $\phi_1=0.5$ e $\phi_1=-0.7$  (a), FACV amostral (b) e FAC amostral (c)." width="33%" /><img src="03-SeriesTemp_files/figure-epub3/ar2-2.png" alt="AR(2) simulado com coeficiente $\phi_1=0.5$ e $\phi_1=-0.7$  (a), FACV amostral (b) e FAC amostral (c)." width="33%" /><img src="03-SeriesTemp_files/figure-epub3/ar2-3.png" alt="AR(2) simulado com coeficiente $\phi_1=0.5$ e $\phi_1=-0.7$  (a), FACV amostral (b) e FAC amostral (c)." width="33%" />
+<img src="03-SeriesTemp_files/figure-html/ar2-1.png" alt="AR(2) simulado com coeficiente $\phi_1=0.5$ e $\phi_1=-0.7$  (a), FACV amostral (b) e FAC amostral (c)." width="33%" /><img src="03-SeriesTemp_files/figure-html/ar2-2.png" alt="AR(2) simulado com coeficiente $\phi_1=0.5$ e $\phi_1=-0.7$  (a), FACV amostral (b) e FAC amostral (c)." width="33%" /><img src="03-SeriesTemp_files/figure-html/ar2-3.png" alt="AR(2) simulado com coeficiente $\phi_1=0.5$ e $\phi_1=-0.7$  (a), FACV amostral (b) e FAC amostral (c)." width="33%" />
 <p class="caption">(\#fig:ar2)AR(2) simulado com coeficiente $\phi_1=0.5$ e $\phi_1=-0.7$  (a), FACV amostral (b) e FAC amostral (c).</p>
 </div>
 
@@ -836,7 +840,7 @@ acf(ar3,type = "partial" ,lag.max = 50,cex.main=1.7,col="cadetblue4",ylab="FACP"
 ```
 
 <div class="figure">
-<img src="03-SeriesTemp_files/figure-epub3/ar3-1.png" alt="AR(3) simulado com coeficiente $\phi_1=0.5$, $\phi_2=-0.7$ e $\phi_3=0.6$   (a), FACV amostral (b) e FAC amostral (c)." width="33%" /><img src="03-SeriesTemp_files/figure-epub3/ar3-2.png" alt="AR(3) simulado com coeficiente $\phi_1=0.5$, $\phi_2=-0.7$ e $\phi_3=0.6$   (a), FACV amostral (b) e FAC amostral (c)." width="33%" /><img src="03-SeriesTemp_files/figure-epub3/ar3-3.png" alt="AR(3) simulado com coeficiente $\phi_1=0.5$, $\phi_2=-0.7$ e $\phi_3=0.6$   (a), FACV amostral (b) e FAC amostral (c)." width="33%" />
+<img src="03-SeriesTemp_files/figure-html/ar3-1.png" alt="AR(3) simulado com coeficiente $\phi_1=0.5$, $\phi_2=-0.7$ e $\phi_3=0.6$   (a), FACV amostral (b) e FAC amostral (c)." width="33%" /><img src="03-SeriesTemp_files/figure-html/ar3-2.png" alt="AR(3) simulado com coeficiente $\phi_1=0.5$, $\phi_2=-0.7$ e $\phi_3=0.6$   (a), FACV amostral (b) e FAC amostral (c)." width="33%" /><img src="03-SeriesTemp_files/figure-html/ar3-3.png" alt="AR(3) simulado com coeficiente $\phi_1=0.5$, $\phi_2=-0.7$ e $\phi_3=0.6$   (a), FACV amostral (b) e FAC amostral (c)." width="33%" />
 <p class="caption">(\#fig:ar3)AR(3) simulado com coeficiente $\phi_1=0.5$, $\phi_2=-0.7$ e $\phi_3=0.6$   (a), FACV amostral (b) e FAC amostral (c).</p>
 </div>
 
@@ -1031,7 +1035,7 @@ acf(ma1_1,type = "partial" ,lag.max = 50,cex.main=1.7,col="cadetblue4",ylab="FAC
 ```
 
 <div class="figure">
-<img src="03-SeriesTemp_files/figure-epub3/ma11-1.png" alt="MA(1) simulado com coeficiente $\theta_1=1$, (a) FACV amostral (b) e FAC amostral (c)." width="33%" /><img src="03-SeriesTemp_files/figure-epub3/ma11-2.png" alt="MA(1) simulado com coeficiente $\theta_1=1$, (a) FACV amostral (b) e FAC amostral (c)." width="33%" /><img src="03-SeriesTemp_files/figure-epub3/ma11-3.png" alt="MA(1) simulado com coeficiente $\theta_1=1$, (a) FACV amostral (b) e FAC amostral (c)." width="33%" />
+<img src="03-SeriesTemp_files/figure-html/ma11-1.png" alt="MA(1) simulado com coeficiente $\theta_1=1$, (a) FACV amostral (b) e FAC amostral (c)." width="33%" /><img src="03-SeriesTemp_files/figure-html/ma11-2.png" alt="MA(1) simulado com coeficiente $\theta_1=1$, (a) FACV amostral (b) e FAC amostral (c)." width="33%" /><img src="03-SeriesTemp_files/figure-html/ma11-3.png" alt="MA(1) simulado com coeficiente $\theta_1=1$, (a) FACV amostral (b) e FAC amostral (c)." width="33%" />
 <p class="caption">(\#fig:ma11)MA(1) simulado com coeficiente $\theta_1=1$, (a) FACV amostral (b) e FAC amostral (c).</p>
 </div>
 
@@ -1048,7 +1052,7 @@ acf(ma1_m08,type = "partial" ,lag.max = 50,cex.main=1.7,col="cadetblue4",ylab="F
 ```
 
 <div class="figure">
-<img src="03-SeriesTemp_files/figure-epub3/ma1m08-1.png" alt="MA(1) simulado com coeficiente $\theta_1=-0.8$, (a) FACV amostral (b) e FAC amostral (c)." width="33%" /><img src="03-SeriesTemp_files/figure-epub3/ma1m08-2.png" alt="MA(1) simulado com coeficiente $\theta_1=-0.8$, (a) FACV amostral (b) e FAC amostral (c)." width="33%" /><img src="03-SeriesTemp_files/figure-epub3/ma1m08-3.png" alt="MA(1) simulado com coeficiente $\theta_1=-0.8$, (a) FACV amostral (b) e FAC amostral (c)." width="33%" />
+<img src="03-SeriesTemp_files/figure-html/ma1m08-1.png" alt="MA(1) simulado com coeficiente $\theta_1=-0.8$, (a) FACV amostral (b) e FAC amostral (c)." width="33%" /><img src="03-SeriesTemp_files/figure-html/ma1m08-2.png" alt="MA(1) simulado com coeficiente $\theta_1=-0.8$, (a) FACV amostral (b) e FAC amostral (c)." width="33%" /><img src="03-SeriesTemp_files/figure-html/ma1m08-3.png" alt="MA(1) simulado com coeficiente $\theta_1=-0.8$, (a) FACV amostral (b) e FAC amostral (c)." width="33%" />
 <p class="caption">(\#fig:ma1m08)MA(1) simulado com coeficiente $\theta_1=-0.8$, (a) FACV amostral (b) e FAC amostral (c).</p>
 </div>
 
@@ -1065,7 +1069,7 @@ acf(ma1_m0804,type = "partial" ,lag.max = 50,cex.main=1.7,col="cadetblue4",ylab=
 ```
 
 <div class="figure">
-<img src="03-SeriesTemp_files/figure-epub3/ma1m0804-1.png" alt="MA(2) simulado com coeficiente $\theta_1=-0.8$ e $\theta_1=0.4$, (a) FACV amostral (b) e FAC amostral (c)." width="33%" /><img src="03-SeriesTemp_files/figure-epub3/ma1m0804-2.png" alt="MA(2) simulado com coeficiente $\theta_1=-0.8$ e $\theta_1=0.4$, (a) FACV amostral (b) e FAC amostral (c)." width="33%" /><img src="03-SeriesTemp_files/figure-epub3/ma1m0804-3.png" alt="MA(2) simulado com coeficiente $\theta_1=-0.8$ e $\theta_1=0.4$, (a) FACV amostral (b) e FAC amostral (c)." width="33%" />
+<img src="03-SeriesTemp_files/figure-html/ma1m0804-1.png" alt="MA(2) simulado com coeficiente $\theta_1=-0.8$ e $\theta_1=0.4$, (a) FACV amostral (b) e FAC amostral (c)." width="33%" /><img src="03-SeriesTemp_files/figure-html/ma1m0804-2.png" alt="MA(2) simulado com coeficiente $\theta_1=-0.8$ e $\theta_1=0.4$, (a) FACV amostral (b) e FAC amostral (c)." width="33%" /><img src="03-SeriesTemp_files/figure-html/ma1m0804-3.png" alt="MA(2) simulado com coeficiente $\theta_1=-0.8$ e $\theta_1=0.4$, (a) FACV amostral (b) e FAC amostral (c)." width="33%" />
 <p class="caption">(\#fig:ma1m0804)MA(2) simulado com coeficiente $\theta_1=-0.8$ e $\theta_1=0.4$, (a) FACV amostral (b) e FAC amostral (c).</p>
 </div>
 
@@ -1082,7 +1086,7 @@ acf(ma1_m080414,type = "partial" ,lag.max = 50,cex.main=1.7,col="cadetblue4",yla
 ```
 
 <div class="figure">
-<img src="03-SeriesTemp_files/figure-epub3/ma1m080414-1.png" alt="MA(2) simulado com coeficiente $\theta_1=-0.8$, $\theta_1=0.4$ e $\theta_1=1.4$, (a) FACV amostral (b) e FAC amostral (c)." width="33%" /><img src="03-SeriesTemp_files/figure-epub3/ma1m080414-2.png" alt="MA(2) simulado com coeficiente $\theta_1=-0.8$, $\theta_1=0.4$ e $\theta_1=1.4$, (a) FACV amostral (b) e FAC amostral (c)." width="33%" /><img src="03-SeriesTemp_files/figure-epub3/ma1m080414-3.png" alt="MA(2) simulado com coeficiente $\theta_1=-0.8$, $\theta_1=0.4$ e $\theta_1=1.4$, (a) FACV amostral (b) e FAC amostral (c)." width="33%" />
+<img src="03-SeriesTemp_files/figure-html/ma1m080414-1.png" alt="MA(2) simulado com coeficiente $\theta_1=-0.8$, $\theta_1=0.4$ e $\theta_1=1.4$, (a) FACV amostral (b) e FAC amostral (c)." width="33%" /><img src="03-SeriesTemp_files/figure-html/ma1m080414-2.png" alt="MA(2) simulado com coeficiente $\theta_1=-0.8$, $\theta_1=0.4$ e $\theta_1=1.4$, (a) FACV amostral (b) e FAC amostral (c)." width="33%" /><img src="03-SeriesTemp_files/figure-html/ma1m080414-3.png" alt="MA(2) simulado com coeficiente $\theta_1=-0.8$, $\theta_1=0.4$ e $\theta_1=1.4$, (a) FACV amostral (b) e FAC amostral (c)." width="33%" />
 <p class="caption">(\#fig:ma1m080414)MA(2) simulado com coeficiente $\theta_1=-0.8$, $\theta_1=0.4$ e $\theta_1=1.4$, (a) FACV amostral (b) e FAC amostral (c).</p>
 </div>
 
@@ -1545,7 +1549,7 @@ Calcule a correlação entre $Y_t$ e $Y_{t-2}$. Multiplique o resultado por 100.
 \BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:s200"><strong>(\#exr:s200) </strong></span>Considere uma série temporal com 200 observações. A Figura \@ref(fig:exarma) mostra a evolução da série ao longo do tempo. A tabela a seguir fornece as autocorrelações, $\rho$´s, e autocorrelações parciais, $\phi$s, estimados a partir dessa série.</div>\EndKnitrBlock{exercise}
 
 <div class="figure">
-<img src="03-SeriesTemp_files/figure-epub3/exarma-1.png" alt="Série temporal simulada" width="95%" />
+<img src="03-SeriesTemp_files/figure-html/exarma-1.png" alt="Série temporal simulada" width="95%" />
 <p class="caption">(\#fig:exarma)Série temporal simulada</p>
 </div>
 
@@ -1594,7 +1598,7 @@ $\{y_t\}^{200}_{t=1}$.</div>\EndKnitrBlock{exercise}
 <br>
 
 <div class="figure">
-<img src="03-SeriesTemp_files/figure-epub3/exarmapf-1.png" alt="FAC e FACP de uma série temporal simulada" width="45%" /><img src="03-SeriesTemp_files/figure-epub3/exarmapf-2.png" alt="FAC e FACP de uma série temporal simulada" width="45%" />
+<img src="03-SeriesTemp_files/figure-html/exarmapf-1.png" alt="FAC e FACP de uma série temporal simulada" width="45%" /><img src="03-SeriesTemp_files/figure-html/exarmapf-2.png" alt="FAC e FACP de uma série temporal simulada" width="45%" />
 <p class="caption">(\#fig:exarmapf)FAC e FACP de uma série temporal simulada</p>
 </div>
 

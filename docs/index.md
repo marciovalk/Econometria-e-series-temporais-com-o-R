@@ -1,7 +1,7 @@
 --- 
 title: "Econometria e Séries Temporais com R"
 author: "Marcio Valk e Guilherme Pumi"
-date: "2020-07-13"
+date: "2020-08-11"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
