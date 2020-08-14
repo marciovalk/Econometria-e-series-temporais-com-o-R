@@ -391,8 +391,7 @@ Figura 5.3: Séries do número de pessoas desocupadas em Porto Alegre. (a) Séri
 <h3><span class="header-section-number">5.2.1</span> Identificando tendência estocástica</h3>
 <p>Uma série com uma tendência estocástica se diferencia de outra com uma tendência determinística, pois as mudanças na mesma deixam de ter um caráter transitório e passam a apresentar um caráter permanente <span class="citation">(Gujarati <a href="#ref-gujarati2003" role="doc-biblioref">2003</a>)</span> e [(Pereira, 1988)].</p>
 <blockquote>
-<p>A presença de uma tendência estocástica implica que flutuações em uma série temporal são o resultado de choques não somente no
-componente transitório ou cíclico, mas também no componente de tendência. [Balke (1991) e <span class="citation">(Gujarati <a href="#ref-gujarati2003" role="doc-biblioref">2003</a>)</span> ]</p>
+<p><em>A presença de uma tendência estocástica implica que flutuações em uma série temporal são o resultado de choques não somente no componente transitório ou cíclico, mas também no componente de tendência. [Balke (1991) e <span class="citation">(Gujarati <a href="#ref-gujarati2003" role="doc-biblioref">2003</a>)</span> ]</em></p>
 </blockquote>
 <p>Como vimos nas sessões anteriores, para um processo ARMA ser estacionário, o polinômio característico da parte AR não pode conter raízes de módulo igual a um, chamadas de raízes unitárias. Acontece que a presença de raízes unitárias no polinômio AR resulta na presença de tendência estocástica na série. A identificação de raízes unitárias é de grande importância na análise de séries temporais, e este fato se reflete na literatura relativamente longa tratando do assunto. Várias abordagens para a detecção de raízes unitárias estão a nosso dispor. Um dos testes mais utilizados na literatura é o teste de <span style="color: blue;"> Dickey Fuller</span> que veremos a seguir.</p>
 </div>
@@ -412,7 +411,6 @@ pode ser reescrito como</p>
 <p><span class="math display">\[Y_t = Y_0 + \sum_{i=1}^t \varepsilon_i + a_0t \]</span>
 com uma tendência determinística vindo de <span class="math inline">\(a_0t\)</span> e um intercepto estocástico vindo de <span class="math inline">\(Y_0 + \sum_{i=1}^t \varepsilon_i\)</span>, resultando no que chamamos de tendência estocástica. O teste de Dickey Fuller consiste em fazer um <strong>teste t</strong> (mas com distribuição de Dickey-Fuller) para a significância do seguinte modelo</p>
 <p><br></p>
-<hr />
 <blockquote>
 <p><span style="color: blue;"> Teste de Dickey Fuller</span>
 <span class="math display">\[\begin{equation*}
@@ -421,7 +419,6 @@ com uma tendência determinística vindo de <span class="math inline">\(a_0t\)</
 - <span class="math inline">\(H_0\)</span>: <span class="math inline">\(\delta=0\)</span> (Não estacionário)<br />
 - <span class="math inline">\(H_1\)</span>: <span class="math inline">\(\delta&lt;0\)</span> (Estacionário)</p>
 </blockquote>
-<hr />
 <p><br></p>
 <div class="figure"><span id="fig:shadcurve"></span>
 <img src="04-SeriesTempNaoEstac_files/figure-html/shadcurve-1.png" alt="Distribuição de Dickey Fuller" width="99%" />
@@ -629,7 +626,6 @@ de processos com raíz quase-unitária (<span class="math inline">\(\delta\)</sp
 <h3><span class="header-section-number">5.3.1</span> Diferenças sucessivas</h3>
 <p>O método de diferenciação sucessivas é utilizado para eliminar tendência estocástica. Para isso precisamos definir o operador diferença.</p>
 <p><br></p>
-<hr />
 <blockquote>
 <p><span style="color: blue;">Operador Diferença</span>
 <span class="math display">\[\begin{equation*}
@@ -637,7 +633,6 @@ de processos com raíz quase-unitária (<span class="math inline">\(\delta\)</sp
 \end{equation*}\]</span>
 em que <span class="math inline">\(L\)</span> é o operador de defasagem.</p>
 </blockquote>
-<hr />
 <p><br></p>
 <p>Na figura a seguir temos uma aplicação do operador diferença.</p>
 <p><br></p>

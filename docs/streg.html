@@ -329,11 +329,23 @@ definindo o que é uma série temporal e introduzimos algumas propriedades teór
 <h2><span class="header-section-number">3.1</span> Introdução</h2>
 <p>Uma série temporal é qualquer conjunto de observações ordenadas no tempo. Alguns
 exemplos são citados abaixo:</p>
-<div class="line-block">   a) Estimativas trimestrais do Produto Interno Bruto (PIB);</div>
-<div class="line-block">   b) Valores diários da temperatura em Campo Bom;</div>
-<div class="line-block">   c) Índices diários da bolsa de valores de São Paulo;</div>
-<div class="line-block">   d) Quantidade anual de chuva na cidade do Porto Alegre;</div>
-<div class="line-block">   e) Um registro de marés no porto de Santos.</div>
+<ul>
+<li><ol style="list-style-type: lower-alpha">
+<li>Estimativas trimestrais do Produto Interno Bruto (PIB);</li>
+</ol></li>
+<li><ol start="2" style="list-style-type: lower-alpha">
+<li>Valores diários da temperatura em Campo Bom;</li>
+</ol></li>
+<li><ol start="3" style="list-style-type: lower-alpha">
+<li>Índices diários da bolsa de valores de São Paulo;</li>
+</ol></li>
+<li><ol start="4" style="list-style-type: lower-alpha">
+<li>Quantidade anual de chuva na cidade do Porto Alegre;</li>
+</ol></li>
+<li><ol start="5" style="list-style-type: lower-alpha">
+<li>Um registro de marés no porto de Santos.</li>
+</ol></li>
+</ul>
 <p>Nos exemplos de a) a d) temos séries temporais discretas, enquanto que e) é um exemplo de série contínua. Podemos obter uma série temporal discreta a partir da amostragem de uma série temporal contínua considerando intervalos de tempos iguais, <span class="math inline">\(\Delta t\)</span>. Assim para analisar a série e) será necessário amostrá-la, convertendo-a e observando-a no intervalo de tempo <span class="math inline">\([0,T]\)</span>, supondo uma série discreta com <span class="math inline">\(N\)</span> pontos, em que <span class="math inline">\(N = \Delta t/T\)</span> (T horas). Existem dois enfoques utilizados na análise de séries temporais. Em ambos, o objetivo é construir modelos para estas séries. No primeiro enfoque, a análise é feita no domínio temporal e os modelos propostos são modelos paramétricos (com um número finito de parâmetros). No segundo, a análise é conduzida no domínio de frequências e os modelos propostos são modelos não-paramétricos. Dentre os modelos paramétricos temos, por exemplo, os modelos ARIMA, que serão estudados neste curso nos próximos capítulos. No domínio de frequências temos a análise espectral, que tem inúmeras aplicações em ciências físicas e engenharia, principalmente na engenharia elétrica, e que consiste em decompor a série dada em componentes de frequências e onde a existência do espectro é a característica fundamental. Este tipo de análise não será estudado nestas notas de aulas, para detalhes o aluno deve consultar <span class="citation">Watts and Jenkins (<a href="#ref-watts1968" role="doc-biblioref">1968</a>)</span>, <span class="citation">Koopmans (<a href="#ref-koopmans1974" role="doc-biblioref">1974</a>)</span>, <span class="citation">Morettin (<a href="#ref-morettin1978" role="doc-biblioref">1978</a>)</span> e <span class="citation">Marple (<a href="#ref-marple1980" role="doc-biblioref">1980</a>)</span>.</p>
 </div>
 <div id="exemplos-de-séries-temporais" class="section level2">
