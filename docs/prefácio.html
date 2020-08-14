@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Prefácio | Econometria e Séries Temporais com R</title>
+  <meta name="description" content="Este livro pode ser usado em um curso de graduação que proponha estudar econometria e séreis temporais em um nível introdutório. No entanto, também é abordado um pouco da teoria e tecnicalidade." />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Prefácio | Econometria e Séries Temporais com R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Este livro pode ser usado em um curso de graduação que proponha estudar econometria e séreis temporais em um nível introdutório. No entanto, também é abordado um pouco da teoria e tecnicalidade." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Prefácio | Econometria e Séries Temporais com R" />
+  
+  <meta name="twitter:description" content="Este livro pode ser usado em um curso de graduação que proponha estudar econometria e séreis temporais em um nível introdutório. No entanto, também é abordado um pouco da teoria e tecnicalidade." />
+  
+
+<meta name="author" content="Marcio Valk e Guilherme Pumi" />
+
+
+<meta name="date" content="2020-08-13" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="séries-temporais.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Econometria e Séries Temporais com R</a></li>
+
+<li class="divider"></li>
+<li><a href="index.html#section"></a></li>
+<li class="chapter" data-level="" data-path="prefácio.html"><a href="prefácio.html"><i class="fa fa-check"></i>Prefácio</a></li>
+<li class="chapter" data-level="1" data-path="séries-temporais.html"><a href="séries-temporais.html"><i class="fa fa-check"></i><b>1</b> Séries temporais</a><ul>
+<li class="chapter" data-level="1.1" data-path="séries-temporais.html"><a href="séries-temporais.html#intro"><i class="fa fa-check"></i><b>1.1</b> Breve introdução ao R</a></li>
+<li class="chapter" data-level="1.2" data-path="séries-temporais.html"><a href="séries-temporais.html#apresentação-da-linguagem-r"><i class="fa fa-check"></i><b>1.2</b> Apresentação da linguagem R</a></li>
+<li class="chapter" data-level="1.3" data-path="séries-temporais.html"><a href="séries-temporais.html#instalando-o-r"><i class="fa fa-check"></i><b>1.3</b> Instalando o R</a></li>
+<li class="chapter" data-level="1.4" data-path="séries-temporais.html"><a href="séries-temporais.html#instalando-o-rstudio"><i class="fa fa-check"></i><b>1.4</b> Instalando o RStudio</a></li>
+<li class="chapter" data-level="1.5" data-path="séries-temporais.html"><a href="séries-temporais.html#diretório-de-trabalho"><i class="fa fa-check"></i><b>1.5</b> Diretório de trabalho</a></li>
+<li class="chapter" data-level="1.6" data-path="séries-temporais.html"><a href="séries-temporais.html#rstudio-cloud"><i class="fa fa-check"></i><b>1.6</b> RStudio Cloud</a></li>
+<li class="chapter" data-level="1.7" data-path="séries-temporais.html"><a href="séries-temporais.html#instalação-de-pacotes"><i class="fa fa-check"></i><b>1.7</b> Instalação de pacotes</a><ul>
+<li class="chapter" data-level="1.7.1" data-path="séries-temporais.html"><a href="séries-temporais.html#carregando-pacotes"><i class="fa fa-check"></i><b>1.7.1</b> Carregando pacotes</a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="séries-temporais.html"><a href="séries-temporais.html#ajuda"><i class="fa fa-check"></i><b>1.8</b> Ajuda</a><ul>
+<li class="chapter" data-level="1.8.1" data-path="séries-temporais.html"><a href="séries-temporais.html#google"><i class="fa fa-check"></i><b>1.8.1</b> Google</a></li>
+<li class="chapter" data-level="1.8.2" data-path="séries-temporais.html"><a href="séries-temporais.html#stack-overflow"><i class="fa fa-check"></i><b>1.8.2</b> Stack Overflow</a></li>
+<li class="chapter" data-level="1.8.3" data-path="séries-temporais.html"><a href="séries-temporais.html#help-do-r"><i class="fa fa-check"></i><b>1.8.3</b> Help do <code>R</code></a></li>
+</ul></li>
+<li class="chapter" data-level="1.9" data-path="séries-temporais.html"><a href="séries-temporais.html#funcionalidades-básicas"><i class="fa fa-check"></i><b>1.9</b> Funcionalidades básicas</a><ul>
+<li class="chapter" data-level="1.9.1" data-path="séries-temporais.html"><a href="séries-temporais.html#operações-básicas"><i class="fa fa-check"></i><b>1.9.1</b> Operações básicas</a></li>
+<li class="chapter" data-level="1.9.2" data-path="séries-temporais.html"><a href="séries-temporais.html#operadores-lógicos"><i class="fa fa-check"></i><b>1.9.2</b> Operadores lógicos</a></li>
+<li class="chapter" data-level="1.9.3" data-path="séries-temporais.html"><a href="séries-temporais.html#tipos-de-dados"><i class="fa fa-check"></i><b>1.9.3</b> Tipos de dados</a></li>
+<li class="chapter" data-level="1.9.4" data-path="séries-temporais.html"><a href="séries-temporais.html#valores-especiais"><i class="fa fa-check"></i><b>1.9.4</b> Valores especiais</a></li>
+</ul></li>
+<li class="chapter" data-level="1.10" data-path="séries-temporais.html"><a href="séries-temporais.html#estrutura-dos-dados"><i class="fa fa-check"></i><b>1.10</b> Estrutura dos dados</a><ul>
+<li class="chapter" data-level="1.10.1" data-path="séries-temporais.html"><a href="séries-temporais.html#vetores"><i class="fa fa-check"></i><b>1.10.1</b> Vetores</a></li>
+<li class="chapter" data-level="1.10.2" data-path="séries-temporais.html"><a href="séries-temporais.html#tarefa-2"><i class="fa fa-check"></i><b>1.10.2</b> Tarefa 2</a></li>
+<li class="chapter" data-level="1.10.3" data-path="séries-temporais.html"><a href="séries-temporais.html#matrizes"><i class="fa fa-check"></i><b>1.10.3</b> Matrizes</a></li>
+<li class="chapter" data-level="1.10.4" data-path="séries-temporais.html"><a href="séries-temporais.html#arrays"><i class="fa fa-check"></i><b>1.10.4</b> Arrays</a></li>
+<li class="chapter" data-level="1.10.5" data-path="séries-temporais.html"><a href="séries-temporais.html#listas"><i class="fa fa-check"></i><b>1.10.5</b> Listas</a></li>
+</ul></li>
+<li class="chapter" data-level="1.11" data-path="séries-temporais.html"><a href="séries-temporais.html#programação-básica"><i class="fa fa-check"></i><b>1.11</b> Programação básica</a><ul>
+<li class="chapter" data-level="1.11.1" data-path="séries-temporais.html"><a href="séries-temporais.html#variáveis"><i class="fa fa-check"></i><b>1.11.1</b> Variáveis</a></li>
+<li class="chapter" data-level="1.11.2" data-path="séries-temporais.html"><a href="séries-temporais.html#laços-loops-for-e-while"><i class="fa fa-check"></i><b>1.11.2</b> Laços (<em>Loops</em>), <code>for</code> e <code>while</code></a></li>
+</ul></li>
+<li class="chapter" data-level="1.12" data-path="séries-temporais.html"><a href="séries-temporais.html#funções"><i class="fa fa-check"></i><b>1.12</b> Funções</a></li>
+<li class="chapter" data-level="1.13" data-path="séries-temporais.html"><a href="séries-temporais.html#operador-pipe"><i class="fa fa-check"></i><b>1.13</b> Operador <code>Pipe</code></a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="rev.html"><a href="rev.html"><i class="fa fa-check"></i><b>2</b> Revisão</a><ul>
+<li class="chapter" data-level="2.1" data-path="rev.html"><a href="rev.html#aleatoriedade-a-essência-da-estatística"><i class="fa fa-check"></i><b>2.1</b> Aleatoriedade, a essência da estatística</a></li>
+<li class="chapter" data-level="2.2" data-path="rev.html"><a href="rev.html#variável-aleatória"><i class="fa fa-check"></i><b>2.2</b> Variável aleatória</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="rev.html"><a href="rev.html#distribuição-de-probabilidade"><i class="fa fa-check"></i><b>2.2.1</b> Distribuição de probabilidade</a></li>
+<li class="chapter" data-level="2.2.2" data-path="rev.html"><a href="rev.html#distribuições-conjunta-marginal-e-condicional"><i class="fa fa-check"></i><b>2.2.2</b> Distribuições conjunta, marginal e condicional</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="rev.html"><a href="rev.html#a-distribuição-normal-e-distribuições-relacionadas"><i class="fa fa-check"></i><b>2.3</b> A distribuição Normal e distribuições relacionadas</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="rev.html"><a href="rev.html#a-distribuição-normal"><i class="fa fa-check"></i><b>2.3.1</b> A distribuição Normal</a></li>
+<li class="chapter" data-level="2.3.2" data-path="rev.html"><a href="rev.html#distribuições-relacionadas"><i class="fa fa-check"></i><b>2.3.2</b> Distribuições relacionadas</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="rev.html"><a href="rev.html#parâmetros-estimadores-e-valores-estimados"><i class="fa fa-check"></i><b>2.4</b> Parâmetros, estimadores e valores estimados</a></li>
+<li class="chapter" data-level="2.5" data-path="rev.html"><a href="rev.html#propriedades-de-variáveis-aleatórias"><i class="fa fa-check"></i><b>2.5</b> Propriedades de variáveis aleatórias</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="rev.html"><a href="rev.html#média-valor-esperado-ou-esperança-matemática"><i class="fa fa-check"></i><b>2.5.1</b> Média, valor esperado ou esperança matemática</a></li>
+<li class="chapter" data-level="2.5.2" data-path="rev.html"><a href="rev.html#propriedades-da-esperança"><i class="fa fa-check"></i><b>2.5.2</b> Propriedades da Esperança</a></li>
+<li class="chapter" data-level="2.5.3" data-path="rev.html"><a href="rev.html#variância"><i class="fa fa-check"></i><b>2.5.3</b> Variância</a></li>
+<li class="chapter" data-level="2.5.4" data-path="rev.html"><a href="rev.html#covariância"><i class="fa fa-check"></i><b>2.5.4</b> Covariância</a></li>
+<li class="chapter" data-level="2.5.5" data-path="rev.html"><a href="rev.html#correlação"><i class="fa fa-check"></i><b>2.5.5</b> Correlação</a></li>
+<li class="chapter" data-level="2.5.6" data-path="rev.html"><a href="rev.html#propriedades-da-variância-covariância-e-correlação"><i class="fa fa-check"></i><b>2.5.6</b> Propriedades da variância, covariância e correlação</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="rev.html"><a href="rev.html#estimadores"><i class="fa fa-check"></i><b>2.6</b> Estimadores</a><ul>
+<li class="chapter" data-level="2.6.1" data-path="rev.html"><a href="rev.html#propriedades-dos-estimadores"><i class="fa fa-check"></i><b>2.6.1</b> Propriedades dos estimadores</a></li>
+<li class="chapter" data-level="2.6.2" data-path="rev.html"><a href="rev.html#vícioviés"><i class="fa fa-check"></i><b>2.6.2</b> Vício/Viés</a></li>
+<li class="chapter" data-level="2.6.3" data-path="rev.html"><a href="rev.html#consistência"><i class="fa fa-check"></i><b>2.6.3</b> Consistência</a></li>
+<li class="chapter" data-level="2.6.4" data-path="rev.html"><a href="rev.html#eficiência"><i class="fa fa-check"></i><b>2.6.4</b> Eficiência</a></li>
+<li class="chapter" data-level="2.6.5" data-path="rev.html"><a href="rev.html#erro-quadrático-médio-eqm"><i class="fa fa-check"></i><b>2.6.5</b> Erro quadrático médio (EQM)</a></li>
+<li class="chapter" data-level="2.6.6" data-path="rev.html"><a href="rev.html#vício-versus-vvariância-mínima"><i class="fa fa-check"></i><b>2.6.6</b> Vício versus Vvariância mínima</a></li>
+<li class="chapter" data-level="2.6.7" data-path="rev.html"><a href="rev.html#método-de-mínimos-quadrados-mqo"><i class="fa fa-check"></i><b>2.6.7</b> Método de mínimos quadrados (MQO)</a></li>
+<li class="chapter" data-level="2.6.8" data-path="rev.html"><a href="rev.html#regressão-liner-múltipla-rml"><i class="fa fa-check"></i><b>2.6.8</b> Regressão liner múltipla (RML)</a></li>
+<li class="chapter" data-level="2.6.9" data-path="rev.html"><a href="rev.html#hipóteses-do-modelo-de-regressão"><i class="fa fa-check"></i><b>2.6.9</b> Hipóteses do modelo de regressão</a></li>
+<li class="chapter" data-level="2.6.10" data-path="rev.html"><a href="rev.html#o-coeficiente-de-dterminação"><i class="fa fa-check"></i><b>2.6.10</b> O coeficiente de dterminação</a></li>
+<li class="chapter" data-level="2.6.11" data-path="rev.html"><a href="rev.html#propriedade-de-não-viés-dos-estimadores-mqo"><i class="fa fa-check"></i><b>2.6.11</b> Propriedade de não-viés dos estimadores MQO</a></li>
+<li class="chapter" data-level="2.6.12" data-path="rev.html"><a href="rev.html#testes-de-hipóteses"><i class="fa fa-check"></i><b>2.6.12</b> Testes de hipóteses</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="rev.html"><a href="rev.html#formas-funcionais-logarítmicas"><i class="fa fa-check"></i><b>2.7</b> Formas funcionais logarítmicas</a></li>
+<li class="chapter" data-level="2.8" data-path="rev.html"><a href="rev.html#exercícios"><i class="fa fa-check"></i><b>2.8</b> Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="streg.html"><a href="streg.html"><i class="fa fa-check"></i><b>3</b> Séries temporais no contexto de regressão</a><ul>
+<li class="chapter" data-level="3.1" data-path="streg.html"><a href="streg.html#introdução"><i class="fa fa-check"></i><b>3.1</b> Introdução</a></li>
+<li class="chapter" data-level="3.2" data-path="streg.html"><a href="streg.html#exemplos-de-séries-temporais"><i class="fa fa-check"></i><b>3.2</b> Exemplos de séries temporais</a></li>
+<li class="chapter" data-level="3.3" data-path="streg.html"><a href="streg.html#regressão-com-dados-de-séries-temporais"><i class="fa fa-check"></i><b>3.3</b> Regressão com dados de séries temporais</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="streg.html"><a href="streg.html#diferença-entre-dados-de-séries-temporais-e-dados-de-corte-transversal"><i class="fa fa-check"></i><b>3.3.1</b> Diferença entre dados de séries temporais e dados de corte transversal</a></li>
+<li class="chapter" data-level="3.3.2" data-path="streg.html"><a href="streg.html#modelos-de-regressão-de-séries-temporais"><i class="fa fa-check"></i><b>3.3.2</b> Modelos de regressão de séries temporais</a></li>
+<li class="chapter" data-level="3.3.3" data-path="streg.html"><a href="streg.html#modelos-de-defasagem-distribuída-finita"><i class="fa fa-check"></i><b>3.3.3</b> Modelos de defasagem distribuída finita</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="streg.html"><a href="streg.html#suposições-para-modelos-com-séries-temporais"><i class="fa fa-check"></i><b>3.4</b> Suposições para modelos com séries temporais</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="streg.html"><a href="streg.html#inexistência-de-viés-do-mqo"><i class="fa fa-check"></i><b>3.4.1</b> Inexistência de viés do MQO</a></li>
+<li class="chapter" data-level="3.4.2" data-path="rev.html"><a href="rev.html#variância-dos-estimadores-mqo"><i class="fa fa-check"></i><b>3.4.2</b> Variância dos estimadores MQO</a></li>
+<li class="chapter" data-level="3.4.3" data-path="streg.html"><a href="streg.html#inferência-sob-as-hipóteses-do-modelo-linear-clássico"><i class="fa fa-check"></i><b>3.4.3</b> Inferência sob as hipóteses do modelo linear clássico</a></li>
+<li class="chapter" data-level="3.4.4" data-path="streg.html"><a href="streg.html#tendência"><i class="fa fa-check"></i><b>3.4.4</b> Tendência</a></li>
+<li class="chapter" data-level="3.4.5" data-path="streg.html"><a href="streg.html#usando-variáveis-de-tendência-na-análise-de-regressão"><i class="fa fa-check"></i><b>3.4.5</b> Usando variáveis de tendência na análise de regressão</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="streg.html"><a href="streg.html#sazonalidade"><i class="fa fa-check"></i><b>3.5</b> Sazonalidade</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="streg.html"><a href="streg.html#processos-de-covariância-estacionária"><i class="fa fa-check"></i><b>3.5.1</b> Processos de covariância estacionária</a></li>
+<li class="chapter" data-level="3.5.2" data-path="streg.html"><a href="streg.html#processos-fracamente-dependente"><i class="fa fa-check"></i><b>3.5.2</b> Processos fracamente dependente</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="rev.html"><a href="rev.html#exercícios"><i class="fa fa-check"></i><b>3.6</b> Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="st.html"><a href="st.html"><i class="fa fa-check"></i><b>4</b> Séries Temporais</a><ul>
+<li class="chapter" data-level="4.1" data-path="st.html"><a href="st.html#objetivos"><i class="fa fa-check"></i><b>4.1</b> Objetivos</a></li>
+<li class="chapter" data-level="4.2" data-path="st.html"><a href="st.html#séries-temporais-definição-formal"><i class="fa fa-check"></i><b>4.2</b> Séries temporais: definição formal</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="st.html"><a href="st.html#processos-estocásticos"><i class="fa fa-check"></i><b>4.2.1</b> Processos estocásticos</a></li>
+<li class="chapter" data-level="4.2.2" data-path="st.html"><a href="st.html#especificação-de-um-processo-estocástico"><i class="fa fa-check"></i><b>4.2.2</b> Especificação de um processo estocástico</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="st.html"><a href="st.html#médias-e-covariâncias"><i class="fa fa-check"></i><b>4.3</b> Médias e covariâncias</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="st.html"><a href="st.html#propriedades-importantes"><i class="fa fa-check"></i><b>4.3.1</b> Propriedades importantes</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="st.html"><a href="st.html#estacionariedade"><i class="fa fa-check"></i><b>4.4</b> Estacionariedade</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="st.html"><a href="st.html#estacionariedade-forte-ou-estrita"><i class="fa fa-check"></i><b>4.4.1</b> Estacionariedade forte ou estrita</a></li>
+<li class="chapter" data-level="4.4.2" data-path="st.html"><a href="st.html#estacionariedade-fraca-ou-de-segunda-ordem"><i class="fa fa-check"></i><b>4.4.2</b> Estacionariedade fraca ou de segunda ordem</a></li>
+<li class="chapter" data-level="4.4.3" data-path="st.html"><a href="st.html#teste-para-significância-das-autocorrelações"><i class="fa fa-check"></i><b>4.4.3</b> Teste para significância das autocorrelações</a></li>
+<li class="chapter" data-level="4.4.4" data-path="st.html"><a href="st.html#função-de-autocorrelação-parcial-facp"><i class="fa fa-check"></i><b>4.4.4</b> Função de autocorrelação parcial ( <em>FACP</em> )</a></li>
+<li class="chapter" data-level="4.4.5" data-path="st.html"><a href="st.html#operador-de-defasagem-ou-operador-lag"><i class="fa fa-check"></i><b>4.4.5</b> Operador de defasagem ou operador <em>lag</em></a></li>
+<li class="chapter" data-level="4.4.6" data-path="st.html"><a href="st.html#ruído-branco"><i class="fa fa-check"></i><b>4.4.6</b> Ruído branco</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="st.html"><a href="st.html#metodologia-de-box-jenkins-ou-modelagem-arima"><i class="fa fa-check"></i><b>4.5</b> Metodologia de Box-Jenkins ou modelagem ARIMA</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="st.html"><a href="st.html#modelo-autorregressivo-de-ordem-1-ar1"><i class="fa fa-check"></i><b>4.5.1</b> Modelo autorregressivo de ordem 1 AR(1)</a></li>
+<li class="chapter" data-level="4.5.2" data-path="st.html"><a href="st.html#passeio-aleatório-random-walk"><i class="fa fa-check"></i><b>4.5.2</b> Passeio aleatório (<em>Random Walk</em>)</a></li>
+<li class="chapter" data-level="4.5.3" data-path="st.html"><a href="st.html#modelos-autorregressivos-de-ordem-p-arp"><i class="fa fa-check"></i><b>4.5.3</b> Modelos autorregressivos de ordem <span class="math inline">\(p\)</span>, AR(<span class="math inline">\(p\)</span>)</a></li>
+<li class="chapter" data-level="4.5.4" data-path="st.html"><a href="st.html#modelo-de-médias-móveis-maq"><i class="fa fa-check"></i><b>4.5.4</b> Modelo de médias-móveis, MA(<em>q</em>)</a></li>
+<li class="chapter" data-level="4.5.5" data-path="st.html"><a href="st.html#o-modelo-ma1"><i class="fa fa-check"></i><b>4.5.5</b> O modelo MA(1)</a></li>
+<li class="chapter" data-level="4.5.6" data-path="st.html"><a href="st.html#propriedades-do-modelo-maq"><i class="fa fa-check"></i><b>4.5.6</b> Propriedades do modelo MA(<span class="math inline">\(q\)</span>)</a></li>
+<li class="chapter" data-level="4.5.7" data-path="st.html"><a href="st.html#modelo-armapq"><i class="fa fa-check"></i><b>4.5.7</b> Modelo ARMA(<span class="math inline">\(p\)</span>,<span class="math inline">\(q\)</span>)</a></li>
+<li class="chapter" data-level="4.5.8" data-path="st.html"><a href="st.html#causalidade"><i class="fa fa-check"></i><b>4.5.8</b> Causalidade</a></li>
+<li class="chapter" data-level="4.5.9" data-path="st.html"><a href="st.html#invertibilidade"><i class="fa fa-check"></i><b>4.5.9</b> Invertibilidade</a></li>
+<li class="chapter" data-level="4.5.10" data-path="st.html"><a href="st.html#polinômio-característico"><i class="fa fa-check"></i><b>4.5.10</b> Polinômio característico</a></li>
+<li class="chapter" data-level="4.5.11" data-path="st.html"><a href="st.html#estacionariedade-e-causalidade-de-um-processo-arma"><i class="fa fa-check"></i><b>4.5.11</b> Estacionariedade e causalidade de um processo ARMA</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="rev.html"><a href="rev.html#exercícios"><i class="fa fa-check"></i><b>4.6</b> Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="stnoest.html"><a href="stnoest.html"><i class="fa fa-check"></i><b>5</b> Séries temporais não estacionárias</a><ul>
+<li class="chapter" data-level="5.1" data-path="stnoest.html"><a href="stnoest.html#como-lidar-com-tendências-determinísticas"><i class="fa fa-check"></i><b>5.1</b> Como lidar com tendências determinísticas</a></li>
+<li class="chapter" data-level="5.2" data-path="stnoest.html"><a href="stnoest.html#testes-de-raiz-unitária"><i class="fa fa-check"></i><b>5.2</b> Testes de raiz unitária</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="stnoest.html"><a href="stnoest.html#identificando-tendência-estocástica"><i class="fa fa-check"></i><b>5.2.1</b> Identificando tendência estocástica</a></li>
+<li class="chapter" data-level="5.2.2" data-path="stnoest.html"><a href="stnoest.html#teste-de-dickey-fuller-df"><i class="fa fa-check"></i><b>5.2.2</b> Teste de Dickey Fuller (<em>DF</em>)</a></li>
+<li class="chapter" data-level="5.2.3" data-path="stnoest.html"><a href="stnoest.html#teste-adf"><i class="fa fa-check"></i><b>5.2.3</b> Teste ADF</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="stnoest.html"><a href="stnoest.html#eliminando-tendência-estocástica"><i class="fa fa-check"></i><b>5.3</b> Eliminando tendência estocástica</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="stnoest.html"><a href="stnoest.html#diferenças-sucessivas"><i class="fa fa-check"></i><b>5.3.1</b> Diferenças sucessivas</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="stnoest.html"><a href="stnoest.html#modelagem-arima"><i class="fa fa-check"></i><b>5.4</b> Modelagem ARIMA</a></li>
+<li class="chapter" data-level="5.5" data-path="stnoest.html"><a href="stnoest.html#previsão"><i class="fa fa-check"></i><b>5.5</b> Previsão</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="stnoest.html"><a href="stnoest.html#erro-de-previsão"><i class="fa fa-check"></i><b>5.5.1</b> Erro de previsão</a></li>
+<li class="chapter" data-level="5.5.2" data-path="stnoest.html"><a href="stnoest.html#medidas-de-desempenho"><i class="fa fa-check"></i><b>5.5.2</b> Medidas de desempenho</a></li>
+<li class="chapter" data-level="5.5.3" data-path="stnoest.html"><a href="stnoest.html#previsão-dinâmica-e-estática"><i class="fa fa-check"></i><b>5.5.3</b> Previsão dinâmica e estática</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="stnoest.html"><a href="stnoest.html#regressão-espúria-e-cointegração"><i class="fa fa-check"></i><b>5.6</b> Regressão espúria e cointegração</a><ul>
+<li class="chapter" data-level="5.6.1" data-path="stnoest.html"><a href="stnoest.html#quando-é-possível-regredir-duas-séries-id"><i class="fa fa-check"></i><b>5.6.1</b> Quando é possível regredir duas séries I(d)</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="rev.html"><a href="rev.html#exercícios"><i class="fa fa-check"></i><b>5.7</b> Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="vi.html"><a href="vi.html"><i class="fa fa-check"></i><b>6</b> Variáveis instrumentais</a><ul>
+<li class="chapter" data-level="6.1" data-path="vi.html"><a href="vi.html#conceito-da-exogeneidade-dos-regressores"><i class="fa fa-check"></i><b>6.1</b> Conceito da exogeneidade dos regressores</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="vi.html"><a href="vi.html#variável-proxy"><i class="fa fa-check"></i><b>6.1.1</b> Variável proxy</a></li>
+<li class="chapter" data-level="6.1.2" data-path="vi.html"><a href="vi.html#variável-omitida"><i class="fa fa-check"></i><b>6.1.2</b> Variável omitida</a></li>
+<li class="chapter" data-level="6.1.3" data-path="vi.html"><a href="vi.html#erros-de-mensuração"><i class="fa fa-check"></i><b>6.1.3</b> Erros de mensuração</a></li>
+<li class="chapter" data-level="6.1.4" data-path="vi.html"><a href="vi.html#variável-com-erro-de-medição"><i class="fa fa-check"></i><b>6.1.4</b> Variável com erro de medição</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="vi.html"><a href="vi.html#variável-instrumental"><i class="fa fa-check"></i><b>6.2</b> Variável instrumental</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="vi.html"><a href="vi.html#diferença-entre-proxy-e-variável-instrumental"><i class="fa fa-check"></i><b>6.2.1</b> Diferença entre proxy e variável instrumental</a></li>
+<li class="chapter" data-level="6.2.2" data-path="vi.html"><a href="vi.html#o-método-de-estimação-por-variável-instrumental"><i class="fa fa-check"></i><b>6.2.2</b> O método de estimação por variável instrumental</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="vi.html"><a href="vi.html#inferência-com-o-estimador-por-variável-instrumental"><i class="fa fa-check"></i><b>6.3</b> Inferência com o estimador por variável instrumental</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="vi.html"><a href="vi.html#teste-de-hipóteses"><i class="fa fa-check"></i><b>6.3.1</b> Teste de hipóteses</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="vi.html"><a href="vi.html#variáveis-instrumentais-em-modelos-de-regressão-múltipla"><i class="fa fa-check"></i><b>6.4</b> Variáveis instrumentais em modelos de regressão múltipla</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="vi.html"><a href="vi.html#mínimos-quadrados-em-dois-estágios-mq2e"><i class="fa fa-check"></i><b>6.4.1</b> Mínimos quadrados em dois estágios (MQ2E)</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="vi.html"><a href="vi.html#testes-de-endogeneidade"><i class="fa fa-check"></i><b>6.5</b> Testes de endogeneidade</a><ul>
+<li class="chapter" data-level="6.5.1" data-path="vi.html"><a href="vi.html#teste-de-hausmann"><i class="fa fa-check"></i><b>6.5.1</b> Teste de Hausmann</a></li>
+<li class="chapter" data-level="6.5.2" data-path="vi.html"><a href="vi.html#teste-de-regressão"><i class="fa fa-check"></i><b>6.5.2</b> Teste de regressão</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="rev.html"><a href="rev.html#exercícios"><i class="fa fa-check"></i><b>6.6</b> Exercícios</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Econometria e Séries Temporais com R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="prefácio" class="section level1 unnumbered">
+<h1>Prefácio</h1>
+<p>Este livro baseia-se nas notas de aula da Disciplina de Econometria que é oferecida pelo departamento de Estatística da UFRGS. Para cursar a disciplina é necessário ter alguns pré-requisitos, portanto é esperado que o leitor tenha algum tipo de conhecimento sobre estatística básica, inferência e regressão.</p>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="séries-temporais.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/index.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Econometria-e-series-temporais-com-o-R.pdf", "Econometria-e-series-temporais-com-o-R.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

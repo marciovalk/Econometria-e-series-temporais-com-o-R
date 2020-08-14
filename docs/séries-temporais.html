@@ -24,14 +24,14 @@
 <meta name="author" content="Marcio Valk e Guilherme Pumi" />
 
 
-<meta name="date" content="2020-08-11" />
+<meta name="date" content="2020-08-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
+<link rel="prev" href="prefácio.html"/>
 <link rel="next" href="rev.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -128,10 +128,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">A Minimal Book Example</a></li>
+<li><a href="./">Econometria e Séries Temporais com R</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefácio</a></li>
+<li><a href="index.html#section"></a></li>
+<li class="chapter" data-level="" data-path="prefácio.html"><a href="prefácio.html"><i class="fa fa-check"></i>Prefácio</a></li>
 <li class="chapter" data-level="1" data-path="séries-temporais.html"><a href="séries-temporais.html"><i class="fa fa-check"></i><b>1</b> Séries temporais</a><ul>
 <li class="chapter" data-level="1.1" data-path="séries-temporais.html"><a href="séries-temporais.html#intro"><i class="fa fa-check"></i><b>1.1</b> Breve introdução ao R</a></li>
 <li class="chapter" data-level="1.2" data-path="séries-temporais.html"><a href="séries-temporais.html#apresentação-da-linguagem-r"><i class="fa fa-check"></i><b>1.2</b> Apresentação da linguagem R</a></li>
@@ -330,7 +331,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 Figura 1.1: Séries temporais com diferentes intervalos de observações
 </p>
 </div>
-<p>Uma série temporal com observações a cada dez anos é a da população brasileira.</p>
+<p>Nesse exemplo temos séries temporais com diferentes intervalos de tempo. A série histórica do Pib tem intervalos de tempo de um ano. Os dados sobre valor da cesta básica em Porto alegre é divulgado mensalmente, os dados sobre Covid19 são divulgados diariamente e uma série temporal com observações a cada dez anos é a da população brasileira.</p>
+<p>Séries temporais serão abordadas ao longo do texto, no qual exploramos as propriedades teóricas das séries, características amostrais, sempre com um enfoque prático usando o <code>R</code>. Por esse motivo apresentamos uma breve introdução ao <code>R</code> que possibilitará ao leitor acompanhar e replicar os exemplos.</p>
 <div id="intro" class="section level2">
 <h2><span class="header-section-number">1.1</span> Breve introdução ao R</h2>
 <p>Das linguagems de programação voltadas a manipulação, vizualização e análises de dados, o R é umas das mais difundidas entre a comunidade Estatística. Outras linguagens, como o Python, tem um apelo maior quando se trata de ciência de dados, no seu sentido mais amplo.</p>
@@ -876,13 +878,13 @@ operadores como a seta para trás (&lt;-) ou o sinal de igual (=)</p>
 <div id="função-paste" class="section level4">
 <h4><span class="header-section-number">1.10.1.2</span> Função <code>paste()</code></h4>
 <p>Com a função <code>paste()</code> podemos concatenar objetos de tipos diferentes e armazená-los em um vetor.</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" title="1"><span class="kw">paste</span>(<span class="st">&quot;Porco_&quot;</span>, letters[<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>], <span class="dt">sep=</span><span class="st">&quot;&quot;</span>)   <span class="co"># Underline no Porco e sem espaço no sep</span></a></code></pre></div>
-<pre><code>## [1] &quot;Porco_a&quot; &quot;Porco_b&quot; &quot;Porco_c&quot; &quot;Porco_d&quot;</code></pre>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" title="1"><span class="kw">paste</span>(<span class="st">&quot;Porco&quot;</span>, letters[<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>], <span class="dt">sep=</span><span class="st">&quot;_&quot;</span>)   <span class="co"># Underline no sep</span></a></code></pre></div>
-<pre><code>## [1] &quot;Porco_a&quot; &quot;Porco_b&quot; &quot;Porco_c&quot; &quot;Porco_d&quot;</code></pre>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" title="1">p=<span class="kw">paste</span>(<span class="st">&quot;Porco&quot;</span>, letters[<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>], <span class="dt">sep=</span><span class="st">&quot;_&quot;</span>) <span class="co"># Armazenando no vetor p</span></a>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" title="1"><span class="kw">paste</span>(<span class="st">&quot;IBGE_&quot;</span>, letters[<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>], <span class="dt">sep=</span><span class="st">&quot;&quot;</span>)   <span class="co"># Underline no IBGE e sem espaço no sep</span></a></code></pre></div>
+<pre><code>## [1] &quot;IBGE_a&quot; &quot;IBGE_b&quot; &quot;IBGE_c&quot; &quot;IBGE_d&quot;</code></pre>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" title="1"><span class="kw">paste</span>(<span class="st">&quot;IBGE&quot;</span>, letters[<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>], <span class="dt">sep=</span><span class="st">&quot;_&quot;</span>)   <span class="co"># Underline no sep</span></a></code></pre></div>
+<pre><code>## [1] &quot;IBGE_a&quot; &quot;IBGE_b&quot; &quot;IBGE_c&quot; &quot;IBGE_d&quot;</code></pre>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" title="1">p=<span class="kw">paste</span>(<span class="st">&quot;IBGE&quot;</span>, letters[<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>], <span class="dt">sep=</span><span class="st">&quot;_&quot;</span>) <span class="co"># Armazenando no vetor p</span></a>
 <a class="sourceLine" id="cb66-2" title="2">p[<span class="dv">2</span>]                                    <span class="co"># Acessando a posição 2 do vetor p</span></a></code></pre></div>
-<pre><code>## [1] &quot;Porco_b&quot;</code></pre>
+<pre><code>## [1] &quot;IBGE_b&quot;</code></pre>
 <p>Note que escalares não existem no <code>R</code>. Eles são vetores de tamanho <code>1</code>.</p>
 <div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" title="1"><span class="dv">2</span></a></code></pre></div>
 <pre><code>## [1] 2</code></pre>
@@ -1293,38 +1295,38 @@ operadores como a seta para trás (&lt;-) ou o sinal de igual (=)</p>
 ## [1] 2
 ## [1] 3</code></pre>
 <p>A iteração pode ser feita sobre um vetor qualquer de objetos</p>
-<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb205-1" title="1"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">c</span>(<span class="st">&quot;milho&quot;</span>,<span class="st">&quot;soja&quot;</span>,<span class="st">&quot;trigo&quot;</span>)){</a>
-<a class="sourceLine" id="cb205-2" title="2">  <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;Produção de &quot;</span>,i))  <span class="co"># a função paste() conecta as strings</span></a>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb205-1" title="1"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">c</span>(<span class="st">&quot;IPCA&quot;</span>,<span class="st">&quot;IGP-M&quot;</span>,<span class="st">&quot;INPC&quot;</span>)){</a>
+<a class="sourceLine" id="cb205-2" title="2">  <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;Índice &quot;</span>,i))  <span class="co"># a função paste() conecta as strings</span></a>
 <a class="sourceLine" id="cb205-3" title="3">}</a></code></pre></div>
-<pre><code>## [1] &quot;Produção de  milho&quot;
-## [1] &quot;Produção de  soja&quot;
-## [1] &quot;Produção de  trigo&quot;</code></pre>
+<pre><code>## [1] &quot;Índice  IPCA&quot;
+## [1] &quot;Índice  IGP-M&quot;
+## [1] &quot;Índice  INPC&quot;</code></pre>
 <p>Podemos fazer <em>loops</em> dentro de <em>loops</em> (<em>nested loops</em>)</p>
 <div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb207-1" title="1"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="op">:</span><span class="dv">3</span>){</a>
 <a class="sourceLine" id="cb207-2" title="2">  <span class="co"># primeiro: para cada i</span></a>
-<a class="sourceLine" id="cb207-3" title="3">  <span class="cf">for</span> (j <span class="cf">in</span> <span class="kw">c</span>(<span class="st">&quot;milho&quot;</span>,<span class="st">&quot;soja&quot;</span>,<span class="st">&quot;trigo&quot;</span>)){</a>
+<a class="sourceLine" id="cb207-3" title="3">  <span class="cf">for</span> (j <span class="cf">in</span> <span class="kw">c</span>(<span class="st">&quot;IPCA&quot;</span>,<span class="st">&quot;IGP-M&quot;</span>,<span class="st">&quot;INPC&quot;</span>)){</a>
 <a class="sourceLine" id="cb207-4" title="4">    <span class="co"># segundo: para cada j </span></a>
-<a class="sourceLine" id="cb207-5" title="5">    <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;Usar&quot;</span>,i,<span class="st">&quot;Kg de&quot;</span>,j,<span class="st">&quot;na fórmula.&quot;</span>))</a>
+<a class="sourceLine" id="cb207-5" title="5">    <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;A cada&quot;</span>,i,<span class="st">&quot;meses pode-se calcular o Índice&quot;</span>,j))</a>
 <a class="sourceLine" id="cb207-6" title="6">  }</a>
 <a class="sourceLine" id="cb207-7" title="7">}</a></code></pre></div>
-<pre><code>## [1] &quot;Usar 2 Kg de milho na fórmula.&quot;
-## [1] &quot;Usar 2 Kg de soja na fórmula.&quot;
-## [1] &quot;Usar 2 Kg de trigo na fórmula.&quot;
-## [1] &quot;Usar 3 Kg de milho na fórmula.&quot;
-## [1] &quot;Usar 3 Kg de soja na fórmula.&quot;
-## [1] &quot;Usar 3 Kg de trigo na fórmula.&quot;</code></pre>
+<pre><code>## [1] &quot;A cada 2 meses pode-se calcular o Índice IPCA&quot;
+## [1] &quot;A cada 2 meses pode-se calcular o Índice IGP-M&quot;
+## [1] &quot;A cada 2 meses pode-se calcular o Índice INPC&quot;
+## [1] &quot;A cada 3 meses pode-se calcular o Índice IPCA&quot;
+## [1] &quot;A cada 3 meses pode-se calcular o Índice IGP-M&quot;
+## [1] &quot;A cada 3 meses pode-se calcular o Índice INPC&quot;</code></pre>
 </div>
 <div id="uso-do-while" class="section level4">
 <h4><span class="header-section-number">1.11.2.2</span> Uso do <code>while()</code></h4>
 <p>A função <code>while()</code>, como o próprio nome sugre, é usada para executar uma tarefa até que uma certa condição aconteça, ou enquanto certa condição não aconteça.</p>
-<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb209-1" title="1">Kg=<span class="dv">27</span></a>
-<a class="sourceLine" id="cb209-2" title="2"><span class="cf">while</span>(Kg<span class="op">&lt;</span><span class="dv">30</span>){</a>
-<a class="sourceLine" id="cb209-3" title="3">  <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;Peso é&quot;</span>,Kg)) <span class="co"># Enquanto peso é menor do que 30, executa</span></a>
-<a class="sourceLine" id="cb209-4" title="4">  Kg=Kg<span class="op">+</span><span class="dv">1</span> <span class="co"># Enquanto peso é menor do que 30, soma 1 no peso atual</span></a>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb209-1" title="1">dias=<span class="dv">27</span></a>
+<a class="sourceLine" id="cb209-2" title="2"><span class="cf">while</span>(dias<span class="op">&lt;</span><span class="dv">30</span>){</a>
+<a class="sourceLine" id="cb209-3" title="3">  <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;Passaram-se&quot;</span>,dias,<span class="st">&quot;dias&quot;</span>)) <span class="co"># Enquanto dias é menor do que 30, executa</span></a>
+<a class="sourceLine" id="cb209-4" title="4">  dias=dias<span class="op">+</span><span class="dv">1</span> <span class="co"># Enquanto dias é menor do que 30, soma-se 1 ao dia atual</span></a>
 <a class="sourceLine" id="cb209-5" title="5">}</a></code></pre></div>
-<pre><code>## [1] &quot;Peso é 27&quot;
-## [1] &quot;Peso é 28&quot;
-## [1] &quot;Peso é 29&quot;</code></pre>
+<pre><code>## [1] &quot;Passaram-se 27 dias&quot;
+## [1] &quot;Passaram-se 28 dias&quot;
+## [1] &quot;Passaram-se 29 dias&quot;</code></pre>
 </div>
 </div>
 </div>
@@ -1346,16 +1348,16 @@ operadores como a seta para trás (&lt;-) ou o sinal de igual (=)</p>
 <a class="sourceLine" id="cb212-7" title="7"><span class="kw">fun1</span>()</a></code></pre></div>
 <pre><code>## [1] &quot;Seja bem vindo ao R, Baby&quot;</code></pre>
 <p>Agora tente com o seu nome:</p>
-<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb214-1" title="1"><span class="kw">fun1</span>(<span class="st">&quot;Rabicó&quot;)</span></a></code></pre></div>
-<pre><code>## [1] &quot;Seja bem vindo ao R, Rabicó&quot;</code></pre>
-<p>Just typing the function name returns the actual definition to us, which is handy sometimes:</p>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb214-1" title="1"><span class="kw">fun1</span>(<span class="st">&quot;Pato Donald&quot;</span>)</a></code></pre></div>
+<pre><code>## [1] &quot;Seja bem vindo ao R, Pato Donald&quot;</code></pre>
+<p>Para ver a “programação” da função, basta digitar o nome da função:</p>
 <div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb216-1" title="1">fun1</a></code></pre></div>
 <pre><code>## function(seu_nome = &quot;Baby&quot;){
 ##   paste(&quot;Seja bem vindo ao R,&quot;,seu_nome)
 ##   # pode-se escrever também
 ##   # return(paste(&quot;Seja bem vindo ao R,&quot;,seu_nome))
 ## }
-## &lt;bytecode: 0x000000000c706f58&gt;</code></pre>
+## &lt;bytecode: 0x000000000c709478&gt;</code></pre>
 <p>Funções são maneiras de dizer ao <code>R</code> o que deve ser feito. É como se ensinássemos uma tarefa ao software para que ele passe a executá-la sempre que solicitado. Um dica para não acumular erros durante a programação é dividir o <em>script</em> em várias funções. Quando se tem um conjunto de funções que realiza um conjunto de tarefas mais amplas, pode-se juntar tudo em um pacote (<code>package</code>), submeter ao <code>CRAN</code> para disponibilizar à comunidade.</p>
 <div id="tarefa-6" class="section level4 unnumbered">
 <h4>Tarefa 6</h4>
@@ -1403,7 +1405,7 @@ operadores como a seta para trás (&lt;-) ou o sinal de igual (=)</p>
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="prefácio.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="rev.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
