@@ -43,7 +43,7 @@ durante 24 horas, poderíamos obter um gráfico semelhante a figura abaixo:</div
 
 
 <div class="figure" style="text-align: center">
-<img src="02-SeriesReg_files/figure-html/figts1-1.png" alt="Temperaturas médias diárias nas cidades de Manaus (MA) e Porto Alegre (POA)" width="90%" />
+<img src="02-SeriesReg_files/figure-epub3/figts1-1.png" alt="Temperaturas médias diárias nas cidades de Manaus (MA) e Porto Alegre (POA)" width="90%" />
 <p class="caption">(\#fig:figts1)Temperaturas médias diárias nas cidades de Manaus (MA) e Porto Alegre (POA)</p>
 </div>
 
@@ -282,7 +282,7 @@ ggplot(custo_medio, aes(x = data, y = cm)) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="02-SeriesReg_files/figure-html/figcn-1.png" alt="Custo médio do $m^2$ no Brasil a partir do plano real" width="65%" />
+<img src="02-SeriesReg_files/figure-epub3/figcn-1.png" alt="Custo médio do $m^2$ no Brasil a partir do plano real" width="65%" />
 <p class="caption">(\#fig:figcn)Custo médio do $m^2$ no Brasil a partir do plano real</p>
 </div>
 
@@ -370,7 +370,7 @@ ggplot(prodind,aes(x=Data, y=intermediarios))+
 ```
 
 <div class="figure" style="text-align: center">
-<img src="02-SeriesReg_files/figure-html/figpi-1.png" alt="Produção física industrial de Bens Intermediários" width="85%" />
+<img src="02-SeriesReg_files/figure-epub3/figpi-1.png" alt="Produção física industrial de Bens Intermediários" width="85%" />
 <p class="caption">(\#fig:figpi)Produção física industrial de Bens Intermediários</p>
 </div>
 

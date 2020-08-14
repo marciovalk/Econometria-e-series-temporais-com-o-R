@@ -7,13 +7,14 @@ Dados de séries temporais são obeservações de um evento ou fenômeno ao long
 No Figura \@ref(fig:tsint00) apresentamos alguns exemplos de sériestemporais com diferentes intervalos de observações.
 
 <div class="figure" style="text-align: center">
-<img src="00-intro_files/figure-html/tsint00-1.png" alt="Séries temporais com diferentes intervalos de observações" width="45%" /><img src="00-intro_files/figure-html/tsint00-2.png" alt="Séries temporais com diferentes intervalos de observações" width="45%" /><img src="00-intro_files/figure-html/tsint00-3.png" alt="Séries temporais com diferentes intervalos de observações" width="45%" /><img src="00-intro_files/figure-html/tsint00-4.png" alt="Séries temporais com diferentes intervalos de observações" width="45%" />
+<img src="00-intro_files/figure-epub3/tsint00-1.png" alt="Séries temporais com diferentes intervalos de observações" width="45%" /><img src="00-intro_files/figure-epub3/tsint00-2.png" alt="Séries temporais com diferentes intervalos de observações" width="45%" /><img src="00-intro_files/figure-epub3/tsint00-3.png" alt="Séries temporais com diferentes intervalos de observações" width="45%" /><img src="00-intro_files/figure-epub3/tsint00-4.png" alt="Séries temporais com diferentes intervalos de observações" width="45%" />
 <p class="caption">(\#fig:tsint00)Séries temporais com diferentes intervalos de observações</p>
 </div>
 
 
+Nesse exemplo temos séries temporais com diferentes intervalos de tempo. A série histórica do Pib tem intervalos de tempo de um ano. Os dados sobre valor da cesta básica em Porto alegre é divulgado mensalmente, os dados sobre Covid19 são divulgados diariamente e uma série temporal com observações a cada dez anos é a da população brasileira.
 
-Uma série temporal com observações a cada dez anos é a da população brasileira. 
+Séries temporais serão abordadas ao longo do texto, no qual exploramos as propriedades teóricas das séries, características amostrais, sempre com um enfoque prático usando o `R`. Por esse motivo apresentamos uma breve introdução ao `R` que possibilitará ao leitor acompanhar e replicar os exemplos. 
 
 
 ## Breve introdução ao R {#intro}
@@ -637,28 +638,28 @@ Com a função `paste()` podemos concatenar objetos de tipos diferentes e armaze
 
 
 ```r
-paste("Porco_", letters[1:4], sep="")   # Underline no Porco e sem espaço no sep
+paste("IBGE_", letters[1:4], sep="")   # Underline no IBGE e sem espaço no sep
 ```
 
 ```
-## [1] "Porco_a" "Porco_b" "Porco_c" "Porco_d"
-```
-
-```r
-paste("Porco", letters[1:4], sep="_")   # Underline no sep
-```
-
-```
-## [1] "Porco_a" "Porco_b" "Porco_c" "Porco_d"
+## [1] "IBGE_a" "IBGE_b" "IBGE_c" "IBGE_d"
 ```
 
 ```r
-p=paste("Porco", letters[1:4], sep="_") # Armazenando no vetor p
+paste("IBGE", letters[1:4], sep="_")   # Underline no sep
+```
+
+```
+## [1] "IBGE_a" "IBGE_b" "IBGE_c" "IBGE_d"
+```
+
+```r
+p=paste("IBGE", letters[1:4], sep="_") # Armazenando no vetor p
 p[2]                                    # Acessando a posição 2 do vetor p
 ```
 
 ```
-## [1] "Porco_b"
+## [1] "IBGE_b"
 ```
 
 Note que escalares não existem no `R`. Eles são vetores de tamanho `1`.
@@ -1556,15 +1557,15 @@ A iteração pode ser feita sobre um vetor qualquer de objetos
 
 
 ```r
-for (i in c("milho","soja","trigo")){
-  print(paste("Produção de ",i))  # a função paste() conecta as strings
+for (i in c("IPCA","IGP-M","INPC")){
+  print(paste("Índice ",i))  # a função paste() conecta as strings
 }
 ```
 
 ```
-## [1] "Produção de  milho"
-## [1] "Produção de  soja"
-## [1] "Produção de  trigo"
+## [1] "Índice  IPCA"
+## [1] "Índice  IGP-M"
+## [1] "Índice  INPC"
 ```
 
 Podemos fazer *loops* dentro de *loops* (*nested loops*)
@@ -1573,20 +1574,20 @@ Podemos fazer *loops* dentro de *loops* (*nested loops*)
 ```r
 for (i in 2:3){
   # primeiro: para cada i
-  for (j in c("milho","soja","trigo")){
+  for (j in c("IPCA","IGP-M","INPC")){
     # segundo: para cada j 
-    print(paste("Usar",i,"Kg de",j,"na fórmula."))
+    print(paste("A cada",i,"meses pode-se calcular o Índice",j))
   }
 }
 ```
 
 ```
-## [1] "Usar 2 Kg de milho na fórmula."
-## [1] "Usar 2 Kg de soja na fórmula."
-## [1] "Usar 2 Kg de trigo na fórmula."
-## [1] "Usar 3 Kg de milho na fórmula."
-## [1] "Usar 3 Kg de soja na fórmula."
-## [1] "Usar 3 Kg de trigo na fórmula."
+## [1] "A cada 2 meses pode-se calcular o Índice IPCA"
+## [1] "A cada 2 meses pode-se calcular o Índice IGP-M"
+## [1] "A cada 2 meses pode-se calcular o Índice INPC"
+## [1] "A cada 3 meses pode-se calcular o Índice IPCA"
+## [1] "A cada 3 meses pode-se calcular o Índice IGP-M"
+## [1] "A cada 3 meses pode-se calcular o Índice INPC"
 ```
 
 #### Uso do `while()`
@@ -1596,17 +1597,17 @@ A função `while()`, como o próprio nome sugre, é usada para executar uma tar
 
 
 ```r
-Kg=27
-while(Kg<30){
-  print(paste("Peso é",Kg)) # Enquanto peso é menor do que 30, executa
-  Kg=Kg+1 # Enquanto peso é menor do que 30, soma 1 no peso atual
+dias=27
+while(dias<30){
+  print(paste("Passaram-se",dias,"dias")) # Enquanto dias é menor do que 30, executa
+  dias=dias+1 # Enquanto dias é menor do que 30, soma-se 1 ao dia atual
 }
 ```
 
 ```
-## [1] "Peso é 27"
-## [1] "Peso é 28"
-## [1] "Peso é 29"
+## [1] "Passaram-se 27 dias"
+## [1] "Passaram-se 28 dias"
+## [1] "Passaram-se 29 dias"
 ```
 
 
@@ -1644,14 +1645,14 @@ Agora tente com o seu nome:
 
 
 ```r
-fun1("Rabicó")
+fun1("Pato Donald")
 ```
 
 ```
-## [1] "Seja bem vindo ao R, Rabicó"
+## [1] "Seja bem vindo ao R, Pato Donald"
 ```
 
-Just typing the function name returns the actual definition to us, which is handy sometimes:
+Para ver a "programação" da função, basta digitar o nome da função:
 
 
 ```r
@@ -1664,7 +1665,7 @@ fun1
 ##   # pode-se escrever também
 ##   # return(paste("Seja bem vindo ao R,",seu_nome))
 ## }
-## <bytecode: 0x000000000c70a7c0>
+## <bytecode: 0x0000000006c21d30>
 ```
 
 Funções são maneiras de dizer ao `R` o que deve ser feito. É como se ensinássemos uma tarefa ao software para que ele passe a executá-la sempre que solicitado. Um dica para não acumular erros durante a programação é dividir o *script* em várias funções. Quando se tem um conjunto de funções que realiza um conjunto de tarefas mais amplas, pode-se juntar tudo em um pacote (`package`), submeter ao `CRAN` para disponibilizar à comunidade. 
@@ -1734,4 +1735,4 @@ fogo%>%na.omit%>%dplyr::filter(month=="Setembro"&state=="Rondonia")%>%ggplot(aes
        title = "Focos de incêndio em Rondônia nos meses de Setembro") 
 ```
 
-<img src="00-intro_files/figure-html/unnamed-chunk-63-1.png" width="672" />
+![](00-intro_files/figure-epub3/unnamed-chunk-63-1.png)<!-- -->

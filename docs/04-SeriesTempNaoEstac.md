@@ -20,7 +20,7 @@ No entanto muitas séries temporais econômicas são claramente não estacionár
 <br>
 
 <div class="figure">
-<img src="04-SeriesTempNaoEstac_files/figure-html/nstac2-1.png" alt="Séries não-estacionárias apresentando tendências determinísticas: (a) Tendência linear, (b) tendência logarítmica, (c) tendência quadrática e (d) tendência exponencial." width="45%" /><img src="04-SeriesTempNaoEstac_files/figure-html/nstac2-2.png" alt="Séries não-estacionárias apresentando tendências determinísticas: (a) Tendência linear, (b) tendência logarítmica, (c) tendência quadrática e (d) tendência exponencial." width="45%" /><img src="04-SeriesTempNaoEstac_files/figure-html/nstac2-3.png" alt="Séries não-estacionárias apresentando tendências determinísticas: (a) Tendência linear, (b) tendência logarítmica, (c) tendência quadrática e (d) tendência exponencial." width="45%" /><img src="04-SeriesTempNaoEstac_files/figure-html/nstac2-4.png" alt="Séries não-estacionárias apresentando tendências determinísticas: (a) Tendência linear, (b) tendência logarítmica, (c) tendência quadrática e (d) tendência exponencial." width="45%" />
+<img src="04-SeriesTempNaoEstac_files/figure-epub3/nstac2-1.png" alt="Séries não-estacionárias apresentando tendências determinísticas: (a) Tendência linear, (b) tendência logarítmica, (c) tendência quadrática e (d) tendência exponencial." width="45%" /><img src="04-SeriesTempNaoEstac_files/figure-epub3/nstac2-2.png" alt="Séries não-estacionárias apresentando tendências determinísticas: (a) Tendência linear, (b) tendência logarítmica, (c) tendência quadrática e (d) tendência exponencial." width="45%" /><img src="04-SeriesTempNaoEstac_files/figure-epub3/nstac2-3.png" alt="Séries não-estacionárias apresentando tendências determinísticas: (a) Tendência linear, (b) tendência logarítmica, (c) tendência quadrática e (d) tendência exponencial." width="45%" /><img src="04-SeriesTempNaoEstac_files/figure-epub3/nstac2-4.png" alt="Séries não-estacionárias apresentando tendências determinísticas: (a) Tendência linear, (b) tendência logarítmica, (c) tendência quadrática e (d) tendência exponencial." width="45%" />
 <p class="caption">(\#fig:nstac2)Séries não-estacionárias apresentando tendências determinísticas: (a) Tendência linear, (b) tendência logarítmica, (c) tendência quadrática e (d) tendência exponencial.</p>
 </div>
 
@@ -55,7 +55,7 @@ onde $Y_t$ denota o receita nominal no tempo $t$ e $X_t$ é a série residual ap
 <br>
 
 <div class="figure">
-<img src="04-SeriesTempNaoEstac_files/figure-html/combustivel-1.png" alt="Séries da receita nominal mensal de vendas do varejo nacional no ramo de combustíveis e lubrificantes. (a) Série, (b) série e reta ajustada e (c) residual." width="99%" />
+<img src="04-SeriesTempNaoEstac_files/figure-epub3/combustivel-1.png" alt="Séries da receita nominal mensal de vendas do varejo nacional no ramo de combustíveis e lubrificantes. (a) Série, (b) série e reta ajustada e (c) residual." width="99%" />
 <p class="caption">(\#fig:combustivel)Séries da receita nominal mensal de vendas do varejo nacional no ramo de combustíveis e lubrificantes. (a) Série, (b) série e reta ajustada e (c) residual.</p>
 </div>
 
@@ -71,7 +71,7 @@ onde $Y_t$ denota o coeficiente de variação do número de pessoas desocupadas 
 
 
 <div class="figure">
-<img src="04-SeriesTempNaoEstac_files/figure-html/desocupados-1.png" alt="Séries do número de pessoas desocupadas em Porto Alegre. (a) Série, (b) série e tendência ajustada e (c) residual" width="99%" />
+<img src="04-SeriesTempNaoEstac_files/figure-epub3/desocupados-1.png" alt="Séries do número de pessoas desocupadas em Porto Alegre. (a) Série, (b) série e tendência ajustada e (c) residual" width="99%" />
 <p class="caption">(\#fig:desocupados)Séries do número de pessoas desocupadas em Porto Alegre. (a) Série, (b) série e tendência ajustada e (c) residual</p>
 </div>
 
@@ -131,7 +131,7 @@ com uma tendência determinística vindo de $a_0t$ e um intercepto estocástico 
 <br>
 
 <div class="figure">
-<img src="04-SeriesTempNaoEstac_files/figure-html/shadcurve-1.png" alt="Distribuição de Dickey Fuller" width="99%" />
+<img src="04-SeriesTempNaoEstac_files/figure-epub3/shadcurve-1.png" alt="Distribuição de Dickey Fuller" width="99%" />
 <p class="caption">(\#fig:shadcurve)Distribuição de Dickey Fuller</p>
 </div>
 
@@ -238,7 +238,7 @@ Na figura a seguir temos uma aplicação do operador diferença.
 <br>
 
 <div class="figure">
-<img src="04-SeriesTempNaoEstac_files/figure-html/diffpa-1.png" alt="Passeio Aleatório (a) e sua diferença (b)" width="45%" /><img src="04-SeriesTempNaoEstac_files/figure-html/diffpa-2.png" alt="Passeio Aleatório (a) e sua diferença (b)" width="45%" />
+<img src="04-SeriesTempNaoEstac_files/figure-epub3/diffpa-1.png" alt="Passeio Aleatório (a) e sua diferença (b)" width="45%" /><img src="04-SeriesTempNaoEstac_files/figure-epub3/diffpa-2.png" alt="Passeio Aleatório (a) e sua diferença (b)" width="45%" />
 <p class="caption">(\#fig:diffpa)Passeio Aleatório (a) e sua diferença (b)</p>
 </div>
 
@@ -280,7 +280,7 @@ plot(diff(diff(BJsales)), type="l",lwd=2,cex.lab=1.4, xlab=" ",ylab="diff(diff(V
 ```
 
 <div class="figure">
-<img src="04-SeriesTempNaoEstac_files/figure-html/diff2-1.png" alt="Série de vendas, primeira e segunda diferenças" width="99%" />
+<img src="04-SeriesTempNaoEstac_files/figure-epub3/diff2-1.png" alt="Série de vendas, primeira e segunda diferenças" width="99%" />
 <p class="caption">(\#fig:diff2)Série de vendas, primeira e segunda diferenças</p>
 </div>
 
@@ -331,7 +331,7 @@ ts.plot(AirPassengers,exp(prev$pred), exp(l), exp(u), log = "y", lty = c(1,4, 2,
 ```
 
 <div class="figure">
-<img src="04-SeriesTempNaoEstac_files/figure-html/prev-1.png" alt="Previsão para o log da série de passageiros das companhias aéreas americanas" width="99%" />
+<img src="04-SeriesTempNaoEstac_files/figure-epub3/prev-1.png" alt="Previsão para o log da série de passageiros das companhias aéreas americanas" width="99%" />
 <p class="caption">(\#fig:prev)Previsão para o log da série de passageiros das companhias aéreas americanas</p>
 </div>
 
@@ -484,7 +484,7 @@ summary(m1)
 Como podemos observar, encontramos um $R^2=0.43$ alto e estatísticas significativas. No entanto, as séries são independentes. O resultado disso, é que quando  colocamos no mesmo gráfico, a série $Y$ e o predito, podemos observar que o predito não é nem de perto razoável. 
 
 <div class="figure">
-<img src="04-SeriesTempNaoEstac_files/figure-html/I1I1-1.png" alt="Correlação expúria. Dois passeios aleatórios independentes" width="99%" />
+<img src="04-SeriesTempNaoEstac_files/figure-epub3/I1I1-1.png" alt="Correlação expúria. Dois passeios aleatórios independentes" width="99%" />
 <p class="caption">(\#fig:I1I1)Correlação expúria. Dois passeios aleatórios independentes</p>
 </div>
 
@@ -678,7 +678,7 @@ adf2=adf.test(diff(BJsales))
 
 
 <div class="figure">
-<img src="04-SeriesTempNaoEstac_files/figure-html/bjfig-1.png" alt="Séries Temporais S1,S2 e S3" width="33%" /><img src="04-SeriesTempNaoEstac_files/figure-html/bjfig-2.png" alt="Séries Temporais S1,S2 e S3" width="33%" /><img src="04-SeriesTempNaoEstac_files/figure-html/bjfig-3.png" alt="Séries Temporais S1,S2 e S3" width="33%" />
+<img src="04-SeriesTempNaoEstac_files/figure-epub3/bjfig-1.png" alt="Séries Temporais S1,S2 e S3" width="33%" /><img src="04-SeriesTempNaoEstac_files/figure-epub3/bjfig-2.png" alt="Séries Temporais S1,S2 e S3" width="33%" /><img src="04-SeriesTempNaoEstac_files/figure-epub3/bjfig-3.png" alt="Séries Temporais S1,S2 e S3" width="33%" />
 <p class="caption">(\#fig:bjfig)Séries Temporais S1,S2 e S3</p>
 </div>
 
@@ -686,7 +686,7 @@ adf2=adf.test(diff(BJsales))
 
 
 <div class="figure">
-<img src="04-SeriesTempNaoEstac_files/figure-html/figcs-1.png" alt="FAC e FACP para três séries temporais distintas $X_1$, $X_2$ e $X_3$." width="33%" /><img src="04-SeriesTempNaoEstac_files/figure-html/figcs-2.png" alt="FAC e FACP para três séries temporais distintas $X_1$, $X_2$ e $X_3$." width="33%" /><img src="04-SeriesTempNaoEstac_files/figure-html/figcs-3.png" alt="FAC e FACP para três séries temporais distintas $X_1$, $X_2$ e $X_3$." width="33%" />
+<img src="04-SeriesTempNaoEstac_files/figure-epub3/figcs-1.png" alt="FAC e FACP para três séries temporais distintas $X_1$, $X_2$ e $X_3$." width="33%" /><img src="04-SeriesTempNaoEstac_files/figure-epub3/figcs-2.png" alt="FAC e FACP para três séries temporais distintas $X_1$, $X_2$ e $X_3$." width="33%" /><img src="04-SeriesTempNaoEstac_files/figure-epub3/figcs-3.png" alt="FAC e FACP para três séries temporais distintas $X_1$, $X_2$ e $X_3$." width="33%" />
 <p class="caption">(\#fig:figcs)FAC e FACP para três séries temporais distintas $X_1$, $X_2$ e $X_3$.</p>
 </div>
 
@@ -700,7 +700,7 @@ adf2=adf.test(diff(BJsales))
 
 
 <div class="figure">
-<img src="04-SeriesTempNaoEstac_files/figure-html/aj-1.png" alt="FAC e FACP dos resíduos do ajuste de três modelos a série _BJsales_," width="33%" /><img src="04-SeriesTempNaoEstac_files/figure-html/aj-2.png" alt="FAC e FACP dos resíduos do ajuste de três modelos a série _BJsales_," width="33%" /><img src="04-SeriesTempNaoEstac_files/figure-html/aj-3.png" alt="FAC e FACP dos resíduos do ajuste de três modelos a série _BJsales_," width="33%" />
+<img src="04-SeriesTempNaoEstac_files/figure-epub3/aj-1.png" alt="FAC e FACP dos resíduos do ajuste de três modelos a série _BJsales_," width="33%" /><img src="04-SeriesTempNaoEstac_files/figure-epub3/aj-2.png" alt="FAC e FACP dos resíduos do ajuste de três modelos a série _BJsales_," width="33%" /><img src="04-SeriesTempNaoEstac_files/figure-epub3/aj-3.png" alt="FAC e FACP dos resíduos do ajuste de três modelos a série _BJsales_," width="33%" />
 <p class="caption">(\#fig:aj)FAC e FACP dos resíduos do ajuste de três modelos a série _BJsales_,</p>
 </div>
 

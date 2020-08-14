@@ -131,7 +131,7 @@
 
 \title{Econometria e Séries Temporais com R}
 \author{Marcio Valk e Guilherme Pumi}
-\date{2020-08-11}
+\date{2020-08-13}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Teorema}[chapter]
@@ -155,11 +155,21 @@
 \setcounter{tocdepth}{1}
 \tableofcontents
 }
+\hypertarget{section}{%
+\chapter*{}\label{section}}
+\addcontentsline{toc}{chapter}{}
+
+\begin{figure}
+\centering
+\includegraphics{cover1.png}
+\caption{book cover}
+\end{figure}
+
 \hypertarget{prefuxe1cio}{%
 \chapter*{Prefácio}\label{prefuxe1cio}}
 \addcontentsline{toc}{chapter}{Prefácio}
 
-Escrever aqui sobre\ldots.
+Este livro baseia-se nas notas de aula da Disciplina de Econometria que é oferecida pelo departamento de Estatística da UFRGS. Para cursar a disciplina é necessário ter alguns pré-requisitos, portanto é esperado que o leitor tenha algum tipo de conhecimento sobre estatística básica, inferência e regressão.
 
 \hypertarget{suxe9ries-temporais}{%
 \chapter{Séries temporais}\label{suxe9ries-temporais}}
@@ -177,7 +187,9 @@ No Figura \ref{fig:tsint00} apresentamos alguns exemplos de sériestemporais com
 \caption{Séries temporais com diferentes intervalos de observações}\label{fig:tsint00}
 \end{figure}
 
-Uma série temporal com observações a cada dez anos é a da população brasileira.
+Nesse exemplo temos séries temporais com diferentes intervalos de tempo. A série histórica do Pib tem intervalos de tempo de um ano. Os dados sobre valor da cesta básica em Porto alegre é divulgado mensalmente, os dados sobre Covid19 são divulgados diariamente e uma série temporal com observações a cada dez anos é a da população brasileira.
+
+Séries temporais serão abordadas ao longo do texto, no qual exploramos as propriedades teóricas das séries, características amostrais, sempre com um enfoque prático usando o \texttt{R}. Por esse motivo apresentamos uma breve introdução ao \texttt{R} que possibilitará ao leitor acompanhar e replicar os exemplos.
 
 \hypertarget{intro}{%
 \section{Breve introdução ao R}\label{intro}}
@@ -913,33 +925,33 @@ Com a função \texttt{paste()} podemos concatenar objetos de tipos diferentes e
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{paste}\NormalTok{(}\StringTok{"Porco_"}\NormalTok{, letters[}\DecValTok{1}\OperatorTok{:}\DecValTok{4}\NormalTok{], }\DataTypeTok{sep=}\StringTok{""}\NormalTok{)   }\CommentTok{# Underline no Porco e sem espaço no sep}
+\KeywordTok{paste}\NormalTok{(}\StringTok{"IBGE_"}\NormalTok{, letters[}\DecValTok{1}\OperatorTok{:}\DecValTok{4}\NormalTok{], }\DataTypeTok{sep=}\StringTok{""}\NormalTok{)   }\CommentTok{# Underline no IBGE e sem espaço no sep}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "Porco_a" "Porco_b" "Porco_c" "Porco_d"
+## [1] "IBGE_a" "IBGE_b" "IBGE_c" "IBGE_d"
 \end{verbatim}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{paste}\NormalTok{(}\StringTok{"Porco"}\NormalTok{, letters[}\DecValTok{1}\OperatorTok{:}\DecValTok{4}\NormalTok{], }\DataTypeTok{sep=}\StringTok{"_"}\NormalTok{)   }\CommentTok{# Underline no sep}
+\KeywordTok{paste}\NormalTok{(}\StringTok{"IBGE"}\NormalTok{, letters[}\DecValTok{1}\OperatorTok{:}\DecValTok{4}\NormalTok{], }\DataTypeTok{sep=}\StringTok{"_"}\NormalTok{)   }\CommentTok{# Underline no sep}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "Porco_a" "Porco_b" "Porco_c" "Porco_d"
+## [1] "IBGE_a" "IBGE_b" "IBGE_c" "IBGE_d"
 \end{verbatim}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{p=}\KeywordTok{paste}\NormalTok{(}\StringTok{"Porco"}\NormalTok{, letters[}\DecValTok{1}\OperatorTok{:}\DecValTok{4}\NormalTok{], }\DataTypeTok{sep=}\StringTok{"_"}\NormalTok{) }\CommentTok{# Armazenando no vetor p}
+\NormalTok{p=}\KeywordTok{paste}\NormalTok{(}\StringTok{"IBGE"}\NormalTok{, letters[}\DecValTok{1}\OperatorTok{:}\DecValTok{4}\NormalTok{], }\DataTypeTok{sep=}\StringTok{"_"}\NormalTok{) }\CommentTok{# Armazenando no vetor p}
 \NormalTok{p[}\DecValTok{2}\NormalTok{]                                    }\CommentTok{# Acessando a posição 2 do vetor p}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "Porco_b"
+## [1] "IBGE_b"
 \end{verbatim}
 
 Note que escalares não existem no \texttt{R}. Eles são vetores de tamanho \texttt{1}.
@@ -1973,16 +1985,16 @@ A iteração pode ser feita sobre um vetor qualquer de objetos
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \KeywordTok{c}\NormalTok{(}\StringTok{"milho"}\NormalTok{,}\StringTok{"soja"}\NormalTok{,}\StringTok{"trigo"}\NormalTok{))\{}
-  \KeywordTok{print}\NormalTok{(}\KeywordTok{paste}\NormalTok{(}\StringTok{"Produção de "}\NormalTok{,i))  }\CommentTok{# a função paste() conecta as strings}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \KeywordTok{c}\NormalTok{(}\StringTok{"IPCA"}\NormalTok{,}\StringTok{"IGP-M"}\NormalTok{,}\StringTok{"INPC"}\NormalTok{))\{}
+  \KeywordTok{print}\NormalTok{(}\KeywordTok{paste}\NormalTok{(}\StringTok{"Índice "}\NormalTok{,i))  }\CommentTok{# a função paste() conecta as strings}
 \NormalTok{\}}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "Produção de  milho"
-## [1] "Produção de  soja"
-## [1] "Produção de  trigo"
+## [1] "Índice  IPCA"
+## [1] "Índice  IGP-M"
+## [1] "Índice  INPC"
 \end{verbatim}
 
 Podemos fazer \emph{loops} dentro de \emph{loops} (\emph{nested loops})
@@ -1991,21 +2003,21 @@ Podemos fazer \emph{loops} dentro de \emph{loops} (\emph{nested loops})
 \begin{Highlighting}[]
 \ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{2}\OperatorTok{:}\DecValTok{3}\NormalTok{)\{}
   \CommentTok{# primeiro: para cada i}
-  \ControlFlowTok{for}\NormalTok{ (j }\ControlFlowTok{in} \KeywordTok{c}\NormalTok{(}\StringTok{"milho"}\NormalTok{,}\StringTok{"soja"}\NormalTok{,}\StringTok{"trigo"}\NormalTok{))\{}
+  \ControlFlowTok{for}\NormalTok{ (j }\ControlFlowTok{in} \KeywordTok{c}\NormalTok{(}\StringTok{"IPCA"}\NormalTok{,}\StringTok{"IGP-M"}\NormalTok{,}\StringTok{"INPC"}\NormalTok{))\{}
     \CommentTok{# segundo: para cada j }
-    \KeywordTok{print}\NormalTok{(}\KeywordTok{paste}\NormalTok{(}\StringTok{"Usar"}\NormalTok{,i,}\StringTok{"Kg de"}\NormalTok{,j,}\StringTok{"na fórmula."}\NormalTok{))}
+    \KeywordTok{print}\NormalTok{(}\KeywordTok{paste}\NormalTok{(}\StringTok{"A cada"}\NormalTok{,i,}\StringTok{"meses pode-se calcular o Índice"}\NormalTok{,j))}
 \NormalTok{  \}}
 \NormalTok{\}}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "Usar 2 Kg de milho na fórmula."
-## [1] "Usar 2 Kg de soja na fórmula."
-## [1] "Usar 2 Kg de trigo na fórmula."
-## [1] "Usar 3 Kg de milho na fórmula."
-## [1] "Usar 3 Kg de soja na fórmula."
-## [1] "Usar 3 Kg de trigo na fórmula."
+## [1] "A cada 2 meses pode-se calcular o Índice IPCA"
+## [1] "A cada 2 meses pode-se calcular o Índice IGP-M"
+## [1] "A cada 2 meses pode-se calcular o Índice INPC"
+## [1] "A cada 3 meses pode-se calcular o Índice IPCA"
+## [1] "A cada 3 meses pode-se calcular o Índice IGP-M"
+## [1] "A cada 3 meses pode-se calcular o Índice INPC"
 \end{verbatim}
 
 \hypertarget{uso-do-while}{%
@@ -2015,18 +2027,18 @@ A função \texttt{while()}, como o próprio nome sugre, é usada para executar 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{Kg=}\DecValTok{27}
-\ControlFlowTok{while}\NormalTok{(Kg}\OperatorTok{<}\DecValTok{30}\NormalTok{)\{}
-  \KeywordTok{print}\NormalTok{(}\KeywordTok{paste}\NormalTok{(}\StringTok{"Peso é"}\NormalTok{,Kg)) }\CommentTok{# Enquanto peso é menor do que 30, executa}
-\NormalTok{  Kg=Kg}\OperatorTok{+}\DecValTok{1} \CommentTok{# Enquanto peso é menor do que 30, soma 1 no peso atual}
+\NormalTok{dias=}\DecValTok{27}
+\ControlFlowTok{while}\NormalTok{(dias}\OperatorTok{<}\DecValTok{30}\NormalTok{)\{}
+  \KeywordTok{print}\NormalTok{(}\KeywordTok{paste}\NormalTok{(}\StringTok{"Passaram-se"}\NormalTok{,dias,}\StringTok{"dias"}\NormalTok{)) }\CommentTok{# Enquanto dias é menor do que 30, executa}
+\NormalTok{  dias=dias}\OperatorTok{+}\DecValTok{1} \CommentTok{# Enquanto dias é menor do que 30, soma-se 1 ao dia atual}
 \NormalTok{\}}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "Peso é 27"
-## [1] "Peso é 28"
-## [1] "Peso é 29"
+## [1] "Passaram-se 27 dias"
+## [1] "Passaram-se 28 dias"
+## [1] "Passaram-se 29 dias"
 \end{verbatim}
 
 \hypertarget{funuxe7uxf5es}{%
@@ -2066,15 +2078,15 @@ Agora tente com o seu nome:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{fun1}\NormalTok{(}\StringTok{"Rabicó")}
+\KeywordTok{fun1}\NormalTok{(}\StringTok{"Pato Donald"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "Seja bem vindo ao R, Rabicó"
+## [1] "Seja bem vindo ao R, Pato Donald"
 \end{verbatim}
 
-Just typing the function name returns the actual definition to us, which is handy sometimes:
+Para ver a ``programação'' da função, basta digitar o nome da função:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2088,7 +2100,7 @@ Just typing the function name returns the actual definition to us, which is hand
 ##   # pode-se escrever também
 ##   # return(paste("Seja bem vindo ao R,",seu_nome))
 ## }
-## <bytecode: 0x000000000c0d1bd0>
+## <bytecode: 0x000000000c0df3c0>
 \end{verbatim}
 
 Funções são maneiras de dizer ao \texttt{R} o que deve ser feito. É como se ensinássemos uma tarefa ao software para que ele passe a executá-la sempre que solicitado. Um dica para não acumular erros durante a programação é dividir o \emph{script} em várias funções. Quando se tem um conjunto de funções que realiza um conjunto de tarefas mais amplas, pode-se juntar tudo em um pacote (\texttt{package}), submeter ao \texttt{CRAN} para disponibilizar à comunidade.
